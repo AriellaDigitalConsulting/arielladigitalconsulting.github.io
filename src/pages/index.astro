@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+
+const expertise = [
+  {
+    title: 'Custom Integrations',
+    href: '/products',
+    items: ['Enterprise Search', 'Solutions Architecture', 'Provisioning', 'Security Authentication & Authorization', 'Gamification', 'Audit Logs', 'Access Token Exchange'],
+  },
+  {
+    title: 'Implementations',
+    href: '/services',
+    items: ['Content & IA Strategy', 'Governance Strategy', 'Use Case Roadmaps', 'LumApps Best Practices', 'Project & Program Management', 'Migrations'],
+  },
+  {
+    title: 'LumApps Analytics',
+    href: '/analytics',
+    items: ['Data Ingestion from Multiple Sources', 'DataLake Integrations with your BI Tools', 'Data Visualization', 'Data Blending from Multiple Sources', 'And more..!'],
+  },
+  {
+    title: 'UI/UX Design',
+    href: '/design',
+    items: ['Portal Design & Redesigns', 'LumApps Design Best Practices', 'Low & High Fidelity Mockups', 'Custom CSS', 'New Interface'],
+  },
+];
+
+const testimonials = [
+  {
+    quote: `We have worked with ADC for the past 2 years, and more specifically Misha for the last 3 years (1 year with LumApps). Given Misha's extensive knowledge of LumApps, he has always provided top level support into the platform. ADC has helped us with custom designs on a complete company rebrand, created custom widgets to help us improve user experience, and engaged on several other large strategic projects to improve how we utilize our intranet. I cannot recommend ADC's service enough to anyone who wants to level up the LumApps experience for their users.`,
+    name: 'PJ Marcello',
+    role: 'Corporate Intranet Manager',
+  },
+  {
+    quote: `We take great pride in the quality partnerships our brand has established with the various technology companies with whom we work. Our relationship with ADC is a prime example of this. For nearly three years now, Misha and the rest of the ADC team have served as our Lumapps SMEs and development partners. I would highly recommend ADC to anyone wishing to fully leverage their experience with Lumapps. I can confidently assure you that you will not be disappointed!`,
+    name: 'Sean Young',
+    role: 'Director of Technology',
+  },
+  {
+    quote: `Working with ADC helped our team accelerate the completion and launch of our knowledge management and training portal on a tight timeline and with limited resources. Misha's design recommendations and previous cross-industry experience was extremely useful throughout the project.`,
+    name: 'Tomson Varghese',
+    role: 'Senior Manager - Finance Transportation',
+  },
+];
+---
+
+<Base title="ADC — Making LumApps a simpler, happier experience">
+  <section class="hero">
+    <div class="hero__media">
+      <img src="/images/e3b3969c07d5.webp" alt="" width="1800" height="793" fetchpriority="high" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="wrap">
+      <div class="hero__inner">
+        <p class="eyebrow" style="color: var(--lime)">Welcome to ADC!</p>
+        <h1>Making LumApps a simpler, happier experience</h1>
+        <p>
+          Solving digital transformation challenges and providing strategic solutions to improve, grow, and
+          adopt organizational intranet best practices.
+        </p>
+        <p style="font-size: 1.02rem; color: rgba(255,255,255,0.78); max-width: 60ch;">
+          Our boutique consulting firm is dedicated to enhancing, extending, and delivering a refined LumApps
+          employee experience platform to our customers. Being a LumApps <strong>Tech Partner</strong> and a
+          long-standing LumApps <strong>SME since 2017</strong> makes us a leading solutions partner in this
+          space.
+        </p>
+        <p style="margin-top: 2rem;">
+          <a class="btn btn--light" href="/contact">Work with us</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <p class="eyebrow">Our values</p>
+      <h2>Our Featured Expertise.<br /><span style="color: var(--blue)">Explore How We Can Work Together.</span></h2>
+      <div class="grid grid--4" style="margin-top: 2.5rem;">
+        {
+          expertise.map((e) => (
+            <a class="card" href={e.href}>
+              <h3>{e.title}</h3>
+              <ul>
+                {e.items.map((i) => <li>{i}</li>)}
+              </ul>
+              <span class="more">Learn More →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="wrap">
+      <p class="eyebrow" style="color: var(--lime)">Our valued customers</p>
+      <h2>Read Why Our Customers are Satisfied</h2>
+      <div class="grid grid--3" style="margin-top: 2.5rem;">
+        {
+          testimonials.map((t) => (
+            <blockquote class="quote">
+              <p>“{t.quote}”</p>
+              <footer>
+                <strong>{t.name}</strong>
+                <span>{t.role}</span>
+              </footer>
+            </blockquote>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section--navy .quote {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.86);
+  }
+  .section--navy .quote strong {
+    color: #fff;
+  }
+  .section--navy .quote span {
+    color: rgba(255, 255, 255, 0.6);
+  }
+</style>

@@ -1,0 +1,225 @@
+---
+import Base from '../layouts/Base.astro';
+
+const phases = [
+  {
+    step: 'Define',
+    title: 'Identifying Analytics Use Cases',
+    body: `The "Define" phase is a series of working sessions aimed at discovering the type of data required to be collected, data sources, and defining the audience.`,
+  },
+  {
+    step: 'Integrate',
+    title: 'Connecting the Right Data Sources',
+    body: `Following a Define session, we work on connecting the data to the data points. This could be as simple as setting up GTM Tags, connecting to BQ, or extracting custom data.`,
+  },
+  {
+    step: 'Design',
+    title: 'Telling Your Analytics Experience Story',
+    body: `Visualize the data in the BI tool by creating engaging and clean dashboards in the BI tool of choice. The dashboards are customized based on the predefined use case.`,
+  },
+  {
+    step: 'Deliver',
+    title: 'Bringing it All Together',
+    body: `Once the dashboard has been designed and tested it will be delivered for review and customer approval.`,
+  },
+];
+
+const useCases = [
+  {
+    audience: 'Analytics for Corporate Communication',
+    items: [
+      'Who is viewing content by department / function / BU?',
+      'Community follow analytics — find out who is following which community',
+      'Page scroll depth analysis',
+      'Defining the most active community posts',
+      'View user activity heat maps — when are users most active on the digital workplace, to receive communication messages',
+    ],
+  },
+  {
+    audience: 'Analytics for Information Technology',
+    items: [
+      'Blending datasets from Data Lake and LumApps’ Platform Logs API',
+      'Track user actions with Platform logs',
+      'Capturing detailed and customized user reports for Community Activities',
+      'Create Admin Utility Dashboards for administrators to monitor user activity via Platform Logs to determine who deleted content, what type of content, and when',
+    ],
+  },
+];
+
+const pricing = [
+  'Analytics Working Sessions',
+  'Custom Data Ingestion from Multiple Sources',
+  'Tag Manager Integrations',
+  'Connecting LumApps’ Data Lake to your BI Tools',
+  'Conversion of UA to GA4 analytics',
+  'Creating Custom Data Studio Dashboards',
+];
+---
+
+<Base title="LumApps Analytics — ADC" description="LumApps analytics use cases, data ingestion, DataLake and BI integrations, dashboards.">
+  <section class="hero hero--tall">
+    <div class="hero__media"><img src="/images/63285b4fabfc.webp" alt="" /></div>
+    <div class="hero__overlay"></div>
+    <div class="wrap">
+      <div class="hero__inner">
+        <p class="back"><a href="/services" style="color:rgba(255,255,255,.75)">← Back to Services</a></p>
+        <p class="eyebrow" style="color: var(--lime)">LumApps Analytics</p>
+        <h1>Expand LumApps Analytics with ADC</h1>
+        <p>Here is how we help our LumApps customers succeed in their unique analytics journeys.</p>
+        <p style="margin-top:1.75rem;"><a class="btn btn--light" href="/contact">Contact us for a free consultation</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid--3">
+        <article class="card">
+          <h3>Defining your LumApps Analytics Use Cases</h3>
+          <p style="color:var(--muted)">
+            ADC’s knowledge of LumApps’ product, best practices and customer use cases allows us to better
+            collaborate with our customers to define, refine and execute on creating a meaningful Analytics
+            experience dashboard with the right data for the right user.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Delivering Customized Analytics Dashboards</h3>
+          <p style="color:var(--muted)">
+            There are many ways of telling your analytics story. Sometimes the data is readily available in one
+            source, and sometimes it takes a bit of creative input to pull the right data out of the right
+            sources. Our team pulls the right data and serves it up in the right way.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Connect multiple data sources with your BI tools</h3>
+          <p style="color:var(--muted)">
+            We can integrate and blend any data together, provided that it is available, and serve it up in a BI
+            tool of your choice — Looker Data Studio, Tableau, or other tools on the market.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <p class="eyebrow">Our approach</p>
+      <h2>Our Analytics Implementation Methodology</h2>
+      <ol class="phases">
+        {
+          phases.map((p, i) => (
+            <li>
+              <span class="phase-num">{i + 1}</span>
+              <h3>{p.step}</h3>
+              <h4>{p.title}</h4>
+              <p>{p.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Use cases</p>
+      <h2>Where teams get value</h2>
+      <div class="grid grid--2" style="margin-top:2rem;">
+        {
+          useCases.map((u) => (
+            <article class="card">
+              <h3>{u.audience}</h3>
+              <ul>
+                {u.items.map((i) => <li>{i}</li>)}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy">
+    <div class="wrap price-wrap">
+      <div>
+        <p class="eyebrow" style="color:var(--lime)">Pricing</p>
+        <h2>Analytics engagement</h2>
+        <ul class="price-list">
+          {pricing.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+      <div class="price-box">
+        <p class="price-tag">Starter price</p>
+        <p class="price-amount">$7,200</p>
+        <p class="price-includes">Includes:</p>
+        <ul>
+          <li>Discovery &amp; working session</li>
+          <li>Connect Google Tag Manager and/or Data Lake to pull in pre-specified data points</li>
+          <li>One (1) Data Studio dashboard template based on LumApps data from Google Analytics and Google Tag Manager</li>
+          <li>Review &amp; enablement session of the final dashboard</li>
+        </ul>
+        <p class="price-note">*Final pricing will be based on any specialized data integration and dashboard visualization requirements.</p>
+        <p><a class="btn btn--light" href="mailto:hello@arielladigitalconsulting.com">hello@arielladigitalconsulting.com</a></p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero .back { font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .hero .back a { text-decoration: none; }
+  .phases {
+    list-style: none;
+    padding: 0;
+    margin: 2.5rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+    counter-reset: phase;
+  }
+  .phases li {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.75rem;
+  }
+  .phase-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .phases h3 { margin-bottom: 0.15rem; }
+  .phases h4 { font-size: 0.95rem; color: var(--blue); margin-bottom: 0.75rem; font-weight: 600; }
+  .phases p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+  .price-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .price-list { color: rgba(255,255,255,.82); padding-left: 1.1rem; }
+  .price-list li { margin-bottom: 0.5rem; }
+  .price-box {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 16px;
+    padding: 2.25rem;
+  }
+  .price-tag { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.8rem; color: var(--lime); margin: 0; }
+  .price-amount { font-family: 'Archivo Black', sans-serif; font-size: 3rem; color: #fff; margin: 0.2rem 0 1rem; }
+  .price-includes { font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+  .price-box ul { color: rgba(255,255,255,.82); padding-left: 1.1rem; margin-bottom: 1.25rem; }
+  .price-box li { margin-bottom: 0.45rem; }
+  .price-note { font-size: 0.85rem; color: rgba(255,255,255,.6); }
+  @media (max-width: 800px) {
+    .price-wrap { grid-template-columns: 1fr; }
+  }
+</style>

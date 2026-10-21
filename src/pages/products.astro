@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+
+const buckets = [
+  {
+    title: 'Search Enhancement Integrations',
+    href: '/search-enhancements',
+    body: `Learn how we've improved the LumApps Coveo connector for a truly customized global enterprise search page experience.`,
+  },
+  {
+    title: 'Third Party Integrations with LumApps',
+    href: '/third-party-integrations',
+    body: `Learn about our platform integrations which seamlessly enhance the LumApps employee experience platform.`,
+  },
+  {
+    title: 'LumApps Extension Use Cases',
+    href: '/extension-widgets',
+    body: `We are second only to LumApps with the number of widgets we have developed. Learn about our extensions and use cases.`,
+  },
+];
+---
+
+<Base title="Products — ADC" description="LumApps search enhancements, third-party integrations and 40+ extension widgets by ADC.">
+  <section class="hero hero--tall">
+    <div class="hero__media"><img src="/images/63285b4fabfc.webp" alt="" /></div>
+    <div class="hero__overlay"></div>
+    <div class="wrap">
+      <div class="hero__inner">
+        <p class="eyebrow" style="color: var(--lime)">Products</p>
+        <h1>Welcome to ADC's Products Page</h1>
+        <p>
+          As a proud LumApps Tech Partner, we've developed multiple integrations which enhance the employee
+          experience and facilitate the administrative experience within the LumApps platform.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>What would you like to explore with us?</h2>
+      <div class="grid grid--3" style="margin-top: 2rem;">
+        {
+          buckets.map((b) => (
+            <a class="card" href={b.href}>
+              <h3>{b.title}</h3>
+              <p style="color: var(--muted)">{b.body}</p>
+              <span class="more">Learn More →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

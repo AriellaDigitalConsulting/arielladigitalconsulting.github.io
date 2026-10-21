@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import articles from '../../data/articles.json';
+import images from '../../data/images.json';
+
+export function getStaticPaths() {
+  return (articles as any[]).map((a) => ({ params: { slug: a.slug }, props: { post: a } }));
+}
+
+const { post } = Astro.props;
+const img = post.image ? (images as any)[post.image.uri]?.file : null;
+const fmt = (iso: string) =>
+  new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const body = (post.body as any[]).filter((b) => !(b.type === 'p' && b.text.trim() === post.excerpt.trim()));
+---
+
+<Base title={`${post.title} — ADC`} description={post.excerpt}>
+  <article class="section">
+    <div class="wrap">
+      <p class="back"><a href="/news">← All news</a></p>
+      <header class="post-head">
+        <p class="post-meta">
+          <span>{fmt(post.iso)}</span>
+          <span>{post.author}</span>
+        </p>
+        <h1>{post.title}</h1>
+      </header>
+      {img && <div class="post-hero"><img src={img} alt="" /></div>}
+      <div class="post-body">
+        {
+          body.map((b) => {
+            if (b.type === 'list')
+              return (
+                <ul>
+                  {b.items.map((i: string) => <li set:html={i} />)}
+                </ul>
+              );
+            if (b.type === 'h2') return <h2>{b.text}</h2>;
+            return <p>{b.text}</p>;
+          })
+        }
+      </div>
+      <p class="post-cta"><a class="btn" href="/contact">Get in touch</a></p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .back {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  .back a {
+    text-decoration: none;
+  }
+  .post-head {
+    max-width: 48ch;
+    margin-bottom: 2rem;
+  }
+  .post-head h1 {
+    font-size: clamp(1.9rem, 4vw, 2.9rem);
+  }
+  .post-cta {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+</style>

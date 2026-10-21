@@ -1,0 +1,25 @@
+---
+import { nav } from '../data/site';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/">
+      <img src="/images/logo.webp" alt="" width="38" height="38" />
+      <span>ADC</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="site-nav" data-open="false" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={path === item.href.replace(/\/$/, '') || (item.href === '/' && path === '') ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

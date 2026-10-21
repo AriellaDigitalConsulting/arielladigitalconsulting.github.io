@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+
+const items = [
+  ['Experienced & Certified LumApps Designers', ''],
+  ['Custom Space or Community Designs', 'Design that fits the container, not a template dropped into it.'],
+  ['Design Integration into the LumApps Design System', ''],
+  ['Custom Navigations', ''],
+  ['Portal Design & Redesigns', ''],
+  ['LumApps Design System Best Practices', ''],
+  ['Low & High Fidelity Graphical Mockups', ''],
+];
+---
+
+<Base title="UI/UX Design — ADC" description="LumApps portal design, redesigns, design system integration and mockups by certified LumApps designers.">
+  <section class="hero hero--tall">
+    <div class="hero__media"><img src="/images/a524d4312dd2.webp" alt="" style="object-position: 70% center" /></div>
+    <div class="hero__overlay"></div>
+    <div class="wrap">
+      <div class="hero__inner">
+        <p class="eyebrow" style="color: var(--lime)">UI/UX Design</p>
+        <h1>Designing Your Vision</h1>
+        <p>
+          Our creative vision paired with 8+ years of LumApps Design System expertise gives us a unique edge in
+          designing our customers’ vision in LumApps.
+        </p>
+        <p style="margin-top:1.75rem;"><a class="btn btn--light" href="/contact">Contact Us</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">What you get</p>
+      <h2>Design that survives the design system</h2>
+      <div class="grid grid--3" style="margin-top:2rem;">
+        {
+          items.map(([title]) => (
+            <div class="card">
+              <h3>{title}</h3>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+
+const integrations = [
+  {
+    title: 'Gamification with Nitro Studio Bunchball',
+    href: '/bunchball-gamification-integration',
+    body: 'Points, missions, badges and leaderboards, surfaced natively inside LumApps.',
+  },
+  {
+    title: 'Looker Integration',
+    href: '/looker',
+    body: 'Secure Looker embeds — Looks and dashboards inside the intranet, without a second SSO hop.',
+  },
+  {
+    title: 'Kaltura Live Stream & VOD Integration',
+    href: '/kaltura',
+    body: 'Live events and video-on-demand delivered through LumApps pages and spaces.',
+  },
+];
+---
+
+<Base title="Third Party Integrations — ADC" description="LumApps third-party integrations: Bunchball, Looker, Kaltura and more.">
+  <section class="hero">
+    <div class="hero__media"><img src="/images/63285b4fabfc.webp" alt="" /></div>
+    <div class="hero__overlay"></div>
+    <div class="wrap">
+      <div class="hero__inner">
+        <p class="eyebrow" style="color: var(--lime)">Products</p>
+        <h1>LumApps Third Party Integrations</h1>
+        <p>Learn about our third party integrations which will seamlessly blend into the LumApps employee experience platform.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="back"><a href="/products">← Back to Products</a></p>
+      <div class="grid grid--3">
+        {
+          integrations.map((i) => (
+            <a class="card" href={i.href}>
+              <h3>{i.title}</h3>
+              <p style="color:var(--muted)">{i.body}</p>
+              <span class="more">Learn More →</span>
+            </a>
+          ))
+        }
+        <div class="card" style="opacity:.72">
+          <h3>Achievers Integration</h3>
+          <p style="color:var(--muted)">Recognition and rewards, connected to LumApps.</p>
+          <span class="more" style="color:var(--muted)">Coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .back { font-size: 0.9rem; margin-bottom: 2rem; }
+  .back a { text-decoration: none; }
+</style>

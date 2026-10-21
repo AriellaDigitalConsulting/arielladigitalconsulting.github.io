@@ -1,0 +1,31 @@
+---
+import { footerLinks, social, contactEmail } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-tag">Making LumApps a simpler, happier experience</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          {footerLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href={`mailto:${contactEmail}`}>{contactEmail}</a></li>
+          {social.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} by Ariella Digital Consulting</span>
+      <span>LumApps Tech Partner since 2017</span>
+    </div>
+  </div>
+</footer>

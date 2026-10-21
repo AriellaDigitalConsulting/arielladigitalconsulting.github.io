@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+
+const team = [
+  {
+    name: 'Misha Zubarev',
+    role: 'Founder and Managing Director',
+    img: '/images/f261031e1c51.webp',
+    email: 'misha@arielladigitalconsulting.com',
+    linkedin: 'https://www.linkedin.com/company/ariella-digital-consulting',
+    bio: [
+      `Misha founded ADC in 2020 and became a LumApps partner. As a former Lumie, and one of the first deployment specialists in North America, he brings creative thought partnership and cross-industry expertise to his customers to help solve for their unique enterprise challenges relating to Enterprise Search, Architecture & Taxonomy and Employee Productivity, through strategic and solutions-oriented consulting as well as custom integrations.`,
+      `Misha's cross-industry experience includes Fintech, Healthcare, Gaming, Application Performance Management, Real Estate, among many others. This, combined with his deep product knowledge and customer experience positions him well to provide well rounded advice and be a trusted partner and advisor to his customers.`,
+    ],
+  },
+  {
+    name: 'Ivo Bellin Salarin',
+    role: 'Technical Director',
+    img: '/images/0d53dee377ea.webp',
+    email: 'ivo@arielladigitalconsulting.com',
+    linkedin: 'https://www.linkedin.com/in/bellin/',
+    bio: [
+      `Experienced in all the fields of the Software Craftmanship, from the QA to the development, from the Product Ownership to the Engineering Management. Also an ex-Lumie, Ivo is very hands-on and solutions oriented, bringing the art of technical reality to life. Ivo has a strong passion for everything related to Search and AI, and in his words "I am persuaded that everything we imagine can be brought to reality — it's just a matter of determining your Most Valuable Product."`,
+    ],
+  },
+  {
+    name: 'Ariella Zubarev',
+    role: 'Marketing Director',
+    img: '/images/d5a2b4c45c31.webp',
+    email: 'hello@adc.dev',
+    linkedin: 'https://www.linkedin.com/in/ariella-zubarev-ba04b361/',
+    bio: [
+      `Ariella focuses on creating high-impact ADC content and delivering it across multiple channels to elevate brand visibility, deepen customer engagement, and support revenue objectives.`,
+      `I develop content-driven marketing strategies that integrate with company goals — strengthening customer relationships and deliver measurable business value. My work spans digital marketing, content production, and customer storytelling.`,
+    ],
+  },
+];
+
+const partners = [
+  {
+    name: 'LumApps',
+    href: 'https://www.lumapps.com/',
+    blurb:
+      'LumApps is an employee experience platform that engages every employee with personalized communications, regardless of location or language, and empowers them to do their best work.',
+  },
+  {
+    name: 'Bunchball',
+    href: 'https://www.biworldwide.com/gamification/bunchball-nitro/',
+    blurb:
+      "Tap into the power of gamification to engage your audience — employees, sales teams, channel partners and customers — with BI WORLDWIDE's Bunchball Nitro, the leading enterprise gamification platform.",
+  },
+  {
+    name: 'Covehill',
+    href: 'https://www.covehill.com/',
+    blurb:
+      'Providing advice and consulting services to senior management of organizations large and small is what we do.',
+  },
+  {
+    name: 'Coveo',
+    href: 'https://www.covehill.com/',
+    blurb:
+      'Coveo is the industry standard search engine, powered by artificial intelligence based in Quebec, Canada. The Coveo AI platform is built to make digital experiences delightful, relevant & profitable.',
+  },
+];
+---
+
+<Base title="About — ADC" description="Boutique LumApps consulting and engineering firm. Certified LumApps Technology and Implementation partner.">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Who we are</p>
+      <h1>About</h1>
+      <p class="lede">
+        ADC is a certified LumApps <strong>Technology</strong> and <strong>Implementation</strong> partner. Our
+        founder was the first LumApps deployment consultant onboarded in the US, and we've served LumApps
+        customers ever since.
+      </p>
+      <p class="lede">
+        We're a boutique consulting and engineering firm specializing in deep integrations, AI (MCPs, Skills,
+        Connectors), implementation, search, custom widget development, and enterprise UI/UX design. Our mission
+        is simple: making LumApps a <strong>simpler, happier experience</strong>, for the teams who run it and
+        the employees who use it every day.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="wrap">
+      <p class="eyebrow">The team</p>
+      <div class="team">
+        {
+          team.map((p) => (
+            <article class="member">
+              <img src={p.img} alt={p.name} loading="lazy" />
+              <div>
+                <h2>{p.name}</h2>
+                <p class="role">{p.role}</p>
+                {p.bio.map((para) => <p>{para}</p>)}
+                <p class="member-links">
+                  <a href={`mailto:${p.email}`}>{p.email}</a>
+                  <a href={p.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Our partners</p>
+      <h2>Working with the best in the ecosystem</h2>
+      <div class="grid grid--4" style="margin-top: 2rem;">
+        {
+          partners.map((p) => (
+            <a class="card" href={p.href} target="_blank" rel="noopener">
+              <h3>{p.name}</h3>
+              <p style="font-size: 0.95rem; color: var(--muted)">{p.blurb}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-head {
+    padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem);
+    background: var(--bg-soft);
+  }
+  .team {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+  .member {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+  .member img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  .member h2 {
+    margin-bottom: 0.2rem;
+  }
+  .role {
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.2rem;
+  }
+  .member-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  @media (max-width: 700px) {
+    .member {
+      grid-template-columns: 1fr;
+    }
+    .member img {
+      max-width: 200px;
+    }
+  }
+</style>

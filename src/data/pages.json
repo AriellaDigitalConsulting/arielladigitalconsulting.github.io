@@ -1,0 +1,5953 @@
+{
+ "about": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "567d8d_59434be1c03b4b8cac9cfc8d37ed5c7e~mv2.png",
+    "alt": ""
+   },
+   {
+    "type": "h1",
+    "text": "About"
+   },
+   {
+    "type": "p",
+    "text": "ADC is a certified LumApps Technology and Implementation partner. Our founder was the first LumApps deployment consultant onboarded in the US, and we've served LumApps customers ever since. We're a boutique consulting and engineering firm specializing in deep integrations, AI (MCPs, Skills, Connectors), implementation, search, custom widget development, and enterprise UI/UX design. Our mission is simple: making LumApps a simpler, happier experience , for the teams who run it and the employees who use it every day."
+   },
+   {
+    "type": "h2",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "h3",
+    "text": "Founder and Managing Director"
+   },
+   {
+    "type": "p",
+    "text": "Misha founded ADC in 2020 and became a LumApps partner. As a former Lumie, and one of the first deployment specialists in North America, he brings creative thought partnership and cross-industry expertise to his customers to help solve for their unique enterprise challenges relating to Enterprise Search, Architecture & Taxonomy and Employee Productivity, through strategic and solutions-oriented consulting as well as custom integrations."
+   },
+   {
+    "type": "p",
+    "text": "Misha's cross-industry experience includes Fintech, Healthcare, Gaming, Application Performance Management, Real Estate, among many others. This, combined with his deep product knowledge and customer experience positions him well to provide well rounded advice and be a trusted partner and advisor to his customers."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_8dd843abbc7f4a068fafa61f8f8e92ae~mv2.jpg",
+    "alt": "Misha LinkedIn Photo sm.jpg"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_09dff7281dd944c9ac3969d7b366ef85~mv2.jpeg",
+    "alt": "Ivo Bellin Salarin"
+   },
+   {
+    "type": "h2",
+    "text": "Ivo Bellin Salarin"
+   },
+   {
+    "type": "h3",
+    "text": "Technical Director"
+   },
+   {
+    "type": "p",
+    "text": "Experienced in all the fields of the Software Craftmanship, from the QA to the development, from the Product Ownership to the Engineering Management. Also an ex-Lumie, Ivo is very hands-on and solutions oriented, bringing the art of technical reality to life. Ivo has a strong passion for everything related to Search and AI, and In his words \"I am persuaded that everything we imagine can be brought to reality - it's just a matter of determining your Most Valuable Product.\""
+   },
+   {
+    "type": "h2",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "h3",
+    "text": "Marketing DIretor"
+   },
+   {
+    "type": "p",
+    "text": "Ariella focuses on creating high-impact ADC content and delivering it across multiple channels to elevate brand visibility, deepen customer engagement, and support revenue objectives."
+   },
+   {
+    "type": "p",
+    "text": "I develop content-driven marketing strategies that integrate with company goals \u2014 strengthening customer relationships and deliver measurable business value. My work spans digital marketing, content production, and customer storytelling."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_8175de7fd8ea4908926bdd5dce16bd58~mv2.jpeg",
+    "alt": "Ariella photo nice.jpeg"
+   },
+   {
+    "type": "h2",
+    "text": "OUR PARTNERS"
+   },
+   {
+    "type": "h3",
+    "text": "LumApps"
+   },
+   {
+    "type": "p",
+    "text": "LumApps is an employee experience platform that engages every employee with personalized communications, regardless of location or language, and empowers them to do their best work."
+   },
+   {
+    "type": "h3",
+    "text": "Bunchball"
+   },
+   {
+    "type": "p",
+    "text": "Tap into the power of gamification to engage your audience - employees, sales teams, channel partners and customers - with BI WORLDWIDE's Bunchball Nitro, the leading enterprise gamification platform."
+   },
+   {
+    "type": "h3",
+    "text": "Covehill"
+   },
+   {
+    "type": "p",
+    "text": "Providing Advice And Consulting Services To Senior Management Of Organizations Large And Small Is What We Do."
+   },
+   {
+    "type": "h3",
+    "text": "Coveo"
+   },
+   {
+    "type": "p",
+    "text": "Coveo is the industry standard search engine, powered by artificial intelligence based in Quebec, Canada. The Coveo AI platform is built to make digital experiences delightful, relevant & profitable."
+   }
+  ],
+  "links": [
+   {
+    "href": "mailto:misha@arielladigitalconsulting.com",
+    "text": ""
+   },
+   {
+    "href": "https://www.linkedin.com/company/ariella-digital-consulting",
+    "text": ""
+   },
+   {
+    "href": "mailto:ivo@arielladigitalconsulting.com",
+    "text": ""
+   },
+   {
+    "href": "https://www.linkedin.com/in/bellin/",
+    "text": ""
+   },
+   {
+    "href": "mailto:misha@arielladigitalconsulting.com",
+    "text": ""
+   },
+   {
+    "href": "https://www.linkedin.com/in/ariella-zubarev-ba04b361/",
+    "text": ""
+   },
+   {
+    "href": "https://www.lumapps.com/",
+    "text": "LumApps"
+   },
+   {
+    "href": "https://www.lumapps.com/",
+    "text": ""
+   },
+   {
+    "href": "https://www.biworldwide.com/gamification/bunchball-nitro/",
+    "text": ""
+   },
+   {
+    "href": "https://www.covehill.com/",
+    "text": "Covehill"
+   },
+   {
+    "href": "https://www.covehill.com/",
+    "text": ""
+   },
+   {
+    "href": "https://www.covehill.com/",
+    "text": "Coveo"
+   },
+   {
+    "href": "https://textgrid.com/",
+    "text": ""
+   }
+  ]
+ },
+ "admin-enhancements-widgets-bundle": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "ADC Toolbox Bundle"
+   },
+   {
+    "type": "p",
+    "text": "TOTAL WIDGETS IN THIS BUNDLE"
+   },
+   {
+    "type": "h5",
+    "text": "8"
+   },
+   {
+    "type": "p",
+    "text": "The Admin Utility Bundle is the \"Tool wall\" for LumApps administrators. This bundle makes it much easier for administrators to manage and maintain their LumApps instances, as well as copy page, Space and Community Layouts. This bundle also allows for copying contents across different content types within a single site or multiple sites."
+   },
+   {
+    "type": "p",
+    "text": "OUR BUNDLE"
+   },
+   {
+    "type": "h2",
+    "text": "Added Value of this Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Reduced overhead to manually manage and maintain groups, metadata, media and site architecture"
+   },
+   {
+    "type": "p",
+    "text": "Enhanced performance of routine administrative tasks using improved tools to manage daily and time consuming admin functions"
+   },
+   {
+    "type": "p",
+    "text": "Significant reduction in sourcing of rearchitecting metadata and media files"
+   },
+   {
+    "type": "p",
+    "text": "WHY DO YOU NEED THIS"
+   },
+   {
+    "type": "h2",
+    "text": "Who does it benefit"
+   },
+   {
+    "type": "p",
+    "text": "Platform & Site administrators"
+   },
+   {
+    "type": "p",
+    "text": "Managing media files within a site or multiple sites across a single platform"
+   },
+   {
+    "type": "p",
+    "text": "Friendly Interface to copy Page, Space and Community Homepage layout ."
+   },
+   {
+    "type": "p",
+    "text": "Easy way to lookup and update Groups & Metadata"
+   },
+   {
+    "type": "p",
+    "text": "Page owners"
+   },
+   {
+    "type": "p",
+    "text": "Faster support"
+   },
+   {
+    "type": "p",
+    "text": "Personalized Timezones widget allowing users to personalize their timezone on any page"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What You Get"
+   },
+   {
+    "type": "p",
+    "text": "The following widgets are available with this bundle. Click each one to learn more:"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library Bundles"
+   },
+   {
+    "href": "https://docs.adc.dev/docs/groups-lookup-and-management-widget",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/subnavigation/admin-utility-widgets/metadata-edit-and-lookup",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/table-of-contents",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/subnavigation/admin-utility-widgets/media-mover-widget",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/subnavigation/admin-utility-widgets/content-page-layout-mover",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/subnavigation/admin-utility-widgets/space-homepage-layout-copier",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/subnavigation/admin-utility-widgets/media-mover-widget",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/subnavigation/admin-utility-widgets/content-copier-tool",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Learn more or request a demo"
+   }
+  ]
+ },
+ "advanced-survey": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_bf12411119994cae83e37956b0b9285b~mv2.png",
+    "alt": "gamify.png"
+   },
+   {
+    "type": "h1",
+    "text": "Embrace the Power of Advanced Surveys Natively in LumApps"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Why use it"
+   },
+   {
+    "type": "p",
+    "text": "Deliver rich survey experiences native to LumApps' Design System , replacing outdated or external tools requiring additional access controls"
+   },
+   {
+    "type": "p",
+    "text": "Launch single or multiple simultaneous campaigns to gain and analyze valuable employee insights"
+   },
+   {
+    "type": "p",
+    "text": "Streamline your survey governance to see all past and ongoing surveys in a centralized dashboard with a wholistic view of all KPIs"
+   },
+   {
+    "type": "p",
+    "text": "Increase engagement with LumApps' contents by driving traffic directly to a LumApps page, Space or Community"
+   },
+   {
+    "type": "p",
+    "text": "CHECK THIS OUT"
+   },
+   {
+    "type": "h2",
+    "text": "Advanced Survey Sizzle Reel"
+   },
+   {
+    "type": "p",
+    "text": "See the Advanced Survey Extension in action in this 30-second teaser video."
+   },
+   {
+    "type": "image",
+    "uri": "8ac787_6fa5beed88144abbb656d700f00fe6cc~mv2.png",
+    "alt": "What does it do.png"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What it does"
+   },
+   {
+    "type": "p",
+    "text": "Analytics Preview & Tracking. A pre-curated group of users such as leadership, Comms or HRBPs can have special access to view and export survey results directly from the widget interface , without a need for special site roles or permissions"
+   },
+   {
+    "type": "p",
+    "text": "Multiple Questions & Question Types. Enhance the survey by adding multiple question types including multiple choice, multiple selections or free form, or have all three types in one survey!"
+   },
+   {
+    "type": "p",
+    "text": "Reuse the Survey. Import and export survey questions to reuse or replicate a survey from a past campaign into another page or Space."
+   },
+   {
+    "type": "p",
+    "text": "Set Survey Expiration Dates when running multiple campaigns."
+   },
+   {
+    "type": "p",
+    "text": "See All Surveys and survey engagement metrics in one single governance dashboard."
+   },
+   {
+    "type": "p",
+    "text": "LEARN MORE ABOUT"
+   },
+   {
+    "type": "h2",
+    "text": "Who benefits"
+   },
+   {
+    "type": "p",
+    "text": "Added value for your Internal Communications, HRBPs, and team leads"
+   },
+   {
+    "type": "p",
+    "text": "Internal Communications"
+   },
+   {
+    "type": "p",
+    "text": "Launch multiple survey campaigns to gain employee insights about company events, peer feedback, and more!"
+   },
+   {
+    "type": "p",
+    "text": "HRBPs & People Teams"
+   },
+   {
+    "type": "p",
+    "text": "Run closed and private surveys to learn about employee sentiments, company benefit or hybrid work policies, amongst countless other examples"
+   },
+   {
+    "type": "p",
+    "text": "Teams and Team Rooms"
+   },
+   {
+    "type": "p",
+    "text": "Teams can run custom surveys about collaborations, process enhancements or company project / product feedback"
+   },
+   {
+    "type": "p",
+    "text": "Got questions?"
+   },
+   {
+    "type": "p",
+    "text": "Get in touch to learn more about this integration and to see a demo"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc .dev/docs"
+   },
+   {
+    "type": "p",
+    "text": "GO FURTHER"
+   },
+   {
+    "type": "h2",
+    "text": "Explore More Experiences by ADC"
+   },
+   {
+    "type": "p",
+    "text": "Guess Word Widget."
+   },
+   {
+    "type": "p",
+    "text": "Think of this as Wordle for enterprise within your LumApps instance. Engage your workforce with fun games around corporate or team campaigns or initiatives"
+   },
+   {
+    "type": "p",
+    "text": "Follow Interests Button widget."
+   },
+   {
+    "type": "p",
+    "text": "Activate multiple \"follow interest\" buttons on the same page to allow users to opt to corporate or HR announcements, for a more seamless experience"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products Page"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "href": "https://www.adc.dev/advanced-survey",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/guess-word-widget",
+    "text": "Learn More"
+   }
+  ]
+ },
+ "analytics": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Expand LumApps Analytics with ADC"
+   },
+   {
+    "type": "p",
+    "text": "Here is how we help our LumApps\u2019 customers succeed in their unique analytics journeys"
+   },
+   {
+    "type": "p",
+    "text": "Defining your"
+   },
+   {
+    "type": "p",
+    "text": "LumApps Analytics"
+   },
+   {
+    "type": "p",
+    "text": "Use Cases"
+   },
+   {
+    "type": "p",
+    "text": "ADC\u2019s knowledge of LumApps\u2019 product, best practices and customer use cases allows us to better collaborate with our customers to define, refine and execute on creating a meaningful Analytics experience dashboard with the right data for the right user."
+   },
+   {
+    "type": "p",
+    "text": "Delivering Customized Analytics Experience Dashboard(s)"
+   },
+   {
+    "type": "p",
+    "text": "There are many ways of telling your analytics story. Sometimes the data is readily available in one source, and sometimes it takes a bit of creative inputs to pull the right data out of the right sources. Our team pulls the right data and serves it up in the right way to enhance your analytics dashboard"
+   },
+   {
+    "type": "p",
+    "text": "Connect multiple data sources with your BI"
+   },
+   {
+    "type": "p",
+    "text": "Tools"
+   },
+   {
+    "type": "p",
+    "text": "\u200b We can integrate and blend any data together, provided that it is available, and serve it up in a BI tool of your choice. Whether it\u2019s with Looker Data Studio, Tableau or other tools on the market."
+   },
+   {
+    "type": "p",
+    "text": "OUR APPROACH"
+   },
+   {
+    "type": "h2",
+    "text": "Our Analytics Implementation"
+   },
+   {
+    "type": "h2",
+    "text": "Methodology"
+   },
+   {
+    "type": "p",
+    "text": "Define"
+   },
+   {
+    "type": "p",
+    "text": "Identifying Analytics Use Cases"
+   },
+   {
+    "type": "p",
+    "text": "The \u201cDefine\u201d phase is a series of working sessions aimed at discovering the type of data required to be collected, data sources, and defining the audience"
+   },
+   {
+    "type": "p",
+    "text": "Integrate"
+   },
+   {
+    "type": "p",
+    "text": "Connecting the Right Data Sou rces"
+   },
+   {
+    "type": "p",
+    "text": "Following a Define sessions, we will work on co nnecting the data to the data points. This could be as simple as setting up GTM Tags, connecting to BQ, or extracting custom data"
+   },
+   {
+    "type": "p",
+    "text": "Design"
+   },
+   {
+    "type": "p",
+    "text": "Telling Your Analytics Experience Story"
+   },
+   {
+    "type": "p",
+    "text": "Visualize the data in the BI tool by creating engaging and clean dashboards in the BI tool of choice. The dashboards are customized based on the predefined use case"
+   },
+   {
+    "type": "p",
+    "text": "Deli ver"
+   },
+   {
+    "type": "p",
+    "text": "Bringing it All"
+   },
+   {
+    "type": "p",
+    "text": "Together"
+   },
+   {
+    "type": "p",
+    "text": "Once the Dashboard has been designed and tested it will be delivered for review and customer approval."
+   },
+   {
+    "type": "p",
+    "text": "USE CASE S"
+   },
+   {
+    "type": "h2",
+    "text": "Analytics for Corporate"
+   },
+   {
+    "type": "h2",
+    "text": "Communication"
+   },
+   {
+    "type": "p",
+    "text": "Who is viewing content by department / Function / BU?"
+   },
+   {
+    "type": "p",
+    "text": "Community follow analytics . Find out who is following"
+   },
+   {
+    "type": "p",
+    "text": "which community"
+   },
+   {
+    "type": "p",
+    "text": "Page scroll depth analysis"
+   },
+   {
+    "type": "p",
+    "text": "Defining the most active community posts"
+   },
+   {
+    "type": "p",
+    "text": "View user activity heat maps. When are users most activate on"
+   },
+   {
+    "type": "p",
+    "text": "the digital workplace, to receive communication messages"
+   },
+   {
+    "type": "p",
+    "text": "USE CASE S"
+   },
+   {
+    "type": "h2",
+    "text": "Analytics for Information"
+   },
+   {
+    "type": "h2",
+    "text": "Technology"
+   },
+   {
+    "type": "p",
+    "text": "Blending datasets from Data Lake"
+   },
+   {
+    "type": "p",
+    "text": "and LumApps\u2019 Platform Logs API"
+   },
+   {
+    "type": "p",
+    "text": "Track user actions with Platform logs"
+   },
+   {
+    "type": "p",
+    "text": "Capturing detailed and customized user reports for Community Activities"
+   },
+   {
+    "type": "p",
+    "text": "Create Admin Utility Dashboards for administrators to monitor user activity via Platform Logs to determine who deleted content, what type of content, and when."
+   },
+   {
+    "type": "p",
+    "text": "USE CASE S"
+   },
+   {
+    "type": "h2",
+    "text": "Pricing"
+   },
+   {
+    "type": "p",
+    "text": "Analytics Working Sessions"
+   },
+   {
+    "type": "p",
+    "text": "Custom Data Ingestion from Multiple Sources"
+   },
+   {
+    "type": "p",
+    "text": "Tag Manager Integrations"
+   },
+   {
+    "type": "p",
+    "text": "Connecting LumApps\u2019 Data Lake to your Bi Tools"
+   },
+   {
+    "type": "p",
+    "text": "Conversion of UA to GA4 analytics"
+   },
+   {
+    "type": "p",
+    "text": "Creating Custom Data Studio Dashboards"
+   },
+   {
+    "type": "h6",
+    "text": "Starter Price: $7,200"
+   },
+   {
+    "type": "h6",
+    "text": "Starter Price Includes:"
+   },
+   {
+    "type": "p",
+    "text": "Discovery & working session"
+   },
+   {
+    "type": "p",
+    "text": "Connect Google Tag Manager and/or Data Lake to pull in prespecified data points"
+   },
+   {
+    "type": "p",
+    "text": "One (1) Data Studio dashboard template based on LumApps data from Google Analytics and Google Tag Manager"
+   },
+   {
+    "type": "p",
+    "text": "Review & enablement session of final dashboard"
+   },
+   {
+    "type": "p",
+    "text": "*Final pricing will be based on the any specialized data integration and dashboard visualization requirements"
+   },
+   {
+    "type": "h6",
+    "text": "Get in touch:"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/services",
+    "text": "Back to Services"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Contact Us for a Free Consulation"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "animations-widgets-bundle": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "Animation & Gamification Widgets Use Case"
+   },
+   {
+    "type": "p",
+    "text": "TOTAL WIDGETS IN THIS BUNDLE"
+   },
+   {
+    "type": "h5",
+    "text": "5"
+   },
+   {
+    "type": "p",
+    "text": "The Animation & Gamification Widget Bundle enriches the visual experience for your users through adding culture-building games and seasonal animations to landing pages and communities"
+   },
+   {
+    "type": "p",
+    "text": "WHY THIS BUNDLE"
+   },
+   {
+    "type": "h2",
+    "text": "Added Value of this Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Make your Employee Experience platform as a place to celebrate accomplishments and milestones by adding configurable animated experiences to landing pages and communities"
+   },
+   {
+    "type": "p",
+    "text": "Gamify corporate initiatives, enhance work from home culture and challenge employees with ADC's Guess Word Extension"
+   },
+   {
+    "type": "p",
+    "text": "Personalize the experience for content owners which allow them to customize the animation experiences"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What You Get"
+   },
+   {
+    "type": "p",
+    "text": "The following widgets will be available with this bundle. Click each one to learn more:"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Use Cases"
+   },
+   {
+    "href": "https://www.adc.dev/guess-word-widget",
+    "text": "Guess Word"
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Request a demo"
+   },
+   {
+    "href": "https://www.adc.dev/guess-word-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/soccer",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/fireworks-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/holiday-spirits-widget",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/confetti-widget",
+    "text": ""
+   }
+  ]
+ },
+ "blog": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "79b064_9c7d36065dc841cfb2381fa49fdffa0c~mv2.png",
+    "alt": ""
+   },
+   {
+    "type": "h1",
+    "text": "ADC News & Announcements"
+   },
+   {
+    "type": "p",
+    "text": "Below are some of our most recently published news and articles."
+   },
+   {
+    "type": "list",
+    "items": [
+     "All Posts",
+     "Integrations",
+     "UX/UI",
+     "Implementations",
+     "Announcements",
+     "Documentation"
+    ]
+   },
+   {
+    "type": "h2",
+    "text": "Community posts in real-time widget"
+   },
+   {
+    "type": "h2",
+    "text": "Design a Beautiful Blog Super Easy"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/blog",
+    "text": "All Posts"
+   },
+   {
+    "href": "https://www.adc.dev/blog/categories/integrations",
+    "text": "Integrations"
+   },
+   {
+    "href": "https://www.adc.dev/blog/categories/ux/ui",
+    "text": "UX/UI"
+   },
+   {
+    "href": "https://www.adc.dev/blog/categories/implementations",
+    "text": "Implementations"
+   },
+   {
+    "href": "https://www.adc.dev/blog/categories/announcements",
+    "text": "Announcements"
+   },
+   {
+    "href": "https://www.adc.dev/blog/categories/documentation",
+    "text": "Documentation"
+   },
+   {
+    "href": "https://www.adc.dev/post/now-you-can-blog-from-everywhere",
+    "text": "Community posts in real-time widget"
+   },
+   {
+    "href": "https://www.adc.dev/post/design-a-beautiful-blog",
+    "text": "Design a Beautiful Blog Super Easy"
+   }
+  ]
+ },
+ "bunchball-gamification-integration": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_bf12411119994cae83e37956b0b9285b~mv2.png",
+    "alt": "gamify.png"
+   },
+   {
+    "type": "h1",
+    "text": "Increase Your Employee Experience & Motivation Through Gamification in LumApps!"
+   },
+   {
+    "type": "h6",
+    "text": "\u200bRandy Smith Financial Services Company"
+   },
+   {
+    "type": "p",
+    "text": "The Bunchball to LumApps integration executed by Misha and his team at Ariella Digital Consulting helped our team collect the desired KPIs and drive user engagement across our platform. The widgets they've built are easy to use and scale across our many sub-sites for different audiences, missions and contests. The Ariella Digital Consulting team did a great job collaborating with us to delivery the technical integration and capability we needed to serve our customers."
+   },
+   {
+    "type": "p",
+    "text": "OVERVIEW"
+   },
+   {
+    "type": "h2",
+    "text": "Use Case"
+   },
+   {
+    "type": "p",
+    "text": "One of the underlying success factors of an Employee Experience platform is knowing how to keep employees engaged and motivated. ADC's LumApps to Nitro Studio Bunchball integration makes it very easy for employees to be recognized, see their scores for completed tasks (Missions), receive badges, and get rewarded."
+   },
+   {
+    "type": "p",
+    "text": "WHY USE IT"
+   },
+   {
+    "type": "h2",
+    "text": "Business Value"
+   },
+   {
+    "type": "p",
+    "text": "Increased Engagement to 76% within a LumApps Communities"
+   },
+   {
+    "type": "p",
+    "text": "Engages and motivates employees"
+   },
+   {
+    "type": "p",
+    "text": "Increases user adoption"
+   },
+   {
+    "type": "p",
+    "text": "Sustains engagement with measurable goals and missions"
+   },
+   {
+    "type": "p",
+    "text": "Mature rewards and recognition system with badges for accomplishing Missions \u200b"
+   },
+   {
+    "type": "image",
+    "uri": "8ac787_6fa5beed88144abbb656d700f00fe6cc~mv2.png",
+    "alt": "What does it do.png"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What it does"
+   },
+   {
+    "type": "p",
+    "text": "This integration sends user actions performed in LumApps directly to Bunchball in real-time to calculate the user's new score. The new score is than sent back to LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Dynamically updated leaderboard based on user activity"
+   },
+   {
+    "type": "p",
+    "text": "Tabulated leaderboard experience can be customized by Weekly, Monthly, Quarterly, Annually or by any preference selected by admin"
+   },
+   {
+    "type": "p",
+    "text": "Widget elements are all brand compatible to reflect the organization brand identity"
+   },
+   {
+    "type": "p",
+    "text": "WHY DO YOU NEED THIS"
+   },
+   {
+    "type": "h2",
+    "text": "Who does it benefit"
+   },
+   {
+    "type": "p",
+    "text": "Add value to your HR partners, project and business teams and communicaitons leads"
+   },
+   {
+    "type": "p",
+    "text": "HR Initiatives"
+   },
+   {
+    "type": "p",
+    "text": "Incentivize users to complete onboarding tasks or learning modules by rewarding them with points redeemable for prizes or experiences"
+   },
+   {
+    "type": "p",
+    "text": "Knowledge, Project & Support Communities"
+   },
+   {
+    "type": "p",
+    "text": "Reward individuals with prizes or experiences by motivating to provide response support or knowledge within a Support or Knowledge Sharing community"
+   },
+   {
+    "type": "p",
+    "text": "Corporate Communications"
+   },
+   {
+    "type": "p",
+    "text": "Bu ild missions and gamify the experience for employees with short or long term campaigns"
+   },
+   {
+    "type": "p",
+    "text": "Got questions? Get in touch to learn more about this integration and to see a demo"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products Page"
+   },
+   {
+    "href": "https://www.biworldwide.com/",
+    "text": "Bunchball"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "coming-soon": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "e756b8_5049e40d875749d28103bb905bc2dff1~mv2.png",
+    "alt": "Modern office with digital consultants"
+   },
+   {
+    "type": "h1",
+    "text": "Coming Soon"
+   },
+   {
+    "type": "p",
+    "text": "Sign up to be the first to know when we go live."
+   },
+   {
+    "type": "p",
+    "text": "Thanks for submitting!"
+   }
+  ],
+  "links": []
+ },
+ "community-posts": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Community Posts List in"
+   },
+   {
+    "type": "h1",
+    "text": "Real Time widget"
+   },
+   {
+    "type": "h6",
+    "text": "\u200bJohn Doe Financial Services Company"
+   },
+   {
+    "type": "p",
+    "text": "This widget delivers community posts instantly without any need to refresh the page, and drives a lot of value to our users. Thanks a lot to the team at Ariella Digital Consulting for creating it."
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Keeps users continuously engaged within their LumApps community by always showing the latest posts without a need to refresh"
+   },
+   {
+    "type": "p",
+    "text": "Helps increase end-user support request response time"
+   },
+   {
+    "type": "p",
+    "text": "Further strengthens LumApps\u2019 adoption and reduces the need for multiple team collaboration tools"
+   },
+   {
+    "type": "p",
+    "text": "Supplements LumApps' out of the box Community Post List widget"
+   },
+   {
+    "type": "p",
+    "text": "TAKE A GLANCE AT"
+   },
+   {
+    "type": "h2",
+    "text": "Latest Demo Video"
+   },
+   {
+    "type": "p",
+    "text": "See this demo of the real-time community post list widget in action"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Who is it for"
+   },
+   {
+    "type": "p",
+    "text": "Real-time Q&A during live all hands or corporate town halls"
+   },
+   {
+    "type": "p",
+    "text": "Q&A Support Communities with high volumes discussions"
+   },
+   {
+    "type": "p",
+    "text": "Instant team room conversations & responses for end-user support"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What does it do"
+   },
+   {
+    "type": "p",
+    "text": "Displays community posts in real-time, without the user ever needing to refresh their page"
+   },
+   {
+    "type": "p",
+    "text": "Shows the last time a community post was edited by revealing the last modified date"
+   },
+   {
+    "type": "p",
+    "text": "Has the ability to check off posts that the user has already read"
+   },
+   {
+    "type": "p",
+    "text": "Displays comments, threaded replies, image attachments and many other LumApps OOTB functionalities (see the full documentation link below)"
+   },
+   {
+    "type": "p",
+    "text": "Grouped / ungrouped modes available"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Check out some of our other widgets"
+   },
+   {
+    "type": "p",
+    "text": "Get in Touch"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc .dev/docs"
+   },
+   {
+    "type": "p",
+    "text": "Widget Pricing: $5,400 / year"
+   },
+   {
+    "type": "p",
+    "text": "Last Modified Date & Time widget. Allow your users to see the last time a content was modified by adding this widget to any page."
+   },
+   {
+    "type": "p",
+    "text": "Metadata Mover widget."
+   },
+   {
+    "type": "p",
+    "text": "Reorganize metadata on your site or platform. You can move it from one family to another, or within the same family."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library Bundles"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Looking for something custom?"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "contact": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "567d8d_59434be1c03b4b8cac9cfc8d37ed5c7e~mv2.png",
+    "alt": ""
+   },
+   {
+    "type": "h1",
+    "text": "Connect with us"
+   },
+   {
+    "type": "p",
+    "text": "We solve challenges within your employee experience productivity suites to improve employee connectivity, productivity and processes. Please contact us so we can learn more about you and see how we can help mature your business' digital workplace journey!"
+   },
+   {
+    "type": "p",
+    "text": "Thanks for submitting!"
+   }
+  ],
+  "links": []
+ },
+ "copy-of-lumapps-extension-widgets-lib-1": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "LumApps Extension Widgets Library Bundles"
+   },
+   {
+    "type": "p",
+    "text": "ADC is only second to LumApps with its widget library volumetrics. With 20+ widgets on the LumApps' marketplace and counting, we've segmented widgets into the following bundles. Click on each bundle to learn more!"
+   },
+   {
+    "type": "p",
+    "text": "UI/UX Enhan cements"
+   },
+   {
+    "type": "p",
+    "text": "Bundle"
+   },
+   {
+    "type": "p",
+    "text": "User Engagement"
+   },
+   {
+    "type": "p",
+    "text": "Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Admin Utility"
+   },
+   {
+    "type": "p",
+    "text": "Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Animation"
+   },
+   {
+    "type": "p",
+    "text": "Bu ndle"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products Page"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Search All Widgets"
+   }
+  ]
+ },
+ "copy-of-wiki-kb": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "A ll Widgets Page"
+   },
+   {
+    "type": "p",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida rhoncus nibh, tincidunt vestibulum justo semper eget."
+   },
+   {
+    "type": "p",
+    "text": "ADC USE CASES"
+   },
+   {
+    "type": "h2",
+    "text": "Featured Extensions"
+   },
+   {
+    "type": "h2",
+    "text": "Community posts in real-time widget"
+   },
+   {
+    "type": "image",
+    "uri": "https://images-wixmp-7ef3383b5fd80a9f5a5cc686.wixmp.com/e756b800-76f1-4b25-9b9a-368f0ab77214/1642721842955-border7-about.jpg/v1/fill/w_320,h_320/file.jpg",
+    "alt": "Writer: Border7 Studios"
+   },
+   {
+    "type": "p",
+    "text": "ADC USE CASES"
+   },
+   {
+    "type": "h2",
+    "text": "Enterprise Search Integration Expertise"
+   },
+   {
+    "type": "p",
+    "text": "The following widgets will be available with this bundle."
+   },
+   {
+    "type": "p",
+    "text": "Click each one to learn more:"
+   },
+   {
+    "type": "h5",
+    "text": "Back to Top widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Back to Top widget can be added to any page or community, and provides a quick..."
+   },
+   {
+    "type": "h5",
+    "text": "Browser Tab Notifications widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Browser Tab Notifications widget displays a badge in the user\u2019s browser tab..."
+   },
+   {
+    "type": "h5",
+    "text": "Bunchball Leaderboard widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Bunchball Leaderboard widget allows you to display one or multiple leaderboards..."
+   },
+   {
+    "type": "h5",
+    "text": "Bunchball Profile widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Bunchball Profile widget displays the user\u2019s gamification profile * NOTE : This..."
+   },
+   {
+    "type": "h5",
+    "text": "Community Posts in Real Time widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview Display a manual or dynamic selection of community posts from one or several..."
+   },
+   {
+    "type": "h5",
+    "text": "Confetti widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview Ready to celebrate a milestone within your team community, or an org-wide..."
+   },
+   {
+    "type": "h5",
+    "text": "Enhanced Search Filter widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Enhanced Search Filter widget is an improvement to the LumApps\u2019 OOTB Content..."
+   },
+   {
+    "type": "h5",
+    "text": "Fireworks widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview Add some flare to your homepage or landing page by adding the Fireworks widget ..."
+   },
+   {
+    "type": "h5",
+    "text": "Google Knowledge Graph Search Extension"
+   },
+   {
+    "type": "p",
+    "text": "The Google Knowledge Graph Search Extension allows any user to search through the Google Knowledge..."
+   },
+   {
+    "type": "h5",
+    "text": "Groups Lookup and Management widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview This widget allows you to search for groups and add/update users without having to..."
+   },
+   {
+    "type": "h5",
+    "text": "Guess Word Widget"
+   },
+   {
+    "type": "p",
+    "text": "Engage your employees and improve team building exercises by adding the Guess Word widget to your..."
+   },
+   {
+    "type": "h5",
+    "text": "Holiday Spirit widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview Make each holiday a memorable one in your LumApps digital workplace with this..."
+   },
+   {
+    "type": "h5",
+    "text": "Last Modified Date widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Last Modified widget (also used throughout this site) shows you the last..."
+   },
+   {
+    "type": "h5",
+    "text": "Looker Extension"
+   },
+   {
+    "type": "p",
+    "text": "This Looker Extension for LumApps is a powerful cost & time saving integration which allows users..."
+   },
+   {
+    "type": "h5",
+    "text": "Media Mover widget (NEW)"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview This is your Media mover widget where you can search for any media file from your..."
+   },
+   {
+    "type": "h5",
+    "text": "Metadata Edit and Lookup"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Metadata Edit and Lookup widget allows the site administrators to quickly and..."
+   },
+   {
+    "type": "h5",
+    "text": "Metadata Mover widget (On Hold)"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview This Metadata Mover widget helps organizations reorganize their metadata structure..."
+   },
+   {
+    "type": "h5",
+    "text": "Quick Post Widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Quick Contribution widget allows the user to make a post in any specific..."
+   },
+   {
+    "type": "h5",
+    "text": "Stocks in Real Time widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Stocks in Real TIme widget displays the stock price in realtime, without the..."
+   },
+   {
+    "type": "h5",
+    "text": "Table of Contents widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Table of Contents widget makes it much easier for site and page administrators..."
+   },
+   {
+    "type": "h5",
+    "text": "Timezone Widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview The Timezone widget gives the end user the ability to personalize the widget by..."
+   },
+   {
+    "type": "h5",
+    "text": "Unanswered Questions widget"
+   },
+   {
+    "type": "p",
+    "text": "Widget Overview Community managers and moderators can see how many community post questions remain..."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to ADC Extension Use Cases"
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Got Questions? Contact Us"
+   },
+   {
+    "href": "https://www.adc.dev/post/now-you-can-blog-from-everywhere",
+    "text": "Community posts in real-time widget"
+   },
+   {
+    "href": "https://www.adc.dev/blog/categories/integrations",
+    "text": "INTEGRATIONS"
+   },
+   {
+    "href": "https://www.adc.dev/profile/info/profile",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/profile/info/profile",
+    "text": "Border7 Studios"
+   }
+  ]
+ },
+ "coveo-integrations": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "Coveo-LumApps Integrations"
+   },
+   {
+    "type": "p",
+    "text": "As a proud Coveo partner, our goal is to streamline workplace experiences by making search a seamless part of the employee journey. The Coveo search enhancement products we've developed break bounderies of Enterprise search by giving organizations the desired UI and indexation capabilities required for a true enterprise search solution."
+   },
+   {
+    "type": "p",
+    "text": "ABOUT"
+   },
+   {
+    "type": "h2",
+    "text": "Headless framework connector"
+   },
+   {
+    "type": "p",
+    "text": "The headless UI framework gives Enterprises limitless freedom to customize the look and feel of their Global Search interface within their employee experience platform."
+   },
+   {
+    "type": "p",
+    "text": "Leverages Coveo's headless UI framework to give our customers maximum design freedom and flexibility"
+   },
+   {
+    "type": "p",
+    "text": "Scalable to multiple customer environments and platforms to ensure streamlined maintenance"
+   },
+   {
+    "type": "p",
+    "text": "Built using LumApps' Design System components and best practices in mind"
+   },
+   {
+    "type": "p",
+    "text": "WHY DO YOU NEED THIS"
+   },
+   {
+    "type": "h2",
+    "text": "Community post comments indexer"
+   },
+   {
+    "type": "p",
+    "text": "It's crucial for Enterprise community users to be able to find answers to questions quickly and easily through global search. This indexer provides this capability to organizations and users, adding Answered questions as a new search facet in the Global Search page"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Key benefits"
+   },
+   {
+    "type": "p",
+    "text": "How indexation of community post answers benefits our customers"
+   },
+   {
+    "type": "p",
+    "text": "Improves productivity by reducing search time and helping users find the answers they need quickly."
+   },
+   {
+    "type": "p",
+    "text": "Builds trust and confidence in the search engine results and increases the overall platform adoption KPIs"
+   },
+   {
+    "type": "p",
+    "text": "A must have for Knowledge Care & Support use cases where its critical to identify answered responses quickly."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products Page"
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Request a Demo"
+   }
+  ]
+ },
+ "design": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_c8bf42365ff14f85b7761c3c51efb34d~mv2.png",
+    "alt": "UX - V1.png"
+   },
+   {
+    "type": "h1",
+    "text": "Designing Your Vision"
+   },
+   {
+    "type": "p",
+    "text": "Our creative vision paired with 8+ years of LumApps Design System expertise gives us a unique edge in designing our customers\u2019 vision in LumApps"
+   },
+   {
+    "type": "p",
+    "text": "UI/UX DESIGN"
+   },
+   {
+    "type": "h2",
+    "text": "What You Get"
+   },
+   {
+    "type": "p",
+    "text": "Experienced & Certified LumApps Designers"
+   },
+   {
+    "type": "p",
+    "text": "Custom Space or"
+   },
+   {
+    "type": "p",
+    "text": "Community Designs"
+   },
+   {
+    "type": "p",
+    "text": "Design Integration into the LumApps Design System"
+   },
+   {
+    "type": "p",
+    "text": "Custom Navigations"
+   },
+   {
+    "type": "p",
+    "text": "Portal Design &"
+   },
+   {
+    "type": "p",
+    "text": "Redesigns"
+   },
+   {
+    "type": "p",
+    "text": "LumApps Design System"
+   },
+   {
+    "type": "p",
+    "text": "Best Practices"
+   },
+   {
+    "type": "p",
+    "text": "Low & High Fidelity"
+   },
+   {
+    "type": "p",
+    "text": "Graphical Mockups"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Contact Us"
+   }
+  ]
+ },
+ "extension-widgets": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "LumApps Extension Widgets, Bundles & Use Cases"
+   },
+   {
+    "type": "p",
+    "text": "With now 40+ widgets on the LumApps' marketplace and counting, we are only second to LumApps with its widget library volumetrics! Click each bundle to learn more or click \"Search All Widgets\" below for a full extension list in the LumApps marketplace."
+   },
+   {
+    "type": "p",
+    "text": "Soccer Predictions"
+   },
+   {
+    "type": "p",
+    "text": "Page Reader"
+   },
+   {
+    "type": "p",
+    "text": "Advanced Survey by ADC"
+   },
+   {
+    "type": "p",
+    "text": "Organization Chart Widget"
+   },
+   {
+    "type": "p",
+    "text": "Wiki &"
+   },
+   {
+    "type": "p",
+    "text": "Knowledge Base Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Follow Actions Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Q&A Support"
+   },
+   {
+    "type": "p",
+    "text": "Community Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Admin Utility"
+   },
+   {
+    "type": "p",
+    "text": "Toolbox Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Town Hall Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Animation & Gamification Experiences"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products Page"
+   },
+   {
+    "href": "https://docs.adc.dev/docs/all-widgets",
+    "text": "Search All Widgets"
+   },
+   {
+    "href": "https://www.adc.dev/soccer",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/page-reader",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/advanced-survey",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/org-chart",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/wiki",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/follow-actions",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/qa-support",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/admin-enhancements-widgets-bundle",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/town-hall",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/animations-widgets-bundle",
+    "text": "Learn More"
+   }
+  ]
+ },
+ "fieldpulse": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_bf12411119994cae83e37956b0b9285b~mv2.png",
+    "alt": "gamify.png"
+   },
+   {
+    "type": "h1",
+    "text": "Enhance Analytics and Data Flow with FieldPulse!"
+   },
+   {
+    "type": "h6",
+    "text": "\u200bRandy Smith Financial Services Company"
+   },
+   {
+    "type": "p",
+    "text": "The Bunchball to LumApps integration executed by Misha and his team at Ariella Digital Consulting helped our team collect the desired KPIs and drive user engagement across our platform. The widgets they've built are easy to use and scale across our many sub-sites for different audiences, missions and contests. The Ariella Digital Consulting team did a great job collaborating with us to delivery the technical integration and capability we needed to serve our customers."
+   },
+   {
+    "type": "p",
+    "text": "OVERVIEW"
+   },
+   {
+    "type": "h2",
+    "text": "Use Case"
+   },
+   {
+    "type": "p",
+    "text": "One of the underlying success factors of an Employee Experience platform is knowing how to keep employees engaged and motivated. ADC's LumApps to Nitro Studio Bunchball integration makes it very easy for employees to be recognized, see their scores for completed tasks (Missions), receive badges, and get rewarded."
+   },
+   {
+    "type": "p",
+    "text": "WHY USE IT"
+   },
+   {
+    "type": "h2",
+    "text": "Business Value"
+   },
+   {
+    "type": "p",
+    "text": "Increased Engagement to 76% within a LumApps Communities"
+   },
+   {
+    "type": "p",
+    "text": "Engages and motivates employees"
+   },
+   {
+    "type": "p",
+    "text": "Increases user adoption"
+   },
+   {
+    "type": "p",
+    "text": "Sustains engagement with measurable goals and missions"
+   },
+   {
+    "type": "p",
+    "text": "Mature rewards and recognition system with badges for accomplishing Missions \u200b"
+   },
+   {
+    "type": "image",
+    "uri": "8ac787_6fa5beed88144abbb656d700f00fe6cc~mv2.png",
+    "alt": "What does it do.png"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What it does"
+   },
+   {
+    "type": "p",
+    "text": "This integration sends user actions performed in LumApps directly to Bunchball in real-time to calculate the user's new score. The new score is than sent back to LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Dynamically updated leaderboard based on user activity"
+   },
+   {
+    "type": "p",
+    "text": "Tabulated leaderboard experience can be customized by Weekly, Monthly, Quarterly, Annually or by any preference selected by admin"
+   },
+   {
+    "type": "p",
+    "text": "Widget elements are all brand compatible to reflect the organization brand identity"
+   },
+   {
+    "type": "p",
+    "text": "WHY DO YOU NEED THIS"
+   },
+   {
+    "type": "h2",
+    "text": "Who does it benefit"
+   },
+   {
+    "type": "p",
+    "text": "Add value to your HR partners, project and business teams and communicaitons leads"
+   },
+   {
+    "type": "p",
+    "text": "HR Initiatives"
+   },
+   {
+    "type": "p",
+    "text": "Incentivize users to complete onboarding tasks or learning modules by rewarding them with points redeemable for prizes or experiences"
+   },
+   {
+    "type": "p",
+    "text": "Knowledge, Project & Support Communities"
+   },
+   {
+    "type": "p",
+    "text": "Reward individuals with prizes or experiences by motivating to provide response support or knowledge within a Support or Knowledge Sharing community"
+   },
+   {
+    "type": "p",
+    "text": "Corporate Communications"
+   },
+   {
+    "type": "p",
+    "text": "Bu ild missions and gamify the experience for employees with short or long term campaigns"
+   },
+   {
+    "type": "p",
+    "text": "Got questions? Get in touch to learn more about this integration and to see a demo"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/services",
+    "text": "Back to Services Page"
+   },
+   {
+    "href": "https://www.biworldwide.com/",
+    "text": "Bunchball"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "follow-actions": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "Follow Actions Bundle"
+   },
+   {
+    "type": "p",
+    "text": "TOTAL WIDGETS IN THIS BUNDLE"
+   },
+   {
+    "type": "h5",
+    "text": "3"
+   },
+   {
+    "type": "p",
+    "text": "This three-in-one bundle makes it easy to follow People, LumApps Spaces or Communities, and Interests. The Follow Actions bundle makes it easy to organize follows and interests in one single page, making content engagement much more simple and accessible for the employee."
+   },
+   {
+    "type": "p",
+    "text": "OUR BUNDLE"
+   },
+   {
+    "type": "h2",
+    "text": "Why use this Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Keep the experience organized. Categorize the follow actions by topics, social areas and people to follow in order to get the news, announcements and knowledge more effectively"
+   },
+   {
+    "type": "p",
+    "text": "Give a guided experience. Guide your employees to what they should follow by contextualizing the follow button(s) with relevant information"
+   },
+   {
+    "type": "p",
+    "text": "Make it easy! Allow your employees to take action right away instead of leading them to another page."
+   },
+   {
+    "type": "p",
+    "text": "WHY DO YOU NEED THIS"
+   },
+   {
+    "type": "h2",
+    "text": "Who does it benefit"
+   },
+   {
+    "type": "p",
+    "text": "Administrators & Experience Managers"
+   },
+   {
+    "type": "p",
+    "text": "Less pages to manage by having multiple Follow experience in one central area, as opposed to having it spread out across different pages of the site"
+   },
+   {
+    "type": "p",
+    "text": "Easier to track analytics . With Follow actions grouped on one or fewer contents, it will make it much easier to track engagement with these buttons."
+   },
+   {
+    "type": "p",
+    "text": "Employees"
+   },
+   {
+    "type": "p",
+    "text": "Intuitive experience makes it easier for your users to opt in to areas of interest."
+   },
+   {
+    "type": "p",
+    "text": "Transforms a static experience into a dynamic network where employees don\u2019t just consume content, they connect with it ."
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What You Get"
+   },
+   {
+    "type": "p",
+    "text": "The following widgets are available with this bundle. Click each one to learn more:"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library Bundles"
+   },
+   {
+    "href": "https://www.adc.dev/follow-interests",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/follow-people",
+    "text": ""
+   },
+   {
+    "href": "http://docs.adc.dev",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Learn more or request a demo"
+   }
+  ]
+ },
+ "follow-interests": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Follow Interests Button"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Simple one-click solution for your employees to opt in to an interest and email notifications in one"
+   },
+   {
+    "type": "p",
+    "text": "Helps increase end-user content engagement with LumApps content"
+   },
+   {
+    "type": "p",
+    "text": "Reduces administrative tax of having to manage and maintain multiple pages for the sake of one follow interest button"
+   },
+   {
+    "type": "p",
+    "text": "Allows your employees to engage with and follow multiple interests per page"
+   },
+   {
+    "type": "p",
+    "text": "TAKE A GLANCE AT"
+   },
+   {
+    "type": "h2",
+    "text": "Follow Interests Button Sizzle Reel"
+   },
+   {
+    "type": "p",
+    "text": "See the Follow Interests Button widget in action in this 30-second demo."
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What does it do"
+   },
+   {
+    "type": "p",
+    "text": "Displays multiple follow interests per page , without the need for a content list or content filter widget on a page"
+   },
+   {
+    "type": "p",
+    "text": "Automatically opts the user in to receive email notifications without ever having to do any second action"
+   },
+   {
+    "type": "p",
+    "text": "Configure the button to a Content Type and to a Metadata for the interest"
+   },
+   {
+    "type": "p",
+    "text": "Allows page administrators to customize the Follow Interest label with ease to match the desired use case"
+   },
+   {
+    "type": "p",
+    "text": "Subscribes the user to the interest in Subscriptions, just as expected with the native experience"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Explore More Experiences by ADC"
+   },
+   {
+    "type": "p",
+    "text": "Get in Touch"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc .dev/docs"
+   },
+   {
+    "type": "p",
+    "text": "Widget Pricing: Contact us for pricing details"
+   },
+   {
+    "type": "p",
+    "text": "Guess Word Widget."
+   },
+   {
+    "type": "p",
+    "text": "The Wordle for enterprise into your LumApps instance with this exciting game. Get your employees engaged with guessing a word based on a campaign or initiative"
+   },
+   {
+    "type": "p",
+    "text": "Advanced Survey."
+   },
+   {
+    "type": "p",
+    "text": "Create multi-question , multiple choice or free-form survey campaigns a centralized campaign governance dashboard and native survey analytics ."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library Bundles"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Looking for something custom?"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "href": "https://www.adc.dev/guess-word-widget",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/advanced-survey",
+    "text": "Learn More"
+   }
+  ]
+ },
+ "guess-word-widget": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Guess Word"
+   },
+   {
+    "type": "p",
+    "text": "Engage your employees and improve team building exercises by adding the Guess Word widget to your employee experience platform. Inspired by \"Wordle\", this widget can be customized to your brand identity, with hand picked words that are relevant for your organization's message and cultural and communications initiatives."
+   },
+   {
+    "type": "p",
+    "text": "WIDGET USE CASES"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Gamify Employee Knowledge of Corporate Initiatives"
+   },
+   {
+    "type": "p",
+    "text": "Gamify you r employee's knowledge of your company's mission, or corporate and cultural initiatives by customizing the words list of Guess Word list"
+   },
+   {
+    "type": "p",
+    "text": "Create Team Building Compe t ition to Enhance Process & Product Learning Curves"
+   },
+   {
+    "type": "p",
+    "text": "\u200b \u200b"
+   },
+   {
+    "type": "p",
+    "text": "Find creative ways for your employees to connect to internal processes, products and services of your org with Guess Word daily challenges"
+   },
+   {
+    "type": "p",
+    "text": "Localized to Reach a Global Employee Workforce"
+   },
+   {
+    "type": "p",
+    "text": "Target words for users in their local language, f oster team building, and a centralized w ay for employees to connect a nd feel a unified culture in a fun, ex citing and untraditional way."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_1243a885372f48f49103c256924e60df~mv2.png",
+    "alt": "Guess Word"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_c2d35ce16c9f4b1ca48257c207a890e2~mv2.png",
+    "alt": "Stats"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_7619f47b62f341a495026a1c2f0e3963~mv2.png",
+    "alt": "Leaderboard"
+   },
+   {
+    "type": "h2",
+    "text": "Widget Features"
+   },
+   {
+    "type": "p",
+    "text": "Player scoreboard"
+   },
+   {
+    "type": "p",
+    "text": "User leaderboard"
+   },
+   {
+    "type": "p",
+    "text": "Load custom wo rds"
+   },
+   {
+    "type": "p",
+    "text": "Custom messaging display for correctly guessed word"
+   },
+   {
+    "type": "p",
+    "text": "Hyperlink correct words to internal or external pages"
+   },
+   {
+    "type": "p",
+    "text": "Control word list display for users"
+   },
+   {
+    "type": "p",
+    "text": "Control new word timing (daily, weekly, etc)"
+   },
+   {
+    "type": "p",
+    "text": "Customized widget interface to your brand's identity"
+   },
+   {
+    "type": "p",
+    "text": "Got question or want a demo? Get in touch"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc.dev/docs"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Looking for something custom?"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "holiday-spirits-widget": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Holiday Spirit Widget"
+   },
+   {
+    "type": "p",
+    "text": "Give your page owners and community managers additional control with the ability to customize animated experiences on their pages, and make their workplace a more fun and engaging experience."
+   },
+   {
+    "type": "p",
+    "text": "WIDGET USE CASES"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Seasonal Celebrations"
+   },
+   {
+    "type": "p",
+    "text": "Bring the seasonal spirit to your digital workplace by adding snowmen or snowflakes to fall in the winter, leafs to fall in autumn."
+   },
+   {
+    "type": "p",
+    "text": "Holid ays"
+   },
+   {
+    "type": "p",
+    "text": "\u200b \u200b"
+   },
+   {
+    "type": "p",
+    "text": "Add animated roses or hearts on Valentines or Mother's Day, Santa or Rudolph the Raindeer during Christmas, or flying Pumpkins on Halloween!"
+   },
+   {
+    "type": "p",
+    "text": "Fun & Special Occasions"
+   },
+   {
+    "type": "p",
+    "text": "Add flying dollar bills if your company has had booming season, balloons or gift boxes if one of your team mates has a birthday surprise."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_7fcdfc4c03634f528b58b0be4474f321~mv2.gif",
+    "alt": "Holiday Spirit widget"
+   },
+   {
+    "type": "h2",
+    "text": "Widget Features"
+   },
+   {
+    "type": "p",
+    "text": "Customize the animation from thousands of unicode icons"
+   },
+   {
+    "type": "p",
+    "text": "Control flying icon sizing"
+   },
+   {
+    "type": "p",
+    "text": "Include a custom widget message"
+   },
+   {
+    "type": "p",
+    "text": "Pricing: $2,700 / yr"
+   },
+   {
+    "type": "p",
+    "text": "Need additional widget features or want to learn more? Get in touch for a quote"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc.dev/docs"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Looking for something custom?"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "kaltura": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Kaltura Integration"
+   },
+   {
+    "type": "p",
+    "text": "The LumApps Kaltura Extension by ADC was built to allow any enterprise using Kaltura to live stream a corporate event securely, directly inside of the LumApps platform. This integration also offers Kaltura plugin support, including The Hive Analytics amongst many others, and it allows enterprises to use this extension seamless in LumApps in a way that's most compatible with the needs of your enterprise."
+   },
+   {
+    "type": "p",
+    "text": "EXTENSION OVERVIEW"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Secure Live and VOD Embeds."
+   },
+   {
+    "type": "p",
+    "text": "This integration supports secure events that require the user to have an account on Kaltura to watch live or streaming videos"
+   },
+   {
+    "type": "p",
+    "text": "Intuitive Governance & Widget Settings ."
+   },
+   {
+    "type": "p",
+    "text": "\u200b \u200b"
+   },
+   {
+    "type": "p",
+    "text": "LumApps page admins do not need to be Kaltura administrators in order to obtain an embed, and can simply use the Entry ID in widget settings"
+   },
+   {
+    "type": "p",
+    "text": "Native Support of Kaltura Plugins."
+   },
+   {
+    "type": "p",
+    "text": "Easily extend this extension to any Kaltura-supported plugins to avoid the hassle of configuring the player with customized JS codeeach time"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_70a20a99625f432da09e04e567cb6a1f~mv2.gif",
+    "alt": "Kaltura video"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_02e10e2848d74cc0b65a46ba91fdf6dd~mv2.png",
+    "alt": "Kaltura Widget Settings"
+   },
+   {
+    "type": "p",
+    "text": "Get in touch to learn more or see a live demo"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "h2",
+    "text": "Widget Features"
+   },
+   {
+    "type": "p",
+    "text": "Supports Live Streaming"
+   },
+   {
+    "type": "p",
+    "text": "Supports VOD"
+   },
+   {
+    "type": "p",
+    "text": "User Segmentation & Attribute Recognition. This plugin allows more granularity into user behavior to learn who is consuming the videos based on user attribute."
+   },
+   {
+    "type": "p",
+    "text": "The Hive Analytics Plugin Support \u200b"
+   },
+   {
+    "type": "p",
+    "text": "Supports Chat, Collaboration and Custom Player Configurations."
+   },
+   {
+    "type": "p",
+    "text": "Supports Multiple Partner IDs across the same LumApps Organization"
+   },
+   {
+    "type": "p",
+    "text": "Specify the aspect ratio , the width and the height of the viewport."
+   },
+   {
+    "type": "p",
+    "text": "Private Events Support for events that require the user to have an account on Kaltura."
+   },
+   {
+    "type": "p",
+    "text": "Seamless Authentication . We provide a service to seamlessly authenticate LumApps users into Kaltura, without the need for an Authentication Prompt or Consent screen."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Looking for something custom?"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "last-modified-date": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Last Modified Date & Time"
+   },
+   {
+    "type": "p",
+    "text": "Remove any doubt about when a content was last modified by the page admin by adding the Last Modified Date & Time widget to your knowledge and resource content."
+   },
+   {
+    "type": "p",
+    "text": "WIDGET USE CASES"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Improve Intranet Content Integrity"
+   },
+   {
+    "type": "p",
+    "text": "With this widget, users will immediately know content accuracy by seeing its last modified date on any page they visit."
+   },
+   {
+    "type": "p",
+    "text": "Increased Content Ownership"
+   },
+   {
+    "type": "p",
+    "text": "\u200b \u200b"
+   },
+   {
+    "type": "p",
+    "text": "Content owners will want to keep their pages up to date, knowing that the last modified date will be visible to all users."
+   },
+   {
+    "type": "p",
+    "text": "Perfect for Resource and Knowledge Content"
+   },
+   {
+    "type": "p",
+    "text": "Bring your users more validity and content authenticity to resource and knowledge articles in your digital workplace."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_651510ff097b44d8b3e6793d25b1c123~mv2.png",
+    "alt": "Last Modified Date & Time"
+   },
+   {
+    "type": "h2",
+    "text": "Widget Features"
+   },
+   {
+    "type": "p",
+    "text": "Widget automatically reads the last modified date of the page it's on"
+   },
+   {
+    "type": "p",
+    "text": "Toggle on/off date & time to display the exact time of the last modification"
+   },
+   {
+    "type": "p",
+    "text": "Got more questions? Get in touch"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc.dev/docs"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Looking for something custom?"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "looker": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Looker Integration"
+   },
+   {
+    "type": "p",
+    "text": "This Looker Extension for LumApps is a powerful cost & time saving integration which allows users to view Looker dashboards directly in LumApps without ever having to be authenticated in Looker. This integration also allows users with the right level of access to build their own Looker dashboards in LumApps directly."
+   },
+   {
+    "type": "p",
+    "text": "WIDGET USE CASES"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Time-Saving Employee Experience."
+   },
+   {
+    "type": "p",
+    "text": "Users can view Looks and Dashboards directly from the Intranet without a need to SSO in through the embed"
+   },
+   {
+    "type": "p",
+    "text": "Secure Looker"
+   },
+   {
+    "type": "p",
+    "text": "Embeds ."
+   },
+   {
+    "type": "p",
+    "text": "\u200b \u200b"
+   },
+   {
+    "type": "p",
+    "text": "This integration makes embeds secure in LumApps without a need for end-user authentication in Looker"
+   },
+   {
+    "type": "p",
+    "text": "Personalized Looks and Dashboards."
+   },
+   {
+    "type": "p",
+    "text": "Have targeted Looker instance embeds directly in LumApps specific to predefined user attributes"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_a1a75dff22914409bacd19361c75d475~mv2.gif",
+    "alt": "Looker Integration"
+   },
+   {
+    "type": "h2",
+    "text": "Widget Features"
+   },
+   {
+    "type": "p",
+    "text": "\u201cAutomagical\u201d option to paste an embed URL"
+   },
+   {
+    "type": "p",
+    "text": "Choose from Multiple Embed Options:"
+   },
+   {
+    "type": "list",
+    "items": [
+     "Dashboard",
+     "Look",
+     "Explore",
+     "Query Visualization"
+    ]
+   },
+   {
+    "type": "p",
+    "text": "Hide filters directly from the widget"
+   },
+   {
+    "type": "p",
+    "text": "Add customized themes to match your brand\u2019s identity"
+   },
+   {
+    "type": "p",
+    "text": "Get in touch to learn more or see a live demo"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "h6",
+    "text": "Sean Young Director of Technology"
+   },
+   {
+    "type": "p",
+    "text": "\" The Looker SSO Embedding project we embarked on with ADC has not only been a pleasure to work on but has also exceeded our expectations in terms of deliverables and adherence to the project timeline. I would highly recommend ADC to anyone wishing to fully leverage their experience with Lumapps. \""
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Looking for something custom?"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "metadata-mover": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Metadata Mover"
+   },
+   {
+    "type": "p",
+    "text": "This extension is designed to allow LumApps administrators to reorganize their site Metadata architecture by either moving a metadata value across different metadata families or within a single metadata family."
+   },
+   {
+    "type": "p",
+    "text": "WIDGET USE CASES"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Site Architecture Cleanup"
+   },
+   {
+    "type": "p",
+    "text": "Modify and consolidate existing metadata values in LumApps' back office to make it easier and more intuitive for users to find relevant metadata"
+   },
+   {
+    "type": "p",
+    "text": "Aligning Metadata to New Org Structure"
+   },
+   {
+    "type": "p",
+    "text": "\u200b \u200b"
+   },
+   {
+    "type": "p",
+    "text": "Find creative ways for your employees to connect to internal processes, products and services of your org with Guess Word daily challenges"
+   },
+   {
+    "type": "p",
+    "text": "Improve User Search Filtering Experiences"
+   },
+   {
+    "type": "p",
+    "text": "A metadata restructure can help users with a more intuitive search experience to find the right content using LumApps' Metadata."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_87daeb456c32465d89027f438ccde6d1~mv2.png",
+    "alt": "Metadata Mover Widget"
+   },
+   {
+    "type": "h2",
+    "text": "Widget Features"
+   },
+   {
+    "type": "p",
+    "text": "Move metadata across family within a site of subsites"
+   },
+   {
+    "type": "p",
+    "text": "Retain Followed Interests."
+   },
+   {
+    "type": "p",
+    "text": "Metadata move has no impact on any user followed interests."
+   },
+   {
+    "type": "p",
+    "text": "Metadata Usage Counter. See how many contents are using the selected metadata"
+   },
+   {
+    "type": "p",
+    "text": "Metadata Mover Log. See progress of the executed metadata move actions with the option to view error logs and relaunch incomplete tasks"
+   },
+   {
+    "type": "p",
+    "text": "Pricing is project based and depends on volumetrics of impacted contents. Please contact us for details"
+   },
+   {
+    "type": "p",
+    "text": "Got questions? Get in touch"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsul ting.com"
+   },
+   {
+    "type": "p",
+    "text": "Learn more abou t this widget on the A DC docs site :"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Got questions or want a demo?"
+   },
+   {
+    "href": "https://docs.adc.dev/docs/media-mover-widget",
+    "text": "A DC docs site"
+   }
+  ]
+ },
+ "news": {
+  "blocks": [
+   {
+    "type": "h1",
+    "text": "All ADC News"
+   },
+   {
+    "type": "p",
+    "text": "See all of our past announcements, product updates and industry insights"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_97996029c9cd4064a56b5e39cad890e9~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: Deep Dive into the LumApps Enterprise Search Experience"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_8175de7fd8ea4908926bdd5dce16bd58~mv2.jpeg",
+    "alt": ""
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Sep 16, 2026"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: Deep Dive into the LumApps Enterprise Search Experience"
+   },
+   {
+    "type": "p",
+    "text": "After a summer break, Misha and Ivo return with a full episode on search. Ivo, a former LumApps search product owner, explains where the search engine came from and where it's likely heading. Misha shows admins how to tune search filters and how LumApps can now find content buried inside uploaded PDFs."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_f70828f49bfb4aef88e2b3d954bd3724~mv2.png",
+    "alt": "Interim Release Notes by LumApps Marketplace | Page Reader by ADC "
+   },
+   {
+    "type": "image",
+    "uri": "79b064_8dd843abbc7f4a068fafa61f8f8e92ae~mv2.jpg",
+    "alt": ""
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jul 16, 2026"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "Interim Release Notes by LumApps Marketplace | Page Reader by ADC"
+   },
+   {
+    "type": "p",
+    "text": "We have some news to share: LumApps has featured our Page Reader extension in its latest interim release notes, under LumApps Add-ons on the Marketplace."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_bfb029dd8d9742368f583fb43828092f~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: Enterprise Links Module (Directory Entries)"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jun 24, 2026"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: Enterprise Links Module (Directory Entries)"
+   },
+   {
+    "type": "p",
+    "text": "Directory entries are one of the oldest modules in LumApps, and they've picked up some new features. Misha and Ivo show how to bulk import links, add custom fields like contact emails and phone numbers, manage permissions, and run micro apps right inside a directory."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_5edfce6591d447d3a1acf5d877b886fb~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: LumApps\u2019 Broadcasts Deep Dive"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jun 10, 2026"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: LumApps\u2019 Broadcasts Deep Dive"
+   },
+   {
+    "type": "p",
+    "text": "Misha and Ivo celebrate one year of ADC Live! by exploring LumApps Broadcasts. They cover how Broadcasts replaced legacy newsletters, build a personalized, segmented broadcast live, and share best practices for getting employees to open and engage. There's also a World Cup surprise."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_16f8a922a47345009b6c0a45e1b86492~mv2.png",
+    "alt": "LumApps Announces ADC\u2019s enhanced Table of Contents Extensions in the May 2026 Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "May 29, 2026"
+   },
+   {
+    "type": "h2",
+    "text": "LumApps Announces ADC\u2019s enhanced Table of Contents Extensions in the May 2026 Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "A new layout option brings greater flexibility to one of our LumApps extensions."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_9f872d3e1dbc43f8a0c542919a32e870~mv2.png",
+    "alt": "ADC Live! Presents: Release Notes Backstage"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "May 27, 2026"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "ADC Live! Presents: Release Notes Backstage"
+   },
+   {
+    "type": "p",
+    "text": "From AI-powered document scanning in workflows to long-awaited admin search \u2014 LumApp is making a bold shift to a platform that now touches your physical workspace too."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_a87eb2f533c54d928aeb9c41615faa95~mv2.png",
+    "alt": "ADC Live! Presents: The LumApps-Beekeeper Value and a Beekeeper Deep Dive"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "May 6, 2026"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "ADC Live! Presents: The LumApps-Beekeeper Value and a Beekeeper Deep Dive"
+   },
+   {
+    "type": "p",
+    "text": "Bridging the Gap: LumApps Content, Now in Beekeeper"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_9fbe3b6310de489a9ede46e539b3bc45~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: A Deep Dive into LumApps' Marvelous Spaces"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Apr 15, 2026"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: A Deep Dive into LumApps' Marvelous Spaces"
+   },
+   {
+    "type": "p",
+    "text": "Watch this replay of ADC Live!'s event about LumApps' marvelous Spaces!"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_76508eaa2e424f3888f17baa228a85b2~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: LumApps Analytics & Platform Logs APIs w/ Amazing Ivo"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Apr 1, 2026"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: LumApps Analytics & Platform Logs APIs w/ Amazing Ivo"
+   },
+   {
+    "type": "p",
+    "text": "Watch this replay of a deep dive with Amazing Ivo into LumApps' Analytics and Platform Log APIs"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_5e342afb05a94e2f999efe5fcffcd09d~mv2.png",
+    "alt": "Featuring the first LumApps-Beekeeper Extension by ADC - Organization Chart\n"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Mar 24, 2026"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "Featuring the first LumApps-Beekeeper Extension by ADC - Organization Chart"
+   },
+   {
+    "type": "p",
+    "text": "Just like in LumApps, this extensions displays the organization chart of a user who is signed in to Beekeeper, based on their defined organization level."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_4ae5d5ff99b549f58c38d2d341177d4e~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: Mobile Experience in LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Mar 18, 2026"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: Mobile Experience in LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Let's look at some use cases for mobile and rreview some of the mobile configurations"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_75fc89bf1b48440d8e83495234f9e1ac~mv2.png",
+    "alt": "Another Win for Ariella Digital Consulting: Featured in LumApps' R1 2026 Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jan 22, 2026"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "Another Win for Ariella Digital Consulting: Featured in LumApps' R1 2026 Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "We\u2019re thrilled to announce that LumApps has featured Ariella Digital Consulting (ADC) in its R1 2026 Release Notes on The Hive. This highlights two of our Marketplace extensions aimed at enhancing employee experience, engagement, and learning on a large scale."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_2716698a1c5f4cc7a0e068ae979f2084~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: LumApps Customization APIs Overview"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jan 21, 2026"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: LumApps Customization APIs Overview"
+   },
+   {
+    "type": "p",
+    "text": "Take a deeper looker at the Customizations API with this ADC Live! event"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_b2cda7938f3341b79b7797a1a6221bcf~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: Adding a SAML based Identity Provider in LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jan 7, 2026"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: Adding a SAML based Identity Provider in LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Explore how to set up an Okta identity provider in LumApps using SAML"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_4268356806684ff68c00fb34e6294a3c~mv2.png",
+    "alt": "Happy Community Manager Awareness Day from ADC - Enjoy these free offers"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Dec 11, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "Happy Community Manager Awareness Day from ADC - Enjoy these free offers"
+   },
+   {
+    "type": "p",
+    "text": "Learn about special CMAD offers from ADC!"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_ecf3bc3a91da422fbf6a39ecd8f7a74e~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: How To Custom Configure your LumApps Search Page"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Dec 10, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: How To Custom Configure your LumApps Search Page"
+   },
+   {
+    "type": "p",
+    "text": "Let\u2019s look deeper into managing the LumApps search page experience and what are some of the options if you have an OOTB search page, vs a home grown or an enterprise search solution like Coveo."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_b77ff75cd5484f579356258a91795476~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: LumApps Groups vs. Segments - Which Is Right for You?"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Nov 26, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: LumApps Groups vs. Segments - Which Is Right for You?"
+   },
+   {
+    "type": "p",
+    "text": "This ADC Live! webinar offers a comparison between LumApps Groups and Segments, helping users determine which is more suitable for their needs."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_dc15b1930e464e408a499940a80f6dee~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: LumApps User Directory Special - Mapping Custom Attributes from Your IdP to LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Nov 12, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: LumApps User Directory Special - Mapping Custom Attributes from Your IdP to LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Let's see together how to define a User Directory template and map custom attributes from your IdP in order to collect information about the users and enrich the search and analytics context"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_bb5fe584b2104b9692e5306a086b0052~mv2.png",
+    "alt": "ADC's Org Chart Extension Featured in LumApps' October (R7) Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Oct 30, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "ADC's Org Chart Extension Featured in LumApps' October (R7) Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "Very excited that LumApps has featured ADC's Organizational Chart Extension in it's latest release notes."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_6c0380b8f1aa4173a63dbb635ad6b75f~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents Working with LumApps\u2019 Templates & Content Types"
+   },
+   {
+    "type": "p",
+    "text": "Ariella Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Oct 29, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents Working with LumApps\u2019 Templates & Content Types"
+   },
+   {
+    "type": "p",
+    "text": "Let\u2019s look deeper into creating and managing LumApps\u2019 Content Type Templates and the main differences between them. We will also look at the latest Simple Templates."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_fb261f0a189f4f958197b8bdef1c23f7~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: Building \u201cMicroExperiences\u201d with LumApps\u2019 MicroApps"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Oct 15, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: Building \u201cMicroExperiences\u201d with LumApps\u2019 MicroApps"
+   },
+   {
+    "type": "p",
+    "text": "If you've missed the LumApps roles ADC Live! segments, you can watch this replay!"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_3d3c3420dfa04d5bba88e99ff8e3bd0b~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: Building \u201cMicroExperiences\u201d with LumApps\u2019 MicroApps"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_09dff7281dd944c9ac3969d7b366ef85~mv2.jpeg",
+    "alt": ""
+   },
+   {
+    "type": "p",
+    "text": "Ivo Bellin Salarin"
+   },
+   {
+    "type": "p",
+    "text": "Oct 1, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: Building \u201cMicroExperiences\u201d with LumApps\u2019 MicroApps"
+   },
+   {
+    "type": "p",
+    "text": "You've probably heard about LumApps' MicroApps, but have you learned how to create one? Come join us to see the process!"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_be673415ef294c09a0e5aa9cad41803e~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: Using Metadata to Create Structured Data for Search & AI"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Sep 18, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: Using Metadata to Create Structured Data for Search & AI"
+   },
+   {
+    "type": "p",
+    "text": "Metadata allows AI and search engines to focus, avoid ambiguity and improve their answers."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_d1647cc63e1141448ca97f735f1e1625~mv2.png",
+    "alt": "[REPLAY] Partner Hour | Bringing Advanced Surveys to Your LumApps Intranet with ADC"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Sep 16, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] Partner Hour | Bringing Advanced Surveys to Your LumApps Intranet with ADC"
+   },
+   {
+    "type": "p",
+    "text": "LumApps invited ADC on their Partner Hour special to speak about using Advanced Surveys in LumApps"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_f3fb54c517104de38f87179c77bb45de~mv2.png",
+    "alt": "LumApps Announces ADC's Follow Actions Bundle in September 9th Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Sep 10, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "LumApps Announces ADC's Follow Actions Bundle in September 9th Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "The Follow Actions bundle makes it easy to organize follows and interests in one single page"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_9329455162564259aeab3c5252d3379f~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: LumApps Metadata Mania - Why, How, Do\u2019s and Don\u2019ts"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Sep 3, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: LumApps Metadata Mania - Why, How, Do\u2019s and Don\u2019ts"
+   },
+   {
+    "type": "p",
+    "text": "Discovering LumApps' Metadata"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_8899cc134df045b6b043b870abef1f41~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: LumApps Analytics Deep Dive Part II"
+   },
+   {
+    "type": "p",
+    "text": "Ivo Bellin Salarin"
+   },
+   {
+    "type": "p",
+    "text": "Aug 20, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: LumApps Analytics Deep Dive Part II"
+   },
+   {
+    "type": "p",
+    "text": "[SME Alart!] Go deeper into the Analytics with Google Tag Manager as well as Data Lake."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_68747f481cc4427d966837cca5d0bac1~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents: Driving Culture and Bringing Cross-Functional Engagement in LumApps with Paul Kolenda"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Aug 7, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents: Driving Culture and Bringing Cross-Functional Engagement in LumApps with Paul Kolenda"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_9990b9ca458c46c4a88ee8a66da3b9cc~mv2.png",
+    "alt": "Elevate Your LumApps Digital Workplace with Data-Driven Insights"
+   },
+   {
+    "type": "p",
+    "text": "Ivo Bellin Salarin"
+   },
+   {
+    "type": "p",
+    "text": "Aug 1, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Knowledge & Insights"
+   },
+   {
+    "type": "h2",
+    "text": "Elevate Your LumApps Digital Workplace with Data-Driven Insights"
+   },
+   {
+    "type": "p",
+    "text": "In today's digital landscape, data is the new oil, powering strategic decisions and enhancing user engagement."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_948664104ff347f9a80653d28b346adf~mv2.png",
+    "alt": "[REPLAY] ADC Live! Presents  LumApps Analytics Deep Dive"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jul 23, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "[REPLAY] ADC Live! Presents LumApps Analytics Deep Dive"
+   },
+   {
+    "type": "p",
+    "text": "Watch this replay ofr a deeper look into analytics measurement strategy as well as tooling insights."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_899ca6cb06c14aa888c198fcd2d3460f~mv2.png",
+    "alt": "LumApps Announces ADC Extensions in July 16th Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jul 16, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "LumApps Announces ADC Extensions in July 16th Release Notes"
+   },
+   {
+    "type": "p",
+    "text": "In its latest release notes, LumApps has unveiled two new extensions by ADC..."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_95f5fece6fd546ff80d42814f746f12e~mv2.png",
+    "alt": "Space vs Community vs Content Type Pages?\n"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jul 11, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Knowledge & Insights"
+   },
+   {
+    "type": "h2",
+    "text": "Space vs Community vs Content Type Pages?"
+   },
+   {
+    "type": "p",
+    "text": "Choosing the Right LumApps Content Structure: Spaces, Communities, and Content-Type Pages"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_174e6a46ecdc47d290324598cf1bccad~mv2.png",
+    "alt": "REPLAY - ADC Live! Presents: Effective Enterprise Community Engagement Practices w/ Randy Bell"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jul 8, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "REPLAY - ADC Live! Presents: Effective Enterprise Community Engagement Practices w/ Randy Bell"
+   },
+   {
+    "type": "p",
+    "text": "Watch the replay of this exciting webinar with a leading enterprise community engagement expert"
+   },
+   {
+    "type": "image",
+    "uri": "fc7570_4577802113a64917a3dabcf5955eb17a~mv2.jpg",
+    "alt": "Do you use AI to evaluate CVs?"
+   },
+   {
+    "type": "p",
+    "text": "Ivo Bellin Salarin"
+   },
+   {
+    "type": "p",
+    "text": "Jul 1, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Knowledge & Insights"
+   },
+   {
+    "type": "h2",
+    "text": "Do you use AI to evaluate CVs?"
+   },
+   {
+    "type": "p",
+    "text": "A recent engineering effort highlights how building resilient, API-compatible data connectors and modular dbt transformations can unlock significant value in large-scale ETL pipelines, far beyond simple data movement."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_8d9c6f1640f54533be46edd0753710ab~mv2.png",
+    "alt": "ADC Announces new Advanced Survey Widget"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarev"
+   },
+   {
+    "type": "p",
+    "text": "Jun 30, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "ADC Announces new Advanced Survey Widget"
+   },
+   {
+    "type": "p",
+    "text": "Check out the latest Advanced Survey Extension"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_0f30de47fa174be3b75bfbddc52c973d~mv2.png",
+    "alt": "REPLAY - ADC Live! Presents: LumApps Site Content Gardening w/ an Industry Expert"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarav"
+   },
+   {
+    "type": "p",
+    "text": "Jun 25, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "REPLAY - ADC Live! Presents: LumApps Site Content Gardening w/ an Industry Expert"
+   },
+   {
+    "type": "p",
+    "text": "Get deeper insights on content gardening in LumApps from Industry Expert Katie Acheff"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_1c81ca9518eb40909d50d970eaa82f1f~mv2.png",
+    "alt": "REPLAY - ADC Live! Presents: Governing your AI Agents in LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Ivo"
+   },
+   {
+    "type": "p",
+    "text": "Jun 11, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "REPLAY - ADC Live! Presents: Governing your AI Agents in LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Watch the replay of this webisode featuring LumApps' Search & AI PO Thomas Vandermeersch"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_29245242942f4053a1340f02dcb4a24f~mv2.png",
+    "alt": "Reimagining ETL: Lessons from the Field"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarav"
+   },
+   {
+    "type": "p",
+    "text": "Mar 26, 2025"
+   },
+   {
+    "type": "p",
+    "text": "Knowledge & Insights"
+   },
+   {
+    "type": "h2",
+    "text": "Reimagining ETL: Lessons from the Field"
+   },
+   {
+    "type": "p",
+    "text": "A recent engineering effort highlights how building resilient, API-compatible data connectors and modular dbt transformations can unlock significant value in large-scale ETL pipelines, far beyond simple data movement."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_4ff04aa0477943e9a820f2eaca10774b~mv2.png",
+    "alt": "LumApps Office Hours with ADC"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarav"
+   },
+   {
+    "type": "p",
+    "text": "Jan 15, 2025"
+   },
+   {
+    "type": "p",
+    "text": "ADC Live"
+   },
+   {
+    "type": "h2",
+    "text": "LumApps Office Hours with ADC"
+   },
+   {
+    "type": "p",
+    "text": "Learn how The Glass Guru uses ADC's Looker to LumApps integration in this video, featuring Sean Young"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_696fd4d0fe3f4a268236fe6470d47a8d~mv2.png",
+    "alt": "LumApps Announces ADC\u2019s Extensions"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarav"
+   },
+   {
+    "type": "p",
+    "text": "Sep 16, 2024"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "LumApps Announces ADC\u2019s Extensions"
+   },
+   {
+    "type": "p",
+    "text": "LumApps Announces ADC\u2019s Kaltura and Looker Extensions in their September 2024 Release Notes"
+   },
+   {
+    "type": "image",
+    "uri": "79b064_89b6c1bc0808484da5369665aeaa1b3c~mv2.jpeg",
+    "alt": "Partnership with The Glass Guru on the Looker to LumApps Integration"
+   },
+   {
+    "type": "p",
+    "text": "Misha Zubarav"
+   },
+   {
+    "type": "p",
+    "text": "Aug 30, 2023"
+   },
+   {
+    "type": "p",
+    "text": "Announcements"
+   },
+   {
+    "type": "h2",
+    "text": "Partnership with The Glass Guru on the Looker to LumApps Integration"
+   },
+   {
+    "type": "p",
+    "text": "A look into one of our latest deep integrations between LumApps and Looker for The Glass Guru Franchise"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.linkedin.com/company/ariella-digital-consulting/?viewAsMember=true",
+    "text": "Follow Us"
+   },
+   {
+    "href": "https://www.youtube.com/@adclibrary8418",
+    "text": "Follow Us"
+   },
+   {
+    "href": "https://www.adc.dev/news/replay-adc-live-presents-deep-dive-into-the-lumapps-enterprise-search-experience",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/interim-release-notes-by-lumapps-marketplace-%7C-page-reader-by-adc",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/replay-adc-live-presents-enterprise-links-module-directory-entries",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/replay-adc-live-presents-lumapps%E2%80%99-broadcasts-deep-dive",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/lumapps-announces-adc%E2%80%99s-enhanced-table-of-contents-extensions-in-the-may-2026-release-notes",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/adc-live!-presents%3A-release-notes-backstage",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/adc-live!-presents%3A-the-lumapps-beekeeper-value-and-a-beekeeper-deep-dive",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-a-deep-dive-into-lumapps'-marvelous-spaces",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-lumapps-analytics-%26-platform-logs-apis-w%2F-amazing-ivo",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/featuring-the-first-lumapps-beekeeper-extension-by-adc---organization-chart-",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-mobile-experience-in-lumapps",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/another-win-for-ariella-digital-consulting%3A-featured-in-lumapps'-r1-2026-release-notes",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-lumapps-customization-apis-overview",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-adding-a-saml-based-identity-provider-in-lumapps",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/happy-community-manager-awareness-day-from-adc---enjoy-these-free-offers",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-how-to-custom-configure-your-lumapps-search-page",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-lumapps-groups-vs.-segments---which-is-right-for-you%3F",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-lumapps-user-directory-special---mapping-custom-attributes-from-your-idp-to-lumapps",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/adc's-org-chart-extension-featured-in-lumapps'-october-(r7)-release-notes",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents-working-with-lumapps%E2%80%99-templates-%26-content-types",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-building-%E2%80%9Cmicroexperiences%E2%80%9D-with-lumapps%E2%80%99-microapps",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-building-%E2%80%9Cmicroexperiences%E2%80%9D-with-lumapps%E2%80%99-microapps",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-using-metadata-to-create-structured-data-for-search-%26-ai",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-partner-hour-%7C-bringing-advanced-surveys-to-your-lumapps-intranet-with-adc",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/lumapps-announces-adc's-follow-actions-bundle-in-september-9th-release-notes",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-lumapps-metadata-mania---why%2C-how%2C-do%E2%80%99s-and-don%E2%80%99ts",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-lumapps-analytics-deep-dive-part-ii",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents%3A-driving-culture-and-bringing-cross-functional-engagement-in-lumapps-with-paul-kolenda",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/elevate-your-lumapps-digital-workplace-with-data-driven-insights",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/%5Breplay%5D-adc-live!-presents--lumapps-analytics-deep-dive",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/lumapps-announces-adc-extensions-in-july-16th-release-notes",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/space-vs-community-vs-content-type-pages%3F-",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/replay---adc-live!-presents%3A-effective-enterprise-community-engagement-practices-w%2F-randy-bell",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/long-term-benefits-of-clean-energy-sources",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/adc-announces-new-advanced-survey-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/5-most-promising-fintech-startups",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/test-adc",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/best-smart-wearables-of-2023",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/entering-a-new-era-of-iot",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/gadget-review%3A-release-of-new-airy-pods",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/news/how-technology-can-help-curb-attention-disorders",
+    "text": ""
+   }
+  ]
+ },
+ "org-chart": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Organization Chart Extension"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "A simple drag-and-drop solution for your team leads and page owners to add an org chart to a LumApps Page or team Space"
+   },
+   {
+    "type": "p",
+    "text": "Improve awareness and add an extra layer of transparency to your team\u2019s or departments leadership hierarchy"
+   },
+   {
+    "type": "p",
+    "text": "A low / no admin overhead solution to add multiple org charts per team / department / function"
+   },
+   {
+    "type": "p",
+    "text": "Leverage LumApps' native OOTB Design System to benefit from global styles and dynamic updates"
+   },
+   {
+    "type": "p",
+    "text": "CHECK THIS OUT"
+   },
+   {
+    "type": "h2",
+    "text": "Org Chart Widget Sizzle Reel"
+   },
+   {
+    "type": "p",
+    "text": "See the Org Chart Extension in action in this 30-second teaser video."
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What does it do"
+   },
+   {
+    "type": "p",
+    "text": "Displays the organizational chart from the selected user downwards -- that simple!"
+   },
+   {
+    "type": "p",
+    "text": "Users can go deeper into the org chart by interacting with the LumApps Design System designer, just as they would inside a user profile"
+   },
+   {
+    "type": "p",
+    "text": "Allows page administrators to add an org chart dynamically to any LumApps page or Space"
+   },
+   {
+    "type": "p",
+    "text": "Multi-mode options. Choose between LumApps' standard mode or Browse / drag org chart mode"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Explore More Experiences by ADC"
+   },
+   {
+    "type": "p",
+    "text": "Get in Touch"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc .dev/docs"
+   },
+   {
+    "type": "p",
+    "text": "Widget Pricing: Contact us for pricing details"
+   },
+   {
+    "type": "p",
+    "text": "Guess Word Widget."
+   },
+   {
+    "type": "p",
+    "text": "The Wordle for enterprise into your LumApps instance with this exciting game. Get your employees engaged with guessing a word based on a campaign or initiative"
+   },
+   {
+    "type": "p",
+    "text": "Advanced Survey."
+   },
+   {
+    "type": "p",
+    "text": "Create multi-question , multiple choice or free-form survey campaigns a centralized campaign governance dashboard and native survey analytics ."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library Bundles"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Looking for something custom?"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "href": "https://www.adc.dev/guess-word-widget",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/advanced-survey",
+    "text": "Learn More"
+   }
+  ]
+ },
+ "page-reader": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_bf12411119994cae83e37956b0b9285b~mv2.png",
+    "alt": "gamify.png"
+   },
+   {
+    "type": "h1",
+    "text": "Page Reader by ADC"
+   },
+   {
+    "type": "p",
+    "text": "Meet Page Reader, the first text-to-speech widget for LumApps . Give employees an easier way to consume content: Page Reader reads any LumApps page aloud, on desktop or mobile. It runs entirely in the user's browser, with no AI services and no third-party data sharing, so your content stays private and secure."
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Why use it"
+   },
+   {
+    "type": "p",
+    "text": "Deliver audio experiences native to LumApps' Design System , replacing third-party plugins or external tools that require added setup and access controls."
+   },
+   {
+    "type": "p",
+    "text": "Offer multiple voices and languages so every employee can listen in the tone and language that suits them best."
+   },
+   {
+    "type": "p",
+    "text": "Improve accessibility for employees with visual impairments, reading difficulties, or limited screen time, giving everyone an equal way to stay informed ."
+   },
+   {
+    "type": "p",
+    "text": "Increase engagement with LumApps content by letting employees listen anytime \u2014 at their desk, commuting, or on the move."
+   },
+   {
+    "type": "p",
+    "text": "CHECK THIS OUT"
+   },
+   {
+    "type": "h2",
+    "text": "Page Reader Sizzle Reel"
+   },
+   {
+    "type": "p",
+    "text": "See the Page Reader Extension in action!"
+   },
+   {
+    "type": "image",
+    "uri": "8ac787_6fa5beed88144abbb656d700f00fe6cc~mv2.png",
+    "alt": "What does it do.png"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What it does"
+   },
+   {
+    "type": "p",
+    "text": "Text-to-speech. Powered by a natural-sounding speech engine, the widget reads any LumApps page or selected text aloud in real time."
+   },
+   {
+    "type": "p",
+    "text": "Phonetics Pronunciations. Never wince at a mispronounced CEO name or product term again. Define custom phonetics once and Page Reader gets them right every time."
+   },
+   {
+    "type": "p",
+    "text": "Custom voice selection . Choose from a library of natural voices , then fine-tune tone and pacing to match your brand and audience."
+   },
+   {
+    "type": "p",
+    "text": "Speed control. Adjustable playback speed lets every employee, from fast skimmers to careful listeners, take in content the way they understand it best."
+   },
+   {
+    "type": "p",
+    "text": "Mobile support. Listen on any device using the Browser native TTS\u2014 the widget adapts to mobile and tablet, letting employees catch up on content anywhere, anytime."
+   },
+   {
+    "type": "p",
+    "text": "Analytics Tracking. A baked in widget class that allows connecting this widget to your GA4 instance, to pull click event analytics natively via Google or other enterprise solutions"
+   },
+   {
+    "type": "p",
+    "text": "LEARN MORE ABOUT"
+   },
+   {
+    "type": "h2",
+    "text": "Who benefits"
+   },
+   {
+    "type": "p",
+    "text": "Added value for your Internal Communications, HRBPs, and team leads"
+   },
+   {
+    "type": "p",
+    "text": "Learning & Development"
+   },
+   {
+    "type": "p",
+    "text": "Turn onboarding guides and training materials into audio, so new hires can learn anytime, at their own pace."
+   },
+   {
+    "type": "p",
+    "text": "Frontline & Deskless Teams"
+   },
+   {
+    "type": "p",
+    "text": "Keep employees without daily desk access informed by letting them listen to key updates from a phone, between shifts."
+   },
+   {
+    "type": "p",
+    "text": "Global Teams"
+   },
+   {
+    "type": "p",
+    "text": "Reach employees worldwide with natural-sounding voices across languages, making content easy to everywhere."
+   },
+   {
+    "type": "p",
+    "text": "Got questions?"
+   },
+   {
+    "type": "p",
+    "text": "Get in touch to learn more about this integration and to see a demo"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc .dev/docs"
+   },
+   {
+    "type": "p",
+    "text": "GO FURTHER"
+   },
+   {
+    "type": "h2",
+    "text": "Like this widget? Also consider these:"
+   },
+   {
+    "type": "p",
+    "text": "Org Chart Widget."
+   },
+   {
+    "type": "p",
+    "text": "A simple drag-and-drop solution for your team leads and page owners to add an org chart to a LumApps Page or team Space"
+   },
+   {
+    "type": "p",
+    "text": "Estimated Reading Time."
+   },
+   {
+    "type": "p",
+    "text": "This widget automatically calculates and displays the estimated time required to read a page based on the total word count."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products Page"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "href": "https://docs.adc.dev/docs/ls/content/3965255109285547/estimated-reading-time",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/org-chart",
+    "text": "Learn More"
+   }
+  ]
+ },
+ "products": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Welcome to ADC's Products Page"
+   },
+   {
+    "type": "p",
+    "text": "As a proud LumApps Tech Partner, we've developed multiple integrations which enhance the employee experience and facilitate the administrative experience within the LumApps platform. What would you like to explore with us?"
+   },
+   {
+    "type": "p",
+    "text": "Search Enhancement Integrations"
+   },
+   {
+    "type": "p",
+    "text": "Learn how we've improved the LumApps Coveo connector for a truly customized global enterprise search page experience."
+   },
+   {
+    "type": "p",
+    "text": "Third Party Integrations with"
+   },
+   {
+    "type": "p",
+    "text": "LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Learn about our platform integrations which seamlessly enhance the LumApps employee experience platform."
+   },
+   {
+    "type": "p",
+    "text": "LumApps Extension"
+   },
+   {
+    "type": "p",
+    "text": "Use Cases"
+   },
+   {
+    "type": "p",
+    "text": "We are second only to LumApps with the number of widgets we have developed. Learn about our extensions and use cases."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/search-enhancements",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/third-party-integrations",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Learn More"
+   }
+  ]
+ },
+ "qa-support": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "Q&A Support Community"
+   },
+   {
+    "type": "p",
+    "text": "TOTAL WIDGETS IN THIS BUNDLE"
+   },
+   {
+    "type": "h5",
+    "text": "3"
+   },
+   {
+    "type": "p",
+    "text": "Make LumApps your true home to house a Q&A Support Community with real-time Q&A, notifications, and visibility on unanswered inquiries"
+   },
+   {
+    "type": "p",
+    "text": "WHY THIS USE CASE"
+   },
+   {
+    "type": "h2",
+    "text": "About this Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Peer-to-Peer Q&A in Real Time"
+   },
+   {
+    "type": "p",
+    "text": "Community managers will see questions immediately and users will see responses in real time"
+   },
+   {
+    "type": "p",
+    "text": "Slack-like Instant Badge Notifications"
+   },
+   {
+    "type": "p",
+    "text": "Receive badge notifications of incoming posts directly in the browser tab for a more immediate response"
+   },
+   {
+    "type": "p",
+    "text": "Unanswered Questions Tracking"
+   },
+   {
+    "type": "p",
+    "text": "Allow the community managers and/or users to see how many questions still require a response"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What You Get"
+   },
+   {
+    "type": "p",
+    "text": "The following widgets will be available with this bundle. Click each one to learn more:"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Use Cases"
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Request a demo"
+   },
+   {
+    "href": "https://docs.adc.dev/docs/browser-tab-notifications-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/community-posts",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/unanswered-questions-widget",
+    "text": ""
+   }
+  ]
+ },
+ "search-enhancements": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Search Integrations"
+   },
+   {
+    "type": "p",
+    "text": "In partnership with..."
+   },
+   {
+    "type": "p",
+    "text": "As a proud partner of Coveo, we are excited to bring more solutions to the table to enrich our customers' search experience journey with their enterprise search engine of choice."
+   },
+   {
+    "type": "p",
+    "text": "Take a look inside to see what we've done with Coveo and other solutions"
+   },
+   {
+    "type": "p",
+    "text": "Coveo Enhancements"
+   },
+   {
+    "type": "p",
+    "text": "The Coveo search enhancement products we've developed make it on par with enterprise expectations to customize the global search page experience."
+   },
+   {
+    "type": "p",
+    "text": "Algolia Connector"
+   },
+   {
+    "type": "p",
+    "text": "The Algolia LumApps search connector was developed to help EMEA customers using Algolia to connect their search engine to LumApps."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products Page"
+   }
+  ]
+ },
+ "search-expertise": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Expand Enterprise Search with ADC"
+   },
+   {
+    "type": "p",
+    "text": "As a proud Coveo partner, our search engineering team is here to help strategize and implement the ideal employee search experience."
+   },
+   {
+    "type": "p",
+    "text": "Here is how we help our customers succeed in their unique enterprise employee search journeys."
+   },
+   {
+    "type": "p",
+    "text": "Defining your"
+   },
+   {
+    "type": "p",
+    "text": "Search Use Cases"
+   },
+   {
+    "type": "p",
+    "text": "ADC\u2019s knowledge of enterprise search engines best practices and digital workplace customer use cases allows us to better collaborate with our customers to define, refine and execute on creating a meaningful enterprise search experience with the right search results for the right user."
+   },
+   {
+    "type": "p",
+    "text": "Delivering Customized Search Experience Results"
+   },
+   {
+    "type": "p",
+    "text": "There are many ways of successfully implementing your enterprise search use cases. Our team works efficiently to minimize implementation efforts and maximize results to enhance our customers\u2019 search results to get the users the right information faster"
+   },
+   {
+    "type": "p",
+    "text": "Connecting Enterprise Search to your Employee Experience platform"
+   },
+   {
+    "type": "p",
+    "text": "We facilitate and advise on how best to connect the enterprise search to your digital workplace"
+   },
+   {
+    "type": "p",
+    "text": "OUR APPROACH"
+   },
+   {
+    "type": "h2",
+    "text": "Our Enterprise Search Implementation"
+   },
+   {
+    "type": "h2",
+    "text": "Methodology"
+   },
+   {
+    "type": "p",
+    "text": "Define"
+   },
+   {
+    "type": "p",
+    "text": "Identifying Search Use Cases"
+   },
+   {
+    "type": "p",
+    "text": "The \u201cDefine\u201d phase is a series of working sessions aimed at discovering the type of desired search results, current state gap assessment , and defining ideal future state"
+   },
+   {
+    "type": "p",
+    "text": "Develop"
+   },
+   {
+    "type": "p",
+    "text": "Implementing the Search Parameter"
+   },
+   {
+    "type": "p",
+    "text": "Th e integration will be done over multiple sprints where we will address the key user stories and use cases for the search"
+   },
+   {
+    "type": "p",
+    "text": "Deploy"
+   },
+   {
+    "type": "p",
+    "text": "Quality Assurance & Beta Testing"
+   },
+   {
+    "type": "p",
+    "text": "Quality Assurance and beta testing will be done a sandbox environment on our customer side to review the expected search behavior and assess for any issues prior to delivery"
+   },
+   {
+    "type": "p",
+    "text": "Deli ver"
+   },
+   {
+    "type": "p",
+    "text": "Bringing it All"
+   },
+   {
+    "type": "p",
+    "text": "Together"
+   },
+   {
+    "type": "p",
+    "text": "Once the Search functionalities have been Integrated and tested on a sandbox, we will execute and deliver to the customer live environment"
+   },
+   {
+    "type": "p",
+    "text": "SERVICES SUMMARY"
+   },
+   {
+    "type": "h2",
+    "text": "Our Enterprise Search Services"
+   },
+   {
+    "type": "p",
+    "text": "Integrate your existing Coveo Headless search application into LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Configure the native LumApps Coveo Integration to obtain the best user experience"
+   },
+   {
+    "type": "p",
+    "text": "Build and configure Coveo Search Extensions to complete LumApps results"
+   },
+   {
+    "type": "p",
+    "text": "Guide you through the usage of our Headless Framework, providing a set of Result Templates and the bricks necessary to build your own Headless Search Application"
+   },
+   {
+    "type": "p",
+    "text": "Assess feasibility and build a connector for any custom Data Source"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/services",
+    "text": "Back to Services"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Contact Us for a Free Consulation"
+   }
+  ]
+ },
+ "services": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Our Services"
+   },
+   {
+    "type": "p",
+    "text": "\u200b We realize that each of our customers is different with unique needs and business challenges which they are trying to solve. Below is a summary of our services to assist in solving your unique business challenges."
+   },
+   {
+    "type": "p",
+    "text": "C ustom Integrations & AI"
+   },
+   {
+    "type": "p",
+    "text": "We help enterprises extend their technology ecosystems with seamless experiences, including GenAI and Gamification , in a way which helps scale business processes, operations and enhances cultural initiatives."
+   },
+   {
+    "type": "p",
+    "text": "Our veteran engineering team has deep familiarity with the LumApps ecosystem and we provide personalized integrations that help align your strategic and business objectives."
+   },
+   {
+    "type": "p",
+    "text": "Search Enhancement Services"
+   },
+   {
+    "type": "p",
+    "text": "As a proud Coveo partner, our goal is to streamline workplace experiences by making Enterprise Search a seamless part of the employee journey."
+   },
+   {
+    "type": "p",
+    "text": "Our Enterprise Search services offer engineering support to fill resourcing or expertise gaps . Our team will optimize usage of your third party search solution to your organization's specific search use cases."
+   },
+   {
+    "type": "p",
+    "text": "Implementations"
+   },
+   {
+    "type": "p",
+    "text": "As a seasoned implementations LumApps partner, we turn your employee experience vision to reality."
+   },
+   {
+    "type": "p",
+    "text": "Our implementation team works closely to identify your business goals and solve your challenges by transforming them into a clean, simple and effective solution using LumApps' deployment methodologies and UI/UX best practices."
+   },
+   {
+    "type": "p",
+    "text": "SME Support"
+   },
+   {
+    "type": "p",
+    "text": "Maximize your digital workplace with our expert post-go-live consulting."
+   },
+   {
+    "type": "p",
+    "text": "Whether you're optimizing or evolving, we provide strategic guidance, technical support, and best practices to align your goals with an ideal digital workplace state. Let us help you achieve excellence at every stage of your journey."
+   },
+   {
+    "type": "p",
+    "text": "UI / UX Design"
+   },
+   {
+    "type": "p",
+    "text": "Whether you\u2019re looking to design a new site experience or to refresh an existing site, our seasoned U/X team will assist to ensure that your ideal designs will conform to LumApps U/X best practices and maintain user experience integrity."
+   },
+   {
+    "type": "p",
+    "text": "Analytics"
+   },
+   {
+    "type": "p",
+    "text": "Obtaining the right level of data from your LumApps instance and reporting it in a meaningful way to stakeholders is essential for identifying the gaps and opportunities with communication. Our team helps assess the analytics use cases, and helps integrating and/or blending it from any required data source such as BQ, Google, Platform Logs, and represent it in a way which best serves the requirements within your BI tool."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "C ustom Integrations & AI"
+   },
+   {
+    "href": "https://www.adc.dev/search-enhancements",
+    "text": "Search Enhancement Services"
+   },
+   {
+    "href": "https://www.adc.dev/design",
+    "text": "UI / UX Design"
+   },
+   {
+    "href": "https://www.adc.dev/analytics",
+    "text": "Analytics"
+   }
+  ]
+ },
+ "soccer": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_bf12411119994cae83e37956b0b9285b~mv2.png",
+    "alt": "gamify.png"
+   },
+   {
+    "type": "h1",
+    "text": "Game On, LumApps - Bring Soccer Predictions Natively to your Workplace"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "Why use it"
+   },
+   {
+    "type": "p",
+    "text": "Keep employees engaged where work already happens \u2014 no extra platforms , no context-switching, just seamless participation inside LumApps."
+   },
+   {
+    "type": "p",
+    "text": "Friendly match predictions spark real conversations across teams and departments, building camaraderie seldom done with a company memo."
+   },
+   {
+    "type": "p",
+    "text": "With predictions running across every league and matchday, employees stay connected and entertained long after the final whistle."
+   },
+   {
+    "type": "p",
+    "text": "Drive a culture of fun, friendly competition fostering a positive, healthy workplace culture people want to be a part of."
+   },
+   {
+    "type": "p",
+    "text": "CHECK THIS OUT"
+   },
+   {
+    "type": "h2",
+    "text": "FIFA World Cup Widget Sizzle Reel"
+   },
+   {
+    "type": "p",
+    "text": "See the FIFA World Cup Extension in action in this 30-second teaser video."
+   },
+   {
+    "type": "image",
+    "uri": "8ac787_6fa5beed88144abbb656d700f00fe6cc~mv2.png",
+    "alt": "What does it do.png"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What it does"
+   },
+   {
+    "type": "p",
+    "text": "Every Matchday. All Year Round.. The fun doesn't stop when the World Cup ends. Run predictions for any soccer match , any league, all year round \u2014 keeping your employees engaged long after the final whistle."
+   },
+   {
+    "type": "p",
+    "text": "Seamlessly Added to any Page or Space. Add this widget to a LumApps Page or Space as you would any other extension; no extra hassle; no degradation to the native user experience"
+   },
+   {
+    "type": "p",
+    "text": "Native Design. Use LumApps' native Design System to enhance the widget look and feel to fit your organization's LumApps instance. Simple, clean, just like it should be!"
+   },
+   {
+    "type": "p",
+    "text": "Leaderboards. Employees compete, climb the ranks, and own their bragging rights \u2014 all without ever leaving LumApps."
+   },
+   {
+    "type": "p",
+    "text": "LEARN MORE ABOUT"
+   },
+   {
+    "type": "h2",
+    "text": "Who benefits"
+   },
+   {
+    "type": "p",
+    "text": "Added value for your Internal Communications, HRBPs, and team leads"
+   },
+   {
+    "type": "p",
+    "text": "Internal Communications"
+   },
+   {
+    "type": "p",
+    "text": "Launch soccer prediction campaigns around major tournaments, league seasons, and matchdays to drive employee engagement and keep the organisation buzzing."
+   },
+   {
+    "type": "p",
+    "text": "HRBPs & People Teams"
+   },
+   {
+    "type": "p",
+    "text": "Use friendly competition to strengthen workplace culture, boost morale, and create shared experiences that bring employees together across teams and locations."
+   },
+   {
+    "type": "p",
+    "text": "Teams and Team Rooms"
+   },
+   {
+    "type": "p",
+    "text": "Teams can run their own prediction leagues, sparking healthy rivalry, driving conversation, and building tighter cross-functional bonds."
+   },
+   {
+    "type": "p",
+    "text": "Got questions?"
+   },
+   {
+    "type": "p",
+    "text": "Get in touch to learn more about this integration and to see a demo"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc .dev/docs"
+   },
+   {
+    "type": "p",
+    "text": "GO FURTHER"
+   },
+   {
+    "type": "h2",
+    "text": "Explore More Engaging Experiences by ADC"
+   },
+   {
+    "type": "p",
+    "text": "Guess Word Widget."
+   },
+   {
+    "type": "p",
+    "text": "Think of this as Wordle for enterprise within your LumApps instance. Engage your workforce with fun games around corporate or team campaigns or initiatives"
+   },
+   {
+    "type": "p",
+    "text": "Follow Interests Button widget."
+   },
+   {
+    "type": "p",
+    "text": "Activate multiple \"follow interest\" buttons on the same page to allow users to opt to corporate or HR announcements, for a more seamless experience"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products Page"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "href": "https://www.adc.dev/advanced-survey",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/guess-word-widget",
+    "text": "Learn More"
+   }
+  ]
+ },
+ "table-of-contents": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Advanced Table of Contents"
+   },
+   {
+    "type": "p",
+    "text": "Bring the full content management experience to your LumApps content, knowledge articles and resources with the Table of Contents widget. This widget brings a dynamic, enterprise table of contents experience to the user, saving valuable time and resources by removing the burden of managing the table of contents experience from the administrator."
+   },
+   {
+    "type": "p",
+    "text": "WIDGET USE CASES"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Streamlined Content Experience"
+   },
+   {
+    "type": "p",
+    "text": "Make it easy for yo ur users to navigate through long pages, resources and knowledge articles, with a clean, modern horizontal navigation experience ."
+   },
+   {
+    "type": "p",
+    "text": "Time-Saving Widget Setup & Support"
+   },
+   {
+    "type": "p",
+    "text": "\u200b \u200b"
+   },
+   {
+    "type": "p",
+    "text": "The onus of setting up and maintaining the TOC widget is no longer on the experience site admin, but rather on the page owner user, redu cing site admin overhead ."
+   },
+   {
+    "type": "p",
+    "text": "Improved Content Findability Experiences"
+   },
+   {
+    "type": "p",
+    "text": "Create sectional links to make sharing to a specific section or paragraph of the page easier, saving users valuable time from having to find a desired section."
+   },
+   {
+    "type": "h2",
+    "text": "Widget Features"
+   },
+   {
+    "type": "p",
+    "text": "Expand or collapsed view of all the sub navigation elements on the page."
+   },
+   {
+    "type": "p",
+    "text": "Sticky option. Quick and simple way to stick the widget to the page."
+   },
+   {
+    "type": "p",
+    "text": "Customizeable colors"
+   },
+   {
+    "type": "p",
+    "text": "Smooth scroll"
+   },
+   {
+    "type": "p",
+    "text": "Automatically generate clickable references in your table of contents"
+   },
+   {
+    "type": "p",
+    "text": "[NEW] Horizontal navigation mode"
+   },
+   {
+    "type": "p",
+    "text": "Need additional widget features or want to learn more? Get in touch"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsul ting.com"
+   },
+   {
+    "type": "p",
+    "text": "Learn more abou t this widget on the ADC docs site :"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Got questions or want a demo?"
+   },
+   {
+    "href": "https://docs.adc.dev/docs/table-of-contents-widget",
+    "text": "ADC docs site"
+   }
+  ]
+ },
+ "third-party-integrations": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "LumApps Third Party Integrations"
+   },
+   {
+    "type": "p",
+    "text": "Learn about our third party integrations which will seamlessly blend into the LumApps employee experience platform"
+   },
+   {
+    "type": "p",
+    "text": "Gamification Integration with Nitro Studio Bunchball"
+   },
+   {
+    "type": "p",
+    "text": "Looker"
+   },
+   {
+    "type": "p",
+    "text": "Integration"
+   },
+   {
+    "type": "p",
+    "text": "Kaltura Live Stream & VOD Integration"
+   },
+   {
+    "type": "p",
+    "text": "Achievers"
+   },
+   {
+    "type": "p",
+    "text": "Integration"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Back to Products Page"
+   },
+   {
+    "href": "https://www.adc.dev/bunchball-gamification-integration",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/looker",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/kaltura",
+    "text": "Learn More"
+   }
+  ]
+ },
+ "timezone-widget": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_66d4612fb45442149507f5ca9521248a~mv2.png",
+    "alt": "Rectangle 3307.png"
+   },
+   {
+    "type": "h1",
+    "text": "Timezone Widget"
+   },
+   {
+    "type": "p",
+    "text": "Give your employees the ability to personalize their intranet experience by preconfiguring and selecting their desired timezones"
+   },
+   {
+    "type": "p",
+    "text": "WIDGET USE CASES"
+   },
+   {
+    "type": "h2",
+    "text": "Why Use it"
+   },
+   {
+    "type": "p",
+    "text": "Create a Personalized Employee Experience"
+   },
+   {
+    "type": "p",
+    "text": "Put this widget on the homepage or department / BU / team page and give employees the power to customize their timezone preferences."
+   },
+   {
+    "type": "p",
+    "text": "Reduced Administrative Overhead"
+   },
+   {
+    "type": "p",
+    "text": "\u200b \u200b"
+   },
+   {
+    "type": "p",
+    "text": "Take the burden off of the site administration team to constantly create and maintain custom timezones from scratch."
+   },
+   {
+    "type": "p",
+    "text": "Scalable Enterprise Solution"
+   },
+   {
+    "type": "p",
+    "text": "Page owners can easily add this extension to a ny page with a predefined default state without a need for any custom code."
+   },
+   {
+    "type": "image",
+    "uri": "79b064_278703ca53c14a4ea89ab40903f2d312~mv2.gif",
+    "alt": "Timezone Widget demo"
+   },
+   {
+    "type": "h2",
+    "text": "Widget Features"
+   },
+   {
+    "type": "p",
+    "text": "Full admin control to customize the widget timezone selections"
+   },
+   {
+    "type": "p",
+    "text": "Widget default state option available"
+   },
+   {
+    "type": "p",
+    "text": "Customize widget font type"
+   },
+   {
+    "type": "p",
+    "text": "Analog/Digital clock option available"
+   },
+   {
+    "type": "p",
+    "text": "Define am/pm or military time display"
+   },
+   {
+    "type": "p",
+    "text": "Need additional widget features or want to learn more? Get in touch for a quote"
+   },
+   {
+    "type": "p",
+    "text": "hello@arielladigitalconsulting.com"
+   },
+   {
+    "type": "p",
+    "text": "Check out our Docs site for a listing of all our widgets: docs.adc.dev/docs"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library"
+   },
+   {
+    "href": "https://www.arielladigitalconsulting.com/contact",
+    "text": "Looking for something custom?"
+   },
+   {
+    "href": "mailto:hello@arielladigitalconsulting.com",
+    "text": "hello@arielladigitalconsulting.com"
+   }
+  ]
+ },
+ "town-hall": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "Town Hall"
+   },
+   {
+    "type": "p",
+    "text": "TOTAL WIDGETS IN THIS BUNDLE"
+   },
+   {
+    "type": "h5",
+    "text": "3"
+   },
+   {
+    "type": "p",
+    "text": "The Town Hall Use Case Bundle includes two ADC Extensions: Community Posts in Real Time & Quick Post Widget. An optional Kaltura extension is available for customers using the Kaltura video for live streams."
+   },
+   {
+    "type": "p",
+    "text": "USE CASE VALIE"
+   },
+   {
+    "type": "h2",
+    "text": "Why this Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Real-Time Interactions During Corporate Town Halls"
+   },
+   {
+    "type": "p",
+    "text": "Users will see their peer\u2019s posts and comments immediately just like in a chat"
+   },
+   {
+    "type": "p",
+    "text": "Single-Click Posting."
+   },
+   {
+    "type": "p",
+    "text": "Post to a Space or Community with just one click directly from the Town Hall streaming page"
+   },
+   {
+    "type": "p",
+    "text": "Retained in LumApps"
+   },
+   {
+    "type": "p",
+    "text": "Retain all of the employee questions"
+   },
+   {
+    "type": "p",
+    "text": "and comments from this Town Hall in a LumApps community"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What You Get"
+   },
+   {
+    "type": "p",
+    "text": "The following widgets will be available with this bundle. Click each one to learn more:"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to LumApps Extension Use Case"
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Request a demo"
+   },
+   {
+    "href": "https://www.adc.dev/community-posts",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/ls/content/6010832585490432/quick-post-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/products",
+    "text": ""
+   }
+  ]
+ },
+ "ui-enhancements-widget-bundle": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "UI Enhancements Widgets Bundle"
+   },
+   {
+    "type": "p",
+    "text": "TOTAL WIDGETS IN THIS BUNDLE"
+   },
+   {
+    "type": "h5",
+    "text": "5"
+   },
+   {
+    "type": "p",
+    "text": "The UI Enhancements Widget Bundle are visual enhancements which were requested by, and created for our customers to bring additional business value to their LumApps experience."
+   },
+   {
+    "type": "p",
+    "text": "PRICE"
+   },
+   {
+    "type": "h5",
+    "text": "$10,800 / yr"
+   },
+   {
+    "type": "p",
+    "text": "WHY THIS BUNDLE"
+   },
+   {
+    "type": "h2",
+    "text": "Added Value of this Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Improve the user experience of knowing when the documents were last modified so the users don't have to question how fresh the information is anymore."
+   },
+   {
+    "type": "p",
+    "text": "Have a one-click solution to post to a community from a specific page"
+   },
+   {
+    "type": "p",
+    "text": "Personalize the experience for users in global organizations to allow them to customize timezones based on their needs"
+   },
+   {
+    "type": "p",
+    "text": "WHY DO YOU NEED THIS"
+   },
+   {
+    "type": "h2",
+    "text": "Who does it benefit"
+   },
+   {
+    "type": "p",
+    "text": "Global Workforce Employee"
+   },
+   {
+    "type": "p",
+    "text": "Content integrity leading to increased platform adoption"
+   },
+   {
+    "type": "p",
+    "text": "Ability to personalize timezones based on user preference"
+   },
+   {
+    "type": "p",
+    "text": "Improved user content navigation experience"
+   },
+   {
+    "type": "p",
+    "text": "IT Support"
+   },
+   {
+    "type": "p",
+    "text": "Stronger governance of content retention policies"
+   },
+   {
+    "type": "p",
+    "text": "Reduced effort to create and maintain manual timezone widget codes in multiple pages"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What You Get"
+   },
+   {
+    "type": "p",
+    "text": "The following widgets will be available with this bundle. Click each one to learn more:"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library Bundles"
+   },
+   {
+    "href": "https://docs.adc.dev/docs/back-to-top-widget",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/subnavigation/uiux-enhancement-widgets/quick-post-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/timezone-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/last-modified-date",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/subnavigation/uiux-enhancement-widgets/stocks-in-real-time-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Request a demo"
+   }
+  ]
+ },
+ "user-engagement-widget-bundle": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "User Engagement Widgets Bundle"
+   },
+   {
+    "type": "p",
+    "text": "TOTAL WIDGETS IN THIS BUNDLE"
+   },
+   {
+    "type": "h5",
+    "text": "5"
+   },
+   {
+    "type": "p",
+    "text": "The User Engagement Bundle consists of extension widgets which allow users to better interact with the platform using features which are not part of LumApps' out of the box widgets library."
+   },
+   {
+    "type": "p",
+    "text": "PRICE"
+   },
+   {
+    "type": "h5",
+    "text": "$10,800 / yr"
+   },
+   {
+    "type": "p",
+    "text": "OUR BUNDLE"
+   },
+   {
+    "type": "h2",
+    "text": "Added Value of this Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Increase user engagement within your business work groups and team communities by providing them enhanced notification and real-time contribution experience"
+   },
+   {
+    "type": "p",
+    "text": "Company culture enhancements"
+   },
+   {
+    "type": "p",
+    "text": "Knowledge Care and Support use cases to see answered and unanswered questions."
+   },
+   {
+    "type": "p",
+    "text": "WHY DO YOU NEED THIS"
+   },
+   {
+    "type": "h2",
+    "text": "Who does it benefit"
+   },
+   {
+    "type": "p",
+    "text": "Team communities"
+   },
+   {
+    "type": "p",
+    "text": "Real time experiences"
+   },
+   {
+    "type": "p",
+    "text": "Increased awareness of incoming posts and comments"
+   },
+   {
+    "type": "p",
+    "text": "Support community"
+   },
+   {
+    "type": "p",
+    "text": "Q&A support"
+   },
+   {
+    "type": "p",
+    "text": "Immediate response and awareness with browser tab notifications"
+   },
+   {
+    "type": "p",
+    "text": "Support community"
+   },
+   {
+    "type": "p",
+    "text": "Cultural initiatves"
+   },
+   {
+    "type": "p",
+    "text": "Assist with onboarding"
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What You Get"
+   },
+   {
+    "type": "p",
+    "text": "The following widgets will be available with this bundle. Click each one to learn more:"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Widgets Library Bundles"
+   },
+   {
+    "href": "https://docs.adc.dev/docs/browser-tab-notifications-widget",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/all-widgets/enhanced-search-filter-widget",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/unanswered-questions-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/community-posts",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/guess-word-widget",
+    "text": ""
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Request a demo"
+   }
+  ]
+ },
+ "wiki": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_7219289dc10e4837b5bd3210673fb00e~mv2.png",
+    "alt": "BACKGROUND.png"
+   },
+   {
+    "type": "h1",
+    "text": "Wiki & Knowledge Base"
+   },
+   {
+    "type": "p",
+    "text": "TOTAL WIDGETS IN THIS BUNDLE"
+   },
+   {
+    "type": "h5",
+    "text": "4"
+   },
+   {
+    "type": "p",
+    "text": "Experience a true Knowledge & Wiki solution in your new LumApps employee experience platform, with ADC's Wiki & Knowledge Base Bundle. This bundle consists of four widgets: Content Summary, Estimated Reading Time, Table of Contents and Back to Top"
+   },
+   {
+    "type": "p",
+    "text": "OUR BUNDLE"
+   },
+   {
+    "type": "h2",
+    "text": "Added Value of this Bundle"
+   },
+   {
+    "type": "p",
+    "text": "Intelligent Content Interaction"
+   },
+   {
+    "type": "p",
+    "text": "Empower teams to extract insights faster, interact intelligently with content, and tailor AI experiences to their business needs"
+   },
+   {
+    "type": "p",
+    "text": "Save Valuable Time by Improving Content Navigation Experience"
+   },
+   {
+    "type": "p",
+    "text": "This bundle allows users to navigate through long and intricate Wiki and KB contents with ease and style, allowing them to retain link references and navigate back to the top of a page with a simple , dynamic instance."
+   },
+   {
+    "type": "p",
+    "text": "Increase Content Engagement Rates by 10% - 25%"
+   },
+   {
+    "type": "p",
+    "text": "Clear time expectations reduce hesitation and improve click-through and completion."
+   },
+   {
+    "type": "p",
+    "text": "HAVE A LOOK AT"
+   },
+   {
+    "type": "h2",
+    "text": "What You Get"
+   },
+   {
+    "type": "p",
+    "text": "The following widgets will be available with this bundle. Click each one to learn more:"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/extension-widgets",
+    "text": "Back to Extension Use Cases"
+   },
+   {
+    "href": "https://www.adc.dev/contact",
+    "text": "Request a demo"
+   },
+   {
+    "href": "https://www.adc.dev/table-of-contents",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/ls/content/6606214286802944/back-to-top-widget",
+    "text": ""
+   },
+   {
+    "href": "https://docs.adc.dev/docs/ls/content/3965255109285547/estimated-reading-time",
+    "text": ""
+   }
+  ]
+ },
+ "index": {
+  "blocks": [
+   {
+    "type": "image",
+    "uri": "8ac787_1617e93acffb4b40a8244e11f4affdee~mv2.png",
+    "alt": "homepage 3.png"
+   },
+   {
+    "type": "h1",
+    "text": "Welcome to ADC!"
+   },
+   {
+    "type": "p",
+    "text": "\"Making LumApps a simpler, happier experience\""
+   },
+   {
+    "type": "h6",
+    "text": "Solving Digital Transformation Challenges and Providing Strategic Solutions to Improve, Grow, and Adopt Organizational Intranet Best Practices"
+   },
+   {
+    "type": "p",
+    "text": "\u200b Our boutique consulting firm is dedicated to enhancing, extending, and delivering a refined LumApps employee experience platform to our customers. Being a LumApps Tech Partner and a long-standing LumApps SME since 2017 makes us a leading solutions partner in this space to help enterprises optimize LumApps in ways that enables continuous growth, adoption and evolution to fulfill their business' strategic goals and objectives."
+   },
+   {
+    "type": "p",
+    "text": "OUR VALUES"
+   },
+   {
+    "type": "h2",
+    "text": "Our Featured Expertise. Explore How We Can Wor k Together."
+   },
+   {
+    "type": "h6",
+    "text": "Custom Integrations"
+   },
+   {
+    "type": "p",
+    "text": "Enterprise Search"
+   },
+   {
+    "type": "p",
+    "text": "Solutions Architecture Provisioning Security Authentication & Authorization Gamification Audit Logs"
+   },
+   {
+    "type": "p",
+    "text": "Access Token Exchange"
+   },
+   {
+    "type": "h6",
+    "text": "Implementations"
+   },
+   {
+    "type": "p",
+    "text": "Content & IA Strategy Governance Strategy Use Case Roadmaps LumApps Best Practices Project & Program Management Migrations"
+   },
+   {
+    "type": "h6",
+    "text": "LumApps Analytics"
+   },
+   {
+    "type": "p",
+    "text": "Data Ingestion from Multiple Sources DataLake Integrations with your BI Tools Data Visualization Data Blending from Multiple Sources"
+   },
+   {
+    "type": "p",
+    "text": "\u200bAnd more..!"
+   },
+   {
+    "type": "h6",
+    "text": "UI/UX Design"
+   },
+   {
+    "type": "p",
+    "text": "\u200b Portal Design & Redesigns LumApps Design Best Practices Low & High Fidelity Mockups Custom CSS New Interface"
+   },
+   {
+    "type": "p",
+    "text": "OUR VALUED CUSTOMERS"
+   },
+   {
+    "type": "h2",
+    "text": "Read Why Our Customers are Satisfied \u200b"
+   },
+   {
+    "type": "h6",
+    "text": "\u200bPJ Marcello Corporate Intr anet Manager"
+   },
+   {
+    "type": "p",
+    "text": "We have worked with ADC for the past 2 years, and more specifically Misha for the last 3 years (1 year with LumApps). Given Misha's extensive knowledge of LumApps, he has always provided top level support into the platform. ADC has helped us with custom designs on a complete company rebrand, created custom widgets to help us improve user experience, and engaged on several other large strategic projects to improve how we utilize our intranet. I cannot recommend ADC's service enough to anyone who wants to level up the LumApps experience for their users."
+   },
+   {
+    "type": "h6",
+    "text": "Sean Young Director of Technology"
+   },
+   {
+    "type": "p",
+    "text": "We take great pride in the quality partnerships our brand has established with the various technology companies with whom we work. Our relationship with ADC is a prime example of this. For nearly three years now, Misha and the rest of the ADC team have served as our Lumapps SMEs and development partners. I would highly recommend ADC to anyone wishing to fully leverage their experience with Lumapps. I can confidently assure you that you will not be disappointed!"
+   },
+   {
+    "type": "h6",
+    "text": "Tomson Varghese Senior Manager - Finance Transporation"
+   },
+   {
+    "type": "p",
+    "text": "Working with ADC helped our team accelerate the completion and launch of our knowledge management and training portal on a tight timeline and with limited resources. Misha's design recommendations and previous cross-industry experience was extremely useful throughout the project."
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.adc.dev/products",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/services",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/analytics",
+    "text": "Learn More"
+   },
+   {
+    "href": "https://www.adc.dev/design",
+    "text": "Learn More"
+   }
+  ]
+ }
+}
