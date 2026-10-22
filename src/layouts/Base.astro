@@ -6,8 +6,10 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  /** Swap the shared header and footer for the page's own "header" / "footer" slots. */
+  bare?: boolean;
 }
-const { title, description = 'Boutique LumApps consulting — integrations, implementations, analytics and UI/UX design.' } = Astro.props;
+const { title, description = 'Boutique LumApps consulting — integrations, implementations, analytics and UI/UX design.', bare = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -25,14 +27,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <Header />
+    {bare ? <slot name="header" /> : <Header />}
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    {bare ? <slot name="footer" /> : <Footer />}
     <script>
       const toggle = document.querySelector('.nav-toggle');
       const nav = document.querySelector('.nav');
