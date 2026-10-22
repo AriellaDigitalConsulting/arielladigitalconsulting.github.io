@@ -1,0 +1,24 @@
+---
+// Redirect stubs so the original Wix article URLs (brackets, colons, curly quotes…) keep working.
+import { posts } from '../../lib/news';
+
+export function getStaticPaths() {
+  return posts.filter((p) => p.wixSlug && p.wixSlug !== p.slug).map((p) => ({ params: { wix: p.wixSlug }, props: { to: `/news/${p.slug}` } }));
+}
+
+const { to } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <link rel="canonical" href={to} />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <a href={to}>Continue to the article</a>
+  </body>
+</html>

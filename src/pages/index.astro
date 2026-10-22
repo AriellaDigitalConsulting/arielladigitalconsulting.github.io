@@ -1,109 +1,125 @@
 ---
 import Base from '../layouts/Base.astro';
+import { img } from '../lib/img';
 
 const expertise = [
   {
     title: 'Custom Integrations',
     href: '/products',
-    items: ['Enterprise Search', 'Solutions Architecture', 'Provisioning', 'Security Authentication & Authorization', 'Gamification', 'Audit Logs', 'Access Token Exchange'],
+    compact: true,
+    items: ['Enterprise <b>Search</b>', 'Solutions <b>Architecture</b>', 'Provisioning', '<b>Security</b> Authentication &amp; Authorization', 'Gamification', 'Audit Logs', 'Access Token Exchange'],
   },
   {
     title: 'Implementations',
     href: '/services',
-    items: ['Content & IA Strategy', 'Governance Strategy', 'Use Case Roadmaps', 'LumApps Best Practices', 'Project & Program Management', 'Migrations'],
+    items: ['Content &amp; IA Strategy', 'Governance Strategy', 'Use Case Roadmaps', 'LumApps Best Practices', 'Project &amp; Program Management', 'Migrations'],
   },
   {
     title: 'LumApps Analytics',
     href: '/analytics',
-    items: ['Data Ingestion from Multiple Sources', 'DataLake Integrations with your BI Tools', 'Data Visualization', 'Data Blending from Multiple Sources', 'And more..!'],
+    items: ['Data Ingestion from Multiple Sources', '<b>DataLake</b> Integrations with your BI Tools', 'Data <b>Visualization</b>', '<b>Data Blending</b> from Multiple Sources', 'And more..!'],
   },
   {
     title: 'UI/UX Design',
     href: '/design',
-    items: ['Portal Design & Redesigns', 'LumApps Design Best Practices', 'Low & High Fidelity Mockups', 'Custom CSS', 'New Interface'],
+    items: ['Portal Design &amp; Redesigns', 'LumApps Design Best Practices', 'Low &amp; High Fidelity Mockups', 'Custom CSS', 'New Interface'],
   },
 ];
 
 const testimonials = [
   {
-    quote: `We have worked with ADC for the past 2 years, and more specifically Misha for the last 3 years (1 year with LumApps). Given Misha's extensive knowledge of LumApps, he has always provided top level support into the platform. ADC has helped us with custom designs on a complete company rebrand, created custom widgets to help us improve user experience, and engaged on several other large strategic projects to improve how we utilize our intranet. I cannot recommend ADC's service enough to anyone who wants to level up the LumApps experience for their users.`,
     name: 'PJ Marcello',
     role: 'Corporate Intranet Manager',
+    photo: img('79b064_cf88cd7e81fa4e10955157341ce229a1~mv2.jpeg'),
+    logo: img('79b064_1107c5e97bea4dbebd6564f48f42ca6c~mv2.png'),
+    company: 'New Relic',
+    quote: `We have worked with ADC for the past 2 years, and more specifically Misha for the last 3 years (1 year with LumApps). Given Misha's extensive knowledge of LumApps, he has always provided top level support into the platform. ADC has helped us with custom designs on a complete company rebrand, created custom widgets to help us improve user experience, and engaged on several other large strategic projects to improve how we utilize our intranet. I cannot recommend ADC's service enough to anyone who wants to level up the LumApps experience for their users.`,
   },
   {
-    quote: `We take great pride in the quality partnerships our brand has established with the various technology companies with whom we work. Our relationship with ADC is a prime example of this. For nearly three years now, Misha and the rest of the ADC team have served as our Lumapps SMEs and development partners. I would highly recommend ADC to anyone wishing to fully leverage their experience with Lumapps. I can confidently assure you that you will not be disappointed!`,
     name: 'Sean Young',
     role: 'Director of Technology',
+    photo: img('79b064_22a96e36039243dc85be9c45233ecc56~mv2.jpeg'),
+    logo: img('79b064_89d7bb3dbec84ea48a43a7f9afb6859d~mv2.png'),
+    company: 'The Glass Guru',
+    quote: `We take great pride in the quality partnerships our brand has established with the various technology companies with whom we work. Our relationship with ADC is a prime example of this. For nearly three years now, Misha and the rest of the ADC team have served as our Lumapps SMEs and development partners. I would highly recommend ADC to anyone wishing to fully leverage their experience with Lumapps. I can confidently assure you that you will not be disappointed!`,
   },
   {
-    quote: `Working with ADC helped our team accelerate the completion and launch of our knowledge management and training portal on a tight timeline and with limited resources. Misha's design recommendations and previous cross-industry experience was extremely useful throughout the project.`,
     name: 'Tomson Varghese',
     role: 'Senior Manager - Finance Transportation',
+    photo: img('79b064_ade5afc18e8e4e7eb831a3b7a94daeb5~mv2.jpeg'),
+    logo: img('79b064_043d2fe8e560410995018a513ae2cbb8~mv2.png'),
+    company: 'Cadillac Fairview',
+    quote: `Working with ADC helped our team accelerate the completion and launch of our knowledge management and training portal on a tight timeline and with limited resources. Misha's design recommendations and previous cross-industry experience was extremely useful throughout the project.`,
   },
 ];
 ---
 
-<Base title="ADC — Making LumApps a simpler, happier experience">
-  <section class="hero">
-    <div class="hero__media">
-      <img src="/images/e3b3969c07d5.webp" alt="" width="1800" height="793" fetchpriority="high" />
-    </div>
-    <div class="hero__overlay"></div>
-    <div class="wrap">
-      <div class="hero__inner">
-        <p class="eyebrow" style="color: var(--lime)">Welcome to ADC!</p>
-        <h1>Making LumApps a simpler, happier experience</h1>
+<Base title="LumApps Partner | Ariella Digital Consulting | ADC">
+  <section class="hero" style={`background-image:url(${img('8ac787_1617e93acffb4b40a8244e11f4affdee~mv2.png')})`}>
+    <div class="wrap hero__grid">
+      <div class="hero__head">
+        <h1 class="hero__title">Welcome to ADC!</h1>
+        <p class="hero__tag">"Making <b>LumApps</b> a simpler, happier experience"</p>
+      </div>
+      <img class="hero__collage" src={img('8ac787_6ad4acdcd82142aa9e8f7fb4f62e9564~mv2.png')} alt="ADC consultants collaborating" width="642" height="758" fetchpriority="high" />
+      <div class="hero__card">
+        <h2>
+          <span class="blue">Solving Digital Transformation Challenges</span> and Providing Strategic Solutions to Improve,
+          Grow, and Adopt Organizational Intranet Best Practices
+        </h2>
+        <span class="rule"></span>
         <p>
-          Solving digital transformation challenges and providing strategic solutions to improve, grow, and
-          adopt organizational intranet best practices.
-        </p>
-        <p style="font-size: 1.02rem; color: rgba(255,255,255,0.78); max-width: 60ch;">
-          Our boutique consulting firm is dedicated to enhancing, extending, and delivering a refined LumApps
-          employee experience platform to our customers. Being a LumApps <strong>Tech Partner</strong> and a
-          long-standing LumApps <strong>SME since 2017</strong> makes us a leading solutions partner in this
-          space.
-        </p>
-        <p style="margin-top: 2rem;">
-          <a class="btn btn--light" href="/contact">Work with us</a>
+          Our boutique consulting firm is dedicated to enhancing, extending, and delivering a refined LumApps employee
+          experience platform to our customers. Being a LumApps <b><i>Tech Partner</i></b> and a long-standing LumApps <b><i>SME since 2017</i></b> makes us a leading solutions partner in this space to help enterprises optimize
+          LumApps in ways that enables continuous growth, adoption and evolution to fulfill their business' strategic goals
+          and objectives.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="section section--soft">
+  <section class="values">
     <div class="wrap">
       <p class="eyebrow">Our values</p>
-      <h2>Our Featured Expertise.<br /><span style="color: var(--blue)">Explore How We Can Work Together.</span></h2>
-      <div class="grid grid--4" style="margin-top: 2.5rem;">
+      <h2 class="title">Our Featured <span class="blue">Expertise.</span><br />Explore How We Can <span class="blue">Work Together.</span></h2>
+      <span class="rule"></span>
+      <div class="values__grid">
         {
           expertise.map((e) => (
-            <a class="card" href={e.href}>
+            <article class="value">
               <h3>{e.title}</h3>
-              <ul>
-                {e.items.map((i) => <li>{i}</li>)}
+              <ul class:list={['ticks', { compact: e.compact }]}>
+                {e.items.map((i) => <li set:html={i} />)}
               </ul>
-              <span class="more">Learn More →</span>
-            </a>
+              <a class="btn btn--lg value__btn" href={e.href}>Learn More</a>
+            </article>
           ))
         }
       </div>
     </div>
   </section>
 
-  <section class="section section--navy">
+  <section class="customers">
     <div class="wrap">
-      <p class="eyebrow" style="color: var(--lime)">Our valued customers</p>
-      <h2>Read Why Our Customers are Satisfied</h2>
-      <div class="grid grid--3" style="margin-top: 2.5rem;">
+      <p class="eyebrow">Our valued customers</p>
+      <h2 class="title title--black">Read Why Our<br /><span class="blue">Customers are Satisfied</span></h2>
+      <span class="rule"></span>
+      <div class="customers__body">
+        <img class="customers__photo" src={img('8ac787_b5fdf08b5a90430dbaa5ff2ff021d1b9~mv2.png')} alt="" width="563" height="1335" loading="lazy" />
         {
           testimonials.map((t) => (
-            <blockquote class="quote">
-              <p>“{t.quote}”</p>
-              <footer>
+            <figure class="quote">
+              <img class="quote__mark" src={img('8ac787_1015a9207e794a87b372135b1081f7fc~mv2.png')} alt="" width="40" height="35" />
+              <div class="quote__side">
+                <img class="quote__photo" src={t.photo} alt="" width="101" height="101" loading="lazy" />
+                <img class="quote__logo" src={t.logo} alt={t.company} loading="lazy" />
+              </div>
+              <figcaption>
                 <strong>{t.name}</strong>
                 <span>{t.role}</span>
-              </footer>
-            </blockquote>
+              </figcaption>
+              <blockquote>{t.quote}</blockquote>
+            </figure>
           ))
         }
       </div>
@@ -112,15 +128,239 @@ const testimonials = [
 </Base>
 
 <style>
-  .section--navy .quote {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.16);
-    color: rgba(255, 255, 255, 0.86);
+  .hero {
+    background-repeat: no-repeat;
+    background-position: center -149px;
+    background-size: 1440px auto;
   }
-  .section--navy .quote strong {
-    color: #fff;
+  .hero__grid {
+    position: relative;
+    height: 1170px;
   }
-  .section--navy .quote span {
-    color: rgba(255, 255, 255, 0.6);
+  .hero__head {
+    position: absolute;
+    top: 76px;
+    left: 0;
+  }
+  .hero__title {
+    font-family: var(--f-head);
+    font-weight: 400;
+    font-size: 75px;
+    line-height: 1.1;
+    color: var(--navy);
+  }
+  .hero__tag {
+    margin-top: 42px;
+    max-width: 491px;
+    font-size: 24px;
+    line-height: 1.4;
+    font-style: italic;
+    letter-spacing: 0.05em;
+  }
+  .hero__collage {
+    position: absolute;
+    top: 342px;
+    left: -98px;
+    width: 642px;
+  }
+  .hero__card {
+    position: absolute;
+    top: 713px;
+    left: 593px;
+    width: 386px;
+    min-height: 533px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 17px 24px 1px rgba(98, 95, 159, 0.08);
+    padding: 32px 28px 32px 32px;
+  }
+  .hero__card h2 {
+    font-family: var(--f-head);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  .hero__card .rule {
+    margin: 14px 0 16px;
+  }
+  .hero__card p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .values {
+    padding: 58px 0 96px;
+  }
+  .values .title,
+  .customers .title {
+    margin-top: 12px;
+  }
+  .values__grid {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .value {
+    position: relative;
+    background: var(--soft);
+    border-radius: 10px;
+    min-height: 422px;
+    padding: 19px 20px 100px;
+  }
+  .value h3 {
+    font-family: var(--f-head);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .value .ticks li {
+    font-size: 16px;
+    line-height: 2;
+  }
+  .value .ticks.compact li {
+    font-size: 14px;
+  }
+  .value__btn {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    width: 160px;
+    border-radius: 4px;
+  }
+
+  .customers {
+    padding: 0 0 72px;
+  }
+  .title--black {
+    color: #000;
+  }
+  .customers__body {
+    position: relative;
+    margin-top: 85px;
+  }
+  .customers__photo {
+    position: absolute;
+    top: -102px;
+    left: 583px;
+    width: 563px;
+    height: 1335px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  .quote {
+    position: relative;
+    width: 753px;
+    margin: 0 0 62px;
+    background: var(--soft);
+    border-radius: 10px;
+    padding: 44px 36px 40px 160px;
+    min-height: 345px;
+  }
+  .quote__mark {
+    position: absolute;
+    top: -21px;
+    left: 36px;
+    width: 40px;
+  }
+  .quote__side {
+    position: absolute;
+    top: 44px;
+    left: 34px;
+    width: 108px;
+  }
+  .quote__photo {
+    width: 101px;
+    height: 101px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 4px;
+  }
+  .quote__logo {
+    margin-top: 52px;
+    width: 108px;
+    height: auto;
+  }
+  .quote figcaption strong {
+    display: block;
+    font-family: var(--f-head);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .quote figcaption span {
+    font-family: var(--f-text);
+    font-size: 18px;
+  }
+  .quote blockquote {
+    margin: 46px 0 0;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 1100px) {
+    .hero__grid {
+      height: auto;
+      display: grid;
+      gap: 32px;
+      padding: 48px 0 64px;
+    }
+    .hero__head,
+    .hero__collage,
+    .hero__card {
+      position: static;
+      width: 100%;
+      max-width: 642px;
+    }
+    .hero__card {
+      max-width: 520px;
+      min-height: 0;
+    }
+    .values__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .customers__photo {
+      display: none;
+    }
+    .quote {
+      width: 100%;
+    }
+  }
+  @media (max-width: 760px) {
+    .hero__title {
+      font-size: 44px;
+    }
+    .hero__tag {
+      margin-top: 16px;
+      font-size: 19px;
+    }
+    .values {
+      padding: 48px 0 64px;
+    }
+    .values__grid {
+      grid-template-columns: 1fr;
+    }
+    .value {
+      min-height: 0;
+    }
+    .quote {
+      padding: 32px 20px 28px;
+    }
+    .quote__side {
+      position: static;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      width: auto;
+      margin-bottom: 16px;
+    }
+    .quote__logo {
+      margin: 0;
+    }
+    .quote blockquote {
+      margin-top: 16px;
+    }
   }
 </style>

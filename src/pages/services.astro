@@ -1,138 +1,187 @@
 ---
 import Base from '../layouts/Base.astro';
+import { img } from '../lib/img';
 
 const services = [
   {
     title: 'Custom Integrations & AI',
     href: '/products',
+    image: img('8ac787_3516fab8de6745429b0453152c3669bc~mv2.png'),
     body: [
-      `We help enterprises extend their technology ecosystems with seamless experiences, including GenAI and Gamification, in a way which helps scale business processes, operations and enhances cultural initiatives.`,
-      `Our veteran engineering team has deep familiarity with the LumApps ecosystem and we provide personalized integrations that help align your strategic and business objectives.`,
+      'We help enterprises extend their technology ecosystems with seamless experiences, including <b>GenAI</b> and <b>Gamification</b>, in a way which helps scale business processes, operations and enhances cultural initiatives.',
+      'Our veteran engineering team has deep familiarity with the LumApps ecosystem and we provide <b>personalized</b> integrations that help align your strategic and business objectives.',
     ],
   },
   {
     title: 'Search Enhancement Services',
     href: '/search-enhancements',
+    image: img('8ac787_de44a5bb7fea400c90c53add98c8038f~mv2.jpg'),
     body: [
-      `As a proud Coveo partner, our goal is to streamline workplace experiences by making Enterprise Search a seamless part of the employee journey.`,
-      `Our Enterprise Search services offer engineering support to fill resourcing or expertise gaps. Our team will optimize usage of your third party search solution to your organization's specific search use cases.`,
+      'As a proud Coveo partner, our goal is to streamline workplace experiences by making Enterprise Search a seamless part of the employee journey.',
+      "Our Enterprise Search services offer engineering support to <b>fill resourcing or expertise gaps</b>. Our team will optimize usage of your third party search solution to your organization's specific search use cases.",
     ],
   },
   {
     title: 'Implementations',
-    href: '/contact',
+    image: img('8ac787_9ead2de6c5f34d9995bee1485f428bf7~mv2.png'),
     body: [
-      `As a seasoned implementations LumApps partner, we turn your employee experience vision to reality.`,
-      `Our implementation team works closely to identify your business goals and solve your challenges by transforming them into a clean, simple and effective solution using LumApps' deployment methodologies and UI/UX best practices.`,
+      'As a seasoned implementations LumApps partner, we turn your employee experience vision to reality.',
+      "Our implementation team works closely to identify your business goals and solve your challenges by transforming them into a <b>clean, simple and effective</b> solution using LumApps' deployment methodologies and UI/UX best practices.",
     ],
   },
   {
     title: 'SME Support',
-    href: '/contact',
+    image: img('8ac787_6c39c0bcce5148efa09634332439fefb~mv2.png'),
     body: [
-      `Maximize your digital workplace with our expert post-go-live consulting.`,
-      `Whether you're optimizing or evolving, we provide strategic guidance, technical support, and best practices to align your goals with an ideal digital workplace state. Let us help you achieve excellence at every stage of your journey.`,
+      'Maximize your digital workplace with our expert post-go-live consulting.',
+      "Whether you're optimizing or evolving, we provide strategic guidance, technical support, and best practices to align your goals with an ideal digital workplace state. Let us help you achieve excellence at every stage of your journey.",
     ],
   },
   {
     title: 'UI / UX Design',
     href: '/design',
+    image: img('8ac787_7f4bb692386645b7ba8738a33abc6c3c~mv2.png'),
     body: [
-      `Whether you're looking to design a new site experience or to refresh an existing site, our seasoned UX team will assist to ensure that your ideal designs will conform to LumApps U/X best practices and maintain user experience integrity.`,
+      'Whether you’re looking to design a new site experience or to refresh an existing site, our seasoned U/X team will assist to ensure that your ideal designs will conform to LumApps U/X best practices and maintain user experience integrity.',
     ],
   },
   {
     title: 'Analytics',
     href: '/analytics',
+    image: img('8ac787_86ee513f24994c0791a061c988d19a55~mv2.png'),
     body: [
-      `Obtaining the right level of data from your LumApps instance and reporting it in a meaningful way to stakeholders is essential for identifying the gaps and opportunities with communication.`,
-      `Our team helps assess the analytics use cases, and helps integrating and/or blending it from any required data source such as BQ, Google, Platform Logs, and represent it in a way which best serves the requirements within your BI tool.`,
+      'Obtaining the right level of data from your LumApps instance and reporting it in a meaningful way to stakeholders is essential for identifying the gaps and opportunities with communication.',
+      'Our team helps assess the analytics use cases, and helps integrating and/or blending it from any required data source such as BQ, Google, Platform Logs, and represent it in a way which best serves the requirements within your BI tool.',
     ],
   },
 ];
+
+const badges = [
+  { src: img('8ac787_272713bbe44045c38d07a5902f2cbd09~mv2.png'), alt: 'LumApps certified administrator' },
+  { src: img('8ac787_6b19ea78373f48a3a5d586218181de2d~mv2.png'), alt: 'LumApps certified designer' },
+  { src: img('8ac787_438e8cd18671425dad3f82801ec612b1~mv2.png'), alt: 'LumApps certified' },
+];
 ---
 
-<Base title="Services — ADC" description="LumApps integrations, implementations, search, SME support, UI/UX design and analytics.">
-  <section class="hero hero--tall">
-    <div class="hero__media"><img src="/images/63285b4fabfc.webp" alt="" /></div>
-    <div class="hero__overlay"></div>
+<Base title="Services | Ariella Digital Consulting" description="LumApps custom integrations and AI, enterprise search, implementations, SME support, UI/UX design and analytics.">
+  <div class="dots-hero page">
     <div class="wrap">
-      <div class="hero__inner">
-        <p class="eyebrow" style="color: var(--lime)">What we do</p>
-        <h1>Our Services</h1>
-        <p>
-          We realize that each of our customers is different with unique needs and business challenges which they
-          are trying to solve. Below is a summary of our services to assist in solving your unique business
-          challenges.
-        </p>
-      </div>
-    </div>
-  </section>
+      <header class="intro">
+        <div>
+          <h1 class="display">Our <span class="blue">Services</span></h1>
+          <p class="intro__lede">
+            We realize that each of our customers is different with unique needs and business challenges which they are
+            trying to solve. Below is a summary of our services to assist in solving your unique business challenges.
+          </p>
+        </div>
+        <div class="intro__badges">
+          <img class="b-partner" src={img('8ac787_07df4faaf5684a669f09b1cae1ea642c~mv2.png')} alt="LumApps Tech Partner" width="168" height="141" />
+          <img class="b-coveo" src={img('79b064_079932b62988460881e477cd17444262~mv2.png')} alt="Coveo" width="157" height="131" />
+          {badges.map((b) => <img class="b-cert" src={b.src} alt={b.alt} width="111" height="119" />)}
+        </div>
+      </header>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="services">
+      <div class="cards">
         {
-          services.map((s, i) => (
-            <article class="service">
-              <span class="service__num">{String(i + 1).padStart(2, '0')}</span>
-              <div>
-                <h2>{s.title}</h2>
-                {s.body.map((p) => <p>{p}</p>)}
-                <a class="more" href={s.href}>Learn more →</a>
+          services.map((s) => (
+            <article class="icard">
+              <img class="icard__img" src={s.image} alt="" width="469" height="309" loading="lazy" />
+              <div class="icard__panel">
+                <h2 class="icard__title">{s.href ? <a href={s.href}>{s.title}</a> : s.title}</h2>
+                {s.body.map((p) => <p set:html={p} />)}
               </div>
             </article>
           ))
         }
       </div>
     </div>
-  </section>
-
-  <section class="section section--navy">
-    <div class="wrap" style="text-align:center;">
-      <h2 style="max-width:22ch;margin-inline:auto;">Not sure where to start?</h2>
-      <p style="max-width:52ch;margin:0 auto 2rem;color:rgba(255,255,255,0.8)">
-        Tell us about your LumApps instance and where it's stuck. We'll tell you what we'd do.
-      </p>
-      <a class="btn btn--light" href="/contact">Get in touch</a>
-    </div>
-  </section>
+  </div>
 </Base>
 
 <style>
-  .services {
+  .page {
+    background-size: 1440px 1410px;
+    padding: 100px 0 96px;
+  }
+  .intro {
     display: grid;
-    gap: 0;
-    border-top: 1px solid var(--line);
+    grid-template-columns: 584px 1fr;
+    gap: 24px;
   }
-  .service {
+  .intro .display {
+    font-family: var(--f-head);
+  }
+  .intro__lede {
+    margin-top: 7px;
+    font-size: 24px;
+    line-height: 1.5;
+  }
+  .intro__badges {
     display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 1.5rem;
-    padding: 2.6rem 0;
-    border-bottom: 1px solid var(--line);
+    grid-template-columns: repeat(3, 111px);
+    justify-content: end;
+    column-gap: 18px;
+    row-gap: 39px;
+    padding-top: 8px;
   }
-  .service__num {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 1.1rem;
-    color: var(--blue);
-    padding-top: 0.5rem;
+  .b-partner {
+    grid-column: 1 / span 2;
+    width: 168px;
   }
-  .service h2 {
-    margin-bottom: 0.6rem;
+  .b-coveo {
+    width: 157px;
+    margin-left: -28px;
+    margin-top: 5px;
   }
-  .service p {
-    max-width: 68ch;
-    color: var(--muted);
+  .b-cert {
+    width: 111px;
   }
-  .service .more {
-    font-weight: 600;
-    text-decoration: none;
+  .cards {
+    margin-top: 46px;
+    display: grid;
+    grid-template-columns: 469px 469px;
+    justify-content: space-between;
+    row-gap: 46px;
   }
-  @media (max-width: 640px) {
-    .service {
+  .cards .icard {
+    display: flex;
+    flex-direction: column;
+  }
+  .cards .icard__panel {
+    flex: 1;
+  }
+  .icard__title {
+    font-weight: 700 !important;
+  }
+
+  @media (max-width: 1000px) {
+    .intro {
       grid-template-columns: 1fr;
-      gap: 0.5rem;
+    }
+    .intro__badges {
+      justify-content: start;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+      max-width: 520px;
+      margin-inline: auto;
+    }
+  }
+  @media (max-width: 760px) {
+    .page {
+      padding-top: 48px;
+    }
+    .intro__lede {
+      font-size: 19px;
+    }
+    .intro__badges {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .b-partner,
+    .b-coveo {
+      grid-column: span 1;
+      width: 100%;
+      margin: 0;
     }
   }
 </style>

@@ -1,31 +1,33 @@
 ---
-import { footerLinks, social, contactEmail } from '../data/site';
+import { footerLinks, social } from '../data/site';
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <p class="footer-tag">Making LumApps a simpler, happier experience</p>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          {footerLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-        </ul>
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <ul>
-          <li><a href={`mailto:${contactEmail}`}>{contactEmail}</a></li>
-          {social.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
-        </ul>
-      </div>
+  <div class="wrap footer-main">
+    <div class="footer-brand">
+      <img src="/images/4dc6ed0bf872.webp" alt="ADC" width="36" height="35" />
+      <p class="footer-tag">"Making LumApps a <strong>simpler, happier</strong> experience"</p>
     </div>
-    <div class="footer-bottom">
-      <span>© {year} by Ariella Digital Consulting</span>
-      <span>LumApps Tech Partner since 2017</span>
+    <div class="footer-col">
+      <h2>Quick Links</h2>
+      <ul>
+        {footerLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h2>Contact Us</h2>
+      <ul>
+        {
+          social.map((s) => (
+            <li>
+              <img src={s.icon} alt="" width="22" height="22" />
+              <a href={s.href}>{s.label}</a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
+  <p class="footer-bottom">© {year} by Ariella Digital Consulting</p>
 </footer>

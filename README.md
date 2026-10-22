@@ -6,6 +6,8 @@ Built with [Astro](https://astro.build), deployed to GitHub Pages, served at `ww
 
 ## Development
 
+Astro 7 needs Node ≥ 22.22.
+
 ```bash
 npm install
 npm run dev       # http://localhost:4321
@@ -13,52 +15,56 @@ npm run build     # → dist/
 npm run preview   # serve dist/
 ```
 
-## Structure
+## How pages are built
+
+- **Hand-built pages** — `index`, `products`, `services`, `about`, `contact` and the news pages are
+  regular Astro pages in `src/pages/`, styled to match the original design (`src/styles/global.css`).
+  Edit their copy directly in the page files.
+- **Snapshotted pages** — every other page (analytics, design, search, third-party integrations, blog
+  and the 30 product/widget pages) is rendered by `src/pages/[...slug].astro` from a layout snapshot in
+  `src/data/layouts/<slug>.json`. A snapshot records the original page's boxes, images, rich text and
+  icons with their exact geometry, once for desktop (1440px stage) and once for Wix's mobile layout
+  (320px stage, scaled to the viewport). `src/components/LayoutPage.astro` renders them.
 
 ```
 src/
-  pages/          # one file per route; [...slug].astro covers the 30+ product/widget pages
+  pages/            hand-built pages, news/, [...slug].astro (snapshotted pages)
+  components/       Header, Footer, LayoutPage + LayoutNode (snapshot renderer)
   layouts/Base.astro
-  components/     # Header, Footer, Blocks (generic content renderer)
+  lib/              img() lookup for migrated images, news helpers
   data/
-    pages.json    # extracted content for the generic pages
-    articles.json # news posts (title, date, author, body)
-    images.json   # original Wix URI → optimized local file
-  styles/global.css
+    layouts/        page snapshots (generated)
+    articles.json   news posts (generated)
+    images.json     original Wix media id → optimized local file
+    site.ts         navigation, footer links, contact details
 public/
-  images/         # 64 optimized WebP images
-  fonts/          # Archivo, Archivo Black, DIN Next
+  images/           optimized WebP images
+  fonts/            the original Wix fonts + self-hosted Open Sans
+scripts/            snapshot and sync tooling (needs Google Chrome)
 ```
 
-## Content
+## Refreshing content from the Wix site
 
-News posts live in `src/data/articles.json`. To add a post, append an entry with `slug`, `title`,
-`iso` date, `author`, `excerpt`, `image` (`uri` copied from `images.json`'s key or `null`) and a
-`body` array of `{ type: 'p' | 'h2' | 'list', text | items }`.
+While the Wix site is still live, its content can be pulled again:
 
-The `scripts/` folder holds the one-off Wix extraction scripts used for the initial migration. They
-read from `/tmp/adc-scrape` and are not part of the build.
+```bash
+node scripts/snapshot.mjs org-chart looker   # re-snapshot specific pages (slug "index" = home)
+node scripts/sync_news.mjs                   # add new news posts (--all re-fetches every post)
+python3 scripts/fetch_images.py              # download any newly referenced images (needs Pillow)
+```
+
+News posts can also be added by hand: append an entry to `src/data/articles.json` with `slug`, `title`,
+`author`, `avatar`, `category`, `iso` date, `excerpt`, `thumb`, `hero`, `lead` and `html` (images are
+referenced by Wix media id, see `images.json`).
+
+Original Wix article URLs keep working through redirect stubs (`src/pages/news/[...wix].astro`).
 
 ## Form
 
-The contact form posts to [FormSubmit](https://formsubmit.co) at `hello@adc.dev`. The first
-submission triggers a confirmation email to that address — activate it before relying on the form.
+The contact form posts to [FormSubmit](https://formsubmit.co) at `hello@adc.dev`. The first submission
+triggers a confirmation email to that address — activate it before relying on the form.
 
 ## Deployment
 
 Push to `main`; `.github/workflows/deploy.yml` builds and publishes to GitHub Pages. `public/CNAME`
 pins the custom domain to `www.adc.dev`.
-
-### DNS cutover from Wix
-
-Replace the Wix records at the apex/`www` with:
-
-```
-www    CNAME  <org>.github.io.
-@      A      185.199.108.153
-@      A      185.199.109.153
-@      A      185.199.110.153
-@      A      185.199.111.153
-```
-
-Then enable "Enforce HTTPS" in the repo's Pages settings.

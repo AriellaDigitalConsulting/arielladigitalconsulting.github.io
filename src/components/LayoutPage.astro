@@ -1,0 +1,106 @@
+---
+// Renders a snapshotted page: the desktop stage (1440px, centred) above 1000px viewports and
+// the Wix mobile stage (320px, scaled to the viewport width) below.
+import LayoutNode from './LayoutNode.astro';
+
+interface Props {
+  layout: { desktop: any; mobile?: any };
+}
+const { layout } = Astro.props;
+const { desktop, mobile } = layout;
+---
+
+<div class="lp lp--desktop" style={`height:${desktop.height}px`}>
+  {desktop.nodes.map((n: any) => <LayoutNode n={n} stage={1440} root />)}
+</div>
+{
+  mobile && (
+    <div class="lp-m-outer">
+      <div class="lp lp--mobile" style={`height:${mobile.height}px`}>
+        {mobile.nodes.map((n: any) => <LayoutNode n={n} stage={320} root />)}
+      </div>
+    </div>
+  )
+}
+
+<script is:inline>
+  (function () {
+    var set = function () {
+      document.documentElement.style.setProperty('--mz', String(Math.min(window.innerWidth, 1000) / 320));
+    };
+    set();
+    window.addEventListener('resize', set);
+  })();
+</script>
+
+<style is:global>
+  .lp {
+    position: relative;
+    overflow: hidden;
+  }
+  .lp .n {
+    position: absolute;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .lp .n > img,
+  .lp .n > iframe,
+  .lp .n > video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  .lp .n-svg > svg {
+    display: block;
+  }
+  .lp .n-text {
+    overflow-wrap: break-word;
+  }
+  .lp [style*='--fs'] {
+    font-size: var(--fs);
+  }
+  .lp .n-text p,
+  .lp .n-text h1,
+  .lp .n-text h2,
+  .lp .n-text h3,
+  .lp .n-text h4,
+  .lp .n-text h5,
+  .lp .n-text h6 {
+    margin: 0;
+    font-weight: inherit;
+  }
+  .lp .n-text a {
+    color: inherit;
+  }
+  .lp .n-text ul,
+  .lp .n-text ol {
+    margin: 0;
+  }
+  .lp input,
+  .lp textarea {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    resize: none;
+  }
+  .lp-m-outer {
+    display: none;
+  }
+  @media (max-width: 999px) {
+    .lp--desktop {
+      display: none;
+    }
+    .lp-m-outer {
+      display: block;
+      overflow: hidden;
+    }
+    .lp--mobile {
+      width: 320px;
+      zoom: var(--mz, 1);
+    }
+  }
+</style>

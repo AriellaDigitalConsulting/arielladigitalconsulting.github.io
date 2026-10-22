@@ -1,0 +1,123 @@
+---
+// Renders one node of a snapshotted Wix layout (see scripts/snapshot.mjs) at its original geometry.
+import images from '../data/images.json';
+
+interface Props {
+  n: any;
+  stage: number; // width of the original stage (1440 desktop, 320 mobile)
+  root?: boolean; // top-level node: horizontally centred on the page
+  inLink?: boolean;
+}
+const { n, stage, root = false, inLink = false } = Astro.props;
+
+const imgFile = (src: string) => (images as Record<string, { file: string }>)[src]?.file;
+// Wix template leftovers (sample blog posts, categories, member profiles) have no page here.
+const DEAD = /^\/(post|profile|blog\/categories)\//;
+const localHref = (h?: string) => {
+  const local = h?.replace(/^https?:\/\/(www\.)?(adc\.dev|arielladigitalconsulting\.com)(\/|$)/, '/').replace(/^\/(index)?$/, '/');
+  return local && DEAD.test(local) ? '/news' : local;
+};
+const localize = (html: string) =>
+  html
+    .replace(/href="https?:\/\/(www\.)?(adc\.dev|arielladigitalconsulting\.com)\/?/g, 'href="/')
+    .replace(/href="(\/[^"]*)"/g, (m, h) => (DEAD.test(h) ? 'href="/news"' : m))
+    .replace(/(wfont_[0-9a-f_]+), wf_[0-9a-f]+, orig_[a-z_]+/g, "'$1'")
+    .replace(/font-family:([^;"]+)/g, (_m, f) => `font-family:${f.replace(/&quot;/g, "'")}`);
+
+const left = root && !n.full ? `calc(50% - ${stage / 2}px + ${n.x}px)` : n.full ? '0' : `${n.x}px`;
+const width = n.full ? '100%' : `${n.k === 'text' ? n.w + 2 : n.w}px`;
+const geo = [`left:${left}`, `top:${n.y}px`, `width:${width}`];
+if (n.k !== 'text') geo.push(`height:${n.h}px`);
+if (n.rot) geo.push(`transform:rotate(${n.rot}deg)`);
+if (n.op != null) geo.push(`opacity:${n.op}`);
+
+let style = geo.join(';');
+let href = n.link && !inLink ? localHref(n.link) : undefined;
+
+if (n.k === 'box') {
+  const s = [];
+  if (n.bg) s.push(`background-color:${n.bg}`);
+  if (n.bimg?.src && imgFile(n.bimg.src)) {
+    s.push(`background-image:url(${imgFile(n.bimg.src)})`, `background-size:${n.bimg.size}`, `background-position:${n.bimg.pos}`, `background-repeat:${n.bimg.repeat}`);
+  } else if (n.bimg?.css) s.push(`background-image:${n.bimg.css}`);
+  if (n.border) {
+    ['top', 'right', 'bottom', 'left'].forEach((side, i) => n.border[i] !== '0' && s.push(`border-${side}:${n.border[i]}`));
+  }
+  if (n.radius) s.push(`border-radius:${n.radius}`, 'overflow:hidden');
+  if (n.shadow) s.push(`box-shadow:${n.shadow}`);
+  style += ';' + s.join(';');
+}
+
+let embedSrc: string | undefined;
+if (n.k === 'embed') {
+  const yt = n.src?.match(/youtube(?:-nocookie)?\.com\/embed\/([\w-]+)/);
+  if (yt) embedSrc = `https://www.youtube-nocookie.com/embed/${yt[1]}`;
+  else if (n.src && !n.src.startsWith('blob:')) embedSrc = n.src;
+}
+const textHtml = n.k === 'text' ? localize(n.html) : '';
+const textLink = n.k === 'text' && href && !/<a\s/.test(textHtml) ? href : undefined;
+const Wrapper = n.k === 'box' && href ? 'a' : 'div';
+const kids: any[] = n.c ?? [];
+
+// Reproduce Wix's server-side crop: scale the original so the crop rect fills the box.
+let imgStyle = `object-fit:${n.fit === 'fill' ? 'fill' : n.fit};object-position:${n.pos ?? '50% 50%'}`;
+// An image clipped by an ancestor: `inner` is its full box relative to the visible node.
+const box = n.inner ?? { x: 0, y: 0, w: n.w, h: n.h };
+if (n.k === 'img' && n.crop?.ow) {
+  const s = Math.max(box.w / n.crop.w, box.h / n.crop.h);
+  const dx = box.x - n.crop.x * s - (n.crop.w * s - box.w) / 2;
+  const dy = box.y - n.crop.y * s - (n.crop.h * s - box.h) / 2;
+  imgStyle = `position:absolute;max-width:none;width:${n.crop.ow * s}px;height:${n.crop.oh * s}px;left:${dx}px;top:${dy}px`;
+} else if (n.k === 'img' && n.inner) {
+  // full-bleed backgrounds stretch with the viewport; only their vertical offset is kept
+  imgStyle += n.full
+    ? `;position:absolute;width:100%;height:${box.h}px;left:0;top:${box.y}px`
+    : `;position:absolute;max-width:none;width:${box.w}px;height:${box.h}px;left:${box.x}px;top:${box.y}px`;
+}
+---
+
+{
+  n.k === 'box' && (
+    <Wrapper class="n" style={style} href={Wrapper === 'a' ? href : undefined}>
+      {kids.map((c) => <Astro.self n={c} stage={stage} inLink={inLink || !!href} />)}
+    </Wrapper>
+  )
+}
+{
+  n.k === 'img' && imgFile(n.src) && (
+    <div class="n" style={style + (n.radius ? `;border-radius:${n.radius}` : '') + ';overflow:hidden'}>
+      <img src={imgFile(n.src)} alt={n.alt?.match(/\.(png|jpe?g|gif|webp)$/i) ? '' : n.alt} loading="lazy" decoding="async" style={imgStyle} />
+    </div>
+  )
+}
+{n.k === 'svg' && <div class="n n-svg" style={style} aria-hidden="true" set:html={n.html} />}
+{
+  n.k === 'text' &&
+    (textLink ? (
+      <a class="n n-text" style={style + ';' + n.style} href={textLink} set:html={textHtml} />
+    ) : (
+      <div class="n n-text" style={style + ';' + n.style} set:html={textHtml} />
+    ))
+}
+{
+  n.k === 'embed' && embedSrc && (
+    <div class="n" style={style}>
+      {n.tag === 'video' ? (
+        <video src={embedSrc} controls preload="none" />
+      ) : (
+        <iframe src={embedSrc} title="Video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen />
+      )}
+    </div>
+  )
+}
+{
+  n.k === 'input' && (
+    <div class="n" style={style}>
+      {n.tag === 'textarea' ? (
+        <textarea placeholder={n.ph} aria-label={n.ph || 'Message'} style={n.style} />
+      ) : (
+        <input type={n.type} placeholder={n.ph} aria-label={n.ph || n.type} style={n.style} />
+      )}
+    </div>
+  )
+}

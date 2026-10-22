@@ -1,54 +1,175 @@
 ---
 import Base from '../../layouts/Base.astro';
-import articles from '../../data/articles.json';
-import images from '../../data/images.json';
-
-const fmt = (iso: string) =>
-  new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-
-const posts = (articles as any[]).map((a) => ({
-  ...a,
-  img: a.image ? (images as any)[a.image.uri]?.file : null,
-  dateLabel: fmt(a.iso),
-}));
+import { posts, imageFile, shortDate } from '../../lib/news';
 ---
 
-<Base title="News — ADC" description="Announcements, product updates and industry insights from ADC.">
-  <section class="section section--soft">
-    <div class="wrap">
-      <p class="eyebrow">News</p>
-      <h1>ADC News</h1>
-      <p class="lede">See all of our past announcements, product updates and industry insights.</p>
-    </div>
-  </section>
+<Base title="News | Ariella Digital Consulting" description="ADC announcements, product updates, ADC Live! replays and LumApps insights.">
+  <div class="wrap news">
+    <h1 class="display">All <span class="blue">ADC News</span></h1>
+    <p class="news__lede">See all of our past announcements, product updates and industry insights</p>
+    <p class="news__follow">
+      <a href="https://www.linkedin.com/company/ariella-digital-consulting/">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M7 10v7M7 7v.01M11 17v-7m0 3a3 3 0 0 1 6 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+        Follow Us
+      </a>
+      <a href="https://www.youtube.com/@adclibrary8418">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M10 9l5 3-5 3z" fill="currentColor"></path></svg>
+        Follow Us
+      </a>
+    </p>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="post-list">
-        {
-          posts.map((p) => (
-            <a class="post-card" href={`/news/${p.slug}`}>
-              {p.img ? <img src={p.img} alt="" loading="lazy" /> : <div class="post-card__blank" />}
-              <div>
-                <p class="post-meta">
-                  <span>{p.dateLabel}</span>
-                  <span>{p.author}</span>
-                </p>
-                <h2>{p.title}</h2>
-                <p style="color:var(--muted);margin:0">{p.excerpt}</p>
-              </div>
+    <ol class="posts">
+      {
+        posts.map((p) => (
+          <li class="post">
+            <a class="post__thumb" href={`/news/${p.slug}`} tabindex="-1" aria-hidden="true">
+              {imageFile(p.thumb) && <img src={imageFile(p.thumb)} alt="" width="265" height="215" loading="lazy" />}
             </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+            <div>
+              <p class="post__by">
+                {imageFile(p.avatar) && <img src={imageFile(p.avatar)} alt="" width="42" height="42" loading="lazy" />}
+                <span>
+                  <strong>{p.author}</strong>
+                  <time datetime={p.iso}>{shortDate(p.iso)}</time>
+                </span>
+              </p>
+              {p.category && <p class="post__cat">{p.category}</p>}
+              <h2 class="post__title">
+                <a href={`/news/${p.slug}`}>{p.title}</a>
+              </h2>
+              <p class="post__excerpt">{p.excerpt}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
 </Base>
 
 <style>
-  .post-card__blank {
-    aspect-ratio: 16 / 9;
-    background: var(--bg-soft);
-    border-radius: 10px;
+  .news {
+    padding: 65px 0 80px;
+  }
+  .news .display {
+    font-family: var(--f-head);
+  }
+  .news__lede {
+    margin-top: 22px;
+    font-size: 24px;
+    line-height: 1.5;
+  }
+  .news__follow {
+    margin-top: 33px;
+    display: flex;
+    gap: 20px;
+  }
+  .news__follow a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 134px;
+    height: 40px;
+    justify-content: center;
+    background: rgba(54, 45, 255, 0.05);
+    border-radius: 4px;
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.4px;
+    text-decoration: none;
+  }
+  .news__follow svg {
+    width: 18px;
+    height: 18px;
+  }
+  .posts {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+  }
+  .post {
+    display: grid;
+    grid-template-columns: 265px 1fr;
+    gap: 27px;
+    padding: 27px 0 50px;
+    border-bottom: 1px solid #e2e2e2;
+  }
+  .post__thumb img {
+    width: 265px;
+    height: 215px;
+    object-fit: cover;
+  }
+  .post__by {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 13px;
+  }
+  .post__by img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .post__by strong {
+    display: block;
+    font-family: 'wfont_6c5776_f141d555279443968fa7d40bfd600384', var(--f-text);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .post__by time {
+    font-family: var(--f-text);
+    font-size: 14px;
+  }
+  .post__cat {
+    margin-top: 14px;
+    font-family: var(--f-head);
+    font-size: 18px;
+    color: var(--blue);
+  }
+  .post__title {
+    margin-top: 9px;
+    font-family: var(--f-text);
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.1;
+  }
+  .post__title a {
+    text-decoration: none;
+  }
+  .post__title a:hover {
+    color: var(--blue);
+  }
+  .post__excerpt {
+    margin-top: 32px;
+    max-width: 591px;
+    font-family: var(--f-text);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  @media (max-width: 760px) {
+    .news {
+      padding-top: 40px;
+    }
+    .news__lede {
+      font-size: 19px;
+    }
+    .post {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .post__thumb img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 265 / 215;
+    }
+    .post__title {
+      font-size: 24px;
+    }
+    .post__excerpt {
+      margin-top: 16px;
+      font-size: 16px;
+    }
   }
 </style>

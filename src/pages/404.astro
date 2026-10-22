@@ -2,18 +2,33 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="Page not found — ADC">
-  <section class="section section--soft">
-    <div class="wrap" style="text-align:center;padding:4rem 0">
-      <p class="eyebrow">404</p>
-      <h1>This page moved, or never existed.</h1>
-      <p class="lede" style="margin-inline:auto">
-        Most of what you're looking for lives under Products or Services.
-      </p>
-      <p style="margin-top:2rem">
-        <a class="btn" href="/">Back home</a>
-        <a class="btn btn--ghost" href="/news" style="margin-left:.75rem">Read the news</a>
+<Base title="Page not found | Ariella Digital Consulting">
+  <div class="dots-hero notfound">
+    <div class="wrap">
+      <h1 class="display">Page <span class="blue">not found</span></h1>
+      <p class="lede">The page you're looking for moved, or never existed.</p>
+      <p class="notfound__links">
+        <a class="btn btn--lg" href="/">Back home</a>
+        <a class="btn btn--lg" href="/news">Read the news</a>
       </p>
     </div>
-  </section>
+  </div>
 </Base>
+
+<style>
+  .notfound {
+    padding: 100px 0 140px;
+    background-size: 1440px auto;
+  }
+  .notfound .display {
+    font-family: var(--f-head);
+  }
+  .notfound .lede {
+    margin-top: 24px;
+  }
+  .notfound__links {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+  }
+</style>

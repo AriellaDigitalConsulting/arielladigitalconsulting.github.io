@@ -1,55 +1,143 @@
 ---
 import Base from '../layouts/Base.astro';
+import { img } from '../lib/img';
 
-const buckets = [
+const products = [
   {
     title: 'Search Enhancement Integrations',
     href: '/search-enhancements',
-    body: `Learn how we've improved the LumApps Coveo connector for a truly customized global enterprise search page experience.`,
+    image: img('8ac787_6dcd2ac3e16340d98b77785dca35fc2c~mv2.png'),
+    body: "Learn how we've improved the LumApps Coveo connector for a truly customized global enterprise search page experience.",
   },
   {
     title: 'Third Party Integrations with LumApps',
     href: '/third-party-integrations',
-    body: `Learn about our platform integrations which seamlessly enhance the LumApps employee experience platform.`,
+    image: img('8ac787_e8161f4588bb48b080cb0861b5938219~mv2.png'),
+    body: 'Learn about our platform integrations which seamlessly enhance the LumApps employee experience platform.',
   },
   {
     title: 'LumApps Extension Use Cases',
     href: '/extension-widgets',
-    body: `We are second only to LumApps with the number of widgets we have developed. Learn about our extensions and use cases.`,
+    image: img('8ac787_971563e766544298877bd40f2c1b807e~mv2.png'),
+    body: 'We are second only to LumApps with the number of widgets we have developed. Learn about our extensions and use cases.',
   },
 ];
 ---
 
-<Base title="Products — ADC" description="LumApps search enhancements, third-party integrations and 40+ extension widgets by ADC.">
-  <section class="hero hero--tall">
-    <div class="hero__media"><img src="/images/63285b4fabfc.webp" alt="" /></div>
-    <div class="hero__overlay"></div>
+<Base title="Products | Ariella Digital Consulting" description="LumApps integrations and extensions by ADC: search enhancements, third-party integrations and extension widgets.">
+  <div class="dots-hero page">
     <div class="wrap">
-      <div class="hero__inner">
-        <p class="eyebrow" style="color: var(--lime)">Products</p>
-        <h1>Welcome to ADC's Products Page</h1>
-        <p>
-          As a proud LumApps Tech Partner, we've developed multiple integrations which enhance the employee
-          experience and facilitate the administrative experience within the LumApps platform.
-        </p>
-      </div>
-    </div>
-  </section>
+      <header class="intro">
+        <div>
+          <h1 class="display">Welcome to ADC's<br /><span class="blue">Products Page</span></h1>
+          <p class="intro__lede">
+            As a proud LumApps Tech Partner, we've developed multiple integrations which enhance the employee experience and
+            facilitate the administrative experience within the LumApps platform. What would you like to explore with us?
+          </p>
+        </div>
+        <img class="intro__badge" src={img('8ac787_07df4faaf5684a669f09b1cae1ea642c~mv2.png')} alt="LumApps Tech Partner" width="289" height="242" />
+      </header>
 
-  <section class="section">
-    <div class="wrap">
-      <h2>What would you like to explore with us?</h2>
-      <div class="grid grid--3" style="margin-top: 2rem;">
+      <div class="cards">
         {
-          buckets.map((b) => (
-            <a class="card" href={b.href}>
-              <h3>{b.title}</h3>
-              <p style="color: var(--muted)">{b.body}</p>
-              <span class="more">Learn More →</span>
-            </a>
+          products.map((p) => (
+            <article class="icard icard--sm">
+              <img class="icard__img" src={p.image} alt="" width="300" height="309" loading="lazy" />
+              <div class="icard__panel">
+                <h2 class="icard__title">{p.title}</h2>
+                <p>{p.body}</p>
+                <a class="btn btn--lg" href={p.href}>Learn More</a>
+              </div>
+            </article>
           ))
         }
       </div>
     </div>
-  </section>
+  </div>
 </Base>
+
+<style>
+  .page {
+    background-size: 1440px 1197px;
+    padding: 100px 0 64px;
+  }
+  .intro {
+    position: relative;
+  }
+  .intro .display {
+    font-family: var(--f-head);
+  }
+  .intro__lede {
+    margin-top: 39px;
+    max-width: 585px;
+    font-size: 24px;
+    line-height: 1.5;
+  }
+  .intro__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 289px;
+  }
+  .cards {
+    margin-top: 65px;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    justify-content: space-between;
+  }
+  .icard--sm .icard__img {
+    aspect-ratio: 300 / 309;
+  }
+  .icard--sm .icard__panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 405px;
+    margin: -120px 24px 0 23px;
+    padding: 30px 24px 32px;
+  }
+  .icard--sm .icard__title {
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .icard--sm p {
+    line-height: 1.45;
+  }
+  .icard--sm .btn {
+    margin: auto auto 0;
+    width: 160px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 1000px) {
+    .intro__badge {
+      position: static;
+      width: 180px;
+      margin-top: 24px;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      max-width: 420px;
+      margin-inline: auto;
+    }
+    .icard--sm .icard__img {
+      aspect-ratio: 4 / 3;
+    }
+    .icard--sm .icard__panel {
+      min-height: 0;
+    }
+    .icard--sm .btn {
+      margin-top: 24px;
+    }
+  }
+  @media (max-width: 760px) {
+    .page {
+      padding-top: 48px;
+    }
+    .intro__lede {
+      margin-top: 20px;
+      font-size: 19px;
+    }
+  }
+</style>
