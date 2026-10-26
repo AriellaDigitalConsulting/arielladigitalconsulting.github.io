@@ -13,13 +13,13 @@ const certifications = [
 
 const services = [
   {
-    title: 'Implementation',
+    title: 'Implementations',
     href: '/implementations',
     icon: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path>',
     tint: '#362dff',
     stroke: '#fff',
     body: 'Launch or relaunch LumApps with the right content strategy, governance and information architecture.',
-    tags: ['Governance', 'Info architecture', 'Jive &amp; SharePoint migrations'],
+    tags: ['Content Strategy', 'Governance', 'UI/UX Design', 'Migrations', 'Change Management'],
   },
   {
     title: 'Integrations &amp; Widgets',
@@ -31,15 +31,6 @@ const services = [
     tags: ['Custom widgets', 'Gamification', 'Data visualization'],
   },
   {
-    title: 'Expert Support',
-    href: '/services',
-    icon: '<circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path>',
-    tint: '#ffd458',
-    stroke: '#05006c',
-    body: 'On-call LumApps expertise: health checks, site audits and enablement training for your core team.',
-    tags: ['Health checks', 'Training', 'Ad hoc support'],
-  },
-  {
     title: 'UI/UX Design',
     href: '/design',
     icon: '<rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 9v11"></path>',
@@ -47,6 +38,15 @@ const services = [
     stroke: '#fff',
     body: 'Portal designs and redesigns, from low-fidelity wireframes to custom CSS that fits your brand.',
     tags: ['Redesigns', 'Mockups', 'Custom CSS'],
+  },
+  {
+    title: 'SME Support',
+    href: '/services#sme-support',
+    icon: '<circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path>',
+    tint: '#ffd458',
+    stroke: '#05006c',
+    body: 'On-call LumApps expertise: health checks, site audits and enablement training for your core team.',
+    tags: ['Health checks', 'Training', 'Ad hoc support'],
   },
 ];
 
@@ -208,12 +208,9 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
 
     <!-- SERVICES -->
     <section id="services" class="container section">
-      <div class="section__head section__head--split">
-        <div class="section__intro">
-          <span class="eyebrow">What we do</span>
-          <h2>Everything your LumApps platform needs, from one expert team.</h2>
-        </div>
-        <a class="ui-btn ui-btn-outline" href="/services">See all services</a>
+      <div class="section__intro">
+        <span class="eyebrow">What we do</span>
+        <h2>Everything your LumApps platform needs, from one expert team.</h2>
       </div>
       <div class="services">
         {
@@ -731,13 +728,6 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
   #services {
     padding-bottom: 96px;
     gap: 48px;
-  }
-  .section__head--split {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 24px;
   }
   .section__intro {
     display: flex;
