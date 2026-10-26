@@ -32,6 +32,7 @@ const services = [
   },
   {
     title: 'SME Support',
+    id: 'sme-support',
     image: img('8ac787_6c39c0bcce5148efa09634332439fefb~mv2.png'),
     body: [
       'Maximize your digital workplace with our expert post-go-live consulting.',
@@ -85,7 +86,7 @@ const badges = [
       <div class="cards">
         {
           services.map((s) => (
-            <article class="icard">
+            <article class="icard" id={s.id}>
               <img class="icard__img" src={s.image} alt="" width="469" height="309" loading="lazy" />
               <div class="icard__panel">
                 <h2 class="icard__title">{s.href ? <a href={s.href}>{s.title}</a> : s.title}</h2>

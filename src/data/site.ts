@@ -1,11 +1,24 @@
-export const nav = [
+export type NavItem = { label: string; href: string } | { label: string; children: { href: string; label: string }[] };
+
+// The main navigation, shared by every page through SiteHeader. Contact is the header's "Book a call" button.
+export const nav: NavItem[] = [
   { href: '/', label: 'Hello' },
   { href: '/news', label: 'News' },
   { href: '/products', label: 'Products' },
-  { href: '/services', label: 'Services' },
+  {
+    label: 'Services',
+    children: [
+      { href: '/implementations', label: 'Implementations' },
+      { href: '/products', label: 'Integrations' },
+      { href: '/services#sme-support', label: 'SME Support' },
+      { href: '/analytics', label: 'Analytics' },
+      { href: '/design', label: 'UI/UX Design' },
+    ],
+  },
   { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Connect' },
 ];
+
+export const contactHref = '/contact';
 
 export const footerLinks = [
   { href: '/', label: 'Home' },

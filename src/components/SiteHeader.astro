@@ -1,0 +1,294 @@
+---
+// The site's main navigation. Base renders it on every page; pages never supply their own.
+import { nav, contactHref } from '../data/site';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => (href === '/' ? path === '/' : path === href || path.startsWith(href + '/'));
+const chevron = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>';
+---
+
+<header class="mh">
+  <div class="mh__inner">
+    <a class="mh__brand" href="/" aria-label="Ariella Digital Consulting home">
+      <svg width="30" height="29" viewBox="0 0 22 21" fill="none" aria-hidden="true"><path d="M3.26367 4.50242H6.73663C6.73663 4.50242 6.34303 2.79392 8.93617 2.81733C8.93617 2.81733 11.3557 2.46626 10.9736 5.91836V20.3704H14.6666V4.17476C14.5796 2.0901 12.9923 0.385859 10.9389 0.172667C10.9389 0.172667 3.04371 -1.32519 3.26367 4.50242Z" fill="#32E0C4"></path><path d="M4.46209 20.3658V16.907C4.46209 16.907 2.79204 17.3105 2.81507 14.7163C2.81507 14.7163 2.46954 12.3067 5.85571 12.6987H14.6667V8.96309H4.05897C4.05897 8.96309 0.91467 8.87085 0.131475 12.6641C0.177545 12.6641 -1.27367 20.5849 4.46209 20.3658Z" fill="#362DFF"></path><rect x="4.07397" y="20.3706" width="3.25926" height="10.5926" transform="rotate(-90 4.07397 20.3706)" fill="#362DFF"></rect><rect x="10.5925" y="20.3706" width="3.25926" height="11.4074" transform="rotate(-90 10.5925 20.3706)" fill="#FFD458"></rect><path d="M21.9999 8.96289H10.5925V12.2221H21.0047C21.3361 12.2028 21.6686 12.2028 21.9999 12.2221V8.96289Z" fill="#FFD458"></path><rect x="10.5925" y="8.96289" width="4.07407" height="11.4074" fill="#362DFF"></rect></svg>
+      <span>riella Digital Consulting</span>
+    </a>
+    <button class="mh__toggle" aria-expanded="false" aria-controls="mh-nav" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="mh__nav" id="mh-nav" aria-label="Primary" data-open="false">
+      {
+        nav.map((item, i) =>
+          'children' in item ? (
+            <div class="mh__drop" data-open="false">
+              <button
+                class:list={['mh__link', 'mh__drop-toggle', { 'is-current': item.children.some((c) => isCurrent(c.href)) }]}
+                aria-expanded="false"
+                aria-controls={`mh-menu-${i}`}
+              >
+                {item.label}
+                <Fragment set:html={chevron} />
+              </button>
+              <ul class="mh__menu" id={`mh-menu-${i}`}>
+                {item.children.map((c) => (
+                  <li>
+                    <a class="mh__menu-link" href={c.href} aria-current={isCurrent(c.href) ? 'page' : undefined}>
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <a class="mh__link" href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          )
+        )
+      }
+      <a class="mh__cta" href={contactHref}>Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.mh__toggle');
+  const menu = document.querySelector<HTMLElement>('.mh__nav');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.dataset.open === 'true';
+    if (menu) menu.dataset.open = String(!open);
+    toggle.setAttribute('aria-expanded', String(!open));
+  });
+
+  const drops = [...document.querySelectorAll<HTMLElement>('.mh__drop')];
+  const setOpen = (drop: HTMLElement, open: boolean) => {
+    drop.dataset.open = String(open);
+    drop.querySelector('.mh__drop-toggle')?.setAttribute('aria-expanded', String(open));
+  };
+  for (const drop of drops) {
+    drop.querySelector('.mh__drop-toggle')?.addEventListener('click', () => {
+      const open = drop.dataset.open !== 'true';
+      drops.forEach((d) => setOpen(d, false));
+      setOpen(drop, open);
+    });
+    drop.addEventListener('focusout', (e) => {
+      if (!drop.contains(e.relatedTarget as Node | null)) setOpen(drop, false);
+    });
+  }
+  document.addEventListener('click', (e) => {
+    for (const drop of drops) if (!drop.contains(e.target as Node)) setOpen(drop, false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const open = drops.find((d) => d.dataset.open === 'true');
+    if (!open) return;
+    setOpen(open, false);
+    open.querySelector<HTMLButtonElement>('.mh__drop-toggle')?.focus();
+  });
+</script>
+
+<style>
+  .mh {
+    --navy: #05006c;
+    --blue: #362dff;
+    --blue-hover: #2a22d6;
+    --line: #ecebf7;
+    --tint: #f1f0ff;
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    line-height: 1.5;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    z-index: 30;
+  }
+  .mh__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .mh__brand {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: var(--navy);
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.2px;
+  }
+  .mh__nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 28px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .mh__link {
+    color: var(--navy);
+    text-decoration: none;
+  }
+  .mh__link:hover,
+  .mh__link[aria-current='page'],
+  .mh__link.is-current {
+    color: var(--blue);
+  }
+
+  /* Services dropdown */
+  .mh__drop {
+    position: relative;
+  }
+  .mh__drop-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+  }
+  .mh__drop-toggle :global(svg) {
+    transition: transform 0.15s ease;
+  }
+  .mh__drop[data-open='true'] .mh__drop-toggle :global(svg) {
+    transform: rotate(180deg);
+  }
+  .mh__menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 14px);
+    left: -18px;
+    min-width: 220px;
+    margin: 0;
+    padding: 8px;
+    list-style: none;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(5, 0, 108, 0.12);
+  }
+  /* Bridges the gap between the toggle and the menu so hover doesn't drop out. */
+  .mh__menu::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -15px;
+    height: 15px;
+  }
+  .mh__drop[data-open='true'] .mh__menu {
+    display: block;
+  }
+  @media (hover: hover) and (min-width: 901px) {
+    .mh__drop:hover .mh__menu {
+      display: block;
+    }
+  }
+  .mh__menu-link {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--navy);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .mh__menu-link:hover,
+  .mh__menu-link:focus-visible {
+    background: var(--tint);
+    color: var(--blue);
+  }
+  .mh__menu-link[aria-current='page'] {
+    color: var(--blue);
+  }
+
+  .mh__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: var(--blue);
+    color: #fff;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+  .mh__cta:hover {
+    background: var(--blue-hover);
+    color: #fff;
+  }
+  .mh__toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 12px 10px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .mh__toggle span {
+    display: block;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .mh__toggle {
+      display: flex;
+    }
+    .mh__inner {
+      flex-wrap: wrap;
+    }
+    .mh__nav {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      padding-top: 8px;
+    }
+    .mh__nav[data-open='true'] {
+      display: flex;
+    }
+    .mh__link {
+      padding: 10px 0;
+    }
+    .mh__drop-toggle {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .mh__menu {
+      position: static;
+      min-width: 0;
+      padding: 0 0 4px 12px;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .mh__menu::before {
+      content: none;
+    }
+    .mh__menu-link {
+      padding: 8px 0;
+    }
+    .mh__cta {
+      justify-content: center;
+      margin-top: 8px;
+    }
+  }
+  @media (max-width: 600px) {
+    .mh__inner {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+</style>

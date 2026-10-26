@@ -1,11 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import { img } from '../lib/img';
-import { nav, social } from '../data/site';
+import { social, contactHref } from '../data/site';
 
 const docsUrl = 'https://docs.adc.dev';
-const contactHref = '/contact';
-const navLinks = nav.filter((item) => item.href !== contactHref);
 
 const certifications = [
   'Trusted Partner — Consulting, Training &amp; Design',
@@ -141,28 +139,6 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
 ---
 
 <Base title="LumApps Partner | Ariella Digital Consulting | ADC" bare>
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  </Fragment>
-
-  <header class="mh" slot="header">
-    <div class="mh__inner">
-      <a class="mh__brand" href="/" aria-label="Ariella Digital Consulting home">
-        <svg width="30" height="29" viewBox="0 0 22 21" fill="none" aria-hidden="true"><path d="M3.26367 4.50242H6.73663C6.73663 4.50242 6.34303 2.79392 8.93617 2.81733C8.93617 2.81733 11.3557 2.46626 10.9736 5.91836V20.3704H14.6666V4.17476C14.5796 2.0901 12.9923 0.385859 10.9389 0.172667C10.9389 0.172667 3.04371 -1.32519 3.26367 4.50242Z" fill="#32E0C4"></path><path d="M4.46209 20.3658V16.907C4.46209 16.907 2.79204 17.3105 2.81507 14.7163C2.81507 14.7163 2.46954 12.3067 5.85571 12.6987H14.6667V8.96309H4.05897C4.05897 8.96309 0.91467 8.87085 0.131475 12.6641C0.177545 12.6641 -1.27367 20.5849 4.46209 20.3658Z" fill="#362DFF"></path><rect x="4.07397" y="20.3706" width="3.25926" height="10.5926" transform="rotate(-90 4.07397 20.3706)" fill="#362DFF"></rect><rect x="10.5925" y="20.3706" width="3.25926" height="11.4074" transform="rotate(-90 10.5925 20.3706)" fill="#FFD458"></rect><path d="M21.9999 8.96289H10.5925V12.2221H21.0047C21.3361 12.2028 21.6686 12.2028 21.9999 12.2221V8.96289Z" fill="#FFD458"></path><rect x="10.5925" y="8.96289" width="4.07407" height="11.4074" fill="#362DFF"></rect></svg>
-        <span>riella Digital Consulting</span>
-      </a>
-      <button class="mh__toggle" aria-expanded="false" aria-controls="mh-nav" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="mh__nav" id="mh-nav" aria-label="Primary" data-open="false">
-        {navLinks.map((item) => <a class="mh__link" href={item.href} aria-current={item.href === '/' ? 'page' : undefined}>{item.label}</a>)}
-        <a class="ui-btn ui-btn-primary mh__cta" href={contactHref}>Book a call</a>
-      </nav>
-    </div>
-  </header>
-
   <div class="home">
     <!-- HERO -->
     <section class="hero">
@@ -384,18 +360,7 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
   </footer>
 </Base>
 
-<script>
-  const toggle = document.querySelector<HTMLButtonElement>('.mh__toggle');
-  const menu = document.querySelector<HTMLElement>('.mh__nav');
-  toggle?.addEventListener('click', () => {
-    const open = menu?.dataset.open === 'true';
-    if (menu) menu.dataset.open = String(!open);
-    toggle.setAttribute('aria-expanded', String(!open));
-  });
-</script>
-
 <style>
-  .mh,
   .home,
   .mf {
     --navy: #05006c;
@@ -493,70 +458,6 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
   }
   .text-link:hover {
     color: var(--navy);
-  }
-
-  /* ---------- header ---------- */
-  .mh {
-    background: #fff;
-    border-bottom: 1px solid var(--line);
-    position: relative;
-    z-index: 10;
-  }
-  .mh__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .mh__brand {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    text-decoration: none;
-    color: var(--navy);
-    font-family: var(--f-display);
-    font-weight: 500;
-    font-size: 20px;
-    letter-spacing: -0.2px;
-  }
-  .mh__nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 28px;
-    font-size: 15px;
-    font-weight: 600;
-  }
-  .mh__link {
-    color: var(--navy);
-    text-decoration: none;
-  }
-  .mh__link:hover,
-  .mh__link[aria-current='page'] {
-    color: var(--blue);
-  }
-  .mh__cta {
-    padding: 12px 20px;
-  }
-  .mh__toggle {
-    display: none;
-    width: 44px;
-    height: 44px;
-    padding: 12px 10px;
-    border: 0;
-    background: none;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .mh__toggle span {
-    display: block;
-    height: 2px;
-    background: var(--navy);
-    border-radius: 2px;
   }
 
   /* ---------- hero ---------- */
@@ -1292,35 +1193,8 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
   }
 
   /* ---------- responsive ---------- */
-  @media (max-width: 900px) {
-    .mh__toggle {
-      display: flex;
-    }
-    .mh__inner {
-      flex-wrap: wrap;
-    }
-    .mh__nav {
-      display: none;
-      width: 100%;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 4px;
-      padding-top: 8px;
-    }
-    .mh__nav[data-open='true'] {
-      display: flex;
-    }
-    .mh__link {
-      padding: 10px 0;
-    }
-    .mh__cta {
-      justify-content: center;
-      margin-top: 8px;
-    }
-  }
   @media (max-width: 600px) {
-    .container,
-    .mh__inner {
+    .container {
       padding-left: 16px;
       padding-right: 16px;
     }
