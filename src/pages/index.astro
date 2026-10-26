@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Insights from '../components/Insights.astro';
 import { social, contactHref } from '../data/site';
 
 const docsUrl = 'https://docs.adc.dev';
@@ -66,14 +67,6 @@ const widgets: { tag: keyof typeof widgetTags; title: string; href: string; body
   { tag: 'Admin', title: 'Content Page Layout Mover', href: '/metadata-mover', body: 'Copy page layouts between content in seconds, not hours.' },
 ];
 
-const steps = [
-  { color: '#362dff', num: '#362dff', title: 'Align on vision &amp; goals', body: "A strategy with your organization's vision at the forefront." },
-  { color: '#32e0c4', num: '#0a6b5c', title: 'Define measurable success', body: 'KPIs, gaps and adoption opportunities, identified up front.' },
-  { color: '#ffd458', num: '#8a6500', title: 'Deliver a rich and unified experience', body: 'Enablement for day-to-day operations and the long term.' },
-  { color: '#362dff', num: '#362dff', title: 'Empower your core team', body: 'Enablement for day-to-day operations and the long term.' },
-  { color: '#05006c', num: '#05006c', title: 'Keep evolving', body: 'New use cases and improvements as your workplace grows.' },
-];
-
 const testimonials = [
   {
     mark: '#ffd458',
@@ -108,7 +101,7 @@ const footerCols = [
       { href: '/', label: 'Home' },
       { href: '/about', label: 'About' },
       { href: '/news', label: 'News' },
-      { href: '#process', label: 'Process' },
+      { href: '/implementations#process', label: 'Process' },
       { href: '#clients', label: 'Clients' },
     ],
   },
@@ -256,25 +249,6 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
       </div>
     </section>
 
-    <!-- PROCESS -->
-    <section id="process" class="container section">
-      <div class="section__intro">
-        <span class="eyebrow">How we work</span>
-        <h2>A clear path from strategy to a self-sufficient team.</h2>
-      </div>
-      <ol class="steps">
-        {
-          steps.map((s, i) => (
-            <li style={`border-top-color:${s.color}`}>
-              <span class="steps__num" style={`color:${s.num}`}>{String(i + 1).padStart(2, '0')}</span>
-              <h3 set:html={s.title} />
-              <p>{s.body}</p>
-            </li>
-          ))
-        }
-      </ol>
-    </section>
-
     <!-- TESTIMONIALS -->
     <section id="clients" class="dark">
       <div class="container section">
@@ -298,6 +272,8 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
         </div>
       </div>
     </section>
+
+    <Insights />
 
     <!-- CTA -->
     <section id="contact" class="container cta-wrap">
@@ -884,37 +860,6 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
   .tag--blue {
     color: #2a22b8;
     background: #e9e8ff;
-  }
-
-  /* ---------- process ---------- */
-  .steps {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-  }
-  .steps li {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-top: 22px;
-    border-top: 3px solid;
-  }
-  .steps__num {
-    font-family: var(--f-display);
-    font-weight: 800;
-    font-size: 15px;
-  }
-  .steps h3 {
-    font-size: 20px;
-    line-height: 1.25;
-  }
-  .steps p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--muted);
   }
 
   /* ---------- testimonials ---------- */
