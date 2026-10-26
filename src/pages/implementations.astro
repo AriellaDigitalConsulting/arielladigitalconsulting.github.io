@@ -1,280 +1,312 @@
 ---
-// Implementations page, converted from the "Implementations — modern direction" design.
+// Implementations page, converted from the adc-implementations design. The main navigation is the shared SiteHeader.
 import Base from '../layouts/Base.astro';
 
 const year = new Date().getFullYear();
 ---
 
-<Base title="LumApps Implementation Services | Ariella Digital Consulting" description="Full-service LumApps implementation: strategy, design, content migration and launch, led by the first LumApps deployment consultant onboarded in the US." bare>
+<Base title="LumApps Implementation Services | Ariella Digital Consulting" description="Full-service LumApps implementation: strategy, design, content migration, change management and project management, led by the first LumApps deployment consultant onboarded in the US." bare>
   <div class="impl">
     <!-- HERO -->
-  <section id="top" style="background: #05006C; color: #FFFFFF; position: relative; overflow: hidden">
-    <div aria-hidden="true" style="position: absolute; right: -140px; bottom: -220px; width: 620px; height: 620px; border-radius: 50%; border: 90px solid rgba(54,45,255,0.32)"></div>
-    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 108px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; position: relative">
-      <div style="flex: 1.2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
-        <div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); font-size: 14px; font-weight: 600; color: #E6E5FF">
-          <span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #32E0C4"></span>
-          LumApps Implementation &amp; Deployment Services
+    <section id="top" style="background: #05006C; color: #FFFFFF; position: relative; overflow: hidden">
+      <div aria-hidden="true" style="position: absolute; right: -140px; bottom: -220px; width: 620px; height: 620px; border-radius: 50%; border: 90px solid rgba(54,45,255,0.32)"></div>
+      <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 108px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; position: relative">
+        <div style="flex: 1.2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
+          <div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); font-size: 14px; font-weight: 600; color: #E6E5FF">
+            <span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #32E0C4"></span>
+            LumApps Implementation Services
+          </div>
+          <h1 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(40px, 5.2vw, 66px); line-height: 1.04; letter-spacing: -1.5px">From one shared vision to a LumApps platform <span style="color: #32E0C4">people actually use</span>.</h1>
+          <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D2F5; max-width: 580px">Full-service LumApps implementation, led by the first LumApps deployment consultant onboarded in the US. We align your stakeholders, design the experience, migrate your content and launch — then make sure it sticks.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 4px">
+            <a class="btn-primary" href="#contact" style="background: #362DFF; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 999px; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; box-sizing: border-box">Plan your implementation
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </a>
+            <a class="btn-ghost" href="#approach" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box">See our approach</a>
+          </div>
+          <div style="display: flex; align-items: center; gap: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.16); margin-top: 6px">
+            <img src="/images/c8606b6cc61f.webp" alt="LumApps Partner Program: Trusted Partner, Consulting, Training and Design" style="width: 104px; height: 104px; object-fit: contain; flex: none">
+            <div style="display: flex; flex-direction: column; gap: 4px">
+              <span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 17px; color: #FFFFFF">LumApps Trusted Partner</span>
+              <span style="font-size: 14px; line-height: 1.5; color: #D4D2F5">Certified for Consulting, Training &amp; Design</span>
+            </div>
+          </div>
         </div>
-        <h1 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(40px, 5.2vw, 66px); line-height: 1.04; letter-spacing: -1.5px">From one shared vision to a LumApps platform <span style="color: #32E0C4">people actually use</span>.</h1>
-        <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #D4D2F5; max-width: 580px">Full-service LumApps implementation, led by the first LumApps deployment consultant onboarded in the US. We align your stakeholders, design the experience, migrate your content and launch — then make sure it sticks.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 14px; padding-top: 4px">
-          <a class="btn-primary" href="#contact" style="background: #362DFF; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 999px; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; box-sizing: border-box">Plan your implementation
+
+        <!-- Hero visual: Implementation holds the five disciplines -->
+        <div role="img" aria-label="Implementation, made up of five parts: Strategy, Design, Migration, Change and Project Management" style="flex: 1 1 380px; min-width: 0; background: #FFFFFF; color: #05006C; border-radius: 26px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 30px 60px rgba(0,0,0,0.25)">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 4px 4px 6px">
+            <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 24px">Implementation</span>
+            <span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #FFFFFF; background: #362DFF; padding: 6px 12px; border-radius: 999px">One team</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+            <div style="background: #05006C; color: #FFFFFF; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px; min-height: 104px; box-sizing: border-box"><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 13px; color: #FFD458">01</span><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Strategy</span></div>
+            <div style="background: #32E0C4; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px; min-height: 104px; box-sizing: border-box"><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 13px">02</span><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Design</span></div>
+            <div style="background: #FFD458; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px; min-height: 104px; box-sizing: border-box"><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 13px">03</span><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Migration</span></div>
+          </div>
+          <div style="background: #E9E8FF; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px"><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 13px; color: #362DFF">04</span><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 17px">Change</span><span style="margin-left: auto; font-size: 13px; color: #3A3870">Throughout</span></div>
+          <div style="background: #F1F0FF; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px"><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 13px; color: #362DFF">05</span><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 17px">Project Management</span><span style="margin-left: auto; font-size: 13px; color: #3A3870">Throughout</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF STRIP -->
+
+
+    <!-- VISION QUOTE -->
+    <section aria-label="Our philosophy" style="max-width: 1200px; margin: 0 auto; padding: 112px 24px 40px">
+      <figure style="margin: 0; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+        <svg width="64" height="52" viewBox="0 0 34 28" fill="#FFD458" aria-hidden="true" style="flex: none"><path d="M0 28V16C0 6 5 1 14 0v6c-4 1-6 4-6 8h6v14zM20 28V16c0-10 5-15 14-16v6c-4 1-6 4-6 8h6v14z"></path></svg>
+        <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+          <blockquote style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.18; letter-spacing: -0.8px; color: #05006C">A platform launch is a date on a calendar. An implementation is a promise — that on day 100, your people are <span style="color: #362DFF">still choosing</span> to use it.</blockquote>
+          <figcaption style="display: flex; align-items: center; gap: 14px">
+            <span style="width: 48px; height: 48px; border-radius: 50%; background: #05006C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: Archivo, sans-serif; font-weight: 700">MZ</span>
+            <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 16px; color: #05006C">Misha Zubarev</span><span style="font-size: 14px; color: #4A4870">Founder &amp; Managing Director, ADC</span></span>
+          </figcaption>
+        </div>
+      </figure>
+    </section>
+
+    <!-- APPROACH: Implementation as the main bucket -->
+    <section id="approach" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 112px; display: flex; flex-direction: column; gap: 44px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+        <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">The ADC Strategic Windows Approach</span>
+          <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -1px; color: #05006C">One implementation. Five disciplines. One accountable team.</h2>
+        </div>
+        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #4A4870; max-width: 380px">Strategy, design and migration happen in sequence. Change management and project management run alongside every phase, from kickoff to go-live.</p>
+      </div>
+
+      <!-- The bucket -->
+      <div style="border: 2px solid #362DFF; background: #F7F7FC; border-radius: 32px; padding: clamp(24px, 3.5vw, 40px); display: flex; flex-direction: column; gap: 28px">
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px">
+          <div style="display: flex; align-items: center; gap: 16px">
+            <span style="width: 56px; height: 56px; border-radius: 16px; background: #362DFF; display: flex; align-items: center; justify-content: center; flex: none"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M3 9h18M9 21V9"></path></svg></span>
+            <div style="display: flex; flex-direction: column; gap: 4px">
+              <h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(24px, 7vw, 32px); line-height: 1.1; color: #05006C">Implementation</h3>
+              <span style="font-size: 15px; color: #4A4870">Everything it takes to take LumApps from signed contract to a platform people use.</span>
+            </div>
+          </div>
+          <span style="font-size: 13px; font-weight: 600; color: #2A22B8; background: #E9E8FF; padding: 6px 14px; border-radius: 999px">Scoped and delivered by ADC</span>
+        </div>
+
+        <!-- Sequenced phases -->
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">In sequence</span>
+          <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px">
+
+            <li style="background: #05006C; color: #FFFFFF; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+              <div style="display: flex; justify-content: space-between; align-items: center">
+                <span style="width: 48px; height: 48px; border-radius: 14px; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD458" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><path d="M12 3v2M21 12h-2"></path></svg></span>
+                <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 15px; color: #FFD458">01</span>
+              </div>
+              <h4 style="margin: 0; font-family: Archivo, sans-serif; font-size: 24px">Strategy</h4>
+              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #D4D2F5">Stakeholder alignment on one shared vision, before a single page is built.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; font-size: 13px"><span style="border: 1px solid rgba(255,255,255,0.3); padding: 5px 11px; border-radius: 999px">Use Case</span><span style="border: 1px solid rgba(255,255,255,0.3); padding: 5px 11px; border-radius: 999px">Architecture</span><span style="border: 1px solid rgba(255,255,255,0.3); padding: 5px 11px; border-radius: 999px">Governance</span><span style="border: 1px solid rgba(255,255,255,0.3); padding: 5px 11px; border-radius: 999px">Analytics</span><span style="border: 1px solid rgba(255,255,255,0.3); padding: 5px 11px; border-radius: 999px">Content UX</span></div>
+            </li>
+
+            <li style="background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+              <div style="display: flex; justify-content: space-between; align-items: center">
+                <span style="width: 48px; height: 48px; border-radius: 14px; background: #32E0C4; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#05006C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 9v11"></path></svg></span>
+                <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 15px; color: #0A6B5C">02</span>
+              </div>
+              <h4 style="margin: 0; font-family: Archivo, sans-serif; font-size: 24px; color: #05006C">Design</h4>
+              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A4870">Templates, mockups and a final experience that looks and feels like your brand, from a LumApps-certified design partner.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; font-size: 13px; color: #3A3870"><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Templates</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Mockups</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Custom CSS</span></div>
+            </li>
+
+            <li style="background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+              <div style="display: flex; justify-content: space-between; align-items: center">
+                <span style="width: 48px; height: 48px; border-radius: 14px; background: #FFD458; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#05006C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h11M11 3l4 4-4 4M20 17H9M13 13l-4 4 4 4"></path></svg></span>
+                <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 15px; color: #8A6500">03</span>
+              </div>
+              <h4 style="margin: 0; font-family: Archivo, sans-serif; font-size: 24px; color: #05006C">Migration</h4>
+              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A4870">Content audit, cleanup and mapping from legacy platforms, migrated and validated in your new LumApps architecture.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; font-size: 13px; color: #3A3870"><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">SharePoint</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Jive</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Workplace</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Audit · Map · Validate</span></div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Running throughout -->
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">Throughout, from kickoff to go-live</span>
+          <ol start="4" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px">
+
+            <li style="background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 22px; padding: 24px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px">
+              <div style="display: flex; align-items: center; gap: 16px; flex: 0 1 260px; min-width: 0">
+                <span style="width: 48px; height: 48px; border-radius: 14px; background: #362DFF; display: flex; align-items: center; justify-content: center; flex: none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3 3 0 0 1 0 6M21 20c0-2.6-1.6-4.8-4-5.6"></path></svg></span>
+                <div style="display: flex; flex-direction: column; gap: 2px">
+                  <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 14px; color: #362DFF">04</span>
+                  <h4 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; color: #05006C">Change</h4>
+                </div>
+              </div>
+              <p style="margin: 0; flex: 1 1 320px; min-width: 0; font-size: 15px; line-height: 1.6; color: #4A4870">Change management that gets people ready before launch day: sponsors who lead visibly, a communications plan, and enablement that turns go-live into everyday habit.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; flex: 0 1 300px; font-size: 13px; color: #3A3870"><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Sponsorship</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Communications</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Champions</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Training</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Adoption</span></div>
+            </li>
+
+            <li style="background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 22px; padding: 24px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px">
+              <div style="display: flex; align-items: center; gap: 16px; flex: 0 1 260px; min-width: 0">
+                <span style="width: 48px; height: 48px; border-radius: 14px; background: #05006C; display: flex; align-items: center; justify-content: center; flex: none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4M8 15l2 2 4-4"></path></svg></span>
+                <div style="display: flex; flex-direction: column; gap: 2px">
+                  <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 14px; color: #362DFF">05</span>
+                  <h4 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; color: #05006C">Project Management</h4>
+                </div>
+              </div>
+              <p style="margin: 0; flex: 1 1 320px; min-width: 0; font-size: 15px; line-height: 1.6; color: #4A4870">One accountable lead who owns the plan, the milestones and the risks, and keeps your team, IT and LumApps moving to the same date.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; flex: 0 1 300px; font-size: 13px; color: #3A3870"><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Plan &amp; milestones</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Status reporting</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Risks</span><span style="background: #F1F0FF; padding: 5px 11px; border-radius: 999px">Go-live</span></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOUND FAMILIAR -->
+    <section aria-labelledby="familiar-h" style="background: #F7F7FC">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+        <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">Sound familiar?</span>
+          <h2 id="familiar-h" style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -1px; color: #05006C">The questions we hear before every rollout.</h2>
+          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #4A4870">If one of these is on your mind, you're in the right place. Each one maps to a window in our approach.</p>
+        </div>
+        <div style="flex: 1.4 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+          <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“Who's going to help us roll this out?”</span><span style="font-size: 13px; font-weight: 600; color: #2A22B8; background: #E9E8FF; padding: 5px 12px; border-radius: 999px">Strategy</span></div>
+          <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“We need it to look and feel like our brand.”</span><span style="font-size: 13px; font-weight: 600; color: #0A6B5C; background: #DDF9F4; padding: 5px 12px; border-radius: 999px">Design</span></div>
+          <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“We're moving off SharePoint. What happens to our content?”</span><span style="font-size: 13px; font-weight: 600; color: #6B4E00; background: #FFF3CC; padding: 5px 12px; border-radius: 999px">Migration</span></div>
+          <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“Can employees see their Workday tasks without leaving the intranet?”</span><span style="font-size: 13px; font-weight: 600; color: #FFFFFF; background: #362DFF; padding: 5px 12px; border-radius: 999px">Implementation</span></div>
+          <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“How do we keep it from becoming another ghost town?”</span><span style="font-size: 13px; font-weight: 600; color: #FFFFFF; background: #362DFF; padding: 5px 12px; border-radius: 999px">Adoption</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS / CASE STUDIES -->
+    <section id="results" style="max-width: 1200px; margin: 0 auto; padding: 112px 24px; display: flex; flex-direction: column; gap: 48px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+        <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">Where we help</span>
+          <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -1px; color: #05006C">The rollouts we're built for.</h2>
+        </div>
+        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #4A4870; max-width: 400px">Every organization is different, but most LumApps implementations start from one of these four situations.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+        <article style="border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+          <span style="font-size: 13px; font-weight: 600; color: #2A22B8; background: #E9E8FF; padding: 5px 12px; border-radius: 999px; align-self: flex-start">New platform launch</span>
+          <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.25; color: #05006C">You've just signed with LumApps and need to go live.</h3>
+          <dl style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+            <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">We deliver</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Solutions strategy, architecture, governance, design and a guided launch.</dd></div>
+            <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">You walk away with</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">A live platform and a core team ready to run it.</dd></div>
+          </dl>
+        </article>
+        <article style="border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+          <span style="font-size: 13px; font-weight: 600; color: #6B4E00; background: #FFF3CC; padding: 5px 12px; border-radius: 999px; align-self: flex-start">Legacy migration</span>
+          <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.25; color: #05006C">You're leaving SharePoint, Jive or Workplace behind.</h3>
+          <dl style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+            <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">We deliver</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Content audit, cleanup, mapping, migration and validation.</dd></div>
+            <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">You walk away with</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Only the content worth keeping, organized for how people search today.</dd></div>
+          </dl>
+        </article>
+        <article style="border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+          <span style="font-size: 13px; font-weight: 600; color: #0A6B5C; background: #DDF9F4; padding: 5px 12px; border-radius: 999px; align-self: flex-start">Brand relaunch</span>
+          <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.25; color: #05006C">Your company has a new brand, and the intranet has to follow.</h3>
+          <dl style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+            <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">We deliver</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Homepage redesign and a coordinated brand swap across every site.</dd></div>
+            <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">You walk away with</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">One consistent experience, launched on your date.</dd></div>
+          </dl>
+        </article>
+        <article style="border: 1.5px solid #362DFF; background: #F7F7FC; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+          <span style="font-size: 13px; font-weight: 600; color: #FFFFFF; background: #362DFF; padding: 5px 12px; border-radius: 999px; align-self: flex-start">Unified digital workplace</span>
+          <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.25; color: #05006C">You want one front door to every tool your people use.</h3>
+          <dl style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+            <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">We deliver</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Integrations, custom widgets and AI agents built into the rollout.</dd></div>
+            <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">You walk away with</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Fewer tabs, and a homepage people open first.</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHY ADOPTION MATTERS (research callout) -->
+    <section aria-label="Why adoption planning matters" style="background: #05006C; color: #FFFFFF; position: relative; overflow: hidden">
+      <div aria-hidden="true" style="position: absolute; left: -80px; top: -60px; display: flex; gap: 10px; transform: rotate(-12deg)">
+        <span style="width: 64px; height: 200px; border-radius: 32px; background: #32E0C4; opacity: 0.85"></span>
+        <span style="width: 64px; height: 200px; border-radius: 32px; background: #FFD458; opacity: 0.85"></span>
+      </div>
+      <div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; position: relative">
+        <div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 24px; align-items: flex-end; flex-wrap: wrap">
+          <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(64px, 8vw, 104px); line-height: 0.9; color: #32E0C4">88%</span><span style="font-size: 14px; color: #D4D2F5; max-width: 180px">of projects with excellent change management met their objectives</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(40px, 5vw, 64px); line-height: 0.9; color: #FFD458">13%</span><span style="font-size: 14px; color: #D4D2F5; max-width: 180px">with poor change management</span></div>
+        </div>
+        <div style="flex: 1.1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+          <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #32E0C4">Why we plan for adoption from day one</span>
+          <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.12; letter-spacing: -0.8px">Technology goes live on launch day. Adoption is designed long before it.</h2>
+          <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #D4D2F5">That's why governance, analytics and enablement sit in our foundation, not in a phase-two wishlist.</p>
+          <span style="font-size: 13px; color: #A9A6E6">Source: Prosci, Best Practices in Change Management research.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEYOND GO-LIVE -->
+    <section id="extensions" style="max-width: 1200px; margin: 0 auto; padding: 112px 24px 96px; display: flex; flex-direction: column; gap: 44px">
+      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+        <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">The ADC edge</span>
+        <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -1px; color: #05006C">When “out of the box” isn't enough, we build what's missing.</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #4A4870">Most implementation partners stop at configuration. Because we also engineer for LumApps, your rollout never stalls on a feature gap.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+        <div style="background: #F7F7FC; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; color: #05006C">Integrations</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">Connect the HR, IT and finance tools your people already use.</p></div>
+        <div style="background: #F7F7FC; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; color: #05006C">Custom widgets</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">45+ extensions, from accessibility to gamification.</p></div>
+        <div style="background: #F7F7FC; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; color: #05006C">Agent Hub</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">Certified deployment of LumApps AI agents, governed by audience.</p></div>
+        <div style="background: #F7F7FC; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; color: #05006C">MicroApps</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">Certified MicroApps for everyday tasks, right in the flow of work.</p></div>
+      </div>
+    </section>
+
+    <!-- INSIGHTS / THOUGHT LEADERSHIP -->
+    <section id="insights" style="background: #F7F7FC">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 44px">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+          <div style="display: flex; flex-direction: column; gap: 14px; max-width: 700px">
+            <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">Insights</span>
+            <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -1px; color: #05006C">We share what we learn — every month.</h2>
+          </div>
+          <a class="btn-outline" href="/news" style="color: #362DFF; text-decoration: none; font-weight: 600; font-size: 15px; padding: 12px 22px; border-radius: 999px; border: 1.5px solid #362DFF; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">All news</a>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+          <a class="card-hover" href="/news/replay-adc-live-presents-lumapps-agents-agents-space-mcp" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column">
+            <div style="background: #362DFF; color: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 6px; min-height: 140px; box-sizing: border-box; justify-content: flex-end"><span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #FFD458">ADC Live! · Replay</span><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 22px">Monthly webinar</span></div>
+            <div style="padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; line-height: 1.3; color: #05006C">LumApps Agents, Agents Space &amp; MCP</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">What the October release means for AI agents in the digital workplace.</p><span style="font-size: 14px; font-weight: 600; color: #362DFF">Watch the replay →</span></div>
+          </a>
+          <a class="card-hover" href="/news/interim-release-notes-by-lumapps-marketplace-page-reader-by-adc" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column">
+            <div style="background: #FFD458; color: #05006C; padding: 28px; display: flex; flex-direction: column; gap: 6px; min-height: 140px; box-sizing: border-box; justify-content: flex-end"><span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase">News · July 2026</span><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 22px">Featured by LumApps</span></div>
+            <div style="padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; line-height: 1.3; color: #05006C">Page Reader updates in the LumApps release notes</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">Custom pronunciation, playback speed and voice selection for text-to-speech.</p><span style="font-size: 14px; font-weight: 600; color: #362DFF">Read the story →</span></div>
+          </a>
+          <a class="card-hover" href="/news" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column">
+            <div style="background: #05006C; color: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 6px; min-height: 140px; box-sizing: border-box; justify-content: flex-end"><span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #32E0C4">Guide · Coming soon</span><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 22px">Playbook</span></div>
+            <div style="padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; line-height: 1.3; color: #05006C">Your LumApps implementation checklist</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">[A downloadable guide that gives early-stage visitors a low-commitment next step.]</p><span style="font-size: 14px; font-weight: 600; color: #362DFF">Get the guide →</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 112px">
+      <div style="background: #362DFF; color: #FFFFFF; border-radius: 32px; padding: clamp(40px, 6vw, 72px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; position: relative; overflow: hidden">
+        <div aria-hidden="true" style="position: absolute; right: -60px; bottom: -60px; display: flex; gap: 10px; transform: rotate(-12deg)">
+          <span style="width: 70px; height: 220px; border-radius: 35px; background: #32E0C4; opacity: 0.9"></span>
+          <span style="width: 70px; height: 220px; border-radius: 35px; background: #FFD458; opacity: 0.9"></span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; position: relative">
+          <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -1px">Let's open the first window together.</h2>
+          <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #E6E5FF">A 30-minute discovery call: where you are with LumApps, where you want to be, and the shortest path between them.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; position: relative">
+          <a href="mailto:misha@arielladigitalconsulting.com" style="background: #FFFFFF; color: #05006C; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 28px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px">Book a discovery call
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
           </a>
-          <a class="btn-ghost" href="#approach" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box">See our approach</a>
+          <a class="btn-ghost" href="#insights" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 16px 24px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.5); min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Watch ADC Live! first</a>
         </div>
       </div>
+    </section>
 
-      <!-- Hero visual: the four "windows" -->
-      <div role="img" aria-label="Four stages of an ADC implementation: Strategy, Design, Migration, Implementation" style="flex: 1 1 380px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
-        <div style="background: #FFFFFF; color: #05006C; border-radius: 22px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-height: 150px; box-sizing: border-box; box-shadow: 0 30px 60px rgba(0,0,0,0.25)">
-          <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 14px; color: #362DFF">01</span>
-          <span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 20px">Strategy</span>
-          <span style="font-size: 13px; color: #4A4870; line-height: 1.5">One vision every stakeholder signs.</span>
-        </div>
-        <div style="background: #32E0C4; color: #05006C; border-radius: 22px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-height: 150px; box-sizing: border-box; box-shadow: 0 30px 60px rgba(0,0,0,0.25)">
-          <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 14px">02</span>
-          <span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 20px">Design</span>
-          <span style="font-size: 13px; line-height: 1.5">An experience shaped by your brand.</span>
-        </div>
-        <div style="background: #FFD458; color: #05006C; border-radius: 22px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-height: 150px; box-sizing: border-box; box-shadow: 0 30px 60px rgba(0,0,0,0.25)">
-          <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 14px">03</span>
-          <span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 20px">Migration</span>
-          <span style="font-size: 13px; line-height: 1.5">Years of content, moved cleanly.</span>
-        </div>
-        <div style="background: #362DFF; color: #FFFFFF; border-radius: 22px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-height: 150px; box-sizing: border-box; box-shadow: 0 30px 60px rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.25)">
-          <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 14px; color: #FFD458">04</span>
-          <span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 20px">Implementation</span>
-          <span style="font-size: 13px; line-height: 1.5; color: #E6E5FF">Built, launched and adopted.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROOF STRIP -->
-
-
-  <!-- VISION QUOTE -->
-  <section aria-label="Our philosophy" style="max-width: 1200px; margin: 0 auto; padding: 112px 24px 40px">
-    <figure style="margin: 0; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
-      <svg width="64" height="52" viewBox="0 0 34 28" fill="#FFD458" aria-hidden="true" style="flex: none"><path d="M0 28V16C0 6 5 1 14 0v6c-4 1-6 4-6 8h6v14zM20 28V16c0-10 5-15 14-16v6c-4 1-6 4-6 8h6v14z"></path></svg>
-      <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-        <blockquote style="margin: 0; font-family: Archivo, sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.18; letter-spacing: -0.8px; color: #05006C">A platform launch is a date on a calendar. An implementation is a promise — that on day 100, your people are <span style="color: #362DFF">still choosing</span> to use it.</blockquote>
-        <figcaption style="display: flex; align-items: center; gap: 14px">
-          <span style="width: 48px; height: 48px; border-radius: 50%; background: #05006C; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: Archivo, sans-serif; font-weight: 700">MZ</span>
-          <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 16px; color: #05006C">Misha Zubarev</span><span style="font-size: 14px; color: #4A4870">Founder &amp; Managing Director, ADC</span></span>
-        </figcaption>
-      </div>
-    </figure>
-  </section>
-
-  <!-- STRATEGIC WINDOWS APPROACH -->
-  <section id="approach" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 112px; display: flex; flex-direction: column; gap: 48px">
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
-        <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">The ADC Strategic Windows Approach</span>
-        <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -1px; color: #05006C">Everything rests on strategy. We carry it all the way to launch.</h2>
-      </div>
-      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #4A4870; max-width: 380px">Each window opens only when the one before it is solid, so nothing gets built on assumptions.</p>
-    </div>
-
-    <!-- Foundation -->
-    <div style="background: #05006C; color: #FFFFFF; border-radius: 28px; padding: clamp(28px, 4vw, 44px); display: flex; flex-direction: column; gap: 28px">
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px">
-        <div style="display: flex; flex-direction: column; gap: 10px; max-width: 600px">
-          <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #FFD458">The foundation · Strategy &amp; SME consulting</span>
-          <h3 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: 30px; line-height: 1.15">Solutions Strategy</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #D4D2F5">Stakeholder alignment on one shared vision — before a single page is built.</p>
-        </div>
-        <span style="font-size: 14px; color: #C9C7F2; align-self: flex-end">Five strategy pillars</span>
-      </div>
-      <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px">
-        <li style="border: 1.5px solid rgba(255,255,255,0.22); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Use Case</span><span style="font-size: 14px; line-height: 1.5; color: #C9C7F2">Who it serves, and what they need to get done.</span></li>
-        <li style="border: 1.5px solid rgba(255,255,255,0.22); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Architecture</span><span style="font-size: 14px; line-height: 1.5; color: #C9C7F2">Sites, navigation and audiences that scale.</span></li>
-        <li style="border: 1.5px solid rgba(255,255,255,0.22); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Governance</span><span style="font-size: 14px; line-height: 1.5; color: #C9C7F2">Who owns what, and how it stays healthy.</span></li>
-        <li style="border: 1.5px solid rgba(255,255,255,0.22); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Analytics</span><span style="font-size: 14px; line-height: 1.5; color: #C9C7F2">KPIs defined up front, so success is provable.</span></li>
-        <li style="border: 1.5px solid rgba(255,255,255,0.22); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Content UX</span><span style="font-size: 14px; line-height: 1.5; color: #C9C7F2">Content people can find, read and trust.</span></li>
-      </ul>
-    </div>
-
-    <!-- Three windows -->
-    <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
-      <li style="border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
-        <div style="display: flex; justify-content: space-between; align-items: center">
-          <span style="width: 52px; height: 52px; border-radius: 14px; background: #32E0C4; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#05006C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 9v11"></path></svg></span>
-          <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 15px; color: #0A6B5C">Window 02</span>
-        </div>
-        <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 24px; color: #05006C">UI/UX Design</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A4870">Templates, mockups and a final experience that looks and feels like your brand — designed by a LumApps-certified design partner.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; font-size: 13px; color: #3A3870"><span style="background: #F1F0FF; padding: 6px 12px; border-radius: 999px">Templates</span><span style="background: #F1F0FF; padding: 6px 12px; border-radius: 999px">Mockups</span><span style="background: #F1F0FF; padding: 6px 12px; border-radius: 999px">Custom CSS</span></div>
-      </li>
-      <li style="border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
-        <div style="display: flex; justify-content: space-between; align-items: center">
-          <span style="width: 52px; height: 52px; border-radius: 14px; background: #FFD458; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#05006C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h11M11 3l4 4-4 4M20 17H9M13 13l-4 4 4 4"></path></svg></span>
-          <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 15px; color: #8A6500">Window 03</span>
-        </div>
-        <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 24px; color: #05006C">Migration</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A4870">Content audit, cleanup and mapping from legacy platforms, migrated and validated in your new LumApps architecture.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; font-size: 13px; color: #3A3870"><span style="background: #F1F0FF; padding: 6px 12px; border-radius: 999px">SharePoint</span><span style="background: #F1F0FF; padding: 6px 12px; border-radius: 999px">Jive</span><span style="background: #F1F0FF; padding: 6px 12px; border-radius: 999px">Workplace</span><span style="background: #F1F0FF; padding: 6px 12px; border-radius: 999px">Audit · Map · Validate</span></div>
-      </li>
-      <li style="border: 1.5px solid #362DFF; background: #F7F7FC; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
-        <div style="display: flex; justify-content: space-between; align-items: center">
-          <span style="width: 52px; height: 52px; border-radius: 14px; background: #362DFF; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
-          <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 15px; color: #362DFF">Window 04</span>
-        </div>
-        <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 24px; color: #05006C">Implementation</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #4A4870">Bringing it all together: platform build, integrations, testing and launch, with adoption support beyond go-live.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; font-size: 13px; color: #3A3870"><span style="background: #FFFFFF; padding: 6px 12px; border-radius: 999px">Build</span><span style="background: #FFFFFF; padding: 6px 12px; border-radius: 999px">Integrate</span><span style="background: #FFFFFF; padding: 6px 12px; border-radius: 999px">Launch</span><span style="background: #FFFFFF; padding: 6px 12px; border-radius: 999px">Adopt</span></div>
-      </li>
-    </ol>
-  </section>
-
-  <!-- SOUND FAMILIAR -->
-  <section aria-labelledby="familiar-h" style="background: #F7F7FC">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
-      <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-        <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">Sound familiar?</span>
-        <h2 id="familiar-h" style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; letter-spacing: -1px; color: #05006C">The questions we hear before every rollout.</h2>
-        <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #4A4870">If one of these is on your mind, you're in the right place. Each one maps to a window in our approach.</p>
-      </div>
-      <div style="flex: 1.4 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-        <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“Who's going to help us roll this out?”</span><span style="font-size: 13px; font-weight: 600; color: #2A22B8; background: #E9E8FF; padding: 5px 12px; border-radius: 999px">Strategy</span></div>
-        <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“We need it to look and feel like our brand.”</span><span style="font-size: 13px; font-weight: 600; color: #0A6B5C; background: #DDF9F4; padding: 5px 12px; border-radius: 999px">Design</span></div>
-        <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“We're moving off SharePoint. What happens to our content?”</span><span style="font-size: 13px; font-weight: 600; color: #6B4E00; background: #FFF3CC; padding: 5px 12px; border-radius: 999px">Migration</span></div>
-        <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“Can employees see their Workday tasks without leaving the intranet?”</span><span style="font-size: 13px; font-weight: 600; color: #FFFFFF; background: #362DFF; padding: 5px 12px; border-radius: 999px">Implementation</span></div>
-        <div style="background: #FFFFFF; border-radius: 18px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px"><span style="font-size: 17px; font-weight: 600; color: #05006C">“How do we keep it from becoming another ghost town?”</span><span style="font-size: 13px; font-weight: 600; color: #FFFFFF; background: #362DFF; padding: 5px 12px; border-radius: 999px">Adoption</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESULTS / CASE STUDIES -->
-  <section id="results" style="max-width: 1200px; margin: 0 auto; padding: 112px 24px; display: flex; flex-direction: column; gap: 48px">
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px">
-        <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">Where we help</span>
-        <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -1px; color: #05006C">The rollouts we're built for.</h2>
-      </div>
-      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #4A4870; max-width: 400px">Every organization is different, but most LumApps implementations start from one of these four situations.</p>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
-      <article style="border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
-        <span style="font-size: 13px; font-weight: 600; color: #2A22B8; background: #E9E8FF; padding: 5px 12px; border-radius: 999px; align-self: flex-start">New platform launch</span>
-        <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.25; color: #05006C">You've just signed with LumApps and need to go live.</h3>
-        <dl style="margin: 0; display: flex; flex-direction: column; gap: 12px">
-          <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">We deliver</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Solutions strategy, architecture, governance, design and a guided launch.</dd></div>
-          <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">You walk away with</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">A live platform and a core team ready to run it.</dd></div>
-        </dl>
-      </article>
-      <article style="border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
-        <span style="font-size: 13px; font-weight: 600; color: #6B4E00; background: #FFF3CC; padding: 5px 12px; border-radius: 999px; align-self: flex-start">Legacy migration</span>
-        <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.25; color: #05006C">You're leaving SharePoint, Jive or Workplace behind.</h3>
-        <dl style="margin: 0; display: flex; flex-direction: column; gap: 12px">
-          <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">We deliver</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Content audit, cleanup, mapping, migration and validation.</dd></div>
-          <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">You walk away with</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Only the content worth keeping, organized for how people search today.</dd></div>
-        </dl>
-      </article>
-      <article style="border: 1.5px solid #ECEBF7; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
-        <span style="font-size: 13px; font-weight: 600; color: #0A6B5C; background: #DDF9F4; padding: 5px 12px; border-radius: 999px; align-self: flex-start">Brand relaunch</span>
-        <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.25; color: #05006C">Your company has a new brand, and the intranet has to follow.</h3>
-        <dl style="margin: 0; display: flex; flex-direction: column; gap: 12px">
-          <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">We deliver</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Homepage redesign and a coordinated brand swap across every site.</dd></div>
-          <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">You walk away with</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">One consistent experience, launched on your date.</dd></div>
-        </dl>
-      </article>
-      <article style="border: 1.5px solid #362DFF; background: #F7F7FC; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
-        <span style="font-size: 13px; font-weight: 600; color: #FFFFFF; background: #362DFF; padding: 5px 12px; border-radius: 999px; align-self: flex-start">Unified digital workplace</span>
-        <h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.25; color: #05006C">You want one front door to every tool your people use.</h3>
-        <dl style="margin: 0; display: flex; flex-direction: column; gap: 12px">
-          <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">We deliver</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Integrations, custom widgets and AI agents built into the rollout.</dd></div>
-          <div style="display: flex; flex-direction: column; gap: 4px"><dt style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #5A5890">You walk away with</dt><dd style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A4870">Fewer tabs, and a homepage people open first.</dd></div>
-        </dl>
-      </article>
-    </div>
-  </section>
-
-  <!-- WHY ADOPTION MATTERS (research callout) -->
-  <section aria-label="Why adoption planning matters" style="background: #05006C; color: #FFFFFF; position: relative; overflow: hidden">
-    <div aria-hidden="true" style="position: absolute; left: -80px; top: -60px; display: flex; gap: 10px; transform: rotate(-12deg)">
-      <span style="width: 64px; height: 200px; border-radius: 32px; background: #32E0C4; opacity: 0.85"></span>
-      <span style="width: 64px; height: 200px; border-radius: 32px; background: #FFD458; opacity: 0.85"></span>
-    </div>
-    <div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; position: relative">
-      <div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 24px; align-items: flex-end; flex-wrap: wrap">
-        <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(64px, 8vw, 104px); line-height: 0.9; color: #32E0C4">88%</span><span style="font-size: 14px; color: #D4D2F5; max-width: 180px">of projects with excellent change management met their objectives</span></div>
-        <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(40px, 5vw, 64px); line-height: 0.9; color: #FFD458">13%</span><span style="font-size: 14px; color: #D4D2F5; max-width: 180px">with poor change management</span></div>
-      </div>
-      <div style="flex: 1.1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-        <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #32E0C4">Why we plan for adoption from day one</span>
-        <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.12; letter-spacing: -0.8px">Technology goes live on launch day. Adoption is designed long before it.</h2>
-        <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #D4D2F5">That's why governance, analytics and enablement sit in our foundation, not in a phase-two wishlist.</p>
-        <span style="font-size: 13px; color: #A9A6E6">Source: Prosci, Best Practices in Change Management research.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- BEYOND GO-LIVE -->
-  <section id="extensions" style="max-width: 1200px; margin: 0 auto; padding: 112px 24px 96px; display: flex; flex-direction: column; gap: 44px">
-    <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
-      <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">The ADC edge</span>
-      <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -1px; color: #05006C">When “out of the box” isn't enough, we build what's missing.</h2>
-      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #4A4870">Most implementation partners stop at configuration. Because we also engineer for LumApps, your rollout never stalls on a feature gap.</p>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
-      <div style="background: #F7F7FC; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; color: #05006C">Integrations</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">Connect the HR, IT and finance tools your people already use.</p></div>
-      <div style="background: #F7F7FC; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; color: #05006C">Custom widgets</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">45+ extensions, from accessibility to gamification.</p></div>
-      <div style="background: #F7F7FC; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; color: #05006C">Agent Hub</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">Certified deployment of LumApps AI agents, governed by audience.</p></div>
-      <div style="background: #F7F7FC; border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; color: #05006C">MicroApps</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">Certified MicroApps for everyday tasks, right in the flow of work.</p></div>
-    </div>
-  </section>
-
-  <!-- INSIGHTS / THOUGHT LEADERSHIP -->
-  <section id="insights" style="background: #F7F7FC">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 44px">
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-        <div style="display: flex; flex-direction: column; gap: 14px; max-width: 700px">
-          <span style="font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #362DFF">Insights</span>
-          <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -1px; color: #05006C">We share what we learn — every month.</h2>
-        </div>
-        <a class="btn-outline" href="/news" style="color: #362DFF; text-decoration: none; font-weight: 600; font-size: 15px; padding: 12px 22px; border-radius: 999px; border: 1.5px solid #362DFF; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">All news</a>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
-        <a class="card-hover" href="/news/replay-adc-live-presents-lumapps-agents-agents-space-mcp" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column">
-          <div style="background: #362DFF; color: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 6px; min-height: 140px; box-sizing: border-box; justify-content: flex-end"><span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #FFD458">ADC Live! · Replay</span><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 22px">Monthly webinar</span></div>
-          <div style="padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; line-height: 1.3; color: #05006C">LumApps Agents, Agents Space &amp; MCP</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">What the October release means for AI agents in the digital workplace.</p><span style="font-size: 14px; font-weight: 600; color: #362DFF">Watch the replay →</span></div>
-        </a>
-        <a class="card-hover" href="/news/interim-release-notes-by-lumapps-marketplace-page-reader-by-adc" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column">
-          <div style="background: #FFD458; color: #05006C; padding: 28px; display: flex; flex-direction: column; gap: 6px; min-height: 140px; box-sizing: border-box; justify-content: flex-end"><span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase">News · July 2026</span><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 22px">Featured by LumApps</span></div>
-          <div style="padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; line-height: 1.3; color: #05006C">Page Reader updates in the LumApps release notes</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">Custom pronunciation, playback speed and voice selection for text-to-speech.</p><span style="font-size: 14px; font-weight: 600; color: #362DFF">Read the story →</span></div>
-        </a>
-        <a class="card-hover" href="/news" style="text-decoration: none; color: inherit; background: #FFFFFF; border: 1.5px solid #ECEBF7; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column">
-          <div style="background: #05006C; color: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 6px; min-height: 140px; box-sizing: border-box; justify-content: flex-end"><span style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #32E0C4">Guide · Coming soon</span><span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 22px">Playbook</span></div>
-          <div style="padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 19px; line-height: 1.3; color: #05006C">Your LumApps implementation checklist</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #4A4870">[A downloadable guide that gives early-stage visitors a low-commitment next step.]</p><span style="font-size: 14px; font-weight: 600; color: #362DFF">Get the guide →</span></div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section id="contact" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 112px">
-    <div style="background: #362DFF; color: #FFFFFF; border-radius: 32px; padding: clamp(40px, 6vw, 72px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; position: relative; overflow: hidden">
-      <div aria-hidden="true" style="position: absolute; right: -60px; bottom: -60px; display: flex; gap: 10px; transform: rotate(-12deg)">
-        <span style="width: 70px; height: 220px; border-radius: 35px; background: #32E0C4; opacity: 0.9"></span>
-        <span style="width: 70px; height: 220px; border-radius: 35px; background: #FFD458; opacity: 0.9"></span>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px; position: relative">
-        <h2 style="margin: 0; font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -1px">Let's open the first window together.</h2>
-        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #E6E5FF">A 30-minute discovery call: where you are with LumApps, where you want to be, and the shortest path between them.</p>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 12px; position: relative">
-        <a href="mailto:misha@arielladigitalconsulting.com" style="background: #FFFFFF; color: #05006C; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 28px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px">Book a discovery call
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-        </a>
-        <a class="btn-ghost" href="#insights" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 16px 24px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.5); min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Watch ADC Live! first</a>
-      </div>
-    </div>
-  </section>
   </div>
 
   <footer slot="footer" id="footer" class="foot impl-chrome" style="background: #05006C; color: #C9C7F2">
