@@ -10,7 +10,7 @@ const chevron = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" str
 <header class="mh">
   <div class="mh__inner">
     <a class="mh__brand" href="/" aria-label="Ariella Digital Consulting home">
-      <svg width="30" height="29" viewBox="0 0 22 21" fill="none" aria-hidden="true"><path d="M3.26367 4.50242H6.73663C6.73663 4.50242 6.34303 2.79392 8.93617 2.81733C8.93617 2.81733 11.3557 2.46626 10.9736 5.91836V20.3704H14.6666V4.17476C14.5796 2.0901 12.9923 0.385859 10.9389 0.172667C10.9389 0.172667 3.04371 -1.32519 3.26367 4.50242Z" fill="#32E0C4"></path><path d="M4.46209 20.3658V16.907C4.46209 16.907 2.79204 17.3105 2.81507 14.7163C2.81507 14.7163 2.46954 12.3067 5.85571 12.6987H14.6667V8.96309H4.05897C4.05897 8.96309 0.91467 8.87085 0.131475 12.6641C0.177545 12.6641 -1.27367 20.5849 4.46209 20.3658Z" fill="#362DFF"></path><rect x="4.07397" y="20.3706" width="3.25926" height="10.5926" transform="rotate(-90 4.07397 20.3706)" fill="#362DFF"></rect><rect x="10.5925" y="20.3706" width="3.25926" height="11.4074" transform="rotate(-90 10.5925 20.3706)" fill="#FFD458"></rect><path d="M21.9999 8.96289H10.5925V12.2221H21.0047C21.3361 12.2028 21.6686 12.2028 21.9999 12.2221V8.96289Z" fill="#FFD458"></path><rect x="10.5925" y="8.96289" width="4.07407" height="11.4074" fill="#362DFF"></rect></svg>
+      <svg width="30" height="27.78" viewBox="0 0 22 20.3706" fill="none" aria-hidden="true"><path d="M3.26367 4.50242H6.73663C6.73663 4.50242 6.34303 2.79392 8.93617 2.81733C8.93617 2.81733 11.3557 2.46626 10.9736 5.91836V20.3704H14.6666V4.17476C14.5796 2.0901 12.9923 0.385859 10.9389 0.172667C10.9389 0.172667 3.04371 -1.32519 3.26367 4.50242Z" fill="#32E0C4"></path><path d="M4.46209 20.3658V16.907C4.46209 16.907 2.79204 17.3105 2.81507 14.7163C2.81507 14.7163 2.46954 12.3067 5.85571 12.6987H14.6667V8.96309H4.05897C4.05897 8.96309 0.91467 8.87085 0.131475 12.6641C0.177545 12.6641 -1.27367 20.5849 4.46209 20.3658Z" fill="#362DFF"></path><rect x="4.07397" y="20.3706" width="3.25926" height="10.5926" transform="rotate(-90 4.07397 20.3706)" fill="#362DFF"></rect><rect x="10.5925" y="20.3706" width="3.25926" height="11.4074" transform="rotate(-90 10.5925 20.3706)" fill="#FFD458"></rect><path d="M21.9999 8.96289H10.5925V12.2221H21.0047C21.3361 12.2028 21.6686 12.2028 21.9999 12.2221V8.96289Z" fill="#FFD458"></path><rect x="10.5925" y="8.96289" width="4.07407" height="11.4074" fill="#362DFF"></rect></svg>
       <span>riella Digital Consulting</span>
     </a>
     <button class="mh__toggle" aria-expanded="false" aria-controls="mh-nav" aria-label="Toggle navigation">
@@ -110,7 +110,8 @@ const chevron = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" str
     justify-content: space-between;
     gap: 16px;
   }
-  /* Baseline alignment sits the text on the bottom edge of the "a" mark, so it reads as "ariella". */
+  /* Baseline alignment sits the text on the bottom edge of the "a" mark, so it reads as "ariella".
+     The mark's viewBox is cropped to its lowest shape so the SVG's bottom is the mark's bottom. */
   .mh__brand {
     display: flex;
     align-items: baseline;
