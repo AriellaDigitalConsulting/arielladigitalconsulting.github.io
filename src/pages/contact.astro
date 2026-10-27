@@ -1,168 +1,251 @@
 ---
+// Contact: intro, a blue CTA-style panel that holds the form, and the regions we serve.
 import Base from '../layouts/Base.astro';
-import { contactEmail } from '../data/site';
+import ContactForm from '../components/ContactForm.astro';
+
+const globe = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>';
 ---
 
-<Base title="Contact | Ariella Digital Consulting" description="Get in touch with ADC about LumApps integrations, implementations, analytics and design.">
-  <section class="band contact-band">
-    <div class="wrap">
-      <h1>Connect with us</h1>
-      <p>
-        We solve challenges within your employee experience productivity suites to improve employee connectivity,
-        productivity and processes. Please contact us so we can learn more about you and see how we can help mature your
-        business' digital workplace journey!
-      </p>
-    </div>
-  </section>
+<Base title="Contact | Ariella Digital Consulting" description="Talk to ADC about your LumApps platform. We work with enterprise teams across NORAM and EMEA.">
+  <div class="cc">
+    <section class="cc__intro">
+      <span class="eyebrow">Contact</span>
+      <h1>Let's talk about your LumApps platform.</h1>
+      <p class="lede">Planning a rollout, moving off SharePoint or getting more from the platform you already have? Tell us where you are, and we'll show you where it can go.</p>
+    </section>
 
-  <div class="contact">
-    <form class="contact__form" method="POST" action={`https://formsubmit.co/ajax/${contactEmail}`} data-contact-form>
-      <div class="field">
-        <label for="name">Name *</label>
-        <input id="name" name="name" type="text" required maxlength="100" autocomplete="name" />
+    <section class="cc__wrap">
+      <div class="cc__panel">
+        <div class="cc__pills" aria-hidden="true"><span></span><span></span></div>
+        <div class="cc__copy">
+          <h2>Start with a 30-minute discovery call.</h2>
+          <p>Where you are with LumApps, where you want to be, and the shortest path between them.</p>
+          <ul>
+            <li><span class="tick" aria-hidden="true"></span>Implementations, from strategy to change management</li>
+            <li><span class="tick" aria-hidden="true"></span>Integrations, widgets and UI/UX design</li>
+            <li><span class="tick" aria-hidden="true"></span>SME support for the platform you already run</li>
+          </ul>
+        </div>
+        <div class="cc__card">
+          <ContactForm />
+        </div>
       </div>
-      <div class="field">
-        <label for="email">Email *</label>
-        <input id="email" name="email" type="email" required maxlength="250" autocomplete="email" />
+    </section>
+
+    <section class="cc__info">
+      <div class="info">
+        <span class="info__icon info__icon--teal"><Fragment set:html={globe} /></span>
+        <h3>NORAM</h3>
+        <p>Enterprise teams across North America.</p>
       </div>
-      <div class="field">
-        <label for="subject">Subject</label>
-        <input id="subject" name="subject" type="text" />
+      <div class="info">
+        <span class="info__icon info__icon--yellow"><Fragment set:html={globe} /></span>
+        <h3>EMEA</h3>
+        <p>Enterprise teams across Europe, the Middle East &amp; Africa.</p>
       </div>
-      <div class="field">
-        <label for="platform">Platform</label>
-        <input id="platform" name="platform" type="text" />
-      </div>
-      <div class="field field--wide">
-        <label for="message">Message</label>
-        <textarea id="message" name="message"></textarea>
-      </div>
-      <div class="field--wide contact__submit">
-        <button type="submit">Send</button>
-        <p class="contact__status" data-status hidden></p>
-      </div>
-    </form>
+    </section>
   </div>
 </Base>
 
-<script>
-  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const status = form.querySelector<HTMLElement>('[data-status]')!;
-    const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
-    status.hidden = false;
-    status.textContent = 'Sending…';
-    btn.disabled = true;
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-      });
-      if (!res.ok) throw new Error(String(res.status));
-      status.textContent = 'Thanks for submitting!';
-      form.reset();
-    } catch {
-      status.textContent = 'Something went wrong. Please email hello@adc.dev instead.';
-    } finally {
-      btn.disabled = false;
-    }
-  });
-</script>
-
 <style>
-  .contact-band {
-    min-height: 301px;
-    padding: 55px 0 60px;
+  .cc {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #1b1a3a;
+    line-height: 1.5;
   }
-  .contact-band p {
-    max-width: 798px;
-    margin: 13px auto 0;
+  .cc * {
+    box-sizing: border-box;
   }
-  .contact {
-    background: var(--lilac);
-    padding: 0 16px 54px;
+  .cc h1,
+  .cc h2,
+  .cc h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
   }
-  .contact__form {
-    position: relative;
-    max-width: 1060px;
-    min-height: 615px;
-    margin: -42px auto 0;
-    background: #fff;
-    padding: 71px 88px 60px 89px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 83px;
-    row-gap: 27px;
-    align-content: start;
-  }
-  .field {
+  .cc__intro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 96px 24px 48px;
     display: flex;
     flex-direction: column;
+    gap: 16px;
   }
-  .field--wide {
-    grid-column: 1 / -1;
-  }
-  .field label {
-    font-family: var(--f-text);
-    font-size: 18px;
-    line-height: 1;
-    padding-left: 2px;
-    margin-bottom: 9px;
-  }
-  .field input,
-  .field textarea {
-    font: 14px var(--f-body);
-    border: 0;
-    border-bottom: 1px solid #000;
-    border-radius: 0;
-    padding: 6px 2px;
-    height: 37px;
-    background: transparent;
-  }
-  .field textarea {
-    height: 123px;
-    resize: vertical;
-  }
-  .field input:focus,
-  .field textarea:focus {
-    outline: none;
-    border-bottom: 2px solid var(--blue);
-  }
-  .contact__submit {
-    text-align: center;
-    margin-top: 25px;
-  }
-  .contact__submit button {
-    width: 280px;
-    height: 36px;
-    background: var(--blue);
-    color: #fff;
-    border: 0;
-    font: 18px var(--f-text);
-    cursor: pointer;
-  }
-  .contact__submit button:hover {
-    background: var(--navy);
-  }
-  .contact__status {
-    margin-top: 16px;
-    color: var(--navy);
+  .eyebrow {
+    font-size: 13px;
     font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #362dff;
   }
-
-  @media (max-width: 760px) {
-    .contact-band p {
-      font-size: 16px;
+  .cc h1 {
+    max-width: 780px;
+    color: #05006c;
+    font-weight: 800;
+    font-size: clamp(36px, 4.6vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+  }
+  .lede {
+    margin: 0;
+    max-width: 640px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #4a4870;
+  }
+  .cc__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .cc__panel {
+    position: relative;
+    overflow: hidden;
+    background: #362dff;
+    color: #fff;
+    border-radius: 32px;
+    padding: clamp(24px, 5vw, 56px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    align-items: center;
+  }
+  .cc__pills {
+    position: absolute;
+    left: -50px;
+    bottom: -70px;
+    display: flex;
+    gap: 14px;
+    transform: rotate(-30deg);
+  }
+  .cc__pills span {
+    width: 70px;
+    height: 200px;
+    border-radius: 999px;
+    background: #32e0c4;
+  }
+  .cc__pills span + span {
+    background: #ffd458;
+    margin-top: 40px;
+  }
+  .cc__copy {
+    position: relative;
+    flex: 1 1 340px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-bottom: 80px;
+  }
+  .cc h2 {
+    color: #fff;
+    font-weight: 800;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.8px;
+  }
+  .cc__copy p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #e6e5ff;
+  }
+  .cc__copy ul {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 15px;
+    color: #fff;
+  }
+  .cc__copy li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .tick {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #32e0c4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2305006c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center / 14px no-repeat;
+  }
+  .cc__card {
+    position: relative;
+    flex: 1.3 1 460px;
+    min-width: 0;
+    background: #fff;
+    border-radius: 24px;
+    padding: clamp(24px, 3.5vw, 40px);
+  }
+  .cc__info {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px 112px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .info {
+    border: 1.5px solid #ecebf7;
+    border-radius: 24px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .info__icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    margin-bottom: 6px;
+  }
+  .info__icon--teal {
+    background: rgba(50, 224, 196, 0.18);
+    color: #0a6b5c;
+  }
+  .info__icon--yellow {
+    background: rgba(255, 212, 88, 0.25);
+    color: #8a6500;
+  }
+  .info h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #05006c;
+  }
+  .info p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4a4870;
+  }
+  @media (max-width: 600px) {
+    .cc__intro {
+      padding: 64px 16px 32px;
     }
-    .contact__form {
-      grid-template-columns: 1fr;
-      padding: 40px 20px;
-      min-height: 0;
+    .cc__wrap {
+      padding: 0 16px;
     }
-    .contact__submit button {
-      width: 100%;
+    .cc__panel {
+      border-radius: 24px;
+      padding: 28px 16px 16px;
+      gap: 28px;
+    }
+    .cc__copy {
+      padding: 0 8px;
+    }
+    .cc__pills {
+      display: none;
+    }
+    .cc__card {
+      padding: 22px 16px;
+      border-radius: 18px;
+    }
+    .cc__info {
+      padding: 32px 16px 72px;
     }
   }
 </style>
