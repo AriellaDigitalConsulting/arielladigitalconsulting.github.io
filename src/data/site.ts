@@ -20,14 +20,6 @@ export const nav: NavItem[] = [
 
 export const contactHref = '/contact';
 
-export const footerLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' },
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
-];
-
 export const contactEmail = 'hello@adc.dev';
 export const adminEmail = 'info@arielladigitalconsulting.com';
 

@@ -2,8 +2,8 @@
 // Implementations page, converted from the adc-implementations design. The main navigation is the shared SiteHeader.
 import Base from '../layouts/Base.astro';
 import HowWeWork from '../components/HowWeWork.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
-const year = new Date().getFullYear();
 ---
 
 <Base title="LumApps Implementation Services | Ariella Digital Consulting" description="Full-service LumApps implementation: strategy, design, content migration, change management and project management, led by the first LumApps deployment consultant onboarded in the US." bare>
@@ -276,7 +276,7 @@ const year = new Date().getFullYear();
           <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #E6E5FF">A 30-minute discovery call: where you are with LumApps, where you want to be, and the shortest path between them.</p>
         </div>
         <div style="display: flex; flex-wrap: wrap; gap: 12px; position: relative">
-          <a href="mailto:misha@arielladigitalconsulting.com" style="background: #FFFFFF; color: #05006C; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 28px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px">Book a discovery call
+          <a href="/contact" style="background: #FFFFFF; color: #05006C; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px 28px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px">Book a discovery call
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
           </a>
           <a class="btn-ghost" href="/#insights" style="color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 16px 24px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.5); min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center">Watch ADC Live! first</a>
@@ -286,36 +286,24 @@ const year = new Date().getFullYear();
 
   </div>
 
-  <footer slot="footer" id="footer" class="foot impl-chrome" style="background: #05006C; color: #C9C7F2">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 40px; display: flex; flex-direction: column; gap: 36px">
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px">
-        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 340px">
-          <span role="img" aria-label="Ariella Digital Consulting" style="display: flex; align-items: baseline; gap: 5px; font-family: Archivo, sans-serif; font-weight: 700; font-size: 20px; color: #FFFFFF"><svg width="36" height="33.33" viewBox="0 0 22 20.3706" fill="none" aria-hidden="true" style="flex: none"><path d="M3.26367 4.50242H6.73663C6.73663 4.50242 6.34303 2.79392 8.93617 2.81733C8.93617 2.81733 11.3557 2.46626 10.9736 5.91836V20.3704H14.6666V4.17476C14.5796 2.0901 12.9923 0.385859 10.9389 0.172667C10.9389 0.172667 3.04371 -1.32519 3.26367 4.50242Z" fill="#fff" fill-opacity="0.7"></path><path d="M4.46209 20.3658V16.907C4.46209 16.907 2.79204 17.3105 2.81507 14.7163C2.81507 14.7163 2.46954 12.3067 5.85571 12.6987H14.6667V8.96309H4.05897C4.05897 8.96309 0.91467 8.87085 0.131475 12.6641C0.177545 12.6641 -1.27367 20.5849 4.46209 20.3658Z" fill="#fff"></path><rect x="4.07397" y="20.3706" width="3.25926" height="10.5926" transform="rotate(-90 4.07397 20.3706)" fill="#fff"></rect><rect x="10.5925" y="20.3706" width="3.25926" height="11.4074" transform="rotate(-90 10.5925 20.3706)" fill="#fff" fill-opacity="0.5"></rect><path d="M21.9999 8.96289H10.5925V12.2221H21.0047C21.3361 12.2028 21.6686 12.2028 21.9999 12.2221V8.96289Z" fill="#fff" fill-opacity="0.5"></path><rect x="10.5925" y="8.96289" width="4.07407" height="11.4074" fill="#fff"></rect></svg><span aria-hidden="true">riella Digital Consulting</span></span>
-          <span style="font-size: 15px; line-height: 1.6">Making LumApps a simpler, happier experience.</span>
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 56px; font-size: 15px">
-          <div style="display: flex; flex-direction: column; gap: 10px"><span style="color: #FFFFFF; font-weight: 600">Company</span><a href="/about">About</a><a href="#approach">Approach</a><a href="#results">Where we help</a></div>
-          <div style="display: flex; flex-direction: column; gap: 10px"><span style="color: #FFFFFF; font-weight: 600">Services</span><a href="/implementations" aria-current="page">Implementation</a><a href="/products">Integrations</a><a href="/products">Widgets</a></div>
-          <div style="display: flex; flex-direction: column; gap: 10px"><span style="color: #FFFFFF; font-weight: 600">Resources</span><a href="https://docs.adc.dev">Widget docs</a><a href="/#insights">ADC Live!</a><a href="/contact">Contact</a></div>
-        </div>
-      </div>
-      <div style="border-top: 1px solid rgba(255,255,255,0.14); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px">
-        <span>© {year} Ariella Digital Consulting, LLC</span>
-        <span>LumApps Trusted Partner — Consulting, Training &amp; Design</span>
-      </div>
-    </div>
-  </footer>
+  <SiteFooter
+    slot="footer"
+    cols={[
+      { heading: 'Company', links: [{ href: '/about', label: 'About' }, { href: '#approach', label: 'Approach' }, { href: '#results', label: 'Where we help' }] },
+      { heading: 'Services', links: [{ href: '/implementations', label: 'Implementation', current: true }, { href: '/products', label: 'Integrations' }, { href: '/products', label: 'Widgets' }] },
+      { heading: 'Resources', links: [{ href: 'https://docs.adc.dev', label: 'Widget docs' }, { href: '/#insights', label: 'ADC Live!' }, { href: '/contact', label: 'Contact' }] },
+    ]}
+    note="LumApps Trusted Partner — Consulting, Training & Design"
+  />
 </Base>
 
 <style>
   /* The design was laid out without the site-wide reset, so undo it on this page. */
-  .impl-chrome,
   .impl {
     font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
     color: #1b1a3a;
     line-height: normal;
   }
-  .impl-chrome *,
   .impl * {
     box-sizing: content-box;
   }
@@ -326,5 +314,4 @@ const year = new Date().getFullYear();
   a{color:#362DFF}a:hover{color:#05006C}
   .btn-primary:hover{background:#2A22D6 !important}
   .btn-ghost:hover{background:rgba(255,255,255,0.12) !important}
-  .foot a{color:#C9C7F2;text-decoration:none}.foot a:hover{color:#FFFFFF}
 </style>

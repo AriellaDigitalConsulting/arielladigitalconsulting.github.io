@@ -1,0 +1,162 @@
+---
+// Site-wide footer, matching the homepage. Pages may pass their own link columns or bottom note;
+// the wordmark, slogan and layout are always the same.
+import { social, contactHref } from '../data/site';
+
+interface Col {
+  heading: string;
+  links: { href: string; label: string; current?: boolean }[];
+}
+interface Props {
+  cols?: Col[];
+  note?: string;
+}
+
+const defaultCols: Col[] = [
+  {
+    heading: 'Company',
+    links: [
+      { href: '/', label: 'Home' },
+      { href: '/about', label: 'About' },
+      { href: '/news', label: 'News' },
+      { href: '/implementations#process', label: 'Process' },
+      { href: '/#clients', label: 'Clients' },
+    ],
+  },
+  {
+    heading: 'Services',
+    links: [
+      { href: '/implementations', label: 'Implementation' },
+      { href: '/products', label: 'Integrations' },
+      { href: '/analytics', label: 'Analytics' },
+      { href: '/design', label: 'UI/UX Design' },
+      { href: '/#widgets', label: 'Widgets' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    links: [
+      { href: 'https://docs.adc.dev', label: 'Widget docs' },
+      { href: '/products', label: 'Products' },
+      { href: contactHref, label: 'Contact' },
+    ],
+  },
+];
+
+const { cols = defaultCols, note = 'Certified LumApps Partner' } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="mf" id="footer">
+  <div class="mf__inner">
+    <div class="mf__top">
+      <div class="mf__brand">
+        <span class="mf__logo" role="img" aria-label="Ariella Digital Consulting"><svg width="36" height="33.33" viewBox="0 0 22 20.3706" fill="none" aria-hidden="true"><path d="M3.26367 4.50242H6.73663C6.73663 4.50242 6.34303 2.79392 8.93617 2.81733C8.93617 2.81733 11.3557 2.46626 10.9736 5.91836V20.3704H14.6666V4.17476C14.5796 2.0901 12.9923 0.385859 10.9389 0.172667C10.9389 0.172667 3.04371 -1.32519 3.26367 4.50242Z" fill="#fff" fill-opacity="0.7"></path><path d="M4.46209 20.3658V16.907C4.46209 16.907 2.79204 17.3105 2.81507 14.7163C2.81507 14.7163 2.46954 12.3067 5.85571 12.6987H14.6667V8.96309H4.05897C4.05897 8.96309 0.91467 8.87085 0.131475 12.6641C0.177545 12.6641 -1.27367 20.5849 4.46209 20.3658Z" fill="#fff"></path><rect x="4.07397" y="20.3706" width="3.25926" height="10.5926" transform="rotate(-90 4.07397 20.3706)" fill="#fff"></rect><rect x="10.5925" y="20.3706" width="3.25926" height="11.4074" transform="rotate(-90 10.5925 20.3706)" fill="#fff" fill-opacity="0.5"></rect><path d="M21.9999 8.96289H10.5925V12.2221H21.0047C21.3361 12.2028 21.6686 12.2028 21.9999 12.2221V8.96289Z" fill="#fff" fill-opacity="0.5"></path><rect x="10.5925" y="8.96289" width="4.07407" height="11.4074" fill="#fff"></rect></svg><span aria-hidden="true">riella Digital Consulting</span></span>
+        <span>Making LumApps a simpler, happier experience.</span>
+      </div>
+      <div class="mf__cols">
+        {
+          cols.map((col) => (
+            <div class="mf__col">
+              <span class="mf__heading">{col.heading}</span>
+              {col.links.map((l) => <a href={l.href} aria-current={l.current ? 'page' : undefined}>{l.label}</a>)}
+            </div>
+          ))
+        }
+        <div class="mf__col">
+          <span class="mf__heading">Connect</span>
+          {social.map((s) => <a href={s.href}>{s.label}</a>)}
+        </div>
+      </div>
+    </div>
+    <div class="mf__bottom">
+      <span>© {year} Ariella Digital Consulting, LLC</span>
+      <span>{note}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .mf {
+    background: #05006c;
+    color: #c9c7f2;
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .mf * {
+    box-sizing: border-box;
+  }
+  .mf a {
+    color: #c9c7f2;
+    text-decoration: none;
+  }
+  .mf a:hover {
+    color: #fff;
+  }
+  .mf__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .mf__top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .mf__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 340px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  /* Like the header: the cropped mark's bottom edge is the text baseline, so it reads as "ariella". */
+  .mf__logo {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+  }
+  .mf__logo svg {
+    flex: none;
+  }
+  .mf__cols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px 56px;
+    font-size: 15px;
+  }
+  .mf__col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .mf__heading {
+    color: #fff;
+    font-weight: 600;
+  }
+  .mf__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    .mf__inner {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+</style>
