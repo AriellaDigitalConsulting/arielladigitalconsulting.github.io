@@ -23,6 +23,11 @@ export const imageRatio = (id?: string | null) => {
   const f = id ? files[id] : undefined;
   return f?.w && f?.h ? f.w / f.h : undefined;
 };
+/** True when an image is roughly 16:9 (or unknown); off-ratio images (logos, square art) are shown whole instead of cropped. */
+export const isWideImage = (id?: string | null) => {
+  const r = imageRatio(id);
+  return !r || Math.abs(r - 16 / 9) < 0.12;
+};
 
 export const posts = (articles as Article[]).slice().sort((a, b) => b.iso.localeCompare(a.iso));
 

@@ -2,7 +2,7 @@
 // News: the latest story featured on top, then every story in a filterable, searchable grid.
 // Categories come from each article's `category` (kept in sync with the ADC News Pages sheet).
 import Base from '../../layouts/Base.astro';
-import { posts, imageFile, imageRatio, shortDate } from '../../lib/news';
+import { posts, imageFile, isWideImage, shortDate } from '../../lib/news';
 import { social } from '../../data/site';
 
 const styles: Record<string, { tagBg: string; tagFg: string; cover: string; cta: string; featuredCta: string }> = {
@@ -25,11 +25,6 @@ const initials = (name: string) =>
     .join('')
     .slice(0, 2)
     .toUpperCase();
-// Thumbnails that aren't roughly 16:9 (square logos, portrait art) are shown whole and centred instead of cropped.
-const isWide = (id?: string) => {
-  const r = imageRatio(id);
-  return !r || Math.abs(r - 16 / 9) < 0.12;
-};
 
 const featured = posts[0];
 const PAGE = 12;
@@ -91,7 +86,7 @@ const linkedin = social.find((s) => s.label === 'Linkedin')!.href;
     <section class="nw__featured" aria-label="Latest">
       <a class="nw__feat card-lift" href={`/news/${featured.slug}`}>
         <div class="nw__feat-media" style={`background:${style(featured.category).cover}`}>
-          {imageFile(featured.thumb) && <img src={imageFile(featured.thumb)} alt="" class:list={{ contain: !isWide(featured.thumb) }} />}
+          {imageFile(featured.thumb) && <img src={imageFile(featured.thumb)} alt="" class:list={{ contain: !isWideImage(featured.thumb) }} />}
         </div>
         <div class="nw__feat-body">
           <div class="nw__meta">
@@ -118,7 +113,7 @@ const linkedin = social.find((s) => s.label === 'Linkedin')!.href;
               <li data-cat={p.category} data-text={`${p.title} ${p.excerpt} ${p.author} ${p.category}`.toLowerCase()} data-featured={i === 0 ? '' : undefined} hidden={i === 0 || i > PAGE}>
                 <a class="nw__card card-lift" href={`/news/${p.slug}`}>
                   <div class="nw__thumb" style={`--cover:${s.cover}`}>
-                    {imageFile(p.thumb) && <img src={imageFile(p.thumb)} alt="" loading="lazy" class:list={{ contain: !isWide(p.thumb) }} />}
+                    {imageFile(p.thumb) && <img src={imageFile(p.thumb)} alt="" loading="lazy" class:list={{ contain: !isWideImage(p.thumb) }} />}
                   </div>
                   <div class="nw__body">
                     <div class="nw__meta">
