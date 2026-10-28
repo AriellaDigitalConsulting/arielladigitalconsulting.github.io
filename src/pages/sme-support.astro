@@ -1,0 +1,763 @@
+---
+// SME Support: hero, outcomes, the strategy/design/engineering team, a clickable package "staircase", process and CTA.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+const services = [
+  'Solutions consulting',
+  'Integrations',
+  'Analytics enablement',
+  'MicroApps, Agents Hub & Ask AI',
+  'Information architecture',
+  'Use-case workshops',
+  'Redesign',
+  'On-demand support',
+  'Enablement training',
+];
+
+const team = [
+  {
+    name: 'Strategy',
+    role: 'Strategy & SME Consultant',
+    accent: '#32e0c4',
+    stroke: '#0a6b5c',
+    icon: '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>',
+    items: [
+      ['Product & solutions SME', ' — weekly or on demand'],
+      ['Analytics enablement', ' — GA4, Looker Studio'],
+      ['Use-case heat map', ' & roadmap sessions'],
+      ['Enablement training', ' for new admins'],
+    ],
+  },
+  {
+    name: 'Design',
+    role: 'User Experience Designer · LumApps Certified',
+    accent: '#ffd458',
+    stroke: '#05006c',
+    icon: '<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/>',
+    items: [
+      ['Wireframes', ' for every use case'],
+      ['Figma mockups', ' in your brand identity'],
+      ['Design integration', ' with engineering'],
+      ['Best-practice training', ' for content owners'],
+    ],
+  },
+  {
+    name: 'Engineering',
+    role: 'Integrations Consultant',
+    accent: '#362dff',
+    stroke: '#362dff',
+    icon: '<path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/>',
+    items: [
+      ['AI (RAG, chatbots)', ' & search'],
+      ['LumApps APIs', ' with sample code'],
+      ['Weekly engineering', ' sessions'],
+      ['Data Lake & BigQuery', ' guidance'],
+    ],
+  },
+];
+
+const tiers = [
+  { name: 'Business', h: 150, bg: '#c9c7f2', pitch: 'Technical and solutions support to cover lots of tactical ground.', items: ['Support with day-to-day challenges', 'Product and feature know-how', 'General LumApps best practices'] },
+  { name: 'Professional', h: 210, bg: '#32e0c4', pitch: 'Extra enablement for teams who live in the data.', items: ['Everything in Business', 'OOTB and Data Lake analytics enablement', 'Custom CSS support'] },
+  { name: 'Enterprise', h: 270, bg: '#ffd458', pitch: 'A true extension of your intranet team.', items: ['Everything in Business + Professional', 'Three custom designs or MicroApps', 'Day-to-day on-demand support (excl. Fridays, weekends, holidays)', 'Strategic alignment and enablement sessions'] },
+  { name: 'Enterprise+', h: 330, bg: '#ffffff', pitch: 'For teams connecting LumApps to the rest of the business.', items: ['Everything in Enterprise', 'One custom SDK integration per quarter', 'Integrations support and consulting'] },
+];
+const picked = 2;
+
+const steps = [
+  'Define a <strong>strategy</strong> with your vision at the forefront.',
+  'Identify <strong>KPIs</strong>, address gaps, explore <strong>adoption</strong>.',
+  'Enable your core team for <strong>day-to-day</strong> and the <strong>long term</strong>.',
+  'Break silos, build good <strong>habits</strong>, collaborate fluidly.',
+  'Find new opportunities and implement the next <strong>use cases</strong>.',
+];
+---
+
+<Base title="SME Support | Ariella Digital Consulting" description="Nine years of LumApps on your team: a dedicated strategist, designer and integrations engineer for your intranet after go-live. Fixed-bid, quarterly or annual.">
+  <div class="sm">
+    <section class="sm__hero">
+      <div class="sm__wrap sm__hero-inner">
+        <p class="sm__eyebrow">Strategy &amp; SME Support</p>
+        <h1>Nine years of LumApps, <span>on your team.</span></h1>
+        <div class="sm__hero-row">
+          <p>A dedicated strategist, designer and integrations engineer for your intranet after go-live. Fixed-bid. Flexible. Quarterly or annual.</p>
+          <div class="sm__ctas">
+            <a class="sm__btn sm__btn--yellow" href={contactHref}>Book a discovery call</a>
+            <a class="sm__btn sm__btn--ghost" href="#packages">Find your level</a>
+          </div>
+        </div>
+      </div>
+      <div class="sm__strip">
+        <ul class="sm__wrap">
+          {services.map((s, i) => <li>{s}{i < services.length - 1 && <span aria-hidden="true" style={`color:${i % 2 ? '#ffd458' : '#32e0c4'}`}>✦</span>}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="sm__outcomes sm__wrap">
+      <div class="sm__stat">
+        <div class="sm__num">30%</div>
+        <div class="sm__bar" style="background:#32e0c4"></div>
+        <div class="sm__stat-title">higher adoption</div>
+        <p>More employees start their day on the intranet.</p>
+      </div>
+      <div class="sm__stat">
+        <div class="sm__num" style="color:#362dff">70%</div>
+        <div class="sm__bar" style="background:#ffd458"></div>
+        <div class="sm__stat-title">more engagement, up to</div>
+        <p>More contribution, more trust to create content.</p>
+      </div>
+      <div class="sm__roadmap">
+        <div>A roadmap that moves with your business.</div>
+        <p>Business-driven use cases. One unified vision.</p>
+      </div>
+    </section>
+
+    <section class="sm__team">
+      <div class="sm__wrap">
+        <h2>Strategy, design <span>+</span> engineering. <span>Same team.</span></h2>
+        <div class="sm__team-grid">
+          {
+            team.map((t) => (
+              <article class="sm__member" style={`border-top-color:${t.accent}`}>
+                <div class="sm__member-head">
+                  <h3>{t.name}</h3>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={t.stroke} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <Fragment set:html={t.icon} />
+                  </svg>
+                </div>
+                <p class="sm__role">{t.role}</p>
+                <ul>
+                  {t.items.map(([b, rest]) => (
+                    <li>
+                      <strong>{b}</strong>
+                      {rest}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="sm__packages" id="packages">
+      <div class="sm__wrap">
+        <div class="sm__pk-head">
+          <h2>Find your level. <span>Level up anytime.</span></h2>
+          <p>Quarterly or annual · fixed-bid</p>
+        </div>
+        <div class="sm__pk-body">
+          <div class="sm__stairs" role="group" aria-label="Support levels">
+            {
+              tiers.map((t, i) => (
+                <button type="button" data-tier={i} aria-pressed={i === picked ? 'true' : 'false'} aria-controls={`sm-tier-${i}`} style={`--h:${t.h}px;--w:${55 + i * 15}%;background:${t.bg}`}>
+                  <span class="sm__step-name">{t.name}</span>
+                  <span class="sm__step-level">Level {i + 1}</span>
+                </button>
+              ))
+            }
+          </div>
+          <div class="sm__detail">
+            {
+              tiers.map((t, i) => (
+                <div id={`sm-tier-${i}`} class="sm__tier" hidden={i !== picked}>
+                  <p class="sm__tier-level">Level {i + 1}</p>
+                  <h3>{t.name}</h3>
+                  <p class="sm__tier-pitch">{t.pitch}</p>
+                  <ul>
+                    {t.items.map((it) => (
+                      <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#362dff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="sm__flex">
+          <div>The Flex model</div>
+          <p>Repurpose activities as needs shift — swap an Enterprise+ integration for a strategy workshop with a use-case heat map and roadmap.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sm__process sm__wrap">
+      <h2>Align. Measure. Empower. Energize. Evolve.</h2>
+      <ol>
+        {
+          steps.map((s, i) => (
+            <li class:list={{ last: i === steps.length - 1 }}>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <p set:html={s} />
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="sm__cta-wrap">
+      <div class="sm__cta">
+        <h2>Let's make it <span class="t">simpler</span> <span class="y">&amp; happier.</span></h2>
+        <a href={contactHref}>Book a discovery call</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  const steps = [...document.querySelectorAll<HTMLButtonElement>('.sm__stairs button')];
+  const panels = [...document.querySelectorAll<HTMLElement>('.sm__tier')];
+  for (const b of steps)
+    b.addEventListener('click', () => {
+      const i = Number(b.dataset.tier);
+      steps.forEach((s, j) => s.setAttribute('aria-pressed', String(i === j)));
+      panels.forEach((p, j) => (p.hidden = i !== j));
+    });
+</script>
+
+<style>
+  .sm {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #1b1a3a;
+    line-height: 1.5;
+  }
+  .sm * {
+    box-sizing: border-box;
+  }
+  .sm h1,
+  .sm h2,
+  .sm h3 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    margin: 0;
+  }
+  .sm p,
+  .sm ul,
+  .sm ol {
+    margin: 0;
+  }
+  .sm ul,
+  .sm ol {
+    list-style: none;
+    padding: 0;
+  }
+  .sm [hidden] {
+    display: none !important;
+  }
+  .sm a:focus-visible,
+  .sm button:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .sm__wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .sm__btn {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .sm__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+    padding: 17px 28px;
+  }
+  .sm__btn--yellow:hover {
+    background: #fff;
+    color: #05006c;
+  }
+  .sm__btn--ghost {
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    font-weight: 600;
+    padding: 16px 26px;
+  }
+  .sm__btn--ghost:hover {
+    border-color: #fff;
+    color: #fff;
+  }
+
+  /* Hero */
+  .sm__hero {
+    background: #362dff;
+    color: #fff;
+    overflow: hidden;
+  }
+  .sm__hero-inner {
+    padding-top: 64px;
+  }
+  .sm__eyebrow {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffd458;
+  }
+  .sm h1 {
+    margin-top: 20px;
+    font-size: clamp(52px, 9.5vw, 128px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+  .sm h1 span {
+    color: #32e0c4;
+  }
+  .sm__hero-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-bottom: 56px;
+  }
+  .sm__hero-row > p {
+    flex: 1 1 460px;
+    min-width: 0;
+    max-width: 600px;
+    font-size: 20px;
+    line-height: 1.55;
+    color: #e6e5ff;
+  }
+  .sm__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .sm__strip {
+    background: #05006c;
+    padding: 18px 0;
+  }
+  .sm__strip ul {
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .sm__strip li {
+    display: flex;
+    gap: 28px;
+  }
+
+  /* Outcomes */
+  .sm__outcomes {
+    padding-top: 88px;
+    padding-bottom: 88px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    color: #05006c;
+  }
+  .sm__stat,
+  .sm__roadmap {
+    flex: 1 1 300px;
+    min-width: 0;
+  }
+  .sm__num {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(88px, 12vw, 160px);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+  }
+  .sm__bar {
+    width: 64px;
+    height: 8px;
+    border-radius: 999px;
+    margin-top: 18px;
+  }
+  .sm__stat-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    margin-top: 16px;
+  }
+  .sm__stat p {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #3a3870;
+  }
+  .sm__roadmap {
+    background: #05006c;
+    color: #fff;
+    border-radius: 28px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+  .sm__roadmap div {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.1;
+  }
+  .sm__roadmap p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #d4d2f5;
+  }
+
+  /* Team */
+  .sm__team {
+    background: #f5f5ff;
+    color: #05006c;
+  }
+  .sm__team .sm__wrap {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+  .sm__team h2 {
+    font-size: clamp(34px, 4.6vw, 56px);
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+  .sm__team h2 span {
+    color: #362dff;
+  }
+  .sm__team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 40px;
+  }
+  .sm__member {
+    flex: 1 1 0;
+    min-width: 220px;
+    background: #fff;
+    padding: 28px;
+    border-radius: 24px;
+    border-top: 8px solid;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.08);
+  }
+  .sm__member-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sm__member h3 {
+    font-size: 26px;
+  }
+  .sm__role {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 4px !important;
+  }
+  .sm__member ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  /* Packages */
+  .sm__packages {
+    background: #05006c;
+    color: #fff;
+  }
+  .sm__packages > .sm__wrap {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  .sm__pk-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .sm__pk-head h2 {
+    max-width: 680px;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+  .sm__pk-head h2 span {
+    color: #ffd458;
+  }
+  .sm__pk-head p {
+    font-size: 15px;
+    color: #d4d2f5;
+  }
+  .sm__pk-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 56px;
+    align-items: flex-end;
+  }
+  .sm__stairs {
+    flex: 3 1 520px;
+    min-width: 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  .sm__stairs button {
+    flex: 1 1 0;
+    min-width: 0;
+    height: var(--h);
+    color: #05006c;
+    border: 0;
+    border-radius: 20px 20px 6px 6px;
+    padding: 16px 12px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .sm__stairs button:hover {
+    transform: translateY(-6px);
+  }
+  .sm__stairs button[aria-pressed='true'] {
+    transform: translateY(-12px);
+    box-shadow: 0 0 0 4px #362dff, 0 0 0 7px #fff;
+  }
+  .sm__step-name {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    overflow-wrap: anywhere;
+  }
+  .sm__step-level {
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .sm__detail {
+    flex: 2 1 340px;
+    min-width: 0;
+    background: #fff;
+    color: #1b1a3a;
+    border-radius: 28px;
+    padding: 32px;
+  }
+  .sm__tier-level {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #362dff;
+  }
+  .sm__tier h3 {
+    font-size: 34px;
+    color: #05006c;
+    margin-top: 6px;
+  }
+  .sm__tier-pitch {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #3a3870;
+    margin: 8px 0 18px !important;
+  }
+  .sm__tier ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sm__tier li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #05006c;
+  }
+  .sm__tier li svg {
+    flex: none;
+    margin-top: 2px;
+  }
+  .sm__flex {
+    margin-top: 40px;
+    border: 1.5px dashed rgba(255, 255, 255, 0.35);
+    border-radius: 24px;
+    padding: 24px 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    align-items: center;
+  }
+  .sm__flex div {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #32e0c4;
+  }
+  .sm__flex p {
+    flex: 1 1 480px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #d4d2f5;
+  }
+
+  /* Process */
+  .sm__process {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    color: #05006c;
+  }
+  .sm__process h2 {
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+  .sm__process ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
+    margin-top: 48px;
+  }
+  .sm__process li {
+    background: #f5f5ff;
+    border-radius: 24px;
+    padding: 24px;
+  }
+  .sm__process li span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: #362dff;
+    line-height: 1;
+  }
+  .sm__process li p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+  .sm__process li.last {
+    background: #05006c;
+    color: #fff;
+  }
+  .sm__process li.last span {
+    color: #ffd458;
+  }
+
+  /* CTA */
+  .sm__cta-wrap {
+    padding: 0 24px 96px;
+  }
+  .sm__cta {
+    max-width: 1132px;
+    margin: 0 auto;
+    background: #362dff;
+    color: #fff;
+    border-radius: 36px;
+    padding: 72px 56px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .sm__cta h2 {
+    flex: 1 1 560px;
+    min-width: 0;
+    font-size: clamp(40px, 6vw, 80px);
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+  }
+  .sm__cta .t {
+    color: #32e0c4;
+  }
+  .sm__cta .y {
+    color: #ffd458;
+  }
+  .sm__cta a {
+    background: #fff;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 20px 32px;
+    border-radius: 999px;
+    font-size: 18px;
+  }
+  .sm__cta a:hover {
+    background: #ffd458;
+    color: #05006c;
+  }
+
+  @media (max-width: 760px) {
+    .sm__hero-inner {
+      padding-top: 44px;
+    }
+    .sm__hero-row > p {
+      font-size: 17px;
+      flex-basis: 100%;
+    }
+    .sm__strip ul {
+      font-size: 15px;
+      gap: 8px 16px;
+    }
+    .sm__strip li {
+      gap: 16px;
+    }
+    .sm__outcomes,
+    .sm__process,
+    .sm__packages > .sm__wrap {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+    /* Phones: the staircase turns sideways, each level a longer bar. */
+    .sm__stairs {
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .sm__stairs button {
+      flex: none;
+      width: var(--w);
+      height: auto;
+      min-height: 52px;
+      padding: 10px 16px;
+      border-radius: 6px 16px 16px 6px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .sm__stairs button:hover {
+      transform: translateX(6px);
+    }
+    .sm__stairs button[aria-pressed='true'] {
+      transform: translateX(10px);
+    }
+    .sm__step-name {
+      font-size: 16px;
+    }
+    .sm__step-level {
+      margin-top: 0;
+      font-size: 12px;
+    }
+    .sm__detail {
+      padding: 24px;
+    }
+    .sm__cta {
+      padding: 44px 24px;
+      border-radius: 28px;
+    }
+  }
+</style>

@@ -9,7 +9,7 @@ export const nav: NavItem[] = [
     label: 'Services',
     children: [
       { href: '/implementations', label: 'Implementations' },
-      { href: '/services#sme-support', label: 'SME Support' },
+      { href: '/sme-support', label: 'SME Support' },
       { href: '/analytics', label: 'Analytics' },
       { href: '/design', label: 'UI/UX Design' },
     ],
