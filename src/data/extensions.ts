@@ -52,6 +52,7 @@ export const extensions: Extension[] = [
   { n: 'Confetti', c: ['sf'], d: 'Celebrate team or org-wide milestones with a burst of confetti.', href: DOCS + '4761273171443712/confetti-widget' },
   { n: 'Content Copier Tool', c: ['tb'], d: 'Efficiently duplicate LumApps content.', href: DOCS + '1403241761017233/content-copier-tool' },
   { n: 'Content Page Layout Mover', c: ['tb'], d: 'Streamlines moving layouts between content pages.', href: DOCS + '5871951469169801/content-page-layout-mover' },
+  { n: 'Content Summary', c: ['cn'], d: 'Gives readers a short summary of long pages, so they get the gist at a glance.', href: '/wiki' },
   { n: 'Debug Widget', c: ['dt'], d: 'Inspect and troubleshoot widgets while you build.' },
   { n: 'Display a QR Code', c: ['ut'], d: 'Show a QR code on any page.' },
   { n: 'Enhanced Search Filter Widget', c: ['se'], d: 'An upgrade to LumApps’ out-of-the-box content filter.', href: DOCS + '6544390651641856/enhanced-search-filter-widget' },
