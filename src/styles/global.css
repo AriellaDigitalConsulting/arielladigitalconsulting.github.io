@@ -109,6 +109,43 @@ html {
   scroll-padding-top: var(--header-h, 0px);
 }
 
+/* Page transitions (browsers with cross-document view transitions; others load pages as usual).
+   The header holds still while the old page fades out and the new one fades in, rising slightly. */
+@view-transition {
+  navigation: auto;
+}
+.mh {
+  view-transition-name: site-header;
+}
+::view-transition-group(site-header),
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
+}
+::view-transition-old(root) {
+  animation: 140ms cubic-bezier(0.4, 0, 1, 1) both page-out;
+}
+::view-transition-new(root) {
+  animation: 280ms cubic-bezier(0, 0, 0.2, 1) both page-in;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
 h1,
 h2,
 h3,
