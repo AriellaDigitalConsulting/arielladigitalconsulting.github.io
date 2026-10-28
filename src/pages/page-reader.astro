@@ -1,0 +1,892 @@
+---
+// Page Reader product page ("Soundwave" template). Replaces the layout snapshot of /page-reader.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+const bars = Array.from({ length: 18 }, (_, i) => ({
+  h: `${30 + Math.round(70 * Math.abs(Math.sin(i * 1.7)))}%`,
+  c: i % 5 === 0 ? '#32E0C4' : '#362dff',
+  d: `${(i * 0.08).toFixed(2)}s`,
+}));
+const features = ['Text-to-speech', 'Phonetics Pronunciations', 'Custom voice selection', 'Speed control', 'Mobile support', 'Analytics Tracking'];
+
+const why = [
+  { bg: '#362dff', fg: '#fff', icon: '<path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/>', text: "Deliver audio experiences native to LumApps' Design System, replacing third-party plugins or external tools that require added setup and access controls." },
+  { bg: '#32E0C4', fg: '#05006c', icon: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/>', text: 'Offer multiple voices and languages so every employee can listen in the tone and language that suits them best.' },
+  { bg: '#FFD458', fg: '#05006c', icon: '<circle cx="12" cy="4.5" r="1.5"/><path d="M5 8h14"/><path d="M12 8v6"/><path d="m8 21 4-7 4 7"/>', text: 'Improve accessibility for employees with visual impairments, reading difficulties, or limited screen time, giving everyone an equal way to stay informed.' },
+  { bg: '#05006c', fg: '#fff', icon: '<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/>', text: 'Increase engagement with LumApps content by letting employees listen anytime — at their desk, commuting, or on the move.' },
+];
+
+const does = [
+  { tone: 'light', accent: '#362dff', icon: '<path d="M4 10v4M8 6v12M12 3v18M16 7v10M20 10v4"/>', title: 'Text-to-speech', text: 'Powered by a natural-sounding speech engine, the widget reads any LumApps page or selected text aloud in real time.' },
+  { tone: 'blue', accent: '#FFD458', icon: '<path d="m3 18 5-12 5 12M5 14h6"/><circle cx="17.5" cy="15" r="3"/><path d="M20.5 12v6"/>', title: 'Phonetics Pronunciations', text: 'Never wince at a mispronounced CEO name or product term again. Define custom phonetics once and Page Reader gets them right every time.' },
+  { tone: 'blue', accent: '#32E0C4', icon: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>', title: 'Custom voice selection', text: 'Choose from a library of natural voices, then fine-tune tone and pacing to match your brand and audience.' },
+  { tone: 'light', accent: '#362dff', icon: '<path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 14 4-5"/>', title: 'Speed control', text: 'Adjustable playback speed lets every employee, from fast skimmers to careful listeners, take in content the way they understand it best.' },
+  { tone: 'light', accent: '#362dff', icon: '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18h2"/>', title: 'Mobile support', text: "Listen on any device using the browser's native TTS — the widget adapts to mobile and tablet, letting employees catch up on content anywhere, anytime." },
+  { tone: 'blue', accent: '#FFD458', icon: '<path d="M3 21h18"/><path d="M6 17v-6M11 17V5M16 17v-9"/>', title: 'Analytics Tracking', text: 'A baked-in widget class that allows connecting this widget to your GA4 instance, to pull click event analytics natively via Google or other enterprise solutions.' },
+];
+
+const benefits = [
+  { bg: '#362dff', fg: '#fff', icon: '<path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>', title: 'Learning & Development', text: 'Turn onboarding guides and training materials into audio, so new hires can learn anytime, at their own pace.' },
+  { bg: '#FFD458', fg: '#05006c', icon: '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18h2"/>', title: 'Frontline & Deskless Teams', text: 'Keep employees without daily desk access informed by letting them listen to key updates from a phone, between shifts.' },
+  { bg: '#32E0C4', fg: '#05006c', icon: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/>', title: 'Global Teams', text: 'Reach employees worldwide with natural-sounding voices across languages, making content easy to follow everywhere.' },
+];
+
+const related = [
+  { href: 'https://docs.adc.dev/docs/ls/content/3965255109285547/estimated-reading-time', icon: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/>', title: 'Estimated Reading Time.', text: 'This widget automatically calculates and displays the estimated time required to read a page based on the total word count.' },
+  { href: '/org-chart', icon: '<rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/>', title: 'Org Chart Widget.', text: 'A simple drag-and-drop solution for your team leads and page owners to add an org chart to a LumApps Page or team Space.' },
+];
+
+const arrow = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const icon = (paths: string, size = 26) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+---
+
+<Base title="Page Reader | Ariella Digital Consulting" description="Page Reader by ADC: the first text-to-speech widget for LumApps. Reads any LumApps page aloud on desktop or mobile, entirely in the browser.">
+  <div class="pr">
+    <section class="pr__hero">
+      <div class="pr__ring" aria-hidden="true"></div>
+      <div class="pr__dash" aria-hidden="true"></div>
+      <div class="pr__wrap pr__hero-grid">
+        <div class="pr__hero-copy">
+          <a class="pr__back" href="/products">← Back to Products Page</a>
+          <h1>Page Reader <span>by ADC</span></h1>
+          <p>
+            Meet Page Reader, the first text-to-speech widget for LumApps. Give employees an easier way to consume content: Page Reader reads any LumApps page aloud, on desktop or mobile. It runs entirely in the user's browser, with no AI services and no third-party data sharing, so your content stays private and secure.
+          </p>
+          <div>
+            <a class="pr__btn pr__btn--yellow" href={contactHref}>Request a Demo <Fragment set:html={arrow} /></a>
+          </div>
+        </div>
+        <div class="pr__device-wrap">
+          <div class="pr__phone">
+            <img src="/images/4882d34f8c48.webp" alt="Page Reader widget settings in LumApps, with voice and streaming options" width="466" height="962" />
+          </div>
+          <div class="pr__player" aria-hidden="true">
+            <span class="pr__player-play">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M7 4v16l13-8z"></path></svg>
+            </span>
+            <span class="pr__wave">
+              {bars.map((b) => <span class="wv" style={`height:${b.h};background:${b.c};animation-delay:${b.d}`} />)}
+            </span>
+            <span class="pr__speed">1.25×</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pr__ticker" aria-hidden="true">
+      <div class="mq">
+        {
+          [...features, ...features].map((t) => (
+            <span>
+              {t}
+              <i />
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <section class="pr__why pr__wrap">
+      <div class="pr__heading">
+        <p class="pr__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why use it</h2>
+      </div>
+      <div class="pr__why-grid">
+        {
+          why.map((w, i) => (
+            <div class="pr__why-card">
+              <div>
+                <span class="pr__tile" style={`background:${w.bg};color:${w.fg}`} set:html={icon(w.icon)} />
+                <span class="pr__num">{String(i + 1).padStart(2, '0')}</span>
+              </div>
+              <p>{w.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="pr__reel" id="reel">
+      <div class="pr__wrap pr__reel-inner">
+        <div class="pr__video">
+          <button type="button" class="pr__video-play" data-video="BBxBS79fdaw" aria-label="Play the Page Reader sizzle reel">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="#05006c" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg>
+          </button>
+        </div>
+        <div class="pr__reel-copy">
+          <p class="pr__eyebrow">CHECK THIS OUT</p>
+          <h2>Page Reader<br />Sizzle Reel</h2>
+          <div class="pr__bar" aria-hidden="true"></div>
+          <p>See the Page Reader Extension in action!</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pr__does">
+      <div class="pr__wrap pr__does-inner">
+        <div class="pr__does-side">
+          <p class="pr__eyebrow pr__eyebrow--yellow">HAVE A LOOK AT</p>
+          <h2>What it<br />does</h2>
+          <div class="pr__browser">
+            <div class="pr__browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <img src="/images/3987657daf87.webp" alt="A LumApps knowledge base page with the Page Reader controls: Read page aloud and Read selection aloud" width="1800" height="1153" loading="lazy" />
+          </div>
+        </div>
+        <div class="pr__does-grid">
+          {
+            does.map((d) => (
+              <div class:list={['pr__does-card', `pr__does-card--${d.tone}`]}>
+                <span style={`color:${d.accent}`} set:html={icon(d.icon, 32)} />
+                <h3>{d.title}</h3>
+                <p>{d.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="pr__who">
+      <div class="pr__wrap">
+        <div class="pr__heading pr__heading--wide">
+          <p class="pr__eyebrow">LEARN MORE ABOUT</p>
+          <h2>Who benefits</h2>
+          <p class="pr__lede">Added value for your Internal Communications, HRBPs, and team leads</p>
+        </div>
+        <div class="pr__who-grid">
+          {
+            benefits.map((b) => (
+              <div class="pr__who-card">
+                <div class="pr__who-head" style={`background:${b.bg};color:${b.fg}`}>
+                  <Fragment set:html={icon(b.icon, 30)} />
+                  <h3>{b.title}</h3>
+                </div>
+                <p>{b.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="pr__further pr__wrap">
+      <div class="pr__heading">
+        <p class="pr__eyebrow">GO FURTHER</p>
+        <h2 class="pr__h2-sm">Like this widget? Also consider these:</h2>
+      </div>
+      <div class="pr__further-grid">
+        {
+          related.map((r) => (
+            <a class="pr__further-card" href={r.href}>
+              <span class="pr__tile pr__tile--soft" set:html={icon(r.icon)} />
+              <h3>{r.title}</h3>
+              <p>{r.text}</p>
+              <span class="pr__more">
+                Learn More <Fragment set:html={arrow} />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="pr__cta-wrap">
+      <div class="pr__cta">
+        <div class="pr__cta-dot" aria-hidden="true"></div>
+        <div class="pr__cta-copy">
+          <h2>Got questions?</h2>
+          <p>Get in touch to learn more about this integration and to see a demo</p>
+          <p class="pr__cta-note">Check out our Docs site for a listing of all our widgets: <a href="https://docs.adc.dev/docs">docs.adc.dev/docs</a></p>
+        </div>
+        <a class="pr__btn pr__btn--yellow pr__btn--lg" href={contactHref}>Contact us</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // The sizzle reel loads YouTube only when someone presses play.
+  const play = document.querySelector<HTMLButtonElement>('.pr__video-play');
+  play?.addEventListener('click', () => {
+    const frame = document.createElement('iframe');
+    frame.src = `https://www.youtube-nocookie.com/embed/${play.dataset.video}?autoplay=1&rel=0`;
+    frame.title = 'Page Reader sizzle reel';
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    play.replaceWith(frame);
+  });
+</script>
+
+<style>
+  .pr {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .pr * {
+    box-sizing: border-box;
+  }
+  .pr h1,
+  .pr h2,
+  .pr h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .pr p {
+    margin: 0;
+  }
+  .pr a:focus-visible,
+  .pr button:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .pr__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .pr__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 14px;
+    color: #362dff;
+  }
+  .pr__eyebrow--yellow {
+    color: #ffd458;
+  }
+  .pr__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .pr__heading--wide {
+    max-width: 720px;
+  }
+  .pr__heading h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    color: #05006c;
+    letter-spacing: -0.02em;
+  }
+  .pr__heading .pr__h2-sm {
+    font-size: clamp(32px, 4vw, 48px);
+  }
+  .pr__lede {
+    font-size: 19px;
+    color: #33325a;
+  }
+  .pr__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 30px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+  .pr__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .pr__btn--yellow:hover {
+    background: #fff;
+    color: #05006c;
+    transform: translateY(-2px);
+  }
+  .pr__btn--lg {
+    position: relative;
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+  .pr__tile {
+    flex: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pr__tile--soft {
+    background: #f5f5ff;
+    color: #362dff;
+  }
+
+  /* Animations (off for reduced motion) */
+  .wv {
+    animation: wv 1.4s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+  @keyframes wv {
+    0%,
+    100% {
+      transform: scaleY(0.35);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+  .mq {
+    animation: mq 28s linear infinite;
+  }
+  @keyframes mq {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wv,
+    .mq {
+      animation: none;
+    }
+  }
+
+  /* Hero */
+  .pr__hero {
+    position: relative;
+    overflow: hidden;
+    background: #05006c;
+    color: #fff;
+  }
+  .pr__ring {
+    position: absolute;
+    right: -120px;
+    top: -160px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    border: 70px solid #362dff;
+    opacity: 0.55;
+  }
+  .pr__dash {
+    position: absolute;
+    left: -40px;
+    bottom: 90px;
+    width: 180px;
+    height: 28px;
+    background: #ffd458;
+    border-radius: 0 14px 14px 0;
+  }
+  .pr__hero-grid {
+    position: relative;
+    padding-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .pr__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 72px;
+  }
+  .pr__back {
+    color: #32e0c4;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .pr__back:hover {
+    color: #fff;
+  }
+  .pr h1 {
+    font-weight: 900;
+    font-size: clamp(56px, 8vw, 104px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+  .pr h1 span {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.36em;
+    font-weight: 700;
+    color: #ffd458;
+    letter-spacing: 0;
+  }
+  .pr__hero-copy > p {
+    max-width: 560px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .pr__device-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 520px;
+  }
+  .pr__phone {
+    width: 300px;
+    height: 500px;
+    border-radius: 36px 36px 0 0;
+    background: #fff;
+    border: 10px solid #000;
+    border-bottom: none;
+    overflow: hidden;
+  }
+  .pr__phone img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .pr__player {
+    position: absolute;
+    left: 0;
+    bottom: 120px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 20px;
+    background: #fff;
+    color: #05006c;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+  .pr__player-play {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #362dff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pr__wave {
+    flex: 1;
+    height: 36px;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .pr__wave span {
+    width: 4px;
+    border-radius: 2px;
+  }
+  .pr__speed {
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: #f5f5ff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+  }
+
+  /* Ticker */
+  .pr__ticker {
+    overflow: hidden;
+    padding: 20px 0;
+    background: #ffd458;
+    color: #05006c;
+    border-bottom: 3px solid #05006c;
+  }
+  .pr__ticker .mq {
+    display: flex;
+    gap: 48px;
+    width: max-content;
+    white-space: nowrap;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+  }
+  .pr__ticker .mq > span {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+  .pr__ticker i {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #362dff;
+  }
+
+  /* Why use it */
+  .pr__why {
+    padding-top: 112px;
+    padding-bottom: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .pr__why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .pr__why-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px;
+    border-radius: 24px;
+    background: #f5f5ff;
+  }
+  .pr__why-card > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pr__num {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    color: #d9d7ff;
+  }
+  .pr__why-card p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* Sizzle reel */
+  .pr__reel {
+    background: #f5f5ff;
+    color: #05006c;
+    padding: 112px 0;
+  }
+  .pr__reel-inner {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 64px;
+    align-items: center;
+  }
+  .pr__video {
+    flex: 999 1 560px;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -16px 16px 0 #32e0c4;
+  }
+  .pr__video :global(iframe) {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .pr__video-play {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: none;
+    background: #ffd458;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .pr__video-play:hover {
+    transform: scale(1.06);
+  }
+  .pr__reel-copy {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .pr__reel-copy h2,
+  .pr__does-side h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .pr__bar {
+    width: 96px;
+    height: 12px;
+    border-radius: 6px;
+    background: #ffd458;
+  }
+  .pr__reel-copy > p:last-child {
+    font-size: 19px;
+    color: #33325a;
+  }
+
+  /* What it does */
+  .pr__does {
+    background: #05006c;
+    color: #fff;
+    padding: 120px 0;
+  }
+  .pr__does-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+    align-items: flex-start;
+  }
+  .pr__does-side {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .pr__browser {
+    margin-top: 16px;
+    border-radius: 20px;
+    border: 8px solid #fff;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 16px 16px 0 #362dff;
+  }
+  .pr__browser-bar {
+    display: flex;
+    gap: 6px;
+    padding: 4px 6px 10px;
+  }
+  .pr__browser-bar i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e4e3ff;
+  }
+  .pr__browser img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .pr__does-grid {
+    flex: 999 1 560px;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .pr__does-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 32px;
+    border-radius: 24px;
+  }
+  .pr__does-card--light {
+    background: #fff;
+    color: #000;
+  }
+  .pr__does-card--blue {
+    background: #362dff;
+    color: #eceaff;
+  }
+  .pr__does-card h3 {
+    font-weight: 800;
+    font-size: 22px;
+    color: #fff;
+  }
+  .pr__does-card--light h3 {
+    color: #05006c;
+  }
+  .pr__does-card p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Who benefits */
+  .pr__who {
+    background: #f7f7fc;
+    padding: 112px 0;
+  }
+  .pr__who .pr__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .pr__who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .pr__who-card {
+    border-radius: 28px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.08);
+  }
+  .pr__who-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 28px 32px;
+  }
+  .pr__who-head h3 {
+    font-weight: 800;
+    font-size: 24px;
+  }
+  .pr__who-card > p {
+    padding: 28px 32px 36px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Go further */
+  .pr__further {
+    padding-top: 112px;
+    padding-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .pr__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .pr__further-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 36px;
+    border: 2px solid #e4e3ff;
+    border-radius: 28px;
+    color: #000;
+    text-decoration: none;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .pr__further-card:hover {
+    border-color: #362dff;
+    transform: translateY(-3px);
+    color: #000;
+  }
+  .pr__further-card h3 {
+    font-weight: 800;
+    font-size: 26px;
+    color: #05006c;
+  }
+  .pr__further-card p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .pr__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #362dff;
+    font-weight: 700;
+  }
+
+  /* CTA */
+  .pr__cta-wrap {
+    padding: 32px 24px 112px;
+  }
+  .pr__cta {
+    position: relative;
+    overflow: hidden;
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 64px 48px;
+    border-radius: 36px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .pr__cta-dot {
+    position: absolute;
+    right: -60px;
+    bottom: -60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: #362dff;
+  }
+  .pr__cta-copy {
+    position: relative;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pr__cta h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 4.5vw, 56px);
+  }
+  .pr__cta-copy > p {
+    font-size: 19px;
+    color: #e4e3ff;
+  }
+  .pr__cta-copy .pr__cta-note {
+    margin-top: 8px;
+    font-size: 15px;
+    color: #b9b6ff;
+  }
+  .pr__cta-note a {
+    color: #32e0c4;
+  }
+  .pr__cta-note a:hover {
+    color: #fff;
+  }
+
+  @media (max-width: 760px) {
+    .pr__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+      padding-top: 40px;
+    }
+    .pr__hero-copy {
+      padding-bottom: 16px;
+    }
+    .pr__hero-copy > p {
+      font-size: 17px;
+    }
+    .pr__device-wrap {
+      min-height: 0;
+    }
+    .pr__phone {
+      width: 260px;
+      height: 400px;
+    }
+    .pr__player {
+      left: 50%;
+      bottom: 72px;
+      width: min(300px, 100%);
+      transform: translateX(-50%);
+    }
+    .pr__ticker .mq {
+      font-size: 20px;
+    }
+    .pr__why,
+    .pr__further {
+      padding-top: 72px;
+    }
+    .pr__reel,
+    .pr__does,
+    .pr__who {
+      padding: 72px 0;
+    }
+    .pr__video {
+      box-shadow: -10px 10px 0 #32e0c4;
+    }
+    .pr__browser {
+      box-shadow: 10px 10px 0 #362dff;
+    }
+    .pr__why-grid,
+    .pr__does-grid,
+    .pr__who-grid,
+    .pr__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .pr__further-card {
+      padding: 28px;
+    }
+    .pr__cta {
+      padding: 44px 24px;
+      border-radius: 28px;
+    }
+  }
+</style>

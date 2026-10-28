@@ -6,7 +6,7 @@ import LayoutPage from '../components/LayoutPage.astro';
 
 export function getStaticPaths() {
   const files = import.meta.glob('../data/layouts/*.json', { eager: true });
-  const handBuilt = new Set(['index', 'services', 'products', 'about', 'contact']);
+  const handBuilt = new Set(['index', 'services', 'products', 'about', 'contact', 'page-reader']);
   return Object.values(files)
     .map((m: any) => m.default)
     .filter((l) => !handBuilt.has(l.slug))
