@@ -104,6 +104,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Native #anchor jumps (e.g. opening a shared /page#section link) land below the sticky header. */
+html {
+  scroll-padding-top: var(--header-h, 0px);
+}
+
 h1,
 h2,
 h3,

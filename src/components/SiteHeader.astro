@@ -52,6 +52,15 @@ const chevron = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" str
 </header>
 
 <script>
+  // Sticky header: share its height (for in-page jumps and other sticky elements) and add a shadow once scrolled.
+  const header = document.querySelector<HTMLElement>('.mh')!;
+  const syncHeight = () => document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+  new ResizeObserver(syncHeight).observe(header);
+  syncHeight();
+  const syncScrolled = () => (header.dataset.scrolled = String(window.scrollY > 4));
+  addEventListener('scroll', syncScrolled, { passive: true });
+  syncScrolled();
+
   const toggle = document.querySelector<HTMLButtonElement>('.mh__toggle');
   const menu = document.querySelector<HTMLElement>('.mh__nav');
   toggle?.addEventListener('click', () => {
@@ -98,8 +107,21 @@ const chevron = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" str
     line-height: 1.5;
     background: #fff;
     border-bottom: 1px solid var(--line);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 30;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  /* Frosted glass: the page scrolls behind a translucent, blurred header. */
+  @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .mh {
+      background: rgba(255, 255, 255, 0.72);
+      -webkit-backdrop-filter: saturate(180%) blur(16px);
+      backdrop-filter: saturate(180%) blur(16px);
+    }
+  }
+  .mh[data-scrolled='true'] {
+    box-shadow: 0 6px 24px rgba(5, 0, 108, 0.08);
   }
   .mh__inner {
     max-width: 1200px;
@@ -260,6 +282,8 @@ const chevron = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" str
     }
     .mh__nav[data-open='true'] {
       display: flex;
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
     }
     .mh__link {
       padding: 10px 0;

@@ -147,6 +147,8 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
 </Base>
 
 <script>
+  import { headerOffset, scrollToElement } from '../lib/smoothScroll';
+
   const root = document.querySelector<HTMLElement>('.px')!;
   const input = root.querySelector<HTMLInputElement>('#px-q')!;
   const clear = root.querySelector<HTMLButtonElement>('.px__clear')!;
@@ -199,7 +201,7 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
     cat = id;
     render();
     const results = root.querySelector<HTMLElement>('.px__results')!;
-    if (results.getBoundingClientRect().top < 0) results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (results.getBoundingClientRect().top < headerOffset()) scrollToElement(results);
   }
 
   input.addEventListener('input', render);
@@ -453,7 +455,7 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
   }
   .px__side {
     position: sticky;
-    top: 24px;
+    top: calc(var(--header-h, 0px) + 24px);
     display: flex;
     flex-direction: column;
     gap: 4px;

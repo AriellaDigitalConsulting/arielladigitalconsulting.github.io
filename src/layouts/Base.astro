@@ -40,5 +40,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     {bare ? <slot name="footer" /> : <SiteFooter />}
+    <script>
+      import { enableSmoothAnchors } from '../lib/smoothScroll';
+      enableSmoothAnchors();
+    </script>
   </body>
 </html>
