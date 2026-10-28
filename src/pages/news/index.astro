@@ -1,175 +1,768 @@
 ---
+// News: the latest story featured on top, then every story in a filterable, searchable grid.
+// Categories come from each article's `category` (kept in sync with the ADC News Pages sheet).
 import Base from '../../layouts/Base.astro';
-import { posts, imageFile, shortDate } from '../../lib/news';
+import { posts, imageFile, imageRatio, shortDate } from '../../lib/news';
+import { social } from '../../data/site';
+
+const styles: Record<string, { tagBg: string; tagFg: string; cover: string; cta: string; featuredCta: string }> = {
+  'ADC Live': { tagBg: '#EBEAFF', tagFg: '#2A22CC', cover: '#05006C', cta: 'Watch', featuredCta: 'Watch the replay' },
+  Announcements: { tagBg: '#FFF3CC', tagFg: '#6B4E00', cover: '#362DFF', cta: 'Read', featuredCta: 'Read the story' },
+  'Knowledge & Insights': { tagBg: '#D9FAF3', tagFg: '#0B5E50', cover: '#32E0C4', cta: 'Read', featuredCta: 'Read the story' },
+};
+const fallback = { tagBg: '#F5F5FF', tagFg: '#05006C', cover: '#05006C', cta: 'Read', featuredCta: 'Read the story' };
+const style = (c: string) => styles[c] ?? fallback;
+
+const tabs = [
+  { id: 'all', label: 'All', count: posts.length },
+  ...Object.keys(styles).map((c) => ({ id: c, label: c, count: posts.filter((p) => p.category === c).length })),
+];
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+// Thumbnails that aren't roughly 16:9 (square logos, portrait art) are shown whole and centred instead of cropped.
+const isWide = (id?: string) => {
+  const r = imageRatio(id);
+  return !r || Math.abs(r - 16 / 9) < 0.12;
+};
+
+const featured = posts[0];
+const PAGE = 12;
+
+const icons: Record<string, string> = {
+  Linkedin: '<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm7 0h3.8v1.6h.06c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.37 2.5 4.37 5.75v5.6h-4v-4.96c0-1.19-.02-2.71-1.75-2.71-1.75 0-2.02 1.29-2.02 2.62v5.05H10v-11Z" fill="#362DFF"/>',
+  'youtube/adc': '<path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8ZM9.8 15.1V8.9l5.8 3.1-5.8 3.1Z" fill="#362DFF"/>',
+  'The Hive': '<path d="M12 2.5 20.5 7.3v9.4L12 21.5l-8.5-4.8V7.3L12 2.5Z" fill="none" stroke="#362DFF" stroke-width="2"/>',
+};
+const follow = social.map((s) => ({ ...s, label: s.label === 'Linkedin' ? 'LinkedIn' : s.label === 'youtube/adc' ? 'YouTube' : s.label, icon: icons[s.label] }));
+const youtube = social.find((s) => s.label === 'youtube/adc')!.href;
+const linkedin = social.find((s) => s.label === 'Linkedin')!.href;
 ---
 
 <Base title="News | Ariella Digital Consulting" description="ADC announcements, product updates, ADC Live! replays and LumApps insights.">
-  <div class="wrap news">
-    <h1 class="display">All <span class="blue">ADC News</span></h1>
-    <p class="news__lede">See all of our past announcements, product updates and industry insights</p>
-    <p class="news__follow">
-      <a href="https://www.linkedin.com/company/ariella-digital-consulting/">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M7 10v7M7 7v.01M11 17v-7m0 3a3 3 0 0 1 6 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
-        Follow Us
-      </a>
-      <a href="https://www.youtube.com/@adclibrary8418">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M10 9l5 3-5 3z" fill="currentColor"></path></svg>
-        Follow Us
-      </a>
-    </p>
-
-    <ol class="posts">
-      {
-        posts.map((p) => (
-          <li class="post">
-            <a class="post__thumb" href={`/news/${p.slug}`} tabindex="-1" aria-hidden="true">
-              {imageFile(p.thumb) && <img src={imageFile(p.thumb)} alt="" width="265" height="215" loading="lazy" />}
+  <div class="nw">
+    <section class="nw__intro">
+      <div class="nw__intro-copy">
+        <p class="nw__eyebrow">Newsroom</p>
+        <h1>All <span>ADC News</span></h1>
+        <p class="nw__lede">See all of our past announcements, product updates and industry insights.</p>
+      </div>
+      <div class="nw__follow">
+        <span>Follow us</span>
+        {
+          follow.map((f) => (
+            <a href={f.href}>
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                <Fragment set:html={f.icon} />
+              </svg>
+              {f.label}
             </a>
-            <div>
-              <p class="post__by">
-                {imageFile(p.avatar) && <img src={imageFile(p.avatar)} alt="" width="42" height="42" loading="lazy" />}
-                <span>
-                  <strong>{p.author}</strong>
-                  <time datetime={p.iso}>{shortDate(p.iso)}</time>
-                </span>
-              </p>
-              {p.category && <p class="post__cat">{p.category}</p>}
-              <h2 class="post__title">
-                <a href={`/news/${p.slug}`}>{p.title}</a>
-              </h2>
-              <p class="post__excerpt">{p.excerpt}</p>
-            </div>
-          </li>
-        ))
-      }
-    </ol>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="nw__toolbar-wrap" aria-label="Search and filter news">
+      <div class="nw__toolbar">
+        <div class="nw__tabs" role="group" aria-label="Filter by category">
+          {
+            tabs.map((t) => (
+              <button type="button" data-cat={t.id} aria-pressed={t.id === 'all' ? 'true' : 'false'}>
+                {t.label}
+                <span>{t.count}</span>
+              </button>
+            ))
+          }
+        </div>
+        <div class="nw__search">
+          <label for="nw-q" class="nw__sr">Search news</label>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#05006C" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <input id="nw-q" type="search" placeholder="Search replays, releases, topics…" autocomplete="off" />
+        </div>
+      </div>
+      <p class="nw__result" aria-live="polite">{posts.length} stories</p>
+    </section>
+
+    <section class="nw__featured" aria-label="Latest">
+      <a class="nw__feat card-lift" href={`/news/${featured.slug}`}>
+        <div class="nw__feat-media" style={`background:${style(featured.category).cover}`}>
+          {imageFile(featured.thumb) && <img src={imageFile(featured.thumb)} alt="" class:list={{ contain: !isWide(featured.thumb) }} />}
+        </div>
+        <div class="nw__feat-body">
+          <div class="nw__meta">
+            <span class="nw__feat-tag">Latest · {featured.category}</span>
+            <time datetime={featured.iso}>{shortDate(featured.iso)}</time>
+          </div>
+          <h2>{featured.title}</h2>
+          <p class="nw__feat-x">{featured.excerpt}</p>
+          <div class="nw__by">
+            {imageFile(featured.avatar) ? <img src={imageFile(featured.avatar)} alt="" width="36" height="36" /> : <span class="nw__ini">{initials(featured.author)}</span>}
+            <span class="nw__author">{featured.author}</span>
+            <span class="nw__cta">{style(featured.category).featuredCta} →</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <section class="nw__grid-wrap" aria-label="News articles">
+      <ol class="nw__grid">
+        {
+          posts.map((p, i) => {
+            const s = style(p.category);
+            return (
+              <li data-cat={p.category} data-text={`${p.title} ${p.excerpt} ${p.author} ${p.category}`.toLowerCase()} data-featured={i === 0 ? '' : undefined} hidden={i === 0 || i > PAGE}>
+                <a class="nw__card card-lift" href={`/news/${p.slug}`}>
+                  <div class="nw__thumb" style={`--cover:${s.cover}`}>
+                    {imageFile(p.thumb) && <img src={imageFile(p.thumb)} alt="" loading="lazy" class:list={{ contain: !isWide(p.thumb) }} />}
+                  </div>
+                  <div class="nw__body">
+                    <div class="nw__meta">
+                      <span class="nw__tag" style={`background:${s.tagBg};color:${s.tagFg}`}>{p.category}</span>
+                      <time datetime={p.iso}>{shortDate(p.iso)}</time>
+                    </div>
+                    <h3>{p.title}</h3>
+                    <p class="nw__x">{p.excerpt}</p>
+                    <div class="nw__by">
+                      {imageFile(p.avatar) ? <img src={imageFile(p.avatar)} alt="" width="30" height="30" loading="lazy" /> : <span class="nw__ini">{initials(p.author)}</span>}
+                      <span class="nw__author">{p.author}</span>
+                      <span class="nw__cta">{s.cta} →</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ol>
+
+      <div class="nw__empty" hidden>
+        <p class="nw__empty-title">No news matches <span></span></p>
+        <p>Try a broader term, or browse every ADC Live! episode on YouTube.</p>
+        <button type="button" class="nw__reset">Clear search &amp; filters</button>
+      </div>
+
+      <div class="nw__more-wrap">
+        <button type="button" class="nw__more">Load more news</button>
+      </div>
+    </section>
+
+    <section class="nw__band-wrap">
+      <div class="nw__band">
+        <div>
+          <h2>Never miss an episode of ADC Live!</h2>
+          <p>Free, hands-on LumApps sessions every few weeks. Subscribe on YouTube or follow us on LinkedIn for the next one.</p>
+        </div>
+        <div class="nw__band-ctas">
+          <a class="nw__btn" href={youtube}>Subscribe on YouTube</a>
+          <a class="nw__btn nw__btn--ghost" href={linkedin}>Follow on LinkedIn</a>
+        </div>
+      </div>
+    </section>
   </div>
 </Base>
 
+<script>
+  const PAGE = 12;
+  const root = document.querySelector<HTMLElement>('.nw')!;
+  const input = root.querySelector<HTMLInputElement>('#nw-q')!;
+  const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-cat]')].filter((el) => el.tagName === 'BUTTON');
+  const items = [...root.querySelectorAll<HTMLLIElement>('.nw__grid > li')];
+  const featured = root.querySelector<HTMLElement>('.nw__featured')!;
+  const result = root.querySelector<HTMLElement>('.nw__result')!;
+  const empty = root.querySelector<HTMLElement>('.nw__empty')!;
+  const more = root.querySelector<HTMLElement>('.nw__more-wrap')!;
+
+  let cat = 'all';
+  let shown = PAGE;
+
+  function render() {
+    const raw = input.value.trim();
+    const q = raw.toLowerCase();
+    const browsing = cat === 'all' && !q;
+    // While browsing, the newest story sits in the featured slot instead of the grid.
+    const matches = items.filter(
+      (li) => (cat === 'all' || li.dataset.cat === cat) && (!q || li.dataset.text!.includes(q)) && !(browsing && li.hasAttribute('data-featured'))
+    );
+    for (const li of items) li.hidden = true;
+    matches.slice(0, shown).forEach((li) => (li.hidden = false));
+
+    featured.hidden = !browsing;
+    more.hidden = matches.length <= shown;
+    empty.hidden = matches.length > 0;
+    empty.querySelector('span')!.textContent = raw ? `“${raw}”` : 'this filter';
+    for (const t of tabs) t.setAttribute('aria-pressed', String(t.dataset.cat === cat));
+
+    const total = matches.length + (browsing ? 1 : 0);
+    result.textContent =
+      `${total} ${total === 1 ? 'story' : 'stories'}` + (cat === 'all' ? '' : ` in ${cat}`) + (raw ? ` matching “${raw}”` : '');
+  }
+
+  input.addEventListener('input', () => {
+    shown = PAGE;
+    render();
+  });
+  for (const t of tabs)
+    t.addEventListener('click', () => {
+      cat = t.dataset.cat!;
+      shown = PAGE;
+      render();
+    });
+  root.querySelector('.nw__more')!.addEventListener('click', () => {
+    shown += PAGE;
+    render();
+  });
+  root.querySelector('.nw__reset')!.addEventListener('click', () => {
+    input.value = '';
+    cat = 'all';
+    shown = PAGE;
+    render();
+  });
+</script>
+
 <style>
-  .news {
-    padding: 65px 0 80px;
-  }
-  .news .display {
-    font-family: var(--f-head);
-  }
-  .news__lede {
-    margin-top: 22px;
-    font-size: 24px;
+  .nw {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
     line-height: 1.5;
   }
-  .news__follow {
-    margin-top: 33px;
-    display: flex;
-    gap: 20px;
+  .nw * {
+    box-sizing: border-box;
   }
-  .news__follow a {
+  .nw h1,
+  .nw h2,
+  .nw h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .nw p {
+    margin: 0;
+  }
+  .nw button {
+    cursor: pointer;
+  }
+  .nw a:focus-visible,
+  .nw button:focus-visible,
+  .nw input:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .nw [hidden] {
+    display: none !important;
+  }
+  .nw__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .card-lift {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(54, 45, 255, 0.14), 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Intro */
+  .nw__intro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 24px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .nw__intro-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 680px;
+  }
+  .nw__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #362dff;
+  }
+  .nw h1 {
+    font-weight: 700;
+    font-size: clamp(40px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .nw h1 span {
+    color: #362dff;
+  }
+  .nw__lede {
+    font-size: 19px;
+    line-height: 1.55;
+    color: #2b2950;
+  }
+  .nw__follow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .nw__follow > span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #05006c;
+  }
+  .nw__follow a {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    width: 134px;
-    height: 40px;
-    justify-content: center;
-    background: rgba(54, 45, 255, 0.05);
-    border-radius: 4px;
-    color: var(--blue);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 1.4px;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid #c9c7f2;
+    background: #f5f5ff;
+    color: #05006c;
     text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
   }
-  .news__follow svg {
-    width: 18px;
-    height: 18px;
+  .nw__follow a:hover {
+    border-color: #362dff;
   }
-  .posts {
-    list-style: none;
-    padding: 0;
-    margin-top: 30px;
+  .nw__follow svg {
+    flex: none;
+    display: block;
   }
-  .post {
+
+  /* Toolbar */
+  .nw__toolbar-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .nw__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px;
+    border-radius: 22px;
+    background: #f7f7fc;
+    border: 1px solid #ecebfa;
+  }
+  .nw__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nw__tabs button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    background: #fff;
+    color: #05006c;
+    border: 1px solid #c9c7f2;
+  }
+  .nw__tabs button:hover {
+    border-color: #05006c;
+  }
+  .nw__tabs button span {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #f5f5ff;
+    color: #05006c;
+  }
+  .nw__tabs button[aria-pressed='true'] {
+    background: #05006c;
+    color: #fff;
+    border-color: #05006c;
+  }
+  .nw__tabs button[aria-pressed='true'] span {
+    background: #32e0c4;
+  }
+  .nw__search {
+    flex: 1 1 300px;
+    max-width: 380px;
+    position: relative;
+  }
+  .nw__search svg {
+    position: absolute;
+    left: 16px;
+    top: 13px;
+  }
+  .nw__search input {
+    width: 100%;
+    height: 44px;
+    padding: 0 16px 0 44px;
+    border-radius: 999px;
+    border: 1px solid #c9c7f2;
+    background: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    color: #000;
+  }
+  .nw__search input::placeholder {
+    color: #5f5c8a;
+  }
+  .nw__result {
+    margin: 14px 4px 0 !important;
+    font-size: 14px;
+    color: #4a4870;
+  }
+
+  /* Featured */
+  .nw__featured {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 24px 8px;
+  }
+  .nw__feat {
     display: grid;
-    grid-template-columns: 265px 1fr;
-    gap: 27px;
-    padding: 27px 0 50px;
-    border-bottom: 1px solid #e2e2e2;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    border-radius: 28px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    background: #05006c;
   }
-  .post__thumb img {
-    width: 265px;
-    height: 215px;
-    object-fit: cover;
-  }
-  .post__by {
+  /* The whole thumbnail is shown (never cropped), centred in the panel. */
+  .nw__feat-media {
     display: flex;
     align-items: center;
-    gap: 13px;
-    margin-top: 13px;
+    justify-content: center;
+    overflow: hidden;
   }
-  .post__by img {
-    width: 42px;
-    height: 42px;
+  .nw__feat-media img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .nw__feat-body {
+    padding: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    justify-content: center;
+  }
+  .nw__feat-tag {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: #32e0c4;
+    color: #05006c;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .nw__feat .nw__meta time {
+    color: #d6d4ff;
+  }
+  .nw__feat h2 {
+    font-weight: 700;
+    font-size: clamp(26px, 3vw, 34px);
+    line-height: 1.15;
+  }
+  .nw__feat-x {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .nw__feat .nw__author {
+    color: #fff;
+    font-size: 15px;
+  }
+  .nw__feat .nw__by img,
+  .nw__feat .nw__ini {
+    width: 36px;
+    height: 36px;
+  }
+  .nw__feat .nw__ini {
+    background: #ffd458;
+    border: 0;
+  }
+  .nw__feat .nw__cta {
+    color: #32e0c4;
+    font-size: 15px;
+  }
+
+  /* Grid */
+  .nw__grid-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px 24px;
+  }
+  .nw__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+  }
+  .nw__grid > li {
+    display: flex;
+  }
+  .nw__card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #000;
+    background: #fff;
+    border: 1px solid #ecebfa;
+  }
+  .nw__thumb {
+    aspect-ratio: 16 / 9;
+    background: var(--cover);
+    overflow: hidden;
+  }
+  .nw__thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Off-ratio thumbnails (logos, square art): show the whole image, centred on a soft panel. */
+  .nw img.contain {
+    object-fit: contain;
+    object-position: center;
+    background: #f5f5ff;
+    padding: 12px;
+  }
+  .nw__body {
+    flex: 1;
+    padding: 22px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .nw__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .nw__meta time {
+    font-size: 13px;
+    color: #4a4870;
+  }
+  .nw__tag {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 999px;
+  }
+  .nw h3 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.3;
+  }
+  .nw__x {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #3a3860;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .nw__by {
+    margin-top: auto;
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nw__by img {
+    flex: none;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     object-fit: cover;
   }
-  .post__by strong {
-    display: block;
-    font-family: 'wfont_6c5776_f141d555279443968fa7d40bfd600384', var(--f-text);
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 1.5;
+  .nw__ini {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f5f5ff;
+    border: 1px solid #c9c7f2;
+    color: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
   }
-  .post__by time {
-    font-family: var(--f-text);
+  .nw__author {
     font-size: 14px;
+    font-weight: 600;
+    color: #05006c;
   }
-  .post__cat {
-    margin-top: 14px;
-    font-family: var(--f-head);
-    font-size: 18px;
-    color: var(--blue);
+  .nw__cta {
+    margin-left: auto;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #362dff;
+    white-space: nowrap;
   }
-  .post__title {
-    margin-top: 9px;
-    font-family: var(--f-text);
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 1.1;
+
+  .nw__empty {
+    padding: 64px 24px;
+    text-align: center;
+    border-radius: 22px;
+    background: #f7f7fc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
-  .post__title a {
-    text-decoration: none;
+  .nw__empty-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #05006c;
   }
-  .post__title a:hover {
-    color: var(--blue);
+  .nw__empty p:not(.nw__empty-title) {
+    font-size: 15px;
+    color: #4a4870;
   }
-  .post__excerpt {
-    margin-top: 32px;
-    max-width: 591px;
-    font-family: var(--f-text);
-    font-size: 18px;
+  .nw__reset {
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 999px;
+    border: 0;
+    background: #362dff;
+    color: #fff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .nw__more-wrap {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+  }
+  .nw__more {
+    min-height: 48px;
+    padding: 0 28px;
+    border-radius: 999px;
+    border: 1px solid #362dff;
+    background: #fff;
+    color: #362dff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .nw__more:hover {
+    background: #362dff;
+    color: #fff;
+  }
+
+  /* Subscribe band */
+  .nw__band-wrap {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 0 24px 72px;
+  }
+  .nw__band {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 40px 44px;
+    border-radius: 28px;
+    background: #f5f5ff;
+    border: 1px solid #c9c7f2;
+  }
+  .nw__band > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 620px;
+  }
+  .nw__band h2 {
+    font-weight: 700;
+    font-size: 28px;
+    color: #05006c;
+  }
+  .nw__band p {
+    font-size: 16px;
     line-height: 1.6;
+    color: #2b2950;
   }
+  .nw__band-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .nw__btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 24px;
+    border-radius: 999px;
+    background: #362dff;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    border: 1px solid #362dff;
+  }
+  .nw__btn--ghost {
+    background: #fff;
+    color: #362dff;
+  }
+
   @media (max-width: 760px) {
-    .news {
+    .nw__intro {
       padding-top: 40px;
     }
-    .news__lede {
-      font-size: 19px;
+    .nw__lede {
+      font-size: 17px;
     }
-    .post {
-      grid-template-columns: 1fr;
-      gap: 12px;
+    .nw__search {
+      max-width: none;
     }
-    .post__thumb img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 265 / 215;
+    .nw__grid {
+      grid-template-columns: minmax(0, 1fr);
     }
-    .post__title {
-      font-size: 24px;
+    .nw__feat {
+      grid-template-columns: minmax(0, 1fr);
     }
-    .post__excerpt {
-      margin-top: 16px;
-      font-size: 16px;
+    .nw__feat-body {
+      padding: 28px 24px;
+    }
+    .nw__band {
+      padding: 28px 24px;
     }
   }
 </style>

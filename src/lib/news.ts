@@ -16,8 +16,13 @@ export interface Article {
   html: string;
 }
 
-const files = images as Record<string, { file: string }>;
+const files = images as Record<string, { file: string; w?: number; h?: number }>;
 export const imageFile = (id?: string | null) => (id ? files[id]?.file : undefined);
+/** Width ÷ height of a stored image, if known. */
+export const imageRatio = (id?: string | null) => {
+  const f = id ? files[id] : undefined;
+  return f?.w && f?.h ? f.w / f.h : undefined;
+};
 
 export const posts = (articles as Article[]).slice().sort((a, b) => b.iso.localeCompare(a.iso));
 
