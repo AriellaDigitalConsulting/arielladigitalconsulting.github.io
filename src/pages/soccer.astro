@@ -1,0 +1,1310 @@
+---
+// Soccer Predictions product page ("Color Blocks" template). Replaces the layout snapshot of /soccer.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+const ticker = ['Every matchday', 'All year round', 'Any page or space', 'Native design', 'Leaderboards', 'Bragging rights'];
+
+const why = [
+  { bg: '#05006c', fg: '#fff', stroke: '#32E0C4', icon: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/>', text: 'Keep employees engaged where work already happens: inside LumApps, with no separate platform and no app switching.' },
+  { bg: '#362dff', fg: '#fff', stroke: '#FFD458', icon: '<path d="M21 12a8 8 0 0 1-11.8 7L4 20l1.1-4.6A8 8 0 1 1 21 12z"/>', text: 'Friendly match predictions spark real conversations across teams and departments, building camaraderie a company memo rarely can.' },
+  { bg: '#32E0C4', fg: '#05006c', stroke: '#05006c', icon: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>', text: 'With predictions running across every league and matchday, employees stay connected and entertained long after the final whistle.' },
+  { bg: '#FFD458', fg: '#05006c', stroke: '#05006c', icon: '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 6h3v2a3 3 0 0 1-3 3M7 6H4v2a3 3 0 0 0 3 3"/>', text: 'Drive a culture of fun, friendly competition fostering a positive, healthy workplace culture people want to be a part of.' },
+];
+
+// "What it does" tabs. Screenshots come from the original Soccer Predictions page; Leaderboards has none yet.
+const features = [
+  {
+    name: 'Every Matchday. All Year Round.',
+    body: "The fun doesn't stop when the big tournament ends. Run predictions for any soccer match or league, all year long.",
+    img: { src: '/images/0cdc43c759cd.webp', w: 604, h: 1144, alt: 'League picker listing Serie A, Ligue 1, Bundesliga, Premier League, FIFA World Cup, UEFA Champions League and more' },
+  },
+  {
+    name: 'Seamlessly Added to any Page or Space.',
+    body: 'Add this widget to a LumApps Page or Space like any other extension, without disrupting the native experience.',
+    img: { src: '/images/e145d681dd0b.webp', w: 1187, h: 820, alt: 'A LumApps page on a laptop with the World Cup Picks prediction widget alongside news and polls' },
+  },
+  {
+    name: 'Native Design.',
+    body: "Use LumApps' native Design System to enhance the widget look and feel to fit your organization's LumApps instance.",
+    img: { src: '/images/fbd2ddd98bfd.webp', w: 561, h: 561, alt: 'The FIFA World Cup Predictions widget in the LumApps mobile app' },
+  },
+  {
+    name: 'Leaderboards.',
+    body: 'Employees compete, climb the ranks, and own their bragging rights — all without ever leaving LumApps.',
+  },
+];
+
+const steps = [
+  { bg: '#362dff', fg: '#fff', num: '#FFD458', body: '#eceaff', title: 'Add the widget', text: 'Drop Soccer Predictions onto any LumApps Page or Space and pick the league or tournament.' },
+  { bg: '#32E0C4', fg: '#05006c', num: '#362dff', title: 'Employees predict', text: 'Everyone picks scores for upcoming matches, right inside your intranet.' },
+  { bg: '#FFD458', fg: '#05006c', num: '#362dff', title: 'The leaderboard crowns winners', text: 'Points add up after every match, and the bragging rights go to the top of the table.' },
+];
+
+const benefits = [
+  { title: 'Internal Communications', text: 'Launch soccer prediction campaigns around major tournaments, league seasons, and matchdays to boost engagement.' },
+  { title: 'HRBPs & People Teams', text: 'Use friendly competition to strengthen workplace culture, morale, and shared experiences across teams and locations.', featured: true },
+  { title: 'Teams and Team Rooms', text: 'Teams can run their own prediction leagues, encouraging healthy rivalry and stronger cross-functional relationships.' },
+];
+---
+
+<Base title="Soccer Predictions | Ariella Digital Consulting" description="Soccer Predictions by ADC: run employee match predictions and leaderboards natively in LumApps, every matchday, all year round.">
+  <div class="sp">
+    <section class="sp__hero" data-custom-prompt-after>
+      <div class="sp__sq floatSq" aria-hidden="true"></div>
+      <div class="sp__ball" aria-hidden="true">
+        <div class="sp__ball-shadow ballShadow"></div>
+        <div class="sp__ball-body bounce">
+          <svg class="roll" width="140" height="140" viewBox="0 0 100 100">
+            <defs><clipPath id="sp-ball-clip"><circle cx="50" cy="50" r="47"></circle></clipPath></defs>
+            <circle cx="50" cy="50" r="47" fill="#fff"></circle>
+            <g clip-path="url(#sp-ball-clip)" fill="#05006c" stroke="#05006c" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+              <polygon points="50.0,35.0 64.3,45.4 58.8,62.1 41.2,62.1 35.7,45.4"></polygon>
+              <polygon points="50.0,18.0 37.6,9.0 42.4,-5.5 57.6,-5.5 62.4,9.0"></polygon>
+              <polygon points="80.4,40.1 85.2,25.6 100.4,25.6 105.2,40.1 92.8,49.1"></polygon>
+              <polygon points="68.8,75.9 84.1,75.9 88.8,90.4 76.5,99.4 64.1,90.4"></polygon>
+              <polygon points="31.2,75.9 35.9,90.4 23.5,99.4 11.2,90.4 15.9,75.9"></polygon>
+              <polygon points="19.6,40.1 7.2,49.1 -5.2,40.1 -0.4,25.6 14.8,25.6"></polygon>
+              <path fill="none" d="M50 35L50 18M64.3 45.4L80.4 40.1M58.8 62.1L68.8 75.9M41.2 62.1L31.2 75.9M35.7 45.4L19.6 40.1M62.4 9L85.2 25.6M92.8 49.1L84.1 75.9M64.1 90.4L35.9 90.4M15.9 75.9L7.2 49.1M14.8 25.6L37.6 9"></path>
+            </g>
+            <circle cx="50" cy="50" r="47" fill="none" stroke="#05006c" stroke-width="3"></circle>
+            <ellipse cx="34" cy="28" rx="14" ry="8" fill="#fff" opacity=".35" transform="rotate(-30 34 28)"></ellipse>
+          </svg>
+        </div>
+      </div>
+      <div class="sp__ring ring" aria-hidden="true"></div>
+
+      <div class="sp__hero-inner">
+        <a class="sp__back" href="/products">← Back to Products Page</a>
+        <p class="sp__kicker">GAME ON, LUMAPPS</p>
+        <h1>Soccer<br />Predictions<span>by ADC</span></h1>
+        <p class="sp__lede">Bring soccer predictions natively to your workplace. Launch robust games directly in LumApps to drive engagement and build culture, every matchday, all year round.</p>
+        <div class="sp__hero-ctas">
+          <a class="sp__btn sp__btn--navy" href={contactHref}>Request a Demo</a>
+          <a class="sp__reel-link" href="#reel">
+            <span><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg></span>
+            Watch the reel
+          </a>
+        </div>
+
+        <div class="sp__try" aria-label="Try a prediction" role="group">
+          <div class="sp__try-head">
+            <span>TRY IT · MATCHDAY 12</span>
+            <span>Kick-off Sat 15:00</span>
+          </div>
+          <div class="sp__match">
+            {
+              [
+                { team: 'Lions FC', side: 'home', score: 2 },
+                { team: 'Rovers', side: 'away', score: 1 },
+              ].map((t, i) => (
+                <>
+                  {i === 1 && <span class="sp__vs">vs</span>}
+                  <div class="sp__team">
+                    <span class="sp__team-name">{t.team}</span>
+                    <div class="sp__stepper">
+                      <button type="button" class="sp__minus" data-side={t.side} data-delta="-1" aria-label={`${t.team} one goal fewer`}>−</button>
+                      <span class="sp__score" data-score={t.side} aria-live="polite">{t.score}</span>
+                      <button type="button" class="sp__plus" data-side={t.side} data-delta="1" aria-label={`${t.team} one goal more`}>+</button>
+                    </div>
+                  </div>
+                </>
+              ))
+            }
+          </div>
+          <button type="button" class="sp__lock" aria-pressed="false">Lock in my prediction</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="sp__ticker" aria-hidden="true">
+      <div class="mq">
+        {
+          [...ticker, ...ticker].map((t) => (
+            <span>
+              {t}
+              <i />
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <section>
+      <div class="sp__heading sp__heading--center sp__why-head">
+        <p class="sp__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why use it</h2>
+      </div>
+      <div class="sp__why">
+        {
+          why.map((w) => (
+            <div style={`background:${w.bg};color:${w.fg}`}>
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke={w.stroke} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={w.icon} />
+              <p>{w.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="sp__reel" id="reel">
+      <div class="sp__reel-inner">
+        <p class="sp__eyebrow">CHECK THIS OUT</p>
+        <h2>See it in action</h2>
+        <p class="sp__reel-sub">A 30-second teaser of Soccer Predictions in LumApps.</p>
+        <div class="sp__video-wrap">
+          <div class="sp__video-tilt" aria-hidden="true"></div>
+          <div class="sp__video">
+            <button type="button" class="sp__video-play" data-video="pGgkXlfbVgo" aria-label="Play the Soccer Predictions sizzle reel">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp__does">
+      <div class="sp__wrap">
+        <div class="sp__heading">
+          <p class="sp__eyebrow">HAVE A LOOK AT</p>
+          <h2>What it does</h2>
+        </div>
+        <div class="sp__tabs-wrap">
+          <div class="sp__tabs" role="tablist" aria-label="Soccer Predictions features">
+            {
+              features.map((f, i) => (
+                <button type="button" role="tab" id={`sp-tab-${i}`} aria-controls={`sp-panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+                  <span class="sp__tab-num">{String(i + 1).padStart(2, '0')}</span>
+                  <span>{f.name}</span>
+                </button>
+              ))
+            }
+          </div>
+          {
+            features.map((f, i) => (
+              <div class="sp__panel" role="tabpanel" id={`sp-panel-${i}`} aria-labelledby={`sp-tab-${i}`} hidden={i !== 0}>
+                <div class="sp__panel-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
+                <h3>{f.name}</h3>
+                <p>{f.body}</p>
+                {f.img && (
+                  <div class="sp__shot">
+                    <img src={f.img.src} alt={f.img.alt} width={f.img.w} height={f.img.h} loading="lazy" />
+                  </div>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="sp__steps-sec">
+      <div class="sp__wrap">
+        <div class="sp__heading sp__heading--center">
+          <p class="sp__eyebrow">ROLL IT OUT IN</p>
+          <h2>Three simple steps</h2>
+        </div>
+        <ol class="sp__steps">
+          {
+            steps.map((s, i) => (
+              <li style={`background:${s.bg};color:${s.fg}`}>
+                <span style={`color:${s.num}`}>{i + 1}</span>
+                <h3>{s.title}</h3>
+                <p style={s.body ? `color:${s.body}` : undefined}>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="sp__kickoff" data-custom-prompt-hide>
+          <p>Ready for kick-off in your LumApps?</p>
+          <a class="sp__btn sp__btn--yellow" href={contactHref}>Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp__who">
+      <div class="sp__wrap">
+        <div class="sp__heading sp__heading--center">
+          <p class="sp__eyebrow sp__eyebrow--teal">LEARN MORE ABOUT</p>
+          <h2>Who benefits</h2>
+          <p class="sp__who-sub">Added value for your Internal Communications, HRBPs, and team leads</p>
+        </div>
+        <div class="sp__who-grid">
+          {
+            benefits.map((b, i) => (
+              <div class:list={['sp__who-card', { 'sp__who-card--featured': b.featured }]}>
+                <span>{i + 1}</span>
+                <h3>{b.title}</h3>
+                <p>{b.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="sp__further">
+      <div class="sp__wrap">
+        <div class="sp__heading">
+          <p class="sp__eyebrow">GO FURTHER</p>
+          <h2 class="sp__h2-sm">Explore More Engaging Experiences by ADC</h2>
+        </div>
+        <div class="sp__further-grid">
+          <a href="/follow-interests">
+            <span class="sp__further-title">Follow Interests Button widget.</span>
+            <span>Activate multiple "follow interest" buttons on the same page so users can opt in to corporate or HR announcements.</span>
+            <span class="sp__pill">Learn More</span>
+          </a>
+          <a href="/guess-word-widget" class="sp__further-teal">
+            <span class="sp__further-title">Guess Word Widget.</span>
+            <span>Think of this as Wordle for enterprise within your LumApps instance. Engage employees with games tied to corporate or team initiatives.</span>
+            <span class="sp__pill sp__pill--navy">Learn More</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp__cta-wrap" data-custom-prompt-hide>
+      <div class="sp__cta">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this integration and to see a demo</p>
+        <a class="sp__btn sp__btn--navy-flat" href={contactHref}>Contact us</a>
+        <p class="sp__cta-note">Check out our Docs site for a listing of all our widgets: <a href="https://docs.adc.dev/docs">docs.adc.dev/docs</a></p>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Try-it predictor
+  const scores: Record<string, number> = { home: 2, away: 1 };
+  const lock = document.querySelector<HTMLButtonElement>('.sp__lock')!;
+  const renderLock = (locked: boolean) => {
+    lock.setAttribute('aria-pressed', String(locked));
+    lock.textContent = locked ? `Prediction locked ✓  ${scores.home} – ${scores.away}` : 'Lock in my prediction';
+  };
+  document.querySelectorAll<HTMLButtonElement>('.sp__stepper button').forEach((b) =>
+    b.addEventListener('click', () => {
+      const side = b.dataset.side!;
+      scores[side] = Math.max(0, Math.min(9, scores[side] + Number(b.dataset.delta)));
+      document.querySelector(`[data-score="${side}"]`)!.textContent = String(scores[side]);
+      renderLock(false);
+    })
+  );
+  lock.addEventListener('click', () => renderLock(lock.getAttribute('aria-pressed') !== 'true'));
+
+  // "What it does" tabs (arrow keys move between tabs)
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.sp__tabs [role="tab"]')];
+  const panels = [...document.querySelectorAll<HTMLElement>('.sp__panel')];
+  const select = (i: number, focus = false) => {
+    tabs.forEach((t, j) => {
+      t.setAttribute('aria-selected', String(i === j));
+      t.tabIndex = i === j ? 0 : -1;
+    });
+    panels.forEach((p, j) => (p.hidden = i !== j));
+    if (focus) tabs[i].focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(i));
+    t.addEventListener('keydown', (e) => {
+      const step = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      select((i + step + tabs.length) % tabs.length, true);
+    });
+  });
+
+  // The sizzle reel loads YouTube only when someone presses play.
+  const play = document.querySelector<HTMLButtonElement>('.sp__video-play');
+  play?.addEventListener('click', () => {
+    const frame = document.createElement('iframe');
+    frame.src = `https://www.youtube-nocookie.com/embed/${play.dataset.video}?autoplay=1&rel=0`;
+    frame.title = 'Soccer Predictions sizzle reel';
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    play.replaceWith(frame);
+  });
+</script>
+
+<style>
+  .sp {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .sp * {
+    box-sizing: border-box;
+  }
+  .sp h1,
+  .sp h2,
+  .sp h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .sp p,
+  .sp ol {
+    margin: 0;
+  }
+  .sp button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .sp a:focus-visible,
+  .sp button:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .sp [hidden] {
+    display: none !important;
+  }
+  .sp__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .sp__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .sp__eyebrow--teal {
+    color: #32e0c4;
+  }
+  .sp__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sp__heading--center {
+    align-items: center;
+    text-align: center;
+  }
+  .sp__heading h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 6vw, 80px);
+    color: #05006c;
+    letter-spacing: -0.03em;
+  }
+  .sp__heading .sp__h2-sm {
+    font-size: clamp(30px, 3.6vw, 44px);
+    letter-spacing: -0.02em;
+  }
+  .sp__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 20px 40px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    transition: transform 0.15s ease;
+  }
+  .sp__btn:hover {
+    transform: translate(-2px, -2px);
+  }
+  .sp__btn--navy {
+    background: #05006c;
+    color: #fff;
+    box-shadow: 6px 6px 0 #ffd458;
+  }
+  .sp__btn--navy:hover {
+    color: #fff;
+  }
+  .sp__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+    box-shadow: 6px 6px 0 #362dff;
+  }
+  .sp__btn--yellow:hover {
+    color: #05006c;
+  }
+  .sp__btn--navy-flat {
+    margin-top: 8px;
+    background: #05006c;
+    color: #fff;
+  }
+  .sp__btn--navy-flat:hover {
+    color: #fff;
+  }
+
+  /* Animations (off for reduced motion) */
+  .mq {
+    animation: mq 28s linear infinite;
+    will-change: transform;
+  }
+  @keyframes mq {
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  .floatSq {
+    animation: floatSq 7s ease-in-out infinite;
+  }
+  @keyframes floatSq {
+    0%,
+    100% {
+      transform: translateY(0) rotate(14deg);
+    }
+    50% {
+      transform: translateY(-22px) rotate(34deg);
+    }
+  }
+  .bounce {
+    animation: bounce 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  @keyframes bounce {
+    50% {
+      transform: translateY(-28px);
+    }
+  }
+  .roll {
+    animation: roll 12s linear infinite;
+    transform-origin: 50% 50%;
+  }
+  @keyframes roll {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .ballShadow {
+    animation: shadowPulse 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  @keyframes shadowPulse {
+    0%,
+    100% {
+      transform: scaleX(1);
+      opacity: 0.35;
+    }
+    50% {
+      transform: scaleX(0.7);
+      opacity: 0.18;
+    }
+  }
+  .ring {
+    animation: ring 4s ease-in-out infinite;
+  }
+  @keyframes ring {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.35);
+      opacity: 0.2;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mq,
+    .floatSq,
+    .bounce,
+    .roll,
+    .ballShadow,
+    .ring {
+      animation: none;
+    }
+  }
+
+  /* Hero */
+  .sp__hero {
+    position: relative;
+    overflow: hidden;
+    padding: 64px 24px 96px;
+    background: #362dff;
+    color: #fff;
+  }
+  .sp__sq {
+    position: absolute;
+    left: 6%;
+    top: 120px;
+    width: 90px;
+    height: 90px;
+    border-radius: 24px;
+    background: #32e0c4;
+    transform: rotate(14deg);
+  }
+  .sp__ball {
+    position: absolute;
+    right: 7%;
+    bottom: 200px;
+    width: 140px;
+    height: 170px;
+  }
+  .sp__ball-shadow {
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    width: 100px;
+    height: 14px;
+    border-radius: 50%;
+    background: #05006c;
+  }
+  .sp__ball-body {
+    position: absolute;
+    inset: 0 0 auto 0;
+    width: 140px;
+    height: 140px;
+  }
+  .sp__ball-body svg {
+    display: block;
+    filter: drop-shadow(0 10px 14px rgba(5, 0, 108, 0.35));
+  }
+  .sp__ring {
+    position: absolute;
+    right: 18%;
+    top: 90px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    opacity: 0.5;
+  }
+  .sp__hero-inner {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 28px;
+  }
+  .sp__back {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  .sp__back:hover {
+    color: #ffd458;
+    opacity: 1;
+  }
+  .sp__kicker {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    font-size: 15px;
+    color: #ffd458;
+  }
+  .sp h1 {
+    position: relative;
+    font-weight: 900;
+    font-size: clamp(60px, 10.5vw, 148px);
+    line-height: 0.85;
+    letter-spacing: -0.045em;
+  }
+  .sp h1 span {
+    position: absolute;
+    right: -10px;
+    top: -26px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-size: 22px;
+    letter-spacing: 0;
+    transform: rotate(8deg);
+  }
+  .sp__lede {
+    max-width: 760px;
+    font-size: 20px;
+    line-height: 1.65;
+    color: #eceaff;
+  }
+  .sp__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+  .sp__reel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .sp__reel-link:hover {
+    color: #ffd458;
+  }
+  .sp__reel-link span {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Try-it predictor */
+  .sp__try {
+    width: 100%;
+    max-width: 640px;
+    margin-top: 24px;
+    padding: 28px 32px;
+    border-radius: 28px;
+    background: #fff;
+    color: #05006c;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.35);
+  }
+  .sp__try-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #4a496b;
+  }
+  .sp__try-head span:first-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: #362dff;
+  }
+  .sp__match {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+  .sp__team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .sp__team-name {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+  }
+  .sp__stepper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sp__stepper button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .sp__minus {
+    border: 2px solid #e4e3ff;
+    background: #fff;
+    color: #05006c;
+  }
+  .sp__minus:hover {
+    border-color: #362dff;
+  }
+  .sp__plus {
+    border: none;
+    background: #362dff;
+    color: #fff;
+  }
+  .sp__plus:hover {
+    background: #05006c;
+  }
+  .sp__score {
+    width: 64px;
+    height: 72px;
+    border-radius: 16px;
+    background: #05006c;
+    color: #fff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Sits level with the score boxes rather than the whole team column. */
+  .sp__vs {
+    align-self: end;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: #4a496b;
+  }
+  .sp__lock {
+    min-height: 52px;
+    border-radius: 999px;
+    border: none;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif !important;
+    font-weight: 800;
+    font-size: 17px;
+    white-space: pre;
+    transition: background-color 0.15s ease;
+  }
+  .sp__lock[aria-pressed='true'] {
+    background: #32e0c4;
+  }
+
+  /* Ticker */
+  .sp__ticker {
+    overflow: hidden;
+    padding: 20px 0;
+    background: #ffd458;
+    color: #05006c;
+    border-bottom: 3px solid #05006c;
+  }
+  .sp__ticker .mq {
+    display: flex;
+    width: max-content;
+    white-space: nowrap;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+  }
+  .sp__ticker .mq > span {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    padding-right: 48px;
+  }
+  .sp__ticker i {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #362dff;
+  }
+
+  /* Why use it */
+  .sp__why-head {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 112px 24px 48px;
+  }
+  .sp__why {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .sp__why > div {
+    min-height: 360px;
+    padding: 56px 40px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .sp__why p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* Sizzle reel */
+  .sp__reel {
+    padding: 120px 24px;
+    background: #f7f7fc;
+  }
+  .sp__reel-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+  .sp__reel h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    color: #05006c;
+    letter-spacing: -0.02em;
+  }
+  .sp__reel-sub {
+    margin-bottom: 32px !important;
+    font-size: 19px;
+    color: #33325a;
+  }
+  .sp__video-wrap {
+    position: relative;
+    width: 100%;
+  }
+  .sp__video-tilt {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background: #32e0c4;
+    transform: rotate(-2.5deg);
+  }
+  .sp__video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sp__video :global(iframe) {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .sp__video-play {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    background: #362dff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease;
+  }
+  .sp__video-play:hover {
+    transform: scale(1.06);
+  }
+
+  /* What it does */
+  .sp__does {
+    padding: 120px 0;
+  }
+  .sp__does .sp__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .sp__tabs-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .sp__tabs {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sp__tabs button {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    min-height: 64px;
+    padding: 20px 24px;
+    border-radius: 18px;
+    border: 2px solid #e4e3ff;
+    background: #fff;
+    color: #05006c;
+    text-align: left;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .sp__tabs button:hover {
+    border-color: #362dff;
+  }
+  .sp__tabs button[aria-selected='true'] {
+    background: #362dff;
+    border-color: #362dff;
+    color: #fff;
+  }
+  .sp__tab-num {
+    min-width: 32px;
+    font-weight: 900;
+    font-size: 18px;
+  }
+  .sp__panel {
+    position: relative;
+    overflow: hidden;
+    flex: 999 1 560px;
+    min-width: 0;
+    min-height: 460px;
+    padding: 48px;
+    border-radius: 32px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .sp__panel-num {
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 260px;
+    line-height: 1;
+    color: #140f86;
+  }
+  .sp__panel h3 {
+    position: relative;
+    font-weight: 900;
+    font-size: clamp(32px, 3.6vw, 48px);
+  }
+  .sp__panel > p {
+    position: relative;
+    max-width: 620px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #e4e3ff;
+  }
+  .sp__shot {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    border-radius: 20px;
+    background: #f5f5ff;
+  }
+  .sp__shot img {
+    display: block;
+    max-width: 100%;
+    max-height: 380px;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  /* Steps */
+  .sp__steps-sec {
+    padding: 120px 0;
+    background: #f7f7fc;
+  }
+  .sp__steps-sec .sp__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .sp__steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    border-radius: 32px;
+    overflow: hidden;
+  }
+  .sp__steps li {
+    padding: 48px 40px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .sp__steps li > span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 0.9;
+  }
+  .sp__steps h3 {
+    font-weight: 800;
+    font-size: 28px;
+  }
+  .sp__steps p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .sp__kickoff {
+    padding: 40px 48px;
+    border-radius: 32px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .sp__kickoff p {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(26px, 3vw, 40px);
+    letter-spacing: -0.02em;
+  }
+
+  /* Who benefits */
+  .sp__who {
+    padding: 120px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .sp__who .sp__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .sp__who .sp__heading h2 {
+    color: #fff;
+  }
+  .sp__who-sub {
+    font-size: 19px;
+    color: #c9c7ff;
+  }
+  .sp__who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .sp__who-card {
+    padding: 40px;
+    border: 2px solid #362dff;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .sp__who-card > span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 88px;
+    line-height: 1;
+    color: #32e0c4;
+  }
+  .sp__who-card h3 {
+    font-weight: 800;
+    font-size: 26px;
+  }
+  .sp__who-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .sp__who-card--featured {
+    background: #362dff;
+    transform: translateY(-24px);
+  }
+  .sp__who-card--featured > span {
+    color: #ffd458;
+  }
+  .sp__who-card--featured p {
+    color: #eceaff;
+  }
+
+  /* Go further */
+  .sp__further {
+    padding-top: 112px;
+  }
+  .sp__further .sp__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .sp__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    border: 3px solid #05006c;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+  .sp__further-grid a {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .sp__further-grid a.sp__further-teal {
+    background: #32e0c4;
+    color: #05006c;
+  }
+  .sp__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1.3;
+    color: #05006c;
+  }
+  .sp__pill {
+    align-self: flex-start;
+    margin-top: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: #362dff;
+    color: #fff;
+    font-weight: 700;
+    transition: transform 0.15s ease;
+  }
+  .sp__pill--navy {
+    background: #05006c;
+  }
+  .sp__further-grid a:hover .sp__pill {
+    transform: translateX(4px);
+  }
+
+  /* Got questions */
+  .sp__cta-wrap {
+    padding: 112px 24px 0;
+  }
+  .sp__cta {
+    padding: 96px 24px;
+    border-radius: 40px 40px 0 0;
+    background: #ffd458;
+    color: #05006c;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .sp__cta h2 {
+    font-weight: 900;
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+  .sp__cta > p {
+    font-size: 20px;
+  }
+  .sp__cta .sp__cta-note {
+    margin-top: 16px;
+    font-size: 15px;
+  }
+  .sp__cta-note a {
+    color: #05006c;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .sp__ball,
+    .sp__ring {
+      display: none;
+    }
+  }
+  @media (max-width: 760px) {
+    .sp__hero {
+      padding: 40px 16px 72px;
+    }
+    .sp h1 span {
+      right: -6px;
+      top: -16px;
+      font-size: 16px;
+      padding: 8px 14px;
+    }
+    .sp__lede {
+      font-size: 17px;
+    }
+    .sp__sq {
+      width: 56px;
+      height: 56px;
+      top: 70px;
+      left: -12px;
+    }
+    .sp__try {
+      padding: 22px 18px;
+    }
+    .sp__match {
+      gap: 8px;
+    }
+    .sp__team-name {
+      font-size: 17px;
+    }
+    .sp__stepper {
+      gap: 6px;
+    }
+    .sp__stepper button {
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+    }
+    .sp__score {
+      width: 48px;
+      height: 56px;
+      font-size: 30px;
+    }
+    .sp__vs {
+      height: 56px;
+    }
+    .sp__ticker .mq {
+      font-size: 20px;
+    }
+    .sp__why-head {
+      padding-top: 72px;
+    }
+    .sp__why > div {
+      min-height: 0;
+      padding: 40px 24px 48px;
+    }
+    .sp__reel,
+    .sp__does,
+    .sp__steps-sec,
+    .sp__who {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+    .sp__video-play {
+      width: 80px;
+      height: 80px;
+      border-width: 4px;
+    }
+    .sp__panel {
+      min-height: 0;
+      padding: 32px 24px;
+    }
+    .sp__panel-num {
+      font-size: 160px;
+      right: -20px;
+      top: -20px;
+    }
+    .sp__shot img {
+      max-height: 300px;
+    }
+    .sp__tabs button {
+      font-size: 17px;
+      padding: 16px 18px;
+    }
+    .sp__steps li {
+      padding: 36px 28px 44px;
+    }
+    .sp__steps li > span {
+      font-size: 72px;
+    }
+    .sp__kickoff {
+      padding: 32px 24px;
+    }
+    .sp__who-card {
+      padding: 32px 28px;
+    }
+    .sp__who-card--featured {
+      transform: none;
+    }
+    .sp__further,
+    .sp__cta-wrap {
+      padding-top: 72px;
+    }
+    .sp__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .sp__further-grid a {
+      padding: 28px;
+    }
+    .sp__cta-wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .sp__cta {
+      padding: 64px 20px;
+      border-radius: 28px 28px 0 0;
+    }
+  }
+</style>
