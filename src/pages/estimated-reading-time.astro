@@ -1,0 +1,1191 @@
+---
+// Estimated Reading Time product page ("Split Editorial" template).
+// The design's social-proof section (customer quote, client logos, stat) was all placeholders, so it's left out.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+const DOCS = 'https://docs.adc.dev/docs/ls/content/3965255109285547/estimated-reading-time';
+
+const why = [
+  { title: 'Set expectations up front', text: "When readers know the time commitment before they start, they're more likely to begin, and to read all the way to the end." },
+  { title: 'Always accurate, never manual', text: 'Reading time recalculates on its own whenever content changes. Nobody has to remember to update it, ever.' },
+  { title: 'One standard, everywhere', text: 'Give Knowledge Base articles, news, and resource libraries the same polished, consistent reading-time indicator across your intranet.' },
+  { title: "Respect people's time", text: 'Help employees plan their reading around a busy day, and signal a content culture that values their attention.' },
+];
+
+const features = [
+  { title: 'Smart, Automatic Word Count.', text: 'Calculates reading time from your actual page content, using a proven 240 words-per-minute standard out of the box.' },
+  { title: 'You Decide What Counts.', text: 'Choose which widgets feed the estimate. Title, Intro, Rich Text, and HTML are included by default, so it works from day one.' },
+  { title: "Speaks Your Readers' Language.", text: 'Full multi-language support, with your own wording for the label in both singular ("1 minute") and plural forms.' },
+  { title: 'Tuned to Your Audience.', text: 'You know your readers best. Set the words-per-minute pace that matches how your employees actually read.' },
+];
+
+const steps = [
+  { bg: '#362dff', fg: '#fff', icon: '<path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/>', title: 'Add the widget', text: 'Drop Estimated Reading Time onto any LumApps page or content template. It starts working immediately.' },
+  { bg: '#32E0C4', fg: '#05006c', icon: '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>', title: 'Fine-tune, if you like', text: 'Optionally choose which widgets count, set your reading pace, and customize the label.' },
+  { bg: '#FFD458', fg: '#05006c', icon: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', title: 'Readers know before they read', text: 'Every page shows an accurate reading time that updates itself as your content evolves.' },
+];
+
+const value = [
+  { bg: '#f5f5ff', tileBg: '#362dff', tileFg: '#fff', icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>', title: 'Knowledge Base & Help Centers', text: 'Help employees choose between a quick answer and a deep dive, so they find what they need faster and self-serve with confidence.' },
+  { bg: '#FFD458', tileBg: '#05006c', tileFg: '#FFD458', icon: '<path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/>', title: 'Thought Leadership & News', text: 'Give leadership messages and company news a professional, editorial finish that invites people to read on.' },
+  { bg: '#f5f5ff', tileBg: '#32E0C4', tileFg: '#05006c', icon: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>', title: 'Resources, Guides & Documentation', text: 'Let readers plan around longer policies, onboarding guides, and how-tos, and keep them coming back to finish.' },
+];
+
+const related = [
+  { href: '/table-of-contents', accent: '#FFD458', icon: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>', title: 'Advanced Table of Contents widget.', text: 'Turn long pages into easy-to-navigate experiences with an automatic, clickable table of contents.' },
+  { href: '/page-reader', accent: '#32E0C4', icon: '<path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>', title: 'Page Reader widget.', text: 'Let employees listen to any LumApps page read aloud, making content more accessible for everyone.' },
+];
+
+const icon = (paths: string, size = 28) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+const clock = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#362dff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+---
+
+<Base title="Estimated Reading Time | Ariella Digital Consulting" description="Estimated Reading Time by ADC: an automatic, always-accurate reading-time indicator for every LumApps page.">
+  <div class="er">
+    <section class="er__hero" data-custom-prompt-after>
+      <div class="er__wrap er__hero-grid">
+        <div class="er__hero-copy">
+          <a class="er__back" href="/products">← Back to Products Page</a>
+          <p class="er__tagline">Every minute, accounted for.</p>
+          <h1>Estimated<br />Reading Time <span>by ADC</span></h1>
+          <p class="er__lede">Show readers exactly how long a page will take before they dive in. An automatic, always-accurate reading-time indicator for every LumApps page, so more people start your content, and more of them finish it.</p>
+          <div class="er__hero-ctas">
+            <a class="er__btn er__btn--blue" href={contactHref}>Request a Demo</a>
+            <a class="er__docs" href={DOCS}>
+              <span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#05006c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"></path></svg>
+              </span>
+              Read the docs
+            </a>
+          </div>
+        </div>
+
+        <div class="er__visual">
+          <div class="er__arch">
+            <div class="er__arch-floor" aria-hidden="true"></div>
+            <div class="er__flare flare" aria-hidden="true"></div>
+            <div class="er__dial">
+              <svg width="300" height="300" viewBox="0 0 200 200" role="img" aria-label="Reading-time dial showing 8 minutes">
+                <circle cx="100" cy="100" r="86" fill="none" stroke="#1c1690" stroke-width="14"></circle>
+                <circle class="ring" cx="100" cy="100" r="86" fill="none" stroke="#32E0C4" stroke-width="14" stroke-linecap="round" stroke-dasharray="540" stroke-dashoffset="120" transform="rotate(-90 100 100)"></circle>
+                <circle cx="100" cy="100" r="66" fill="none" stroke="#2a2499" stroke-width="1.5" stroke-dasharray="2 6"></circle>
+              </svg>
+              <div class="er__dial-text" aria-hidden="true">
+                <span>8</span>
+                <span>MIN READ</span>
+              </div>
+            </div>
+            <div class="er__sweep-clip" aria-hidden="true"><div class="er__sweep sweep"></div></div>
+          </div>
+          <div class="er__mock" aria-hidden="true">
+            <span class="er__mock-img"></span>
+            <span class="er__mock-line" style="width:90%"></span>
+            <span class="er__mock-line" style="width:62%"></span>
+            <span class="er__mock-pill"><Fragment set:html={clock} />8 min read</span>
+            {[100, 94, 98, 70, 96].map((w) => <span class="er__mock-text" style={`width:${w}%`} />)}
+          </div>
+          <span class="er__sticker">Zero setup · always accurate</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="er__why er__wrap">
+      <div class="er__why-head">
+        <p class="er__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why<br />use it</h2>
+        <div class="er__bar" aria-hidden="true"></div>
+      </div>
+      <ol class="er__why-list">
+        {
+          why.map((w, i) => (
+            <li>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="er__does">
+      <div class="er__wrap">
+        <div class="er__heading">
+          <p class="er__eyebrow er__eyebrow--yellow">HAVE A LOOK AT</p>
+          <h2>What it does</h2>
+        </div>
+        <div class="er__figs">
+          <figure>
+            <div class="er__fig er__fig--white">
+              <div class="er__fig-author">
+                <span aria-hidden="true">PT</span>
+                <span>
+                  <span>People Team</span>
+                  <span>Employee Handbook</span>
+                </span>
+              </div>
+              <p class="er__fig-meta">Published on June 24, 2026<br />Knowledge Article · Use Case · Employee Engagement</p>
+              <p class="er__fig-label">
+                Estimated reading time: <strong>8 minutes</strong>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#362dff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17h.01"></path></svg>
+              </p>
+            </div>
+            <figcaption>Sits naturally in your article header, matching your LumApps look and feel.</figcaption>
+          </figure>
+          <figure>
+            <div class="er__fig er__fig--yellow">
+              <div class="er__calc">
+                <span class="er__calc-title">How we calculated this</span>
+                <span class="er__calc-row"><span>Words on this page</span><strong>1,912</strong></span>
+                <span class="er__calc-row"><span>Reading speed</span><strong>240 wpm</strong></span>
+                <span class="er__calc-sub">Counted widgets</span>
+                <span class="er__calc-chips">{['Title', 'Intro', 'Rich text', 'HTML'].map((c) => <span>{c}</span>)}</span>
+              </div>
+            </div>
+            <figcaption>An optional help icon shows readers exactly how their estimate was calculated.</figcaption>
+          </figure>
+        </div>
+        <div class="er__features">
+          {
+            features.map((f, i) => (
+              <div>
+                <span>{String(i + 1).padStart(2, '0')}</span>
+                <h3>{f.title}</h3>
+                <p>{f.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="er__steps-sec">
+      <div class="er__wrap">
+        <div class="er__heading">
+          <p class="er__eyebrow">ROLL IT OUT IN</p>
+          <h2 class="er__h2-md">Three simple steps</h2>
+        </div>
+        <ol class="er__steps">
+          {
+            steps.map((s, i) => (
+              <li>
+                <span class="er__step-icon" style={`background:${s.bg};color:${s.fg}`} set:html={icon(s.icon)} />
+                <span class="er__step-num">STEP {i + 1}</span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="er__band" data-custom-prompt-hide>
+          <div>
+            <p class="er__band-title">Low effort. High return.</p>
+            <p>No manual setup. No workflow changes. Immediate impact on how your content is read.</p>
+          </div>
+          <a class="er__btn er__btn--yellow" href={contactHref}>Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="er__value er__wrap">
+      <div class="er__value-head">
+        <div class="er__heading">
+          <p class="er__eyebrow">LEARN MORE ABOUT</p>
+          <h2>Where it delivers value</h2>
+        </div>
+        <p>Added value for your Knowledge Managers, Internal Communications, and content owners</p>
+      </div>
+      <div class="er__value-list">
+        {
+          value.map((v) => (
+            <div style={`background:${v.bg}`}>
+              <div class="er__value-title">
+                <span style={`background:${v.tileBg};color:${v.tileFg}`} set:html={icon(v.icon)} />
+                <h3>{v.title}</h3>
+              </div>
+              <p>{v.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="er__further er__wrap">
+      <div class="er__heading">
+        <p class="er__eyebrow">GO FURTHER</p>
+        <h2 class="er__h2-sm">Explore More Knowledge &amp; Reading Experiences by ADC</h2>
+      </div>
+      <div class="er__further-grid">
+        {
+          related.map((r) => (
+            <a href={r.href}>
+              <span class="er__further-icon" style={`color:${r.accent}`} set:html={icon(r.icon, 30)} />
+              <span class="er__further-text">
+                <span class="er__further-title">{r.title}</span>
+                <span>{r.text}</span>
+                <span class="er__more">Learn More →</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="er__cta" data-custom-prompt-hide>
+      <div class="er__cta-blue">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this widget and to see a demo</p>
+        <div><a class="er__btn er__btn--yellow er__btn--lg" href={contactHref}>Contact us</a></div>
+      </div>
+      <div class="er__cta-yellow">
+        <p>Check out our Docs site for a listing of all our widgets:</p>
+        <a href="https://docs.adc.dev/docs">docs.adc.dev/docs</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .er {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .er * {
+    box-sizing: border-box;
+  }
+  .er h1,
+  .er h2,
+  .er h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .er p,
+  .er ol,
+  .er figure {
+    margin: 0;
+  }
+  .er a:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .er__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .er__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .er__eyebrow--yellow {
+    color: #ffd458;
+  }
+  .er__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .er__heading h2,
+  .er__why-head h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .er__heading .er__h2-md {
+    font-size: clamp(40px, 5vw, 64px);
+  }
+  .er__heading .er__h2-sm {
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .er__btn {
+    display: inline-block;
+    padding: 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease;
+  }
+  .er__btn:hover {
+    transform: translateY(-2px);
+  }
+  .er__btn--blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .er__btn--blue:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .er__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .er__btn--yellow:hover {
+    color: #05006c;
+  }
+  .er__btn--lg {
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+
+  /* Animations (off for reduced motion) */
+  .sweep {
+    animation: sweep 7s ease-in-out infinite;
+  }
+  @keyframes sweep {
+    0% {
+      transform: translateX(-120%) skewX(-18deg);
+    }
+    60%,
+    100% {
+      transform: translateX(220%) skewX(-18deg);
+    }
+  }
+  .flare {
+    animation: flare 3.2s ease-in-out infinite;
+  }
+  @keyframes flare {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+  .ring {
+    animation: fillring 6s ease-in-out infinite alternate;
+  }
+  @keyframes fillring {
+    0% {
+      stroke-dashoffset: 540;
+    }
+    55%,
+    100% {
+      stroke-dashoffset: 120;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sweep,
+    .flare,
+    .ring {
+      animation: none;
+    }
+  }
+
+  /* Hero */
+  .er__hero {
+    overflow: hidden;
+    padding-top: 40px;
+    background: #f5f5ff;
+  }
+  .er__hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 48px;
+    align-items: end;
+  }
+  .er__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-bottom: 96px;
+  }
+  .er__back {
+    align-self: flex-start;
+    padding: 8px 16px;
+    border: 1.5px solid #05006c;
+    border-radius: 999px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .er__back:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .er__tagline {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #362dff;
+  }
+  .er h1 {
+    font-weight: 900;
+    font-size: clamp(52px, 7vw, 92px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: #05006c;
+  }
+  .er h1 span {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #fff;
+    color: #362dff;
+    font-size: 0.4em;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .er__lede {
+    max-width: 540px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #1d1c3a;
+  }
+  .er__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+  .er__docs {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .er__docs:hover {
+    color: #362dff;
+  }
+  .er__docs span {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #05006c;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .er__visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 600px;
+  }
+  .er__arch {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: min(480px, 100%);
+    height: 580px;
+    border-radius: 240px 240px 0 0;
+    overflow: hidden;
+    background: #05006c;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .er__arch-floor {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 34%;
+    background: #362dff;
+  }
+  .er__flare {
+    position: absolute;
+    left: 8%;
+    top: 8%;
+    width: 50%;
+    height: 30%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+  }
+  .er__dial {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .er__dial svg {
+    position: absolute;
+    inset: 0;
+  }
+  .er__dial-text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    font-family: 'Archivo', sans-serif;
+  }
+  .er__dial-text span:first-child {
+    font-weight: 900;
+    font-size: 112px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+  .er__dial-text span:last-child {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    color: #ffd458;
+  }
+  .er__sweep-clip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .er__sweep {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 35%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  }
+  .er__mock {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 220px;
+    height: 360px;
+    padding: 22px 16px;
+    border-radius: 34px 34px 0 0;
+    border: 10px solid #05006c;
+    border-bottom: none;
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(5, 0, 108, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .er__mock-img {
+    height: 72px;
+    border-radius: 12px;
+    background: #d9d7ff;
+  }
+  .er__mock-line {
+    height: 12px;
+    border-radius: 6px;
+    background: #05006c;
+  }
+  .er__mock-pill {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #f5f5ff;
+    color: #05006c;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .er__mock-text {
+    height: 8px;
+    border-radius: 4px;
+    background: #e8e7f5;
+  }
+  .er__sticker {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    transform: rotate(3deg);
+    box-shadow: 0 10px 30px rgba(5, 0, 108, 0.2);
+  }
+
+  /* Why use it */
+  .er__why {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+  }
+  .er__why-head {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .er__bar {
+    width: 96px;
+    height: 12px;
+    margin-top: 12px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .er__why-list {
+    flex: 999 1 560px;
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .er__why-list li {
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+    padding: 32px 0;
+    border-top: 1px solid #d9d7ff;
+  }
+  .er__why-list li:first-child {
+    border-top: 2px solid #05006c;
+  }
+  .er__why-list li:last-child {
+    border-bottom: 1px solid #d9d7ff;
+  }
+  .er__why-list li > span {
+    min-width: 72px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: #362dff;
+  }
+  .er__why-list li > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .er__why-list h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .er__why-list p {
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  /* What it does */
+  .er__does {
+    padding: 120px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .er__does .er__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .er__does .er__heading h2 {
+    color: #fff;
+  }
+  .er__figs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .er__figs figure {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .er__figs figcaption {
+    font-size: 15px;
+    color: #c9c7ff;
+  }
+  .er__fig {
+    aspect-ratio: 4 / 3;
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+  }
+  .er__fig--white {
+    border: 8px solid #fff;
+    background: #fff;
+    color: #33325a;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+  }
+  .er__fig--yellow {
+    border: 8px solid #ffd458;
+    background: #1c1690;
+    align-items: center;
+    justify-content: center;
+  }
+  .er__fig-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .er__fig-author > span:first-child {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #d9d7ff;
+    color: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+  }
+  .er__fig-author > span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .er__fig-author > span:last-child span:first-child {
+    font-weight: 700;
+    color: #1d1c3a;
+  }
+  .er__fig-author > span:last-child span:last-child,
+  .er__fig-meta {
+    font-size: 14px;
+    color: #5b5a7a;
+  }
+  .er__fig-meta {
+    line-height: 1.7;
+  }
+  .er__fig-label {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #f5f5ff;
+    font-size: 18px;
+    color: #1d1c3a;
+  }
+  .er__fig-label strong {
+    color: #05006c;
+  }
+  .er__calc {
+    width: 100%;
+    max-width: 340px;
+    padding: 24px 28px;
+    border-radius: 16px;
+    background: #fff;
+    color: #1d1c3a;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .er__calc-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #05006c;
+  }
+  .er__calc-row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e7f5;
+    font-size: 15px;
+  }
+  .er__calc-sub {
+    font-size: 14px;
+    color: #5b5a7a;
+  }
+  .er__calc-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .er__calc-chips span {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #f5f5ff;
+    color: #05006c;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .er__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0 32px;
+    border-top: 2px solid #362dff;
+  }
+  .er__features > div {
+    padding: 36px 0;
+    border-bottom: 1px solid #2a2499;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .er__features span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    line-height: 1;
+    color: #32e0c4;
+  }
+  .er__features h3 {
+    font-weight: 800;
+    font-size: 24px;
+  }
+  .er__features p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+
+  /* Steps */
+  .er__steps-sec {
+    padding: 112px 0;
+    background: #f5f5ff;
+  }
+  .er__steps-sec .er__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .er__steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .er__steps li {
+    padding: 36px;
+    border-radius: 28px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .er__step-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .er__step-num {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: #362dff;
+  }
+  .er__steps h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .er__steps p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .er__band {
+    padding: 32px 40px;
+    border-radius: 28px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .er__band > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .er__band-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 2.4vw, 30px);
+  }
+  .er__band p:last-child {
+    font-size: 16px;
+    color: #c9c7ff;
+  }
+
+  /* Where it delivers value */
+  .er__value {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .er__value-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .er__value-head > p {
+    max-width: 420px;
+    font-size: 19px;
+    color: #33325a;
+  }
+  .er__value-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .er__value-list > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    align-items: center;
+    padding: 36px 40px;
+    border-radius: 28px;
+    color: #05006c;
+  }
+  .er__value-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .er__value-title > span {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .er__value-title h3 {
+    font-weight: 800;
+    font-size: 28px;
+    color: #05006c;
+  }
+  .er__value-list p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* Go further */
+  .er__further {
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .er__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .er__further-grid a {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 32px;
+    border-radius: 28px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .er__further-grid a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(54, 45, 255, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+    color: #000;
+  }
+  .er__further-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .er__further-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .er__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #05006c;
+  }
+  .er__more {
+    color: #362dff;
+    font-weight: 700;
+  }
+
+  /* Got questions */
+  .er__cta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .er__cta > div {
+    padding: 88px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+  .er__cta-blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .er__cta-blue h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.02em;
+  }
+  .er__cta-blue p {
+    max-width: 480px;
+    font-size: 19px;
+    color: #eceaff;
+  }
+  .er__cta-blue > div {
+    margin-top: 8px;
+  }
+  .er__cta-yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .er__cta-yellow p {
+    max-width: 460px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  .er__cta-yellow a {
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 3.4vw, 44px);
+    overflow-wrap: anywhere;
+  }
+  .er__cta-yellow a:hover {
+    color: #362dff;
+  }
+
+  @media (max-width: 820px) {
+    .er__mock,
+    .er__sticker {
+      display: none;
+    }
+  }
+  @media (max-width: 760px) {
+    .er__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+    }
+    .er__hero-copy {
+      padding-bottom: 48px;
+    }
+    .er__lede {
+      font-size: 17px;
+    }
+    .er__visual {
+      min-height: 420px;
+    }
+    .er__arch {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 360px;
+      height: 420px;
+      border-radius: 180px 180px 0 0;
+    }
+    .er__dial {
+      transform: scale(0.8);
+    }
+    .er__why,
+    .er__value {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      gap: 32px;
+    }
+    .er__why-list li {
+      gap: 18px;
+      padding: 24px 0;
+    }
+    .er__why-list li > span {
+      min-width: 0;
+      font-size: 32px;
+    }
+    .er__why-list p {
+      font-size: 17px;
+    }
+    .er__does,
+    .er__steps-sec {
+      padding: 72px 0;
+    }
+    .er__figs,
+    .er__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .er__fig {
+      aspect-ratio: auto;
+      padding: 28px 20px;
+    }
+    .er__band {
+      padding: 28px 24px;
+    }
+    .er__value-list > div {
+      grid-template-columns: minmax(0, 1fr);
+      padding: 28px 24px;
+      gap: 16px;
+    }
+    .er__value-title h3 {
+      font-size: 22px;
+    }
+    .er__value-title > span {
+      width: 52px;
+      height: 52px;
+    }
+    .er__further {
+      padding-bottom: 72px;
+    }
+    .er__further-grid a {
+      padding: 24px;
+      gap: 18px;
+    }
+    .er__further-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+    }
+    .er__cta > div {
+      padding: 56px 24px;
+    }
+    .er__cta-yellow p {
+      font-size: 22px;
+    }
+  }
+</style>

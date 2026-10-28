@@ -56,7 +56,7 @@ export const extensions: Extension[] = [
   { n: 'Debug Widget', c: ['dt'], d: 'Inspect and troubleshoot widgets while you build.' },
   { n: 'Display a QR Code', c: ['ut'], d: 'Show a QR code on any page.' },
   { n: 'Enhanced Search Filter Widget', c: ['se'], d: 'An upgrade to LumApps’ out-of-the-box content filter.', href: DOCS + '6544390651641856/enhanced-search-filter-widget' },
-  { n: 'Estimated Reading Time', c: ['cn'], pop: 4, d: 'Automatically calculates and displays how long a page takes to read.', href: '/wiki' },
+  { n: 'Estimated Reading Time', c: ['cn'], pop: 4, d: 'Automatically calculates and displays how long a page takes to read.', href: '/estimated-reading-time' },
   { n: 'Fireworks', c: ['sf'], d: 'Add some flair to a homepage or landing page.', href: DOCS + '5839124806238208/fireworks-widget' },
   { n: 'Follow Interests', c: ['cs'], d: 'Enhances the native LumApps “follow interest” experience.', href: '/follow-interests' },
   { n: 'Follow People', c: ['cs'], d: 'Enhances the native LumApps “follow user” experience.', href: '/follow-actions' },
