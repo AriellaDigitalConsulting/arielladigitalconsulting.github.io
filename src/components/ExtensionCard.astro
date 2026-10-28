@@ -1,0 +1,239 @@
+---
+// One extension on the Products page: a "featured" white card or a "row" card in the results grid.
+// Extensions with a URL link to it; the rest are focusable cards that show "Page coming soon..." on hover or focus.
+import type { Category, Extension } from '../data/extensions';
+
+interface Props {
+  ext: Extension;
+  cats: Record<string, Category>;
+  variant?: 'row' | 'featured';
+  /** Search hooks for the flat results list. */
+  filterable?: boolean;
+}
+const { ext, cats, variant = 'row', filterable = false } = Astro.props;
+
+const primary = cats[ext.c[0]];
+const initials = ext.n
+  .split(/\s+/)
+  .filter((w) => /^[A-Za-z0-9]/.test(w))
+  .slice(0, 2)
+  .map((w) => w[0])
+  .join('')
+  .toUpperCase();
+const external = !!ext.href?.startsWith('http');
+const Tag = ext.href ? 'a' : 'div';
+const linkAttrs = ext.href
+  ? { href: ext.href, target: external ? '_blank' : undefined, rel: external ? 'noopener' : undefined }
+  : { tabindex: 0 };
+const filterAttrs = filterable
+  ? {
+      'data-cats': ext.c.join(' '),
+      'data-pop': ext.pop ? '' : undefined,
+      'data-text': [ext.n, ext.d, ...ext.c.map((id) => cats[id].label), ext.pop ? 'most popular' : ''].join(' ').toLowerCase(),
+    }
+  : {};
+const tile = `background:${primary.chip};color:${primary.ink}`;
+---
+
+<Tag class:list={[variant === 'featured' ? 'fc' : 'xc', { 'is-soon': !ext.href }]} {...linkAttrs} {...filterAttrs}>
+  {
+    variant === 'featured' ? (
+      <>
+        <span class="fc__tile" aria-hidden="true" style={tile}>{initials}</span>
+        <span class="fc__name">{ext.n}</span>
+        <span class="fc__desc">{ext.d}</span>
+        {ext.href && <span class="fc__cta">Learn more <span aria-hidden="true">→</span></span>}
+      </>
+    ) : (
+      <>
+        <span class="xc__tile" aria-hidden="true" style={tile}>{initials}</span>
+        <span class="xc__body">
+          <span class="xc__title">
+            <span class="xc__name">{ext.n}</span>
+            {ext.pop && <span class="xc__pop">POPULAR</span>}
+          </span>
+          <span class="xc__desc">{ext.d}</span>
+          <span class="xc__tags">
+            {ext.c.map((id) => (
+              <span class="xc__tag"><span aria-hidden="true" style={`background:${cats[id].chip}`} />{cats[id].label}</span>
+            ))}
+          </span>
+          {ext.href && <span class="xc__cta">Learn more <span aria-hidden="true">→</span></span>}
+        </span>
+      </>
+    )
+  }
+  {!ext.href && <span class="soon" role="tooltip">Page coming soon...</span>}
+</Tag>
+
+<style>
+  .fc {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 22px;
+    min-height: 200px;
+    border-radius: 20px;
+    background: #fff;
+    color: #05006c;
+    text-decoration: none;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease;
+  }
+  a.fc:hover {
+    transform: translateY(-3px);
+  }
+  .fc__tile {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    box-shadow: inset 0 0 0 1px rgba(5, 0, 108, 0.12);
+  }
+  .fc__name {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.2;
+  }
+  .fc__desc {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4a4870;
+  }
+  .fc__cta {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2a22b8;
+  }
+
+  .xc {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  a.xc:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(50, 224, 196, 0.5);
+  }
+  .xc__tile {
+    flex: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .xc__body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .xc__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .xc__name {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .xc__pop {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: #ffd458;
+    color: #05006c;
+  }
+  .xc__desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #d4d2f5;
+  }
+  .xc__tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .xc__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .xc__tag span {
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+  }
+  .xc__cta {
+    font-size: 13px;
+    font-weight: 700;
+    color: #32e0c4;
+    margin-top: 2px;
+  }
+
+  .xc[hidden] {
+    display: none;
+  }
+
+  /* No page yet: a "Page coming soon..." pill floats above the card on hover/focus. */
+  .is-soon {
+    cursor: default;
+  }
+  .soon {
+    position: absolute;
+    z-index: 2;
+    bottom: calc(100% - 10px);
+    left: 50%;
+    white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translate(-50%, 4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+  }
+  .is-soon:hover .soon,
+  .is-soon:focus-visible .soon {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  .xc.is-soon:hover {
+    border-color: rgba(255, 212, 88, 0.5);
+  }
+</style>

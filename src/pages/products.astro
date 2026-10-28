@@ -1,143 +1,582 @@
 ---
+// Products: a searchable library of ADC's LumApps extensions, filterable by category.
+// Every card is rendered on the server; the script below only filters and regroups them.
 import Base from '../layouts/Base.astro';
-import { img } from '../lib/img';
+import ExtensionCard from '../components/ExtensionCard.astro';
+import { categories, extensions } from '../data/extensions';
+import { contactHref } from '../data/site';
 
-const products = [
-  {
-    title: 'Search Enhancement Integrations',
-    href: '/search-enhancements',
-    image: img('8ac787_6dcd2ac3e16340d98b77785dca35fc2c~mv2.png'),
-    body: "Learn how we've improved the LumApps Coveo connector for a truly customized global enterprise search page experience.",
-  },
-  {
-    title: 'Third Party Integrations with LumApps',
-    href: '/third-party-integrations',
-    image: img('8ac787_e8161f4588bb48b080cb0861b5938219~mv2.png'),
-    body: 'Learn about our platform integrations which seamlessly enhance the LumApps employee experience platform.',
-  },
-  {
-    title: 'LumApps Extension Use Cases',
-    href: '/extension-widgets',
-    image: img('8ac787_971563e766544298877bd40f2c1b807e~mv2.png'),
-    body: 'We are second only to LumApps with the number of widgets we have developed. Learn about our extensions and use cases.',
-  },
+const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
+const sorted = [...extensions].sort((a, b) => a.n.localeCompare(b.n));
+const popular = extensions.filter((e) => e.pop);
+const groups = categories
+  .map((c) => ({ c, items: sorted.filter((e) => e.c[0] === c.id) }))
+  .filter((g) => g.items.length);
+
+const plural = (n: number) => `${n} ${n === 1 ? 'item' : 'items'}`;
+const filters = [
+  { id: 'all', label: 'Everything', chip: 'rgba(255,255,255,0.14)', ink: '#FFFFFF', count: extensions.length },
+  { id: 'pop', label: 'Most Popular', chip: '#FFD458', ink: '#05006C', count: popular.length },
+  ...categories.map((c) => ({ ...c, count: extensions.filter((e) => e.c.includes(c.id)).length })),
 ];
+const icons: Record<string, string> = {
+  all: '<rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/>',
+  pop: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+  eg: '<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M16 6h3v1a3 3 0 0 1-3 3M8 6H5v1a3 3 0 0 0 3 3M12 13v4M8 20h8"/>',
+  tb: '<path d="M14.7 6.3a4 4 0 0 0 5 5l-8.4 8.4a2.1 2.1 0 0 1-3-3z"/><path d="M14.7 6.3 17 4l3 3-2.3 2.3"/>',
+  cn: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M9 8h6M9 12h6"/>',
+  sf: '<path d="M11 3l1.8 4.7 4.7 1.8-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>',
+  se: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  ti: '<path d="M9 2v6M15 2v6M7 8h10v4a5 5 0 0 1-10 0zM12 17v5"/>',
+  cs: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 5 5.3"/>',
+  dt: '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
+  ut: '<path d="M4 6h16M4 12h16M4 18h16"/><circle cx="15" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="17" cy="18" r="2"/>',
+  pd: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M14 10h4M14 14h4M5.5 17a3.5 3.5 0 0 1 7 0"/>',
+  ac: '<circle cx="12" cy="4.5" r="1.5"/><path d="M5 8l7 1.5L19 8M12 9.5V14l-3 6M12 14l3 6"/>',
+};
+const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
 ---
 
-<Base title="Products | Ariella Digital Consulting" description="LumApps integrations and extensions by ADC: search enhancements, third-party integrations and extension widgets.">
-  <div class="dots-hero page">
-    <div class="wrap">
-      <header class="intro">
-        <div>
-          <h1 class="display">Welcome to ADC's<br /><span class="blue">Products Page</span></h1>
-          <p class="intro__lede">
-            As a proud LumApps Tech Partner, we've developed multiple integrations which enhance the employee experience and
-            facilitate the administrative experience within the LumApps platform. What would you like to explore with us?
-          </p>
-        </div>
-        <img class="intro__badge" src={img('8ac787_07df4faaf5684a669f09b1cae1ea642c~mv2.png')} alt="LumApps Tech Partner" width="289" height="242" />
-      </header>
+<Base title="Products | Ariella Digital Consulting" description={`ADC's LumApps extension library: ${extensions.length} widgets and integrations across ${categories.length} categories.`}>
+  <div class="px">
+    <section class="px__hero">
+      <p class="px__eyebrow">ADC Extension Library</p>
+      <h1>What do you want<br />LumApps to <span>do next?</span></h1>
+      <p class="px__sub">{extensions.length} widgets &amp; integrations across {categories.length} categories.</p>
+      <form class="px__search" role="search" onsubmit="return false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#362DFF" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <label for="px-q" class="px__sr">Search extensions</label>
+        <input id="px-q" type="search" placeholder="Search by name or category" autocomplete="off" />
+        <button type="button" class="px__clear" aria-label="Clear search" hidden>×</button>
+      </form>
+      <div class="px__try">
+        <span>Try:</span>
+        {suggestions.map((s) => <button type="button" data-suggest={s}>{s}</button>)}
+      </div>
+    </section>
 
-      <div class="cards">
+    <section class="px__cats" aria-label="Filter by category">
+      {
+        filters.map((f) => (
+          <button type="button" class="px__cat" data-filter={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'}>
+            <span class="px__cat-icon" style={`background:${f.chip}`}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={f.ink} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <Fragment set:html={icons[f.id]} />
+              </svg>
+            </span>
+            <span class="px__cat-text">
+              <span class="px__cat-label">{f.label}</span>
+              <span class="px__cat-count">{plural(f.count)}</span>
+            </span>
+          </button>
+        ))
+      }
+    </section>
+
+    <section class="px__featured" aria-label="Most popular">
+      <div class="px__featured-head">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFD458" stroke="#FFD458" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><Fragment set:html={icons.pop} /></svg>
+        <h2>Most popular</h2>
+      </div>
+      <div class="px__featured-grid">
         {
-          products.map((p) => (
-            <article class="icard icard--sm">
-              <img class="icard__img" src={p.image} alt="" width="300" height="309" loading="lazy" />
-              <div class="icard__panel">
-                <h2 class="icard__title">{p.title}</h2>
-                <p>{p.body}</p>
-                <a class="btn btn--lg" href={p.href}>Learn More</a>
-              </div>
-            </article>
-          ))
+          popular.map((e) => <ExtensionCard ext={e} cats={catById} variant="featured" />)
         }
       </div>
-    </div>
+    </section>
+
+    <section class="px__results">
+      <div class="px__results-inner">
+        <p class="px__count" aria-live="polite"><strong>{extensions.length}</strong> <span>extensions, grouped by primary category</span></p>
+
+        <div class="px__empty" hidden>
+          <h2>Nothing yet — but we can build it.</h2>
+          <div>
+            <button type="button" class="px__reset">Reset search</button>
+            <a href={contactHref}>Request a custom widget</a>
+          </div>
+        </div>
+
+        <div class="px__grouped">
+          {
+            groups.map((g) => (
+              <div class="px__group">
+                <div class="px__group-head">
+                  <div>
+                    <span class="px__chip" aria-hidden="true" style={`background:${g.c.chip}`} />
+                    <h2>{g.c.label}</h2>
+                  </div>
+                  <button type="button" data-filter-to={g.c.id}>{plural(g.items.length)} · View only these →</button>
+                </div>
+                <div class="px__grid">
+                  {g.items.map((e) => (
+                    <ExtensionCard ext={e} cats={catById} />
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="px__grid px__flat" hidden>
+          {
+            sorted.map((e) => <ExtensionCard ext={e} cats={catById} filterable />)
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="px__more">
+      <div>
+        <h2>Don’t see what you need?</h2>
+        <p>We design and build custom LumApps widgets and integrations.</p>
+      </div>
+      <a href={contactHref}>Book a discovery call →</a>
+    </section>
   </div>
 </Base>
 
-<style>
-  .page {
-    background-size: 1440px 1197px;
-    padding: 100px 0 64px;
-  }
-  .intro {
-    position: relative;
-  }
-  .intro .display {
-    font-family: var(--f-head);
-  }
-  .intro__lede {
-    margin-top: 39px;
-    max-width: 585px;
-    font-size: 24px;
-    line-height: 1.5;
-  }
-  .intro__badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 289px;
-  }
-  .cards {
-    margin-top: 65px;
-    display: grid;
-    grid-template-columns: repeat(3, 300px);
-    justify-content: space-between;
-  }
-  .icard--sm .icard__img {
-    aspect-ratio: 300 / 309;
-  }
-  .icard--sm .icard__panel {
-    display: flex;
-    flex-direction: column;
-    min-height: 405px;
-    margin: -120px 24px 0 23px;
-    padding: 30px 24px 32px;
-  }
-  .icard--sm .icard__title {
-    font-weight: 400;
-    line-height: 1.15;
-    margin-bottom: 14px;
-  }
-  .icard--sm p {
-    line-height: 1.45;
-  }
-  .icard--sm .btn {
-    margin: auto auto 0;
-    width: 160px;
-    border-radius: 4px;
+<script>
+  const root = document.querySelector<HTMLElement>('.px')!;
+  const input = root.querySelector<HTMLInputElement>('#px-q')!;
+  const clear = root.querySelector<HTMLButtonElement>('.px__clear')!;
+  const tiles = [...root.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const items = [...root.querySelectorAll<HTMLElement>('.px__flat .xc')];
+  const grouped = root.querySelector<HTMLElement>('.px__grouped')!;
+  const flat = root.querySelector<HTMLElement>('.px__flat')!;
+  const featured = root.querySelector<HTMLElement>('.px__featured')!;
+  const empty = root.querySelector<HTMLElement>('.px__empty')!;
+  const count = root.querySelector<HTMLElement>('.px__count')!;
+  const labels = Object.fromEntries(tiles.map((t) => [t.dataset.filter!, t.querySelector('.px__cat-label')!.textContent!]));
+
+  let cat = 'all';
+  const plural = (n: number) => `${n} ${n === 1 ? 'item' : 'items'}`;
+  const inCat = (el: HTMLElement, c: string) => c === 'all' || (c === 'pop' ? el.hasAttribute('data-pop') : el.dataset.cats!.split(' ').includes(c));
+  const inQ = (el: HTMLElement, q: string) => !q || el.dataset.text!.includes(q);
+
+  function render() {
+    const raw = input.value.trim();
+    const q = raw.toLowerCase();
+    const browsing = cat === 'all' && !q;
+    let n = 0;
+    for (const el of items) {
+      const show = inCat(el, cat) && inQ(el, q);
+      el.hidden = !show;
+      if (show) n++;
+    }
+    grouped.hidden = !browsing;
+    featured.hidden = !browsing;
+    flat.hidden = browsing || n === 0;
+    empty.hidden = n > 0;
+    clear.hidden = !input.value;
+    for (const t of tiles) {
+      const id = t.dataset.filter!;
+      t.setAttribute('aria-pressed', String(id === cat));
+      t.querySelector('.px__cat-count')!.textContent = plural(items.filter((el) => inCat(el, id) && inQ(el, q)).length);
+    }
+    const note = browsing
+      ? 'extensions, grouped by primary category'
+      : 'results' + (cat === 'all' ? '' : ' in ' + labels[cat]) + (q ? ` for “${raw}”` : '');
+    count.querySelector('strong')!.textContent = String(n);
+    count.querySelector('span')!.textContent = note;
   }
 
-  @media (max-width: 1000px) {
-    .intro__badge {
-      position: static;
-      width: 180px;
-      margin-top: 24px;
-    }
-    .cards {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      max-width: 420px;
-      margin-inline: auto;
-    }
-    .icard--sm .icard__img {
-      aspect-ratio: 4 / 3;
-    }
-    .icard--sm .icard__panel {
-      min-height: 0;
-    }
-    .icard--sm .btn {
-      margin-top: 24px;
-    }
+  function pick(id: string) {
+    cat = id;
+    render();
+    count.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+
+  input.addEventListener('input', render);
+  clear.addEventListener('click', () => {
+    input.value = '';
+    input.focus();
+    render();
+  });
+  for (const t of tiles) t.addEventListener('click', () => ((cat = t.dataset.filter!), render()));
+  root.querySelectorAll<HTMLButtonElement>('[data-filter-to]').forEach((b) => b.addEventListener('click', () => pick(b.dataset.filterTo!)));
+  root.querySelectorAll<HTMLButtonElement>('[data-suggest]').forEach((b) =>
+    b.addEventListener('click', () => {
+      input.value = b.dataset.suggest!;
+      cat = 'all';
+      render();
+    })
+  );
+  root.querySelector('.px__reset')!.addEventListener('click', () => {
+    input.value = '';
+    cat = 'all';
+    render();
+  });
+</script>
+
+<style>
+  .px {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #fff;
+    background: #05006c;
+    line-height: 1.5;
+  }
+  .px * {
+    box-sizing: border-box;
+  }
+  .px h1,
+  .px h2 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .px p {
+    margin: 0;
+  }
+  .px button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .px a:focus-visible,
+  .px button:focus-visible,
+  .px input:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .px [hidden] {
+    display: none !important;
+  }
+  .px__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  /* Hero + search */
+  .px__hero {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 80px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+  }
+  .px__eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #32e0c4;
+  }
+  .px h1 {
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+  .px h1 span {
+    color: #ffd458;
+  }
+  .px__sub {
+    font-size: 18px;
+    color: #d4d2f5;
+  }
+  .px__search {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 8px;
+    padding: 0 12px 0 24px;
+    min-height: 68px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 0 0 6px rgba(54, 45, 255, 0.45), 0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+  .px__search svg {
+    flex: none;
+  }
+  .px__search input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 19px;
+    color: #1b1a3a;
+    padding: 16px 0;
+  }
+  .px__search input::placeholder {
+    color: #5a5890;
+  }
+  .px__search input::-webkit-search-cancel-button {
+    display: none;
+  }
+  .px__clear {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 12px;
+    background: #f1f0ff;
+    color: #3a3870;
+    font-size: 20px;
+  }
+  .px__try {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 14px;
+    color: #d4d2f5;
+  }
+  .px__try button {
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+  }
+  .px__try button:hover {
+    border-color: #32e0c4;
+  }
+
+  /* Category tiles */
+  .px__cats {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+    gap: 12px;
+  }
+  .px__cat {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px;
+    min-height: 120px;
+    border-radius: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+  }
+  .px__cat:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  .px__cat[aria-pressed='true'] {
+    border-color: #32e0c4;
+    background: rgba(50, 224, 196, 0.14);
+  }
+  .px__cat-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .px__cat-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .px__cat-label {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .px__cat-count {
+    font-size: 13px;
+    color: #d4d2f5;
+  }
+
+  /* Most popular */
+  .px__featured {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px 56px;
+  }
+  .px__featured-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .px h2 {
+    font-weight: 700;
+    font-size: 26px;
+  }
+  .px__featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  /* Results */
+  .px__results {
+    background: #0b0680;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .px__results-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+  }
+  .px__grouped {
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+  }
+  .px__count {
+    font-size: 16px;
+    color: #d4d2f5;
+    scroll-margin-top: 24px;
+  }
+  .px__count strong {
+    font-family: 'Archivo', sans-serif;
+    font-size: 22px;
+    color: #fff;
+  }
+  .px__empty {
+    padding: 56px 24px;
+    border-radius: 24px;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .px__empty div {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .px__reset,
+  .px__empty a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .px__reset {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+    color: #fff;
+  }
+  .px__empty a {
+    background: #32e0c4;
+    color: #05006c;
+  }
+  .px__group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .px__group-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .px__group-head > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .px__chip {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+  }
+  .px__group-head button {
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 0;
+    background: transparent;
+    color: #32e0c4;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .px__group-head button:hover {
+    color: #fff;
+  }
+  .px__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  /* Closing CTA */
+  .px__more {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 56px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .px__more h2 {
+    font-size: 30px;
+  }
+  .px__more p {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #d4d2f5;
+  }
+  .px__more a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 28px;
+    border-radius: 999px;
+    background: #32e0c4;
+    color: #05006c;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  .px__more a:hover {
+    background: #fff;
+  }
+
   @media (max-width: 760px) {
-    .page {
+    .px__hero {
       padding-top: 48px;
     }
-    .intro__lede {
-      margin-top: 20px;
-      font-size: 19px;
+    .px__search {
+      padding-left: 16px;
+      min-height: 60px;
+    }
+    .px__search input {
+      font-size: 17px;
+    }
+    .px__cats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .px__grid,
+    .px__featured-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
