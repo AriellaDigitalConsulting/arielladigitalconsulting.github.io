@@ -14,10 +14,13 @@ const groups = categories
   .filter((g) => g.items.length);
 
 const plural = (n: number) => `${n} ${n === 1 ? 'item' : 'items'}`;
+// "Everything" stays first; every other filter follows in alphabetical order.
 const filters = [
   { id: 'all', label: 'Everything', chip: 'rgba(255,255,255,0.14)', ink: '#FFFFFF', count: extensions.length },
-  { id: 'pop', label: 'Most Popular', chip: '#FFD458', ink: '#05006C', count: popular.length },
-  ...categories.map((c) => ({ ...c, count: extensions.filter((e) => e.c.includes(c.id)).length })),
+  ...[
+    { id: 'pop', label: 'Most Popular', chip: '#FFD458', ink: '#05006C', count: popular.length },
+    ...categories.map((c) => ({ ...c, count: extensions.filter((e) => e.c.includes(c.id)).length })),
+  ].sort((a, b) => a.label.localeCompare(b.label, 'en', { sensitivity: 'base', numeric: true })),
 ];
 const icons: Record<string, string> = {
   all: '<rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/>',
