@@ -83,3 +83,7 @@ export const extensions: Extension[] = [
   { n: 'Zoom Rooms Control Panel', c: ['ti'], d: 'Control Zoom Rooms from inside LumApps.' },
   { n: 'Coveo Search', c: ['se', 'ti'], d: 'Coveo-powered search inside LumApps.', href: '/search-enhancements' },
 ];
+
+/** Site paths that count as product pages: the Products page plus every page a product card links to on adc.dev. */
+export const productPaths = new Set(['/products', ...extensions.map((e) => e.href).filter((h): h is string => !!h && h.startsWith('/'))]);
+export const isProductPage = (pathname: string) => productPaths.has(pathname.replace(/\/$/, '') || '/');

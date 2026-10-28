@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import CustomBuildPrompt from '../components/CustomBuildPrompt.astro';
+import { isProductPage } from '../data/extensions';
 
 interface Props {
   title: string;
@@ -38,6 +40,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <SiteFooter />
+    {isProductPage(Astro.url.pathname) && <CustomBuildPrompt />}
     <script>
       import { enableSmoothAnchors } from '../lib/smoothScroll';
       enableSmoothAnchors();
