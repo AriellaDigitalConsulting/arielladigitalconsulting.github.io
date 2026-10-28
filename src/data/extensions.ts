@@ -1,5 +1,5 @@
 // ADC extension library for the Products page, from the ADC Extensions Listing.
-// c = categories, primary first; pop = Most Popular; href = the sheet's External URL (adc.dev links kept site-relative).
+// c = categories, primary first; pop = Most Popular rank (1 shows first); href = the sheet's External URL (adc.dev links kept site-relative).
 // Items with no URL render as non-link cards marked "Page coming soon...".
 
 const DOCS = 'https://docs.adc.dev/docs/ls/content/';
@@ -18,7 +18,7 @@ export interface Extension {
   c: CatId[];
   d: string;
   href?: string;
-  pop?: boolean;
+  pop?: number;
 }
 
 export const categories: Category[] = [
@@ -38,7 +38,7 @@ export const categories: Category[] = [
 export const extensions: Extension[] = [
   { n: 'Achievers', c: ['eg', 'ti'], d: 'Employee recognition, connected to LumApps.', href: '/third-party-integrations' },
   { n: 'License Management', c: ['tb'], d: 'Manage ADC widget licenses in one place.' },
-  { n: 'Platform Style Manager', c: ['tb'], pop: true, d: 'Manage your platform’s styles from one place.' },
+  { n: 'Platform Style Manager', c: ['tb'], pop: 2, d: 'Manage your platform’s styles from one place.' },
   { n: 'Advanced Survey', c: ['eg'], d: 'A powerful enhancement over the default LumApps survey.', href: '/advanced-survey' },
   { n: 'Table of Contents', c: ['cn'], d: 'Easy navigation through long wiki and knowledge base pages.', href: '/table-of-contents' },
   { n: 'Advent Calendar', c: ['sf'], d: 'A daily-reveal calendar for the holiday season.' },
@@ -55,7 +55,7 @@ export const extensions: Extension[] = [
   { n: 'Debug Widget', c: ['dt'], d: 'Inspect and troubleshoot widgets while you build.' },
   { n: 'Display a QR Code', c: ['ut'], d: 'Show a QR code on any page.' },
   { n: 'Enhanced Search Filter Widget', c: ['se'], d: 'An upgrade to LumApps’ out-of-the-box content filter.', href: DOCS + '6544390651641856/enhanced-search-filter-widget' },
-  { n: 'Estimated Reading Time', c: ['cn'], pop: true, d: 'Automatically calculates and displays how long a page takes to read.', href: '/wiki' },
+  { n: 'Estimated Reading Time', c: ['cn'], pop: 3, d: 'Automatically calculates and displays how long a page takes to read.', href: '/wiki' },
   { n: 'Fireworks', c: ['sf'], d: 'Add some flair to a homepage or landing page.', href: DOCS + '5839124806238208/fireworks-widget' },
   { n: 'Follow Interests', c: ['cs'], d: 'Enhances the native LumApps “follow interest” experience.', href: '/follow-interests' },
   { n: 'Follow People', c: ['cs'], d: 'Enhances the native LumApps “follow user” experience.', href: '/follow-actions' },
@@ -70,11 +70,11 @@ export const extensions: Extension[] = [
   { n: 'Media Mover', c: ['tb'], d: 'Search for any media file and move it where it belongs.', href: DOCS + '6739543057235968/media-mover-widget' },
   { n: 'Metadata Lookup & Edit', c: ['tb'], d: 'Lets site admins quickly find and edit metadata.', href: DOCS + '5978440819802112/metadata-edit-and-lookup' },
   { n: 'Metadata Mover', c: ['tb'], d: 'Reorganize your metadata structure.', href: '/metadata-mover' },
-  { n: 'Organization Chart', c: ['pd', 'cn'], pop: true, d: 'Displays your reporting structure as an org chart.', href: '/org-chart' },
-  { n: 'Page Reader', c: ['ac', 'cn'], pop: true, d: 'Lets employees listen to LumApps content anytime, anywhere.', href: '/page-reader' },
+  { n: 'Organization Chart', c: ['pd', 'cn'], pop: 4, d: 'Displays your reporting structure as an org chart.', href: '/org-chart' },
+  { n: 'Page Reader (Text-to-speech)', c: ['ac', 'cn'], pop: 1, d: 'Lets employees listen to LumApps content anytime, anywhere.', href: '/page-reader' },
   { n: 'Quick Post', c: ['cs'], d: 'Post to any Space or Community in one click.', href: '/town-hall' },
   { n: 'Search Community Posts in Real Time', c: ['se', 'ti'], d: 'Search community posts as they’re published.' },
-  { n: 'Soccer Predictions', c: ['eg', 'sf'], pop: true, d: 'Employee match predictions, native in LumApps.', href: '/soccer' },
+  { n: 'Soccer Predictions', c: ['eg', 'sf'], pop: 5, d: 'Employee match predictions, native in LumApps.', href: '/soccer' },
   { n: 'Space Homepage Layout Copier', c: ['tb'], d: 'Copy one space’s homepage layout to another.', href: DOCS + '8618894032792471/space-homepage-layout-copier' },
   { n: 'Stocks in Real Time', c: ['ut'], d: 'Displays live stock prices on any page.', href: DOCS + '6686852700438528/stocks-in-real-time-widget' },
   { n: 'Timezones Widget', c: ['ut'], d: 'Users personalize the time zone shown on any page.', href: '/timezone-widget' },

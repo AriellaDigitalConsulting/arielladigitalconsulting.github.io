@@ -28,7 +28,7 @@ const linkAttrs = ext.href
 const filterAttrs = filterable
   ? {
       'data-cats': ext.c.join(' '),
-      'data-pop': ext.pop ? '' : undefined,
+      'data-pop': ext.pop,
       'data-text': [ext.n, ext.d, ...ext.c.map((id) => cats[id].label), ext.pop ? 'most popular' : ''].join(' ').toLowerCase(),
     }
   : {};

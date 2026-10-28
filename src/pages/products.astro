@@ -8,7 +8,7 @@ import { contactHref } from '../data/site';
 
 const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 const sorted = [...extensions].sort((a, b) => a.n.localeCompare(b.n));
-const popular = extensions.filter((e) => e.pop);
+const popular = extensions.filter((e) => e.pop).sort((a, b) => a.pop! - b.pop!);
 const groups = categories
   .map((c) => ({ c, items: sorted.filter((e) => e.c[0] === c.id) }))
   .filter((g) => g.items.length);
@@ -50,8 +50,8 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
         <button type="button" class="px__clear" aria-label="Clear search" hidden>×</button>
       </form>
       <div class="px__try">
-        <span>Try:</span>
-        {suggestions.map((s) => <button type="button" data-suggest={s}>{s}</button>)}
+        <span>Try keywords:</span>
+        {suggestions.map((s) => <button type="button" data-suggest={s} aria-pressed="false">{s}</button>)}
       </div>
     </section>
 
@@ -140,6 +140,7 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
   const root = document.querySelector<HTMLElement>('.px')!;
   const input = root.querySelector<HTMLInputElement>('#px-q')!;
   const clear = root.querySelector<HTMLButtonElement>('.px__clear')!;
+  const keywords = [...root.querySelectorAll<HTMLButtonElement>('[data-suggest]')];
   const tiles = [...root.querySelectorAll<HTMLButtonElement>('[data-filter]')];
   const items = [...root.querySelectorAll<HTMLElement>('.px__flat .xc')];
   const grouped = root.querySelector<HTMLElement>('.px__grouped')!;
@@ -161,6 +162,8 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
     for (const el of items) {
       const show = inCat(el, cat) && inQ(el, q);
       el.hidden = !show;
+      // Most Popular lists in rank order rather than A–Z.
+      el.style.order = cat === 'pop' ? el.dataset.pop! : '';
       if (show) n++;
     }
     grouped.hidden = !browsing;
@@ -168,6 +171,7 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
     flat.hidden = browsing || n === 0;
     empty.hidden = n > 0;
     clear.hidden = !input.value;
+    for (const k of keywords) k.setAttribute('aria-pressed', String(q === k.dataset.suggest));
     for (const t of tiles) {
       const id = t.dataset.filter!;
       t.setAttribute('aria-pressed', String(id === cat));
@@ -196,9 +200,10 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
   });
   for (const t of tiles) t.addEventListener('click', () => pick(t.dataset.filter!));
   root.querySelectorAll<HTMLButtonElement>('[data-filter-to]').forEach((b) => b.addEventListener('click', () => pick(b.dataset.filterTo!)));
-  root.querySelectorAll<HTMLButtonElement>('[data-suggest]').forEach((b) =>
+  // A keyword chip fills the search box; clicking the selected one again clears it.
+  keywords.forEach((b) =>
     b.addEventListener('click', () => {
-      input.value = b.dataset.suggest!;
+      input.value = b.getAttribute('aria-pressed') === 'true' ? '' : b.dataset.suggest!;
       cat = 'all';
       render();
     })
@@ -319,9 +324,13 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
     height: 44px;
     border: 0;
     border-radius: 12px;
-    background: #f1f0ff;
-    color: #3a3870;
-    font-size: 20px;
+    background: #ffd458;
+    color: #05006c;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .px__clear:hover {
+    background: #32e0c4;
   }
   .px__try {
     display: flex;
@@ -343,6 +352,11 @@ const suggestions = ['search', 'metadata', 'holiday', 'leaderboard'];
   }
   .px__try button:hover {
     border-color: #32e0c4;
+  }
+  .px__try button[aria-pressed='true'] {
+    border: 2px solid #32e0c4;
+    background: rgba(50, 224, 196, 0.14);
+    font-weight: 700;
   }
 
   /* Results: category sidebar + results column */
