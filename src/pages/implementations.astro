@@ -2,11 +2,10 @@
 // Implementations page, converted from the adc-implementations design. The main navigation is the shared SiteHeader.
 import Base from '../layouts/Base.astro';
 import HowWeWork from '../components/HowWeWork.astro';
-import SiteFooter from '../components/SiteFooter.astro';
 
 ---
 
-<Base title="LumApps Implementation Services | Ariella Digital Consulting" description="Full-service LumApps implementation: strategy, design, content migration, change management and project management, led by the first LumApps deployment consultant onboarded in the US." bare>
+<Base title="LumApps Implementation Services | Ariella Digital Consulting" description="Full-service LumApps implementation: strategy, design, content migration, change management and project management, led by the first LumApps deployment consultant onboarded in the US.">
   <div class="impl">
     <!-- HERO -->
     <section id="top" style="background: #05006C; color: #FFFFFF; position: relative; overflow: hidden">
@@ -285,16 +284,6 @@ import SiteFooter from '../components/SiteFooter.astro';
     </section>
 
   </div>
-
-  <SiteFooter
-    slot="footer"
-    cols={[
-      { heading: 'Company', links: [{ href: '/about', label: 'About' }, { href: '#approach', label: 'Approach' }, { href: '#results', label: 'Where we help' }] },
-      { heading: 'Services', links: [{ href: '/implementations', label: 'Implementation', current: true }, { href: '/products', label: 'Integrations' }, { href: '/products', label: 'Widgets' }] },
-      { heading: 'Resources', links: [{ href: 'https://docs.adc.dev', label: 'Widget docs' }, { href: '/#insights', label: 'ADC Live!' }, { href: '/contact', label: 'Contact' }] },
-    ]}
-    note="LumApps Trusted Partner — Consulting, Training & Design"
-  />
 </Base>
 
 <style>

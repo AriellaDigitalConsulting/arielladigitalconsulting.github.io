@@ -6,10 +6,8 @@ import SiteFooter from '../components/SiteFooter.astro';
 interface Props {
   title: string;
   description?: string;
-  /** Swap the shared footer for the page's own "footer" slot. The main navigation is never swapped. */
-  bare?: boolean;
 }
-const { title, description = 'Boutique LumApps consulting — integrations, implementations, analytics and UI/UX design.', bare = false } = Astro.props;
+const { title, description = 'Boutique LumApps consulting — integrations, implementations, analytics and UI/UX design.' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -39,7 +37,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <main id="main">
       <slot />
     </main>
-    {bare ? <slot name="footer" /> : <SiteFooter />}
+    <SiteFooter />
     <script>
       import { enableSmoothAnchors } from '../lib/smoothScroll';
       enableSmoothAnchors();

@@ -1,18 +1,8 @@
 ---
-// Site-wide footer, matching the homepage. Pages may pass their own link columns or bottom note;
-// the wordmark, slogan and layout are always the same.
+// The site footer. Base renders it on every page; pages never supply their own or change its links.
 import { social, contactHref } from '../data/site';
 
-interface Col {
-  heading: string;
-  links: { href: string; label: string; current?: boolean }[];
-}
-interface Props {
-  cols?: Col[];
-  note?: string;
-}
-
-const defaultCols: Col[] = [
+const cols: { heading: string; links: { href: string; label: string }[] }[] = [
   {
     heading: 'Company',
     links: [
@@ -43,7 +33,7 @@ const defaultCols: Col[] = [
   },
 ];
 
-const { cols = defaultCols, note = 'Certified LumApps Partner' } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const year = new Date().getFullYear();
 ---
 
@@ -59,7 +49,7 @@ const year = new Date().getFullYear();
           cols.map((col) => (
             <div class="mf__col">
               <span class="mf__heading">{col.heading}</span>
-              {col.links.map((l) => <a href={l.href} aria-current={l.current ? 'page' : undefined}>{l.label}</a>)}
+              {col.links.map((l) => <a href={l.href} aria-current={l.href === path ? 'page' : undefined}>{l.label}</a>)}
             </div>
           ))
         }
@@ -71,7 +61,7 @@ const year = new Date().getFullYear();
     </div>
     <div class="mf__bottom">
       <span>© {year} Ariella Digital Consulting, LLC</span>
-      <span>{note}</span>
+      <span>Certified LumApps Partner</span>
     </div>
   </div>
 </footer>
