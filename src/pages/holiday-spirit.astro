@@ -1,0 +1,57 @@
+---
+// Holiday Spirit product page ("Split Editorial" template).
+import WidgetEditorial from '../components/WidgetEditorial.astro';
+---
+
+<WidgetEditorial
+  name="Holiday Spirit"
+  description="Holiday Spirit by ADC: seasonal animations for LumApps pages, with any symbol, message, and color your page owners choose."
+  effect="symbols"
+  docs="https://docs.adc.dev/docs/ls/content/5839944566177792/holiday-spirit-widget"
+  tagline="Every season, celebrated."
+  h1={['Holiday', 'Spirit']}
+  lede="Bring the season to your LumApps pages with drifting snowflakes, hearts, pumpkins, or any symbol you choose. Holiday Spirit lets page owners mark every occasion, and turns your digital workplace into a place people want to visit."
+  sticker="Any symbol · any season"
+  hero={{ message: 'Happy Holidays', sub: 'FROM ALL OF US' }}
+  why={[
+    { title: 'Make your culture visible', text: "Seasonal touches show employees there's a real community behind the intranet, not just a library of documents." },
+    { title: 'Put page owners in control', text: 'Communications teams and community managers can set the mood for their own spaces, without waiting on IT or a developer.' },
+    { title: 'One widget, all year round', text: "Snowflakes in winter, leaves in autumn, hearts on Valentine's Day. Swap the symbol and you're ready for the next occasion." },
+    { title: 'Give people a reason to come back', text: 'A little delight goes a long way. Pages that feel alive get visited, shared, and talked about.' },
+  ]}
+  page={{ message: 'Happy Holidays from the People Team', caption: 'Your message front and center, with your chosen symbol drifting across the page.' }}
+  settings={{
+    title: 'Make it yours',
+    rows: [
+      ['Symbol', '❄ Snowflake'],
+      ['Message font', 'Archivo'],
+      ['Symbol color', 'White, soft glow'],
+    ],
+    chipsLabel: 'Ready for any occasion',
+    chips: ['❄ Winter', '♥ Valentine’s', '✿ Spring', '☘ St. Patrick’s', '★ Celebrations'],
+    caption: 'Swap the symbol, color, size, and shadow in seconds, and see every change live.',
+  }}
+  features={[
+    { title: 'Thousands of Symbols.', text: 'Choose from any Unicode symbol, from snowflakes and hearts to stars, flowers, and balloons.' },
+    { title: 'Your Message, Your Style.', text: 'Add a custom headline in the font and size that fits your brand and your moment.' },
+    { title: 'On-Brand Colors.', text: 'Set symbol colors and soft shadows to match your theme or the occasion.' },
+    { title: 'See It Live.', text: 'Every change previews instantly, so page owners get it right the first time.' },
+  ]}
+  steps={[
+    { title: 'Add the widget', text: 'Drop Holiday Spirit onto any LumApps homepage, landing page, or community.' },
+    { title: 'Pick your symbol and message', text: 'Choose the symbol, colors, and greeting that suit the season.' },
+    { title: 'Watch the season arrive', text: 'Your page comes alive, and employees feel the moment the second they land.' },
+  ]}
+  band={{ title: 'Small touch. Big moment.', text: 'No design team, no code, no waiting. Just a warmer, more human workplace.' }}
+  valueIntro="Added value for Internal Communications, community managers, and culture teams"
+  value={[
+    { icon: 'snow', title: 'Seasonal & Holiday Campaigns', text: 'Mark winter holidays, Halloween, Lunar New Year, and more with a homepage that matches the calendar.' },
+    { icon: 'heart', title: 'Culture & Recognition Moments', text: "Hearts for Valentine's Day, balloons for a team birthday, a shower of stars after a record quarter." },
+    { icon: 'users', title: 'Communities & Team Sites', text: 'Let every community add its own personality, so local teams and employee groups can celebrate what matters to them.' },
+  ]}
+  furtherTitle="Explore More Celebration Widgets by ADC"
+  related={[
+    { href: '/confetti', icon: 'party', title: 'Confetti widget.', text: 'Celebrate team wins and company milestones with a burst of on-brand confetti.' },
+    { href: '/fireworks', icon: 'burst', title: 'Fireworks widget.', text: 'Turn big announcements into big moments with a vibrant fireworks display.' },
+  ]}
+/>

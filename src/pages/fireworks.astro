@@ -1,0 +1,57 @@
+---
+// Fireworks product page ("Split Editorial" template).
+import WidgetEditorial from '../components/WidgetEditorial.astro';
+---
+
+<WidgetEditorial
+  name="Fireworks"
+  description="Fireworks by ADC: a vibrant, on-brand fireworks display with your own message, for LumApps homepages and landing pages."
+  effect="fireworks"
+  docs="https://docs.adc.dev/docs/ls/content/5839124806238208/fireworks-widget"
+  tagline="Launch it like it matters."
+  h1={['Fireworks']}
+  lede="Turn big announcements into big moments. Fireworks lights up your LumApps homepage or landing page with a vibrant display and your own message, so the news that deserves attention actually gets it."
+  sticker="Your news · lit up"
+  hero={{ message: 'We did it!', sub: 'RECORD YEAR' }}
+  why={[
+    { title: 'Make announcements land', text: 'A product launch, a merger, a record year. Fireworks signals that this news is different, and worth a closer look.' },
+    { title: 'Celebrate together, wherever people work', text: 'Give remote, hybrid, and frontline employees the same shared moment of celebration, on the same page.' },
+    { title: 'Lift engagement on key pages', text: 'Eye-catching animation draws people in and keeps them on the pages you most want them to see.' },
+    { title: 'Ready in minutes', text: 'Add the widget, write your message, publish. No developer or design work required.' },
+  ]}
+  page={{ message: 'Record year. Thank you, team!', caption: 'Your headline takes center stage as fireworks burst across the page.' }}
+  settings={{
+    title: 'Set up the show',
+    rows: [
+      ['Message', 'Thank you, team!'],
+      ['Font', 'Archivo'],
+      ['Font size', '48 px'],
+    ],
+    chipsLabel: 'Perfect for',
+    chips: ['Launches', 'Milestones', 'New Year', 'Anniversaries'],
+    caption: 'Choose the message, font, and size, and the show is ready to go.',
+  }}
+  features={[
+    { title: 'A Show-Stopping Display.', text: 'Colorful fireworks that turn any homepage or landing page into a celebration.' },
+    { title: 'Your Message, Center Stage.', text: "Pair the display with a custom headline that tells people exactly what you're celebrating." },
+    { title: 'Matches Your Brand.', text: 'Choose the font and size, so the moment still looks and feels like your company.' },
+    { title: 'No Code Required.', text: 'Page owners can launch a celebration on their own, whenever the moment calls for it.' },
+  ]}
+  steps={[
+    { title: 'Add the widget', text: 'Drop Fireworks onto your homepage, a landing page, or a community.' },
+    { title: 'Write your message', text: 'Add your headline and choose the font and size that fit the moment.' },
+    { title: 'Light up the page', text: 'Publish, and give every visitor a moment worth remembering.' },
+  ]}
+  band={{ title: 'Big news deserves a big moment.', text: "Give your most important announcements the attention they've earned." }}
+  valueIntro="Added value for Internal Communications, executive communications, and event teams"
+  value={[
+    { icon: 'rocket', title: 'Launches & Announcements', text: 'Unveil a new product, brand, or strategy with an entrance that matches its importance.' },
+    { icon: 'trophy', title: 'Milestones & Results', text: 'Celebrate a record quarter, a big win, or a company anniversary in a way people will remember.' },
+    { icon: 'calendar', title: 'Events & New Year', text: 'Kick off the new year, an all-hands, or a company event with energy from the very first click.' },
+  ]}
+  furtherTitle="Explore More Celebration Widgets by ADC"
+  related={[
+    { href: '/confetti', icon: 'party', title: 'Confetti widget.', text: 'Celebrate team wins and company milestones with a burst of on-brand confetti.' },
+    { href: '/holiday-spirit', icon: 'snow', title: 'Holiday Spirit widget.', text: 'Bring every season to your pages with snowflakes, hearts, or any symbol you choose.' },
+  ]}
+/>

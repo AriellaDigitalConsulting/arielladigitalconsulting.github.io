@@ -1,0 +1,1271 @@
+---
+// Widget product page in the "Split Editorial" template (Template B), shared by the animation widgets.
+// Pages pass copy only; the hero animation and illustrations are picked by `effect`.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+type Effect = 'fireworks' | 'confetti' | 'symbols';
+type Item = { title: string; text: string };
+
+interface Props {
+  name: string;
+  description: string;
+  effect: Effect;
+  docs: string;
+  tagline: string;
+  h1: string[];
+  lede: string;
+  sticker: string;
+  hero: { message: string; sub: string };
+  why: Item[];
+  page: { message: string; caption: string };
+  settings: { title: string; rows: [string, string][]; chipsLabel: string; chips?: string[]; swatches?: string[]; caption: string };
+  features: Item[];
+  steps: Item[];
+  band: Item;
+  valueIntro: string;
+  value: (Item & { icon: string })[];
+  furtherTitle: string;
+  related: (Item & { href: string; icon: string })[];
+}
+
+const p = Astro.props;
+
+const icons: Record<string, string> = {
+  grid: '<path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/>',
+  sliders: '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',
+  star: '<path d="M12 3l2.6 5.6 6 .9-4.4 4.2 1.1 6L12 16.8 6.7 19.7l1.1-6L3.4 9.5l6-.9z"/>',
+  snow: '<path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/><path d="M9 4l3 2 3-2M9 20l3-2 3 2"/>',
+  burst: '<path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>',
+  party: '<path d="M5.8 11.3L2 22l10.7-3.8"/><path d="M9 7.5l7.5 7.5c.5-1.6-.6-4.6-2.9-6.9S10.6 5 9 5.5z"/><path d="M15 2h.01M22 8h.01M22 20h.01M4 3h.01M18 5l1-1"/>',
+  megaphone: '<path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/>',
+  calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>',
+  users: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
+  trophy: '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+  rocket: '<path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/>',
+};
+const icon = (key: string, size = 28) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[key]}</svg>`;
+
+const stepStyle = [
+  { bg: '#362dff', fg: '#fff', icon: 'grid' },
+  { bg: '#32E0C4', fg: '#05006c', icon: 'sliders' },
+  { bg: '#FFD458', fg: '#05006c', icon: 'star' },
+];
+const valueStyle = [
+  { bg: '#f5f5ff', tileBg: '#362dff', tileFg: '#fff' },
+  { bg: '#FFD458', tileBg: '#05006c', tileFg: '#FFD458' },
+  { bg: '#f5f5ff', tileBg: '#32E0C4', tileFg: '#05006c' },
+];
+const accents = ['#FFD458', '#32E0C4'];
+
+// Particles for the hero arch (animated) and the page illustration (static). Positions are fixed so builds are stable.
+const palette = ['#32E0C4', '#FFD458', '#8F89FF', '#ffffff', '#362dff'];
+const bursts = [
+  { x: 24, y: 22, c: '#32E0C4', d: 0, s: 1 },
+  { x: 72, y: 16, c: '#FFD458', d: 0.9, s: 1.15 },
+  { x: 54, y: 42, c: '#8F89FF', d: 1.7, s: 0.9 },
+  { x: 84, y: 46, c: '#ffffff', d: 0.5, s: 0.7 },
+  { x: 16, y: 50, c: '#FFD458', d: 1.3, s: 0.75 },
+];
+const confetti = Array.from({ length: 30 }, (_, i) => ({
+  x: (i * 37 + 5) % 100,
+  y: (i * 23 + 7) % 60,
+  c: palette[i % palette.length],
+  d: ((i * 0.41) % 4).toFixed(2),
+  t: (3.4 + (i % 5) * 0.5).toFixed(1),
+  r: i % 3 === 0,
+}));
+const symbols = Array.from({ length: 18 }, (_, i) => ({
+  x: (i * 41 + 8) % 96,
+  y: (i * 29 + 5) % 62,
+  ch: ['❄', '❅', '❆'][i % 3],
+  size: 16 + ((i * 7) % 20),
+  c: i % 4 === 0 ? '#FFD458' : i % 3 === 0 ? '#c9c7ff' : '#ffffff',
+  d: ((i * 0.63) % 6).toFixed(2),
+  t: (6 + (i % 4) * 1.2).toFixed(1),
+}));
+const rays = Array.from({ length: 12 }, (_, i) => i * 30);
+---
+
+<Base title={`${p.name} | Ariella Digital Consulting`} description={p.description}>
+  <div class="we">
+    <section class="we__hero" data-custom-prompt-after>
+      <div class="we__wrap we__hero-grid">
+        <div class="we__hero-copy">
+          <a class="we__back" href="/products">← Back to Products Page</a>
+          <p class="we__tagline">{p.tagline}</p>
+          <h1>{p.h1.map((line, i) => <Fragment>{i > 0 && <br />}{line}</Fragment>)} <span>by ADC</span></h1>
+          <p class="we__lede">{p.lede}</p>
+          <div class="we__hero-ctas">
+            <a class="we__btn we__btn--blue" href={contactHref}>Request a Demo</a>
+            <a class="we__docs" href={p.docs}>
+              <span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#05006c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"></path></svg>
+              </span>
+              Read the docs
+            </a>
+          </div>
+        </div>
+
+        <div class="we__visual">
+          <div class="we__arch">
+            <div class="we__arch-floor" aria-hidden="true"></div>
+            <div class="we__flare" aria-hidden="true"></div>
+            <div class="we__sky" aria-hidden="true">
+              {
+                p.effect === 'fireworks' &&
+                  bursts.map((b) => (
+                    <span class="we__burst" style={`left:${b.x}%;top:${b.y}%;--s:${b.s}`}>
+                      {rays.map((a) => <span class="we__ray" style={`--a:${a}deg;--c:${b.c};animation-delay:${b.d}s`} />)}
+                    </span>
+                  ))
+              }
+              {
+                p.effect === 'confetti' &&
+                  confetti.map((c) => (
+                    <span class={`we__bit${c.r ? ' we__bit--dot' : ''}`} style={`left:${c.x}%;--sy:${c.y}%;--c:${c.c};animation-delay:-${c.d}s;animation-duration:${c.t}s`} />
+                  ))
+              }
+              {
+                p.effect === 'symbols' &&
+                  symbols.map((s) => (
+                    <span class="we__sym" style={`left:${s.x}%;--sy:${s.y}%;color:${s.c};font-size:${s.size}px;animation-delay:-${s.d}s;animation-duration:${s.t}s`}>
+                      {s.ch}
+                    </span>
+                  ))
+              }
+            </div>
+            <div class="we__hero-msg">
+              <span>{p.hero.message}</span>
+              <span>{p.hero.sub}</span>
+            </div>
+          </div>
+          <span class="we__sticker">{p.sticker}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="we__why we__wrap">
+      <div class="we__why-head">
+        <p class="we__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why<br />use it</h2>
+        <div class="we__bar" aria-hidden="true"></div>
+      </div>
+      <ol class="we__why-list">
+        {
+          p.why.map((w, i) => (
+            <li>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="we__does">
+      <div class="we__wrap">
+        <div class="we__heading">
+          <p class="we__eyebrow we__eyebrow--yellow">HAVE A LOOK AT</p>
+          <h2>What it does</h2>
+        </div>
+        <div class="we__figs">
+          <figure>
+            <div class="we__fig we__fig--white">
+              <div class="we__page" aria-hidden="true">
+                <div class="we__page-bar"><span></span><span></span><span></span></div>
+                <div class="we__page-banner">
+                  <div class="we__sky we__sky--static">
+                    {
+                      p.effect === 'fireworks' &&
+                        bursts.slice(0, 3).map((b) => (
+                          <span class="we__burst" style={`left:${b.x}%;top:${b.y + 12}%;--s:${b.s * 0.45}`}>
+                            {rays.map((a) => <span class="we__ray" style={`--a:${a}deg;--c:${b.c}`} />)}
+                          </span>
+                        ))
+                    }
+                    {p.effect === 'confetti' && confetti.slice(0, 18).map((c) => <span class={`we__bit${c.r ? ' we__bit--dot' : ''}`} style={`left:${c.x}%;--sy:${c.y * 0.9}%;--c:${c.c}`} />)}
+                    {p.effect === 'symbols' && symbols.slice(0, 10).map((s) => <span class="we__sym" style={`left:${s.x}%;--sy:${s.y * 0.8}%;color:${s.c};font-size:${s.size * 0.7}px`}>{s.ch}</span>)}
+                  </div>
+                  <span class="we__page-msg">{p.page.message}</span>
+                </div>
+                {[96, 88, 64].map((w) => <span class="we__page-line" style={`width:${w}%`} />)}
+              </div>
+            </div>
+            <figcaption>{p.page.caption}</figcaption>
+          </figure>
+          <figure>
+            <div class="we__fig we__fig--yellow">
+              <div class="we__card">
+                <span class="we__card-title">{p.settings.title}</span>
+                {
+                  p.settings.rows.map(([k, v]) => (
+                    <span class="we__card-row">
+                      <span>{k}</span>
+                      <strong>{v}</strong>
+                    </span>
+                  ))
+                }
+                <span class="we__card-sub">{p.settings.chipsLabel}</span>
+                {p.settings.chips && <span class="we__card-chips">{p.settings.chips.map((c) => <span>{c}</span>)}</span>}
+                {p.settings.swatches && <span class="we__card-swatches">{p.settings.swatches.map((c) => <span style={`background:${c}`} />)}</span>}
+              </div>
+            </div>
+            <figcaption>{p.settings.caption}</figcaption>
+          </figure>
+        </div>
+        <div class="we__features">
+          {
+            p.features.map((f, i) => (
+              <div>
+                <span>{String(i + 1).padStart(2, '0')}</span>
+                <h3>{f.title}</h3>
+                <p>{f.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="we__steps-sec">
+      <div class="we__wrap">
+        <div class="we__heading">
+          <p class="we__eyebrow">ROLL IT OUT IN</p>
+          <h2 class="we__h2-md">Three simple steps</h2>
+        </div>
+        <ol class="we__steps">
+          {
+            p.steps.map((s, i) => (
+              <li>
+                <span class="we__step-icon" style={`background:${stepStyle[i].bg};color:${stepStyle[i].fg}`} set:html={icon(stepStyle[i].icon)} />
+                <span class="we__step-num">STEP {i + 1}</span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="we__band" data-custom-prompt-hide>
+          <div>
+            <p class="we__band-title">{p.band.title}</p>
+            <p>{p.band.text}</p>
+          </div>
+          <a class="we__btn we__btn--yellow" href={contactHref}>Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="we__value we__wrap">
+      <div class="we__value-head">
+        <div class="we__heading">
+          <p class="we__eyebrow">LEARN MORE ABOUT</p>
+          <h2>Where it delivers value</h2>
+        </div>
+        <p>{p.valueIntro}</p>
+      </div>
+      <div class="we__value-list">
+        {
+          p.value.map((v, i) => (
+            <div style={`background:${valueStyle[i % 3].bg}`}>
+              <div class="we__value-title">
+                <span style={`background:${valueStyle[i % 3].tileBg};color:${valueStyle[i % 3].tileFg}`} set:html={icon(v.icon)} />
+                <h3>{v.title}</h3>
+              </div>
+              <p>{v.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="we__further we__wrap">
+      <div class="we__heading">
+        <p class="we__eyebrow">GO FURTHER</p>
+        <h2 class="we__h2-sm">{p.furtherTitle}</h2>
+      </div>
+      <div class="we__further-grid">
+        {
+          p.related.map((r, i) => (
+            <a href={r.href}>
+              <span class="we__further-icon" style={`color:${accents[i % 2]}`} set:html={icon(r.icon, 30)} />
+              <span class="we__further-text">
+                <span class="we__further-title">{r.title}</span>
+                <span>{r.text}</span>
+                <span class="we__more">Learn More →</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="we__cta" data-custom-prompt-hide>
+      <div class="we__cta-blue">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this widget and to see a demo</p>
+        <div><a class="we__btn we__btn--yellow we__btn--lg" href={contactHref}>Contact us</a></div>
+      </div>
+      <div class="we__cta-yellow">
+        <p>Check out our Docs site for a listing of all our widgets:</p>
+        <a href="https://docs.adc.dev/docs">docs.adc.dev/docs</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .we {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .we * {
+    box-sizing: border-box;
+  }
+  .we h1,
+  .we h2,
+  .we h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .we p,
+  .we ol,
+  .we figure {
+    margin: 0;
+  }
+  .we a:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .we__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .we__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .we__eyebrow--yellow {
+    color: #ffd458;
+  }
+  .we__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .we__heading h2,
+  .we__why-head h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .we__heading .we__h2-md {
+    font-size: clamp(40px, 5vw, 64px);
+  }
+  .we__heading .we__h2-sm {
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .we__btn {
+    display: inline-block;
+    padding: 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease;
+  }
+  .we__btn:hover {
+    transform: translateY(-2px);
+  }
+  .we__btn--blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .we__btn--blue:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .we__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .we__btn--yellow:hover {
+    color: #05006c;
+  }
+  .we__btn--lg {
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+
+  /* Particles: animated in the hero arch, frozen in the page illustration and for reduced motion */
+  .we__sky {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .we__burst {
+    position: absolute;
+    width: 0;
+    height: 0;
+    transform: scale(var(--s));
+  }
+  .we__ray {
+    position: absolute;
+    left: -1.5px;
+    top: -9px;
+    width: 3px;
+    height: 18px;
+    border-radius: 2px;
+    background: var(--c);
+    box-shadow: 0 0 8px var(--c);
+    opacity: 0;
+    transform: rotate(var(--a)) translateY(-10px) scaleY(0.3);
+    animation: burst 2.6s ease-out infinite;
+  }
+  @keyframes burst {
+    0% {
+      opacity: 0;
+      transform: rotate(var(--a)) translateY(-10px) scaleY(0.3);
+    }
+    12% {
+      opacity: 1;
+    }
+    70%,
+    100% {
+      opacity: 0;
+      transform: rotate(var(--a)) translateY(-72px) scaleY(1);
+    }
+  }
+  .we__bit {
+    position: absolute;
+    top: -24px;
+    width: 9px;
+    height: 15px;
+    border-radius: 2px;
+    background: var(--c);
+    animation: fall linear infinite;
+  }
+  .we__bit--dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg) rotateY(0deg);
+    }
+    100% {
+      transform: translateY(640px) rotate(540deg) rotateY(720deg);
+    }
+  }
+  .we__sym {
+    position: absolute;
+    top: -40px;
+    line-height: 1;
+    font-variant-emoji: text;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+    animation: drift linear infinite;
+  }
+  @keyframes drift {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate(22px, 320px) rotate(90deg);
+    }
+    100% {
+      transform: translate(-8px, 660px) rotate(180deg);
+    }
+  }
+  .we__sky--static .we__ray {
+    opacity: 1;
+    animation: none;
+    transform: rotate(var(--a)) translateY(-44px);
+  }
+  .we__sky--static .we__bit,
+  .we__sky--static .we__sym {
+    top: var(--sy);
+    animation: none;
+  }
+  .we__flare {
+    animation: flare 3.2s ease-in-out infinite;
+  }
+  @keyframes flare {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .we__flare {
+      animation: none;
+    }
+    .we__ray {
+      opacity: 1;
+      animation: none;
+      transform: rotate(var(--a)) translateY(-44px);
+    }
+    .we__bit,
+    .we__sym {
+      top: var(--sy);
+      animation: none;
+    }
+  }
+
+  /* Hero */
+  .we__hero {
+    overflow: hidden;
+    padding-top: 40px;
+    background: #f5f5ff;
+  }
+  .we__hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 48px;
+    align-items: end;
+  }
+  .we__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-bottom: 96px;
+  }
+  .we__back {
+    align-self: flex-start;
+    padding: 8px 16px;
+    border: 1.5px solid #05006c;
+    border-radius: 999px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .we__back:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .we__tagline {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #362dff;
+  }
+  .we h1 {
+    font-weight: 900;
+    font-size: clamp(52px, 7vw, 92px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: #05006c;
+  }
+  .we h1 span {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #fff;
+    color: #362dff;
+    font-size: 0.4em;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .we__lede {
+    max-width: 540px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #1d1c3a;
+  }
+  .we__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+  .we__docs {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .we__docs:hover {
+    color: #362dff;
+  }
+  .we__docs span {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #05006c;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .we__visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 600px;
+  }
+  .we__arch {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: min(480px, 100%);
+    height: 580px;
+    border-radius: 240px 240px 0 0;
+    overflow: hidden;
+    background: #05006c;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.3);
+  }
+  .we__arch-floor {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30%;
+    background: #362dff;
+  }
+  .we__flare {
+    position: absolute;
+    left: 8%;
+    top: 8%;
+    width: 50%;
+    height: 30%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+  }
+  .we__hero-msg {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 0;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    color: #fff;
+    font-family: 'Archivo', sans-serif;
+  }
+  .we__hero-msg span:first-child {
+    font-weight: 900;
+    font-size: clamp(34px, 4vw, 48px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .we__hero-msg span:last-child {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    color: #ffd458;
+  }
+  .we__sticker {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    transform: rotate(3deg);
+    box-shadow: 0 10px 30px rgba(5, 0, 108, 0.2);
+  }
+
+  /* Why use it */
+  .we__why {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+  }
+  .we__why-head {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .we__bar {
+    width: 96px;
+    height: 12px;
+    margin-top: 12px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .we__why-list {
+    flex: 999 1 560px;
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .we__why-list li {
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+    padding: 32px 0;
+    border-top: 1px solid #d9d7ff;
+  }
+  .we__why-list li:first-child {
+    border-top: 2px solid #05006c;
+  }
+  .we__why-list li:last-child {
+    border-bottom: 1px solid #d9d7ff;
+  }
+  .we__why-list li > span {
+    min-width: 72px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: #362dff;
+  }
+  .we__why-list li > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .we__why-list h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .we__why-list p {
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  /* What it does */
+  .we__does {
+    padding: 120px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .we__does .we__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .we__does .we__heading h2 {
+    color: #fff;
+  }
+  .we__figs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .we__figs figure {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .we__figs figcaption {
+    font-size: 15px;
+    color: #c9c7ff;
+  }
+  .we__fig {
+    aspect-ratio: 4 / 3;
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .we__fig--white {
+    border: 8px solid #fff;
+    background: #f5f5ff;
+  }
+  .we__fig--yellow {
+    border: 8px solid #ffd458;
+    background: #1c1690;
+  }
+  .we__page {
+    width: 100%;
+    max-width: 380px;
+    padding: 14px 14px 18px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 20px 40px rgba(5, 0, 108, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .we__page-bar {
+    display: flex;
+    gap: 6px;
+  }
+  .we__page-bar span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d9d7ff;
+  }
+  .we__page-banner {
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+    margin-bottom: 4px;
+    border-radius: 12px;
+    background: #05006c;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+  .we__page-msg {
+    position: relative;
+    color: #fff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .we__page-line {
+    height: 9px;
+    border-radius: 5px;
+    background: #e8e7f5;
+  }
+  .we__card {
+    width: 100%;
+    max-width: 340px;
+    padding: 24px 28px;
+    border-radius: 16px;
+    background: #fff;
+    color: #1d1c3a;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .we__card-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #05006c;
+  }
+  .we__card-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e7f5;
+    font-size: 15px;
+  }
+  .we__card-sub {
+    font-size: 14px;
+    color: #5b5a7a;
+  }
+  .we__card-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .we__card-chips span {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #f5f5ff;
+    color: #05006c;
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-emoji: text;
+  }
+  .we__card-swatches {
+    display: flex;
+    gap: 10px;
+  }
+  .we__card-swatches span {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(5, 0, 108, 0.15);
+  }
+  .we__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0 32px;
+    border-top: 2px solid #362dff;
+  }
+  .we__features > div {
+    padding: 36px 0;
+    border-bottom: 1px solid #2a2499;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .we__features span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    line-height: 1;
+    color: #32e0c4;
+  }
+  .we__features h3 {
+    font-weight: 800;
+    font-size: 24px;
+  }
+  .we__features p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+
+  /* Steps */
+  .we__steps-sec {
+    padding: 112px 0;
+    background: #f5f5ff;
+  }
+  .we__steps-sec .we__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .we__steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .we__steps li {
+    padding: 36px;
+    border-radius: 28px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .we__step-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .we__step-num {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: #362dff;
+  }
+  .we__steps h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .we__steps p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .we__band {
+    padding: 32px 40px;
+    border-radius: 28px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .we__band > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .we__band-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 2.4vw, 30px);
+  }
+  .we__band p:last-child {
+    font-size: 16px;
+    color: #c9c7ff;
+  }
+
+  /* Where it delivers value */
+  .we__value {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .we__value-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .we__value-head > p {
+    max-width: 420px;
+    font-size: 19px;
+    color: #33325a;
+  }
+  .we__value-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .we__value-list > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    align-items: center;
+    padding: 36px 40px;
+    border-radius: 28px;
+    color: #05006c;
+  }
+  .we__value-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .we__value-title > span {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .we__value-title h3 {
+    font-weight: 800;
+    font-size: 28px;
+    color: #05006c;
+  }
+  .we__value-list p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* Go further */
+  .we__further {
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .we__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .we__further-grid a {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 32px;
+    border-radius: 28px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .we__further-grid a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(54, 45, 255, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+    color: #000;
+  }
+  .we__further-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .we__further-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .we__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #05006c;
+  }
+  .we__more {
+    color: #362dff;
+    font-weight: 700;
+  }
+
+  /* Got questions */
+  .we__cta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .we__cta > div {
+    padding: 88px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+  .we__cta-blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .we__cta-blue h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.02em;
+  }
+  .we__cta-blue p {
+    max-width: 480px;
+    font-size: 19px;
+    color: #eceaff;
+  }
+  .we__cta-blue > div {
+    margin-top: 8px;
+  }
+  .we__cta-yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .we__cta-yellow p {
+    max-width: 460px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  .we__cta-yellow a {
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 3.4vw, 44px);
+    overflow-wrap: anywhere;
+  }
+  .we__cta-yellow a:hover {
+    color: #362dff;
+  }
+
+  @media (max-width: 820px) {
+    .we__sticker {
+      display: none;
+    }
+  }
+  @media (max-width: 760px) {
+    .we__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+    }
+    .we__hero-copy {
+      padding-bottom: 48px;
+    }
+    .we__lede {
+      font-size: 17px;
+    }
+    .we__visual {
+      min-height: 420px;
+    }
+    .we__arch {
+      width: 100%;
+      max-width: 360px;
+      height: 420px;
+      border-radius: 180px 180px 0 0;
+    }
+    .we__why,
+    .we__value {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      gap: 32px;
+    }
+    .we__why-list li {
+      gap: 18px;
+      padding: 24px 0;
+    }
+    .we__why-list li > span {
+      min-width: 0;
+      font-size: 32px;
+    }
+    .we__why-list p {
+      font-size: 17px;
+    }
+    .we__does,
+    .we__steps-sec {
+      padding: 72px 0;
+    }
+    .we__figs,
+    .we__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .we__fig {
+      aspect-ratio: auto;
+      padding: 28px 20px;
+    }
+    .we__band {
+      padding: 28px 24px;
+    }
+    .we__value-list > div {
+      grid-template-columns: minmax(0, 1fr);
+      padding: 28px 24px;
+      gap: 16px;
+    }
+    .we__value-title h3 {
+      font-size: 22px;
+    }
+    .we__value-title > span {
+      width: 52px;
+      height: 52px;
+    }
+    .we__further {
+      padding-bottom: 72px;
+    }
+    .we__further-grid a {
+      padding: 24px;
+      gap: 18px;
+    }
+    .we__further-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+    }
+    .we__cta > div {
+      padding: 56px 24px;
+    }
+    .we__cta-yellow p {
+      font-size: 22px;
+    }
+  }
+</style>

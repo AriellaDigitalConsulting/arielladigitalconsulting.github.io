@@ -1,0 +1,57 @@
+---
+// Confetti product page ("Split Editorial" template).
+import WidgetEditorial from '../components/WidgetEditorial.astro';
+---
+
+<WidgetEditorial
+  name="Confetti"
+  description="Confetti by ADC: celebrate team wins and company milestones on LumApps with on-brand confetti and your own message."
+  effect="confetti"
+  docs="https://docs.adc.dev/docs/ls/content/4761273171443712/confetti-widget"
+  tagline="Every win, worth celebrating."
+  h1={['Confetti']}
+  lede="Celebrate milestones the moment they happen. Confetti adds a joyful, on-brand burst to any LumApps page, so team wins, anniversaries, and company achievements get the recognition they deserve."
+  sticker="Your colors · your moment"
+  hero={{ message: 'Congrats!', sub: 'TEAM MILESTONE' }}
+  why={[
+    { title: 'Recognition people can see', text: 'Turn a team page or community into a celebration, and show people their work is noticed.' },
+    { title: 'On-brand, every time', text: 'Confetti in your company colors keeps the moment fun, and still unmistakably yours.' },
+    { title: 'From team wins to company milestones', text: "Scale it from a small team's project launch to an organization-wide celebration." },
+    { title: 'Build a culture of celebration', text: "Make celebrating easy and teams will do it more often. That's how recognition becomes part of the culture." },
+  ]}
+  page={{ message: 'Congratulations, Sales Team!', caption: 'A celebratory burst and your custom message, right where the team works.' }}
+  settings={{
+    title: 'Plan the celebration',
+    rows: [
+      ['Message', 'Congratulations!'],
+      ['Font', 'Archivo'],
+      ['Launch style', 'Your choice'],
+    ],
+    chipsLabel: 'Confetti colors',
+    swatches: ['#362dff', '#32E0C4', '#FFD458', '#8F89FF', '#ffffff'],
+    caption: 'Choose how the confetti launches, and match it to your brand colors.',
+  }}
+  features={[
+    { title: 'Brand-Colored Celebrations.', text: 'Set the confetti to your own palette, so every celebration looks on-brand.' },
+    { title: 'Choose Your Style.', text: 'Pick how the confetti launches onto the page from a range of ready-made options.' },
+    { title: 'A Message That Matters.', text: "Add a custom headline in the font and size you choose, and say exactly what you're celebrating." },
+    { title: 'No Code Required.', text: 'Page owners and community managers can set up a celebration on their own, in minutes.' },
+  ]}
+  steps={[
+    { title: 'Add the widget', text: 'Drop Confetti onto a team site, community, or your homepage.' },
+    { title: 'Set your colors and message', text: 'Pick your brand colors, a launch style, and the words that mark the moment.' },
+    { title: 'Celebrate the win', text: 'Publish, and every visitor joins the celebration the moment they arrive.' },
+  ]}
+  band={{ title: 'Recognition, made easy.', text: 'The easier it is to celebrate, the more often your teams will.' }}
+  valueIntro="Added value for HR, Internal Communications, and community managers"
+  value={[
+    { icon: 'trophy', title: 'Team & Project Wins', text: 'Celebrate a successful launch, a closed deal, or a finished project right where the team works.' },
+    { icon: 'star', title: 'Anniversaries & Recognition', text: 'Make work anniversaries, promotions, and awards feel special for the people being celebrated.' },
+    { icon: 'megaphone', title: 'Company-Wide Milestones', text: 'Mark a record year or a major achievement with a moment everyone can share.' },
+  ]}
+  furtherTitle="Explore More Celebration Widgets by ADC"
+  related={[
+    { href: '/fireworks', icon: 'burst', title: 'Fireworks widget.', text: 'Turn big announcements into big moments with a vibrant fireworks display.' },
+    { href: '/holiday-spirit', icon: 'snow', title: 'Holiday Spirit widget.', text: 'Bring every season to your pages with snowflakes, hearts, or any symbol you choose.' },
+  ]}
+/>
