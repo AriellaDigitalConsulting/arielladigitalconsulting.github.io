@@ -1,0 +1,1126 @@
+---
+// Achievers Integration product page, in the "Split Editorial" look (Template B).
+// The hero switches between the two widgets: the Recognitions list and the Leaderboard (points or quarterly).
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+const docs = 'https://docs.adc.dev/docs';
+
+const people: Record<string, { name: string; initials: string; bg: string; fg: string }> = {
+  mz: { name: 'Misha Zubarev', initials: 'MZ', bg: '#05006c', fg: '#fff' },
+  gw: { name: 'George Washington', initials: 'GW', bg: '#32E0C4', fg: '#05006c' },
+  tj: { name: 'Thomas Jefferson', initials: 'TJ', bg: '#FFD458', fg: '#05006c' },
+  al: { name: 'Abraham Lincoln', initials: 'AL', bg: '#d9d7ff', fg: '#05006c' },
+};
+const boards: { id: string; label: string; rows: [string, string, number][] }[] = [
+  { id: 'points', label: 'Points Leaderboard', rows: [['mz', 'JEDI KNIGHT', 115], ['gw', 'JEDI KNIGHT', 100], ['tj', 'JEDI SERVICE CORPS', 70], ['al', 'JEDI SERVICE CORPS', 50]] },
+  { id: 'quarter', label: 'Quarterly', rows: [['al', 'JEDI SERVICE CORPS', 40], ['mz', 'JEDI KNIGHT', 35], ['tj', 'JEDI SERVICE CORPS', 30], ['gw', 'JEDI KNIGHT', 20]] },
+];
+
+const proof = [
+  { c: '#32E0C4', t: 'Latest recognitions, always current' },
+  { c: '#FFD458', t: 'Points & quarterly leaderboards' },
+  { c: '#8e88ff', t: 'Native to your LumApps design' },
+  { c: '#32E0C4', t: 'No app switching' },
+];
+const why = [
+  { title: 'Make appreciation visible', text: 'Recognition that stays inside one app reaches a few people. On your intranet, it inspires the whole organization.' },
+  { title: 'Reinforce your values, every day', text: 'Each recognition shows its category, so values like Innovation, Leadership, and Integrity become real, daily examples, not words on a wall.' },
+  { title: 'Grow participation', text: 'A leaderboard adds friendly momentum, inviting more people to give and receive recognition, and lifting the return on your Achievers investment.' },
+  { title: 'One employee experience', text: 'Your intranet becomes the single front door to culture, news, and recognition, with no extra logins or tabs.' },
+];
+const experiences = [
+  {
+    icon: 'heart',
+    bg: '#32E0C4',
+    title: 'Recognitions List',
+    text: 'A live feed of the latest recognitions that keeps great work in the spotlight.',
+    points: ['Shows the five latest recognitions, or as many as you choose', 'Full name, the recognition message, and its category', '"See More" takes employees straight to the full program'],
+  },
+  {
+    icon: 'trophy',
+    bg: '#FFD458',
+    title: 'Leaderboard',
+    text: 'Celebrate your most engaged people and give everyone a reason to take part.',
+    points: ['Overall points and quarterly rankings', "Shows each person's level and points", 'Fresh competition every quarter keeps momentum high'],
+  },
+];
+const value = [
+  { icon: 'home', bg: '#f5f5ff', tileBg: '#362dff', tileFg: '#fff', title: 'Intranet Homepage', text: 'Put recognition front and center, so every visit starts with a reminder of what great looks like.' },
+  { icon: 'users', bg: '#FFD458', tileBg: '#05006c', tileFg: '#FFD458', title: 'People & Culture Hubs', text: 'Pair recognition with values, benefits, and wellbeing content for a complete picture of your culture.' },
+  { icon: 'megaphone', bg: '#f5f5ff', tileBg: '#32E0C4', tileFg: '#05006c', title: 'Team Pages & Campaigns', text: 'Spotlight team wins and run quarterly recognition pushes that keep engagement climbing.' },
+];
+const related = [
+  { href: '/soccer', icon: 'ball', color: '#FFD458', title: 'Soccer Predictions widget.', text: "Rally employees around the world's biggest tournaments with a friendly predictions game." },
+  { href: '/advanced-survey', icon: 'survey', color: '#32E0C4', title: 'Advanced Survey widget.', text: 'Capture employee sentiment with engaging, multi-question surveys right on the page.' },
+];
+
+const icons: Record<string, string> = {
+  star: '<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/>',
+  heart: '<path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6.5 5.3 5.3 0 0 1 21.3 12C19 16.6 12 21 12 21z"/>',
+  trophy: '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+  home: '<path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  users: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 15c3 0 5 2 5 5"/>',
+  megaphone: '<path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M17 8a5 5 0 0 1 0 8"/>',
+  ball: '<circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 4.5h-5L8 10z"/>',
+  survey: '<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>',
+};
+const icon = (key: string, size = 28, width = 2) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[key]}</svg>`;
+---
+
+<Base title="Achievers Integration | Ariella Digital Consulting" description="Bring your Achievers recognition program into LumApps: show the latest recognitions and a points leaderboard on the pages employees visit every day.">
+  <div class="ac">
+    <section class="ac__hero" data-custom-prompt-after>
+      <div class="ac__wrap ac__hero-grid">
+        <div class="ac__hero-copy">
+          <a class="ac__back" href="/products">← Back to Products Page</a>
+          <p class="ac__tagline">Recognition, right where work happens.</p>
+          <h1>Achievers<br />Integration <span>by ADC</span></h1>
+          <p class="ac__lede">Bring your Achievers recognition program to the heart of your LumApps intranet. Showcase the latest recognitions and your top contributors on the pages employees visit every day, and turn appreciation into a visible, everyday part of your culture.</p>
+          <div class="ac__hero-ctas">
+            <a class="ac__btn ac__btn--blue" href={contactHref}>Request a Demo</a>
+            <a class="ac__docs" href={docs}>
+              <span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#05006c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"></path></svg>
+              </span>
+              Read the docs
+            </a>
+          </div>
+        </div>
+
+        <div class="ac__showcase">
+          <span class="ac__chip">Two experiences, one integration</span>
+          <div class="ac__tabs" role="tablist" aria-label="Widget view">
+            <button type="button" role="tab" id="ac-tab-rec" aria-controls="ac-panel-rec" aria-selected="true">Recognitions</button>
+            <button type="button" role="tab" id="ac-tab-lead" aria-controls="ac-panel-lead" aria-selected="false" tabindex="-1">Leaderboard</button>
+          </div>
+          <div class="ac__frame">
+            <div class="ac__panel" role="tabpanel" id="ac-panel-rec" aria-labelledby="ac-tab-rec">
+              <img src="/images/achievers/recognitions.webp" alt="My Recognitions widget listing five recent recognitions, each with the person's name, the category such as Innovation, Leadership, Integrity or Courage, and a short message, with a See More button" width="614" height="1088" />
+            </div>
+            <div class="ac__panel ac__board" role="tabpanel" id="ac-panel-lead" aria-labelledby="ac-tab-lead" hidden>
+              <div class="ac__board-title">LEADERBOARD</div>
+              <div class="ac__board-tabs">
+                {boards.map((b, i) => <button type="button" data-board={b.id} aria-pressed={i === 0 ? 'true' : 'false'}>{b.label}</button>)}
+              </div>
+              {
+                boards.map((b, i) => (
+                  <ol data-board-list={b.id} hidden={i > 0}>
+                    {b.rows.map(([who, level, pts], r) => (
+                      <li>
+                        <span class="ac__rank">{r + 1}</span>
+                        <span class="ac__avatar" aria-hidden="true" style={`background:${people[who].bg};color:${people[who].fg}`}>{people[who].initials}</span>
+                        <span class="ac__person"><span>{level}</span><span>{people[who].name}</span></span>
+                        <span class="ac__pts">{pts} pts.</span>
+                      </li>
+                    ))}
+                  </ol>
+                ))
+              }
+              <div class="ac__page"><span>1</span></div>
+            </div>
+          </div>
+          <span class="ac__badge"><Fragment set:html={icon('star', 18, 2.4)} />Live from Achievers</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ac__proof">
+      <div class="ac__wrap">
+        {proof.map((p) => <span><span class="ac__dot" style={`background:${p.c}`}></span>{p.t}</span>)}
+      </div>
+    </section>
+
+    <section class="ac__why ac__wrap">
+      <div class="ac__why-head">
+        <p class="ac__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why<br />use it</h2>
+        <div class="ac__bar" aria-hidden="true"></div>
+      </div>
+      <ol class="ac__why-list">
+        {
+          why.map((w, i) => (
+            <li>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="ac__does">
+      <div class="ac__wrap">
+        <div class="ac__does-head">
+          <div class="ac__heading">
+            <p class="ac__eyebrow ac__eyebrow--yellow">WHAT IT DOES</p>
+            <h2>Two ways to<br />celebrate success</h2>
+          </div>
+          <p>Use them together or on their own, on any page, styled to match your intranet.</p>
+        </div>
+        <div class="ac__exp">
+          {
+            experiences.map((e) => (
+              <div>
+                <span class="ac__exp-icon" style={`background:${e.bg}`} set:html={icon(e.icon)} />
+                <h3>{e.title}</h3>
+                <p>{e.text}</p>
+                <ul>
+                  {e.points.map((pt) => <li><span aria-hidden="true" style={`background:${e.bg}`}></span>{pt}</li>)}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+        <div class="ac__band" data-custom-prompt-hide>
+          <div>
+            <p class="ac__band-title">Your recognition program, amplified.</p>
+            <p>Same Achievers program. Far more visibility, participation, and impact.</p>
+          </div>
+          <a class="ac__btn ac__btn--blue" href={contactHref}>Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ac__value ac__wrap">
+      <div class="ac__value-head">
+        <div class="ac__heading">
+          <p class="ac__eyebrow">LEARN MORE ABOUT</p>
+          <h2>Where it delivers value</h2>
+        </div>
+        <p>Added value for your HR, People &amp; Culture, and Internal Communications teams</p>
+      </div>
+      <div class="ac__value-list">
+        {
+          value.map((v) => (
+            <div style={`background:${v.bg}`}>
+              <div class="ac__value-title">
+                <span style={`background:${v.tileBg};color:${v.tileFg}`} set:html={icon(v.icon)} />
+                <h3>{v.title}</h3>
+              </div>
+              <p>{v.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="ac__further ac__wrap">
+      <div class="ac__heading">
+        <p class="ac__eyebrow">GO FURTHER</p>
+        <h2 class="ac__h2-sm">Explore More Engagement Experiences by ADC</h2>
+      </div>
+      <div class="ac__further-grid">
+        {
+          related.map((r) => (
+            <a href={r.href}>
+              <span class="ac__further-icon" style={`color:${r.color}`} set:html={icon(r.icon, 30)} />
+              <span class="ac__further-text">
+                <span class="ac__further-title">{r.title}</span>
+                <span>{r.text}</span>
+                <span class="ac__more">Learn More →</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="ac__cta" data-custom-prompt-hide>
+      <div class="ac__cta-blue">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this integration and to see a demo</p>
+        <div><a class="ac__btn ac__btn--yellow ac__btn--lg" href={contactHref}>Contact us</a></div>
+      </div>
+      <div class="ac__cta-yellow">
+        <p>Check out our Docs site for a listing of all our widgets:</p>
+        <a href={docs}>docs.adc.dev/docs</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Hero showcase: Recognitions / Leaderboard tabs (arrow keys move between them), and the leaderboard's
+  // Points / Quarterly switch.
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.ac__tabs [role="tab"]')];
+  const select = (tab: HTMLButtonElement) => {
+    for (const t of tabs) {
+      const on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
+    }
+  };
+  for (const tab of tabs) {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const next = tabs[(tabs.indexOf(tab) + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      select(next);
+      next.focus();
+    });
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-board]').forEach((btn, _, all) => {
+    btn.addEventListener('click', () => {
+      for (const b of all) b.setAttribute('aria-pressed', String(b === btn));
+      document.querySelectorAll<HTMLElement>('[data-board-list]').forEach((list) => {
+        list.hidden = list.dataset.boardList !== btn.dataset.board;
+      });
+    });
+  });
+</script>
+
+<style>
+  .ac {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .ac * {
+    box-sizing: border-box;
+  }
+  .ac h1,
+  .ac h2,
+  .ac h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .ac p,
+  .ac ol,
+  .ac ul {
+    margin: 0;
+  }
+  .ac a:focus-visible,
+  .ac button:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .ac [hidden] {
+    display: none !important;
+  }
+  .ac__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .ac__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .ac__eyebrow--yellow {
+    color: #ffd458;
+  }
+  .ac__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ac__heading h2,
+  .ac__why-head h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .ac__heading .ac__h2-sm {
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .ac__btn {
+    display: inline-block;
+    padding: 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease;
+  }
+  .ac__btn:hover {
+    transform: translateY(-2px);
+  }
+  .ac__btn--blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .ac__btn--blue:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .ac__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .ac__btn--yellow:hover {
+    color: #05006c;
+  }
+  .ac__btn--lg {
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+  .ac__dot {
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  /* Hero */
+  .ac__hero {
+    overflow: hidden;
+    padding: 40px 0 104px;
+    background: #f5f5ff;
+  }
+  .ac__hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .ac__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .ac__back {
+    align-self: flex-start;
+    padding: 8px 16px;
+    border: 1.5px solid #05006c;
+    border-radius: 999px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .ac__back:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .ac__tagline {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #362dff;
+  }
+  .ac h1 {
+    font-weight: 900;
+    font-size: clamp(48px, 6.2vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: #05006c;
+  }
+  .ac h1 span {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #fff;
+    color: #362dff;
+    font-size: 0.42em;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .ac__lede {
+    max-width: 540px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #1d1c3a;
+  }
+  .ac__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+  .ac__docs {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .ac__docs:hover {
+    color: #362dff;
+  }
+  .ac__docs span {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #05006c;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hero showcase */
+  .ac__showcase {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .ac__chip {
+    position: absolute;
+    /* On the frame's top corner, below the tabs so it never covers them */
+    top: 88px;
+    right: -8px;
+    z-index: 3;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    transform: rotate(3deg);
+    box-shadow: 0 10px 30px rgba(5, 0, 108, 0.2);
+  }
+  .ac__tabs {
+    display: inline-flex;
+    gap: 4px;
+    padding: 6px;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(5, 0, 108, 0.12);
+  }
+  .ac__tabs button {
+    min-height: 44px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 999px;
+    background: #fff;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .ac__tabs button[aria-selected='true'] {
+    background: #362dff;
+    color: #fff;
+  }
+  .ac__frame {
+    width: 100%;
+    max-width: 440px;
+    padding: 22px;
+    border-radius: 32px;
+    background: #05006c;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.3);
+  }
+  .ac__panel {
+    animation: pop 0.4s ease-out both;
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+  .ac__panel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+  .ac__board {
+    overflow: hidden;
+    border-radius: 24px;
+    background: #fff;
+  }
+  .ac__board-title {
+    padding: 22px;
+    background: #362dff;
+    color: #fff;
+    text-align: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 0.02em;
+  }
+  .ac__board-tabs {
+    display: flex;
+    border-bottom: 2px solid #e4e4e4;
+  }
+  .ac__board-tabs button {
+    flex: 1;
+    min-height: 48px;
+    margin-bottom: -2px;
+    border: none;
+    border-bottom: 4px solid transparent;
+    background: #fff;
+    color: #6b6b6b;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .ac__board-tabs button[aria-pressed='true'] {
+    border-bottom-color: #555;
+    color: #333;
+  }
+  .ac__board ol {
+    list-style: none;
+    padding: 0;
+  }
+  .ac__board li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .ac__rank {
+    width: 16px;
+    font-size: 17px;
+    color: #444;
+  }
+  .ac__avatar {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .ac__person {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ac__person span:first-child {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: #555;
+  }
+  .ac__person span:last-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #362dff;
+  }
+  .ac__pts {
+    font-size: 16px;
+    color: #333;
+    white-space: nowrap;
+  }
+  .ac__page {
+    display: flex;
+    justify-content: center;
+    padding: 14px;
+  }
+  .ac__page span {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #362dff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .ac__badge {
+    position: absolute;
+    left: -12px;
+    bottom: 64px;
+    padding: 12px 18px;
+    border-radius: 16px;
+    background: #32e0c4;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    box-shadow: 0 14px 30px rgba(5, 0, 108, 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    animation: floaty 4s ease-in-out infinite;
+  }
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-4deg);
+    }
+    50% {
+      transform: translateY(-8px) rotate(-4deg);
+    }
+  }
+
+  /* Proof strip */
+  .ac__proof {
+    padding: 28px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .ac__proof .ac__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 32px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .ac__proof .ac__wrap > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Why use it */
+  .ac__why {
+    padding-top: 104px;
+    padding-bottom: 104px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+  }
+  .ac__why-head {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ac__bar {
+    width: 96px;
+    height: 12px;
+    margin-top: 12px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .ac__why-list {
+    flex: 999 1 560px;
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .ac__why-list li {
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+    padding: 28px 0;
+    border-top: 1px solid #d9d7ff;
+  }
+  .ac__why-list li:first-child {
+    border-top: 2px solid #05006c;
+  }
+  .ac__why-list li:last-child {
+    border-bottom: 1px solid #d9d7ff;
+  }
+  .ac__why-list li > span {
+    min-width: 72px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: #362dff;
+  }
+  .ac__why-list li > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ac__why-list h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .ac__why-list p {
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  /* What it does */
+  .ac__does {
+    padding: 104px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .ac__does .ac__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .ac__does-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .ac__does .ac__heading h2 {
+    color: #fff;
+  }
+  .ac__does-head > p {
+    max-width: 440px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .ac__exp {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .ac__exp > div {
+    padding: 40px;
+    border-radius: 28px;
+    background: #1c1690;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .ac__exp-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    color: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ac__exp h3 {
+    font-weight: 800;
+    font-size: 32px;
+  }
+  .ac__exp p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .ac__exp ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 16px;
+  }
+  .ac__exp li {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .ac__exp li span {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .ac__band {
+    padding: 32px 40px;
+    border-radius: 28px;
+    background: #fff;
+    color: #05006c;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .ac__band > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ac__band-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 2.4vw, 30px);
+  }
+  .ac__band p:last-child {
+    font-size: 16px;
+    color: #33325a;
+  }
+
+  /* Where it delivers value */
+  .ac__value {
+    padding-top: 104px;
+    padding-bottom: 104px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .ac__value-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .ac__value-head > p {
+    max-width: 420px;
+    font-size: 19px;
+    color: #33325a;
+  }
+  .ac__value-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .ac__value-list > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    align-items: center;
+    padding: 36px 40px;
+    border-radius: 28px;
+    color: #05006c;
+  }
+  .ac__value-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .ac__value-title > span {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ac__value-title h3 {
+    font-weight: 800;
+    font-size: 28px;
+    color: #05006c;
+  }
+  .ac__value-list p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* Go further */
+  .ac__further {
+    padding-bottom: 104px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .ac__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .ac__further-grid a {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 32px;
+    border-radius: 28px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .ac__further-grid a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(54, 45, 255, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+    color: #000;
+  }
+  .ac__further-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ac__further-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .ac__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #05006c;
+  }
+  .ac__more {
+    color: #362dff;
+    font-weight: 700;
+  }
+
+  /* Got questions */
+  .ac__cta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .ac__cta > div {
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+  .ac__cta-blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .ac__cta-blue h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.02em;
+  }
+  .ac__cta-blue p {
+    max-width: 480px;
+    font-size: 19px;
+    color: #eceaff;
+  }
+  .ac__cta-blue > div {
+    margin-top: 8px;
+  }
+  .ac__cta-yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .ac__cta-yellow p {
+    max-width: 460px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  .ac__cta-yellow a {
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 3.4vw, 44px);
+    overflow-wrap: anywhere;
+  }
+  .ac__cta-yellow a:hover {
+    color: #362dff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ac__panel,
+    .ac__badge {
+      animation: none;
+    }
+  }
+  @media (max-width: 820px) {
+    .ac__chip,
+    .ac__badge {
+      display: none;
+    }
+  }
+  @media (max-width: 760px) {
+    .ac__wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .ac__hero {
+      padding-bottom: 72px;
+    }
+    .ac__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+    .ac__lede {
+      font-size: 17px;
+    }
+    .ac__frame {
+      padding: 14px;
+      border-radius: 24px;
+    }
+    .ac__board li {
+      gap: 10px;
+      padding: 14px 12px;
+    }
+    .ac__why,
+    .ac__value {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      gap: 32px;
+    }
+    .ac__why-list li {
+      gap: 18px;
+      padding: 24px 0;
+    }
+    .ac__why-list li > span {
+      min-width: 0;
+      font-size: 32px;
+    }
+    .ac__why-list p {
+      font-size: 17px;
+    }
+    .ac__does {
+      padding: 72px 0;
+    }
+    .ac__exp {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .ac__exp > div {
+      padding: 28px 24px;
+    }
+    .ac__exp h3 {
+      font-size: 26px;
+    }
+    .ac__band {
+      padding: 28px 24px;
+    }
+    .ac__value-list > div {
+      grid-template-columns: minmax(0, 1fr);
+      padding: 28px 24px;
+      gap: 16px;
+    }
+    .ac__value-title h3 {
+      font-size: 22px;
+    }
+    .ac__value-title > span {
+      width: 52px;
+      height: 52px;
+    }
+    .ac__further {
+      padding-bottom: 72px;
+    }
+    .ac__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .ac__further-grid a {
+      padding: 24px;
+      gap: 18px;
+    }
+    .ac__further-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+    }
+    .ac__cta > div {
+      padding: 56px 24px;
+    }
+    .ac__cta-yellow p {
+      font-size: 22px;
+    }
+  }
+</style>

@@ -36,7 +36,7 @@ export const categories: Category[] = [
 ];
 
 export const extensions: Extension[] = [
-  { n: 'Achievers', c: ['eg', 'ti'], d: 'Employee recognition, connected to LumApps.', href: '/third-party-integrations' },
+  { n: 'Achievers', c: ['eg', 'ti'], d: 'Employee recognition, connected to LumApps.', href: '/achievers' },
   { n: 'License Management', c: ['tb'], d: 'Manage ADC widget licenses in one place.' },
   { n: 'Platform Style Manager', c: ['tb'], pop: 3, d: 'Manage your platform’s styles from one place.', href: '/platform-style' },
   { n: 'Advanced Survey', c: ['eg'], d: 'A powerful enhancement over the default LumApps survey.', href: '/advanced-survey' },
