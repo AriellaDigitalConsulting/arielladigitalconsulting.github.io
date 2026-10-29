@@ -1,0 +1,1696 @@
+---
+// Guess Word product page ("Color Blocks" template, like /soccer). Replaces the layout snapshot of /guess-word-widget.
+// "Play today's word" is a working copy of the widget: the game, the player's statistics and the leaderboard.
+import Base from '../layouts/Base.astro';
+import GuessWordLeaderboard from '../components/GuessWordLeaderboard.astro';
+import { contactHref } from '../data/site';
+
+const ticker = ['A new word every day', 'Your own words', 'Any language', 'Leaderboards', 'Your brand', 'Linked answers'];
+
+const why = [
+  { bg: '#05006c', fg: '#fff', stroke: '#32E0C4', icon: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>', text: "Gamify your employees' knowledge of your mission, and your corporate and cultural initiatives, by choosing the words they guess." },
+  { bg: '#362dff', fg: '#fff', stroke: '#FFD458', icon: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 15c3 0 5 2 5 5"/>', text: 'Daily challenges build friendly team competition and help people learn your internal processes, products and services.' },
+  { bg: '#32E0C4', fg: '#05006c', stroke: '#05006c', icon: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>', text: 'Target words in each local language, so a global workforce shares one culture in a fun, untraditional way.' },
+  { bg: '#FFD458', fg: '#05006c', stroke: '#05006c', icon: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>', text: 'A new word on your schedule gives employees a reason to come back to your intranet every day.' },
+];
+
+// "What it does" tabs. The Leaderboards tab shows the live leaderboard instead of a screenshot.
+const features = [
+  {
+    name: 'Your Words. Your Message.',
+    body: 'Load your own word lists tied to initiatives, products and values. Control when a new word appears, daily, weekly or on your schedule, and link each answer to a page that tells the story.',
+    img: { src: '/images/a4678b4b6e8a.webp', w: 1800, h: 1357, alt: 'Guess Word on a LumApps page, introduced as a daily challenge on ADC product and practice knowledge, with the word REACT solved in two guesses' },
+  },
+  {
+    name: 'Seamlessly Added to any Page or Space.',
+    body: "Add Guess Word to a LumApps Page or Space like any other widget, styled to your brand's identity, with a hint of the day above the board.",
+    img: { src: '/images/guess-word/lumapps-page.webp', w: 1861, h: 2000, alt: 'A LumApps anniversary page with a branded Guess Word section: the hint LumApps social feed and the word POSTS solved on the third guess' },
+  },
+  {
+    name: 'Scoreboards & Statistics.',
+    body: 'Every player sees their points, games played, win rate and guess distribution, with a custom message when they find the word.',
+    img: { src: '/images/guess-word/statistics.webp', w: 2000, h: 753, alt: 'Guess Word statistics: 78 points, 9 games played, 100% won, and a guess distribution chart' },
+  },
+  {
+    name: 'Leaderboards.',
+    body: 'Employees compete, climb the ranks and own their bragging rights, all without leaving LumApps.',
+    leaderboard: true,
+  },
+];
+
+const steps = [
+  { bg: '#362dff', fg: '#fff', num: '#FFD458', body: '#eceaff', title: 'Load your words', text: 'Add Guess Word to any LumApps Page or Space, load your word list, and set the hint and how often the word changes.' },
+  { bg: '#32E0C4', fg: '#05006c', num: '#362dff', title: 'Employees play', text: 'Everyone gets six tries to find the word of the day, right inside your intranet.' },
+  { bg: '#FFD458', fg: '#05006c', num: '#362dff', title: 'The leaderboard crowns winners', text: 'Points add up with every win, and each answer can link to the page behind it.' },
+];
+
+const benefits = [
+  { title: 'Internal Communications', text: 'Turn campaigns, launches and cultural initiatives into a daily game that gets your key messages remembered.' },
+  { title: 'HR, L&D & Enablement', text: 'Reinforce product and process knowledge with words that teach, and see who is learning on the leaderboard.', featured: true },
+  { title: 'Global & Regional Teams', text: 'Localize the word list for each region, so every office plays in its own language and shares one culture.' },
+];
+
+// The playable demo: today's word, its hint, and the player's statistics.
+const answer = 'POSTS';
+const hint = 'LUMAPPS SOCIAL FEED';
+const distribution = [0, 6, 3, 0, 0, 0];
+const keys = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'];
+
+// Hero board: the three guesses from the screenshot (x = not in the word, g = right letter, right spot).
+const heroRows = [
+  { word: 'DREAM', marks: 'xxxxx' },
+  { word: 'LISTS', marks: 'xxggg' },
+  { word: 'POSTS', marks: 'ggggg' },
+];
+
+const viewIcons = {
+  game: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 7h4v4h-4zM10 15h.01M14 17h.01"/>',
+  stats: '<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/>',
+  leaders: '<path d="M10 6h11M10 12h11M10 18h11M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/>',
+};
+---
+
+<Base title="Guess Word | Ariella Digital Consulting" description="Guess Word by ADC: a daily word game for LumApps, inspired by Wordle, with your own words, statistics and leaderboards.">
+  <div class="gw">
+    <section class="gw__hero" data-custom-prompt-after>
+      <div class="gw__sq floatSq" aria-hidden="true"></div>
+      <div class="gw__letters" aria-hidden="true">
+        <span class="floatTile" style="--r:-10deg">W</span>
+        <span class="floatTile floatTile--late" style="--r:8deg">O</span>
+        <span class="floatTile" style="--r:-4deg;animation-delay:-1.4s">R</span>
+      </div>
+      <div class="gw__ring ring" aria-hidden="true"></div>
+
+      <div class="gw__hero-inner">
+        <a class="gw__back" href="/products">← Back to Products Page</a>
+        <p class="gw__kicker">A NEW WORD EVERY DAY</p>
+        <h1>Guess<br />Word<span>by ADC</span></h1>
+        <p class="gw__lede">Inspired by Wordle and built for LumApps. Engage employees with a daily word game, customized to your brand identity, with hand-picked words that carry your organization's messages and cultural initiatives.</p>
+        <div class="gw__hero-ctas">
+          <a class="gw__btn gw__btn--navy" href={contactHref}>Request a Demo</a>
+          <a class="gw__play-link" href="#play">
+            <span><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg></span>
+            Play today's word
+          </a>
+        </div>
+
+        <figure class="gw__today">
+          <div class="gw__today-head">
+            <span>TODAY'S WORD · SOLVED IN 3</span>
+            <span>Hint: LumApps social feed</span>
+          </div>
+          <div class="gw__mini" role="img" aria-label="Three guesses: DREAM, then LISTS with the last three letters right, then POSTS, all five letters right">
+            {
+              heroRows.map((r, ri) => (
+                <div class="gw__mini-row">
+                  {[...r.word].map((ch, ci) => (
+                    <span class:list={['gw__mini-tile', 'flip', r.marks[ci] === 'g' ? 'is-hit' : 'is-miss']} style={`animation-delay:${ri * 0.45 + ci * 0.08}s`}>
+                      {ch}
+                    </span>
+                  ))}
+                </div>
+              ))
+            }
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <div class="gw__ticker" aria-hidden="true">
+      <div class="mq">
+        {
+          [...ticker, ...ticker].map((t) => (
+            <span>
+              {t}
+              <i />
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <section>
+      <div class="gw__heading gw__heading--center gw__why-head">
+        <p class="gw__eyebrow">WIDGET USE CASES</p>
+        <h2>Why use it</h2>
+      </div>
+      <div class="gw__why">
+        {
+          why.map((w) => (
+            <div style={`background:${w.bg};color:${w.fg}`}>
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke={w.stroke} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={w.icon} />
+              <p>{w.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="gw__reel" id="play">
+      <div class="gw__reel-inner">
+        <p class="gw__eyebrow">TRY IT</p>
+        <h2>Play today's word</h2>
+        <p class="gw__reel-sub">Six tries to find the five-letter word. Type, or use the keyboard below.</p>
+        <div class="gw__video-wrap">
+          <div class="gw__video-tilt" aria-hidden="true"></div>
+          <div class="gw__game" data-view="game">
+            <div class="gw__game-bar">
+              <span class="gw__hint">HINT OF THE DAY: {hint}</span>
+              <div class="gw__views" role="tablist" aria-label="Guess Word views">
+                <button type="button" role="tab" id="gw-view-game" aria-controls="gw-pane-game" aria-selected="true" aria-label="Game" set:html={`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${viewIcons.game}</svg>`} />
+                <button type="button" role="tab" id="gw-view-stats" aria-controls="gw-pane-stats" aria-selected="false" tabindex="-1" aria-label="Statistics" set:html={`<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${viewIcons.stats}</svg>`} />
+                <button type="button" role="tab" id="gw-view-leaders" aria-controls="gw-pane-leaders" aria-selected="false" tabindex="-1" aria-label="Leaderboard" set:html={`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${viewIcons.leaders}</svg>`} />
+              </div>
+            </div>
+
+            <div class="gw__pane" role="tabpanel" id="gw-pane-game" aria-labelledby="gw-view-game">
+              <div class="gw__board" data-answer={answer}>
+                {Array.from({ length: 6 }, () => <div class="gw__row">{Array.from({ length: 5 }, () => <span class="gw__tile"></span>)}</div>)}
+              </div>
+              <p class="gw__msg" role="status" aria-live="polite"></p>
+              <div class="gw__keys">
+                {
+                  keys.map((row, i) => (
+                    <div class="gw__keyrow">
+                      {[...row].map((k) => <button type="button" class="gw__key" data-key={k}>{k}</button>)}
+                      {i === 2 && (
+                        <>
+                          <button type="button" class="gw__key gw__key--wide" data-key="BACK" aria-label="Delete letter">←</button>
+                          <button type="button" class="gw__key gw__key--wide" data-key="ENTER">ENTER</button>
+                        </>
+                      )}
+                    </div>
+                  ))
+                }
+              </div>
+              <button type="button" class="gw__again" hidden>↺ Play again</button>
+            </div>
+
+            <div class="gw__pane gw__stats" role="tabpanel" id="gw-pane-stats" aria-labelledby="gw-view-stats" hidden>
+              <p class="gw__won" hidden>Congratulations, you won today! The word was "<strong>posts</strong>".</p>
+              <p class="gw__stats-title">Statistics</p>
+              <div class="gw__nums">
+                <div><strong>78</strong><span>Points</span></div>
+                <div><strong>9</strong><span>Played</span></div>
+                <div><strong>100</strong><span>Won %</span></div>
+              </div>
+              <p class="gw__stats-title">Guess distribution</p>
+              <ol class="gw__dist">
+                {
+                  distribution.map((n, i) => (
+                    <li>
+                      <span>{i + 1}</span>
+                      <span class:list={['gw__bar', { 'is-last': i === 2 }]} style={`width:max(36px, ${(n / Math.max(...distribution)) * 100}%)`}>{n}</span>
+                    </li>
+                  ))
+                }
+              </ol>
+              <p class="gw__next">Next game in <span class="gw__hours">12 hours</span></p>
+            </div>
+
+            <div class="gw__pane" role="tabpanel" id="gw-pane-leaders" aria-labelledby="gw-view-leaders" hidden>
+              <GuessWordLeaderboard />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gw__does">
+      <div class="gw__wrap">
+        <div class="gw__heading">
+          <p class="gw__eyebrow">HAVE A LOOK AT</p>
+          <h2>What it does</h2>
+        </div>
+        <div class="gw__tabs-wrap">
+          <div class="gw__tabs" role="tablist" aria-label="Guess Word features">
+            {
+              features.map((f, i) => (
+                <button type="button" role="tab" id={`gw-tab-${i}`} aria-controls={`gw-panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+                  <span class="gw__tab-num">{String(i + 1).padStart(2, '0')}</span>
+                  <span>{f.name}</span>
+                </button>
+              ))
+            }
+          </div>
+          {
+            features.map((f, i) => (
+              <div class="gw__panel" role="tabpanel" id={`gw-panel-${i}`} aria-labelledby={`gw-tab-${i}`} hidden={i !== 0}>
+                <div class="gw__panel-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
+                <h3>{f.name}</h3>
+                <p>{f.body}</p>
+                {f.img && (
+                  <div class="gw__shot">
+                    <img src={f.img.src} alt={f.img.alt} width={f.img.w} height={f.img.h} loading="lazy" />
+                  </div>
+                )}
+                {f.leaderboard && (
+                  <div class="gw__shot gw__shot--dark">
+                    <GuessWordLeaderboard />
+                  </div>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gw__steps-sec">
+      <div class="gw__wrap">
+        <div class="gw__heading gw__heading--center">
+          <p class="gw__eyebrow">ROLL IT OUT IN</p>
+          <h2>Three simple steps</h2>
+        </div>
+        <ol class="gw__steps">
+          {
+            steps.map((s, i) => (
+              <li style={`background:${s.bg};color:${s.fg}`}>
+                <span style={`color:${s.num}`}>{i + 1}</span>
+                <h3>{s.title}</h3>
+                <p style={s.body ? `color:${s.body}` : undefined}>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="gw__kickoff" data-custom-prompt-hide>
+          <p>Ready to play in your LumApps?</p>
+          <a class="gw__btn gw__btn--yellow" href={contactHref}>Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gw__who">
+      <div class="gw__wrap">
+        <div class="gw__heading gw__heading--center">
+          <p class="gw__eyebrow gw__eyebrow--teal">LEARN MORE ABOUT</p>
+          <h2>Who benefits</h2>
+          <p class="gw__who-sub">Added value for your Internal Communications, HR and Enablement teams</p>
+        </div>
+        <div class="gw__who-grid">
+          {
+            benefits.map((b, i) => (
+              <div class:list={['gw__who-card', { 'gw__who-card--featured': b.featured }]}>
+                <span>{i + 1}</span>
+                <h3>{b.title}</h3>
+                <p>{b.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="gw__further">
+      <div class="gw__wrap">
+        <div class="gw__heading">
+          <p class="gw__eyebrow">GO FURTHER</p>
+          <h2 class="gw__h2-sm">Explore More Engaging Experiences by ADC</h2>
+        </div>
+        <div class="gw__further-grid">
+          <a href="/soccer">
+            <span class="gw__further-title">Soccer Predictions widget.</span>
+            <span>Employees predict match scores and climb a leaderboard, every matchday, all year round, right inside LumApps.</span>
+            <span class="gw__pill">Learn More</span>
+          </a>
+          <a href="/achievers" class="gw__further-teal">
+            <span class="gw__further-title">Achievers Integration.</span>
+            <span>Bring your Achievers recognitions and leaderboards onto the LumApps pages employees visit every day.</span>
+            <span class="gw__pill gw__pill--navy">Learn More</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="gw__cta-wrap" data-custom-prompt-hide>
+      <div class="gw__cta">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this widget and to see a demo</p>
+        <a class="gw__btn gw__btn--navy-flat" href={contactHref}>Contact us</a>
+        <p class="gw__cta-note">Check out our Docs site for a listing of all our widgets: <a href="https://docs.adc.dev/docs">docs.adc.dev/docs</a></p>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Playable Guess Word: six guesses at a five-letter word, scored like the widget.
+  const game = document.querySelector<HTMLElement>('.gw__game')!;
+  const board = game.querySelector<HTMLElement>('.gw__board')!;
+  const answer = board.dataset.answer!;
+  const rows = [...board.querySelectorAll<HTMLElement>('.gw__row')];
+  const msg = game.querySelector<HTMLElement>('.gw__msg')!;
+  const again = game.querySelector<HTMLButtonElement>('.gw__again')!;
+  const won = game.querySelector<HTMLElement>('.gw__won')!;
+  const keyEls = new Map([...game.querySelectorAll<HTMLButtonElement>('[data-key]')].map((k) => [k.dataset.key!, k]));
+  const rank = { miss: 1, near: 2, hit: 3 } as const;
+  let row = 0;
+  let current = '';
+  let over = false;
+  let switchTimer: number | undefined;
+
+  const paint = () => {
+    rows[row]?.querySelectorAll('.gw__tile').forEach((t, i) => {
+      t.textContent = current[i] ?? '';
+      t.classList.toggle('is-filled', i < current.length);
+    });
+  };
+
+  // Mark each letter: right spot (hit), elsewhere in the word (near), or not in it (miss), counting repeats.
+  const score = (guess: string) => {
+    const marks: (keyof typeof rank)[] = Array(5).fill('miss');
+    const left: Record<string, number> = {};
+    [...answer].forEach((ch, i) => {
+      if (guess[i] === ch) marks[i] = 'hit';
+      else left[ch] = (left[ch] ?? 0) + 1;
+    });
+    [...guess].forEach((ch, i) => {
+      if (marks[i] !== 'hit' && left[ch]) {
+        marks[i] = 'near';
+        left[ch]--;
+      }
+    });
+    return marks;
+  };
+
+  const submit = () => {
+    if (current.length < 5) {
+      msg.textContent = 'Not enough letters';
+      rows[row].classList.remove('shake');
+      void rows[row].offsetWidth;
+      rows[row].classList.add('shake');
+      return;
+    }
+    const marks = score(current);
+    rows[row].querySelectorAll<HTMLElement>('.gw__tile').forEach((t, i) => {
+      t.classList.add(`is-${marks[i]}`, 'flip');
+      t.style.animationDelay = `${i * 0.1}s`;
+      const key = keyEls.get(current[i])!;
+      const prev = (key.dataset.state ?? '') as keyof typeof rank | '';
+      if (!prev || rank[marks[i]] > rank[prev]) key.dataset.state = marks[i];
+    });
+    const guessed = current;
+    row++;
+    current = '';
+    if (guessed === answer) {
+      over = true;
+      msg.textContent = `You got it in ${row}!`;
+      won.hidden = false;
+      again.hidden = false;
+      switchTimer = window.setTimeout(() => select(1), 1400);
+    } else if (row === 6) {
+      over = true;
+      msg.textContent = `The word was ${answer}.`;
+      again.hidden = false;
+    } else {
+      msg.textContent = '';
+    }
+  };
+
+  const press = (key: string) => {
+    if (over) return;
+    if (key === 'ENTER') submit();
+    else if (key === 'BACK') current = current.slice(0, -1);
+    else if (/^[A-Z]$/.test(key) && current.length < 5) current += key;
+    paint();
+  };
+
+  const reset = () => {
+    window.clearTimeout(switchTimer);
+    row = 0;
+    current = '';
+    over = false;
+    msg.textContent = '';
+    won.hidden = true;
+    again.hidden = true;
+    board.querySelectorAll<HTMLElement>('.gw__tile').forEach((t) => {
+      t.className = 'gw__tile';
+      t.textContent = '';
+      t.style.animationDelay = '';
+    });
+    keyEls.forEach((k) => delete k.dataset.state);
+  };
+
+  keyEls.forEach((k, key) => k.addEventListener('click', () => press(key)));
+  again.addEventListener('click', reset);
+
+  // Typing works while the game is on screen and nothing else (a field, a menu) is being typed into.
+  let onScreen = false;
+  new IntersectionObserver(([e]) => (onScreen = e.isIntersecting), { threshold: 0.3 }).observe(game);
+  document.addEventListener('keydown', (e) => {
+    if (!onScreen || game.dataset.view !== 'game' || e.metaKey || e.ctrlKey || e.altKey) return;
+    const el = document.activeElement;
+    if (el && el !== document.body && !game.contains(el)) return;
+    if (el instanceof HTMLButtonElement && (e.key === 'Enter' || e.key === ' ')) return;
+    const key = e.key === 'Enter' ? 'ENTER' : e.key === 'Backspace' ? 'BACK' : e.key.length === 1 ? e.key.toUpperCase() : '';
+    if (!key || (key.length === 1 && !/[A-Z]/.test(key))) return;
+    e.preventDefault();
+    press(key);
+  });
+
+  // Game / Statistics / Leaderboard views
+  const viewTabs = [...game.querySelectorAll<HTMLButtonElement>('.gw__views [role="tab"]')];
+  const viewNames = ['game', 'stats', 'leaders'];
+  const select = (i: number, focus = false) => {
+    viewTabs.forEach((t, j) => {
+      t.setAttribute('aria-selected', String(i === j));
+      t.tabIndex = i === j ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')!)!.hidden = i !== j;
+    });
+    game.dataset.view = viewNames[i];
+    if (focus) viewTabs[i].focus();
+  };
+  viewTabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(i));
+    t.addEventListener('keydown', (e) => {
+      const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      select((i + step + viewTabs.length) % viewTabs.length, true);
+    });
+  });
+
+  // "Next game in N hours": the word changes at midnight.
+  const midnight = new Date();
+  midnight.setHours(24, 0, 0, 0);
+  const hours = Math.max(1, Math.round((midnight.getTime() - Date.now()) / 3.6e6));
+  game.querySelector('.gw__hours')!.textContent = `${hours} hour${hours === 1 ? '' : 's'}`;
+
+  // "What it does" tabs (arrow keys move between tabs)
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.gw__tabs [role="tab"]')];
+  const panels = [...document.querySelectorAll<HTMLElement>('.gw__panel')];
+  const show = (i: number, focus = false) => {
+    tabs.forEach((t, j) => {
+      t.setAttribute('aria-selected', String(i === j));
+      t.tabIndex = i === j ? 0 : -1;
+    });
+    panels.forEach((p, j) => (p.hidden = i !== j));
+    if (focus) tabs[i].focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(i));
+    t.addEventListener('keydown', (e) => {
+      const step = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      show((i + step + tabs.length) % tabs.length, true);
+    });
+  });
+</script>
+
+<style>
+
+  .gw {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .gw * {
+    box-sizing: border-box;
+  }
+  .gw h1,
+  .gw h2,
+  .gw h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .gw p,
+  .gw ol {
+    margin: 0;
+  }
+  .gw button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .gw a:focus-visible,
+  .gw button:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .gw [hidden] {
+    display: none !important;
+  }
+  .gw__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .gw__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .gw__eyebrow--teal {
+    color: #32e0c4;
+  }
+  .gw__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .gw__heading--center {
+    align-items: center;
+    text-align: center;
+  }
+  .gw__heading h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 6vw, 80px);
+    color: #05006c;
+    letter-spacing: -0.03em;
+  }
+  .gw__heading .gw__h2-sm {
+    font-size: clamp(30px, 3.6vw, 44px);
+    letter-spacing: -0.02em;
+  }
+  .gw__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 20px 40px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    transition: transform 0.15s ease;
+  }
+  .gw__btn:hover {
+    transform: translate(-2px, -2px);
+  }
+  .gw__btn--navy {
+    background: #05006c;
+    color: #fff;
+    box-shadow: 6px 6px 0 #ffd458;
+  }
+  .gw__btn--navy:hover {
+    color: #fff;
+  }
+  .gw__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+    box-shadow: 6px 6px 0 #362dff;
+  }
+  .gw__btn--yellow:hover {
+    color: #05006c;
+  }
+  .gw__btn--navy-flat {
+    margin-top: 8px;
+    background: #05006c;
+    color: #fff;
+  }
+  .gw__btn--navy-flat:hover {
+    color: #fff;
+  }
+
+  /* Animations (off for reduced motion) */
+  .mq {
+    animation: mq 28s linear infinite;
+    will-change: transform;
+  }
+  @keyframes mq {
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  .floatSq {
+    animation: floatSq 7s ease-in-out infinite;
+  }
+  @keyframes floatSq {
+    0%,
+    100% {
+      transform: translateY(0) rotate(14deg);
+    }
+    50% {
+      transform: translateY(-22px) rotate(34deg);
+    }
+  }
+  
+  
+  
+  
+  
+  
+  .ring {
+    animation: ring 4s ease-in-out infinite;
+  }
+  @keyframes ring {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.35);
+      opacity: 0.2;
+    }
+  }
+  
+
+  /* Hero */
+  .gw__hero {
+    position: relative;
+    overflow: hidden;
+    padding: 64px 24px 96px;
+    background: #362dff;
+    color: #fff;
+  }
+  .gw__sq {
+    position: absolute;
+    left: 6%;
+    top: 120px;
+    width: 90px;
+    height: 90px;
+    border-radius: 24px;
+    background: #32e0c4;
+    transform: rotate(14deg);
+  }
+  
+  
+  
+  
+  .gw__ring {
+    position: absolute;
+    right: 18%;
+    top: 90px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    opacity: 0.5;
+  }
+  .gw__hero-inner {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 28px;
+  }
+  .gw__back {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  .gw__back:hover {
+    color: #ffd458;
+    opacity: 1;
+  }
+  .gw__kicker {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    font-size: 15px;
+    color: #ffd458;
+  }
+  .gw h1 {
+    position: relative;
+    font-weight: 900;
+    font-size: clamp(60px, 10.5vw, 148px);
+    line-height: 0.85;
+    letter-spacing: -0.045em;
+  }
+  .gw h1 span {
+    position: absolute;
+    right: -10px;
+    top: -26px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-size: 22px;
+    letter-spacing: 0;
+    transform: rotate(8deg);
+  }
+  .gw__lede {
+    max-width: 760px;
+    font-size: 20px;
+    line-height: 1.65;
+    color: #eceaff;
+  }
+  .gw__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Sits level with the score boxes rather than the whole team column. */
+  
+  
+  
+
+  /* Ticker */
+  .gw__ticker {
+    overflow: hidden;
+    padding: 20px 0;
+    background: #ffd458;
+    color: #05006c;
+    border-bottom: 3px solid #05006c;
+  }
+  .gw__ticker .mq {
+    display: flex;
+    width: max-content;
+    white-space: nowrap;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+  }
+  .gw__ticker .mq > span {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    padding-right: 48px;
+  }
+  .gw__ticker i {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #362dff;
+  }
+
+  /* Why use it */
+  .gw__why-head {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 112px 24px 48px;
+  }
+  .gw__why {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .gw__why > div {
+    min-height: 360px;
+    padding: 56px 40px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .gw__why p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* Sizzle reel */
+  .gw__reel {
+    padding: 120px 24px;
+    background: #f7f7fc;
+  }
+  .gw__reel-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+  .gw__reel h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    color: #05006c;
+    letter-spacing: -0.02em;
+  }
+  .gw__reel-sub {
+    margin-bottom: 32px !important;
+    font-size: 19px;
+    color: #33325a;
+  }
+  .gw__video-wrap {
+    position: relative;
+    width: 100%;
+  }
+  .gw__video-tilt {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background: #32e0c4;
+    transform: rotate(-2.5deg);
+  }
+  
+  
+  
+  
+
+  /* What it does */
+  .gw__does {
+    padding: 120px 0;
+  }
+  .gw__does .gw__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .gw__tabs-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .gw__tabs {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .gw__tabs button {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    min-height: 64px;
+    padding: 20px 24px;
+    border-radius: 18px;
+    border: 2px solid #e4e3ff;
+    background: #fff;
+    color: #05006c;
+    text-align: left;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .gw__tabs button:hover {
+    border-color: #362dff;
+  }
+  .gw__tabs button[aria-selected='true'] {
+    background: #362dff;
+    border-color: #362dff;
+    color: #fff;
+  }
+  .gw__tab-num {
+    min-width: 32px;
+    font-weight: 900;
+    font-size: 18px;
+  }
+  .gw__panel {
+    position: relative;
+    overflow: hidden;
+    flex: 999 1 560px;
+    min-width: 0;
+    min-height: 460px;
+    padding: 48px;
+    border-radius: 32px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .gw__panel-num {
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 260px;
+    line-height: 1;
+    color: #140f86;
+  }
+  .gw__panel h3 {
+    position: relative;
+    font-weight: 900;
+    font-size: clamp(32px, 3.6vw, 48px);
+  }
+  .gw__panel > p {
+    position: relative;
+    max-width: 620px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #e4e3ff;
+  }
+  .gw__shot {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    border-radius: 20px;
+    background: #f5f5ff;
+  }
+  .gw__shot img {
+    display: block;
+    max-width: 100%;
+    max-height: 380px;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  /* Steps */
+  .gw__steps-sec {
+    padding: 120px 0;
+    background: #f7f7fc;
+  }
+  .gw__steps-sec .gw__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .gw__steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    border-radius: 32px;
+    overflow: hidden;
+  }
+  .gw__steps li {
+    padding: 48px 40px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .gw__steps li > span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 0.9;
+  }
+  .gw__steps h3 {
+    font-weight: 800;
+    font-size: 28px;
+  }
+  .gw__steps p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .gw__kickoff {
+    padding: 40px 48px;
+    border-radius: 32px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .gw__kickoff p {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(26px, 3vw, 40px);
+    letter-spacing: -0.02em;
+  }
+
+  /* Who benefits */
+  .gw__who {
+    padding: 120px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .gw__who .gw__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .gw__who .gw__heading h2 {
+    color: #fff;
+  }
+  .gw__who-sub {
+    font-size: 19px;
+    color: #c9c7ff;
+  }
+  .gw__who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .gw__who-card {
+    padding: 40px;
+    border: 2px solid #362dff;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .gw__who-card > span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 88px;
+    line-height: 1;
+    color: #32e0c4;
+  }
+  .gw__who-card h3 {
+    font-weight: 800;
+    font-size: 26px;
+  }
+  .gw__who-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .gw__who-card--featured {
+    background: #362dff;
+    transform: translateY(-24px);
+  }
+  .gw__who-card--featured > span {
+    color: #ffd458;
+  }
+  .gw__who-card--featured p {
+    color: #eceaff;
+  }
+
+  /* Go further */
+  .gw__further {
+    padding-top: 112px;
+  }
+  .gw__further .gw__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .gw__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    border: 3px solid #05006c;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+  .gw__further-grid a {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .gw__further-grid a.gw__further-teal {
+    background: #32e0c4;
+    color: #05006c;
+  }
+  .gw__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1.3;
+    color: #05006c;
+  }
+  .gw__pill {
+    align-self: flex-start;
+    margin-top: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: #362dff;
+    color: #fff;
+    font-weight: 700;
+    transition: transform 0.15s ease;
+  }
+  .gw__pill--navy {
+    background: #05006c;
+  }
+  .gw__further-grid a:hover .gw__pill {
+    transform: translateX(4px);
+  }
+
+  /* Got questions */
+  .gw__cta-wrap {
+    padding: 112px 24px 0;
+  }
+  .gw__cta {
+    padding: 96px 24px;
+    border-radius: 40px 40px 0 0;
+    background: #ffd458;
+    color: #05006c;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .gw__cta h2 {
+    font-weight: 900;
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+  .gw__cta > p {
+    font-size: 20px;
+  }
+  .gw__cta .gw__cta-note {
+    margin-top: 16px;
+    font-size: 15px;
+  }
+  .gw__cta-note a {
+    color: #05006c;
+    font-weight: 700;
+  }
+
+  
+  @media (max-width: 760px) {
+    .gw__hero {
+      padding: 40px 16px 72px;
+    }
+    .gw h1 span {
+      right: -6px;
+      top: -16px;
+      font-size: 16px;
+      padding: 8px 14px;
+    }
+    .gw__lede {
+      font-size: 17px;
+    }
+    .gw__sq {
+      width: 56px;
+      height: 56px;
+      top: 70px;
+      left: -12px;
+    }
+    
+    
+    
+    
+    
+    
+    
+    .gw__ticker .mq {
+      font-size: 20px;
+    }
+    .gw__why-head {
+      padding-top: 72px;
+    }
+    .gw__why > div {
+      min-height: 0;
+      padding: 40px 24px 48px;
+    }
+    .gw__reel,
+    .gw__does,
+    .gw__steps-sec,
+    .gw__who {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+    
+    .gw__panel {
+      min-height: 0;
+      padding: 32px 24px;
+    }
+    .gw__panel-num {
+      font-size: 160px;
+      right: -20px;
+      top: -20px;
+    }
+    .gw__shot img {
+      max-height: 300px;
+    }
+    .gw__tabs button {
+      font-size: 17px;
+      padding: 16px 18px;
+    }
+    .gw__steps li {
+      padding: 36px 28px 44px;
+    }
+    .gw__steps li > span {
+      font-size: 72px;
+    }
+    .gw__kickoff {
+      padding: 32px 24px;
+    }
+    .gw__who-card {
+      padding: 32px 28px;
+    }
+    .gw__who-card--featured {
+      transform: none;
+    }
+    .gw__further,
+    .gw__cta-wrap {
+      padding-top: 72px;
+    }
+    .gw__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .gw__further-grid a {
+      padding: 28px;
+    }
+    .gw__cta-wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .gw__cta {
+      padding: 64px 20px;
+      border-radius: 28px 28px 0 0;
+    }
+  }
+
+  /* Guess Word additions: hero letters and board, the playable widget */
+  .floatTile {
+    animation: floatTile 5s ease-in-out infinite;
+  }
+  .floatTile--late {
+    animation-delay: -2.5s;
+  }
+  @keyframes floatTile {
+    0%,
+    100% {
+      transform: translateY(0) rotate(var(--r));
+    }
+    50% {
+      transform: translateY(-16px) rotate(var(--r));
+    }
+  }
+  .flip {
+    animation: flip 0.5s ease-out both;
+  }
+  @keyframes flip {
+    0% {
+      transform: rotateX(90deg);
+    }
+    100% {
+      transform: rotateX(0);
+    }
+  }
+  .shake {
+    animation: shake 0.35s ease-in-out;
+  }
+  @keyframes shake {
+    25% {
+      transform: translateX(-6px);
+    }
+    75% {
+      transform: translateX(6px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mq,
+    .floatSq,
+    .ring,
+    .floatTile,
+    .flip,
+    .shake {
+      animation: none;
+    }
+  }
+
+  .gw__letters {
+    position: absolute;
+    right: 6%;
+    bottom: 220px;
+    display: flex;
+    gap: 10px;
+  }
+  .gw__letters span {
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    background: #fff;
+    color: #05006c;
+    box-shadow: 0 14px 30px rgba(5, 0, 108, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+  }
+  .gw__letters span:nth-child(2) {
+    background: #32e0c4;
+  }
+  .gw__letters span:nth-child(3) {
+    background: #ffd458;
+  }
+  .gw__ring {
+    position: absolute;
+    right: 18%;
+    top: 90px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    opacity: 0.5;
+  }
+  .gw__play-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .gw__play-link:hover {
+    color: #ffd458;
+  }
+  .gw__play-link span {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gw__today {
+    width: 100%;
+    max-width: 520px;
+    margin: 24px 0 0;
+    padding: 28px;
+    border-radius: 28px;
+    background: #05006c;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .gw__today-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 14px;
+    color: #c9c7ff;
+  }
+  .gw__today-head span:first-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: #ffd458;
+  }
+  .gw__mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    perspective: 600px;
+  }
+  .gw__mini-row {
+    display: flex;
+    gap: 8px;
+  }
+  .gw__mini-tile {
+    width: 52px;
+    height: 52px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: #fff;
+  }
+  .gw__mini-tile.is-miss {
+    background: #1b1a3a;
+    border: 2px solid #33325a;
+  }
+  .gw__mini-tile.is-hit {
+    background: #48a51f;
+    border: 2px solid #5cc22c;
+  }
+
+  /* Playable widget */
+  .gw__game {
+    position: relative;
+    padding: 28px 32px 36px;
+    border-radius: 28px;
+    background: linear-gradient(180deg, #1c1690 0%, #05006c 100%);
+    color: #fff;
+    text-align: left;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.3);
+  }
+  .gw__game-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .gw__hint {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+  }
+  .gw__views {
+    display: flex;
+    gap: 4px;
+  }
+  .gw__views button {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gw__views button:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+  .gw__views button[aria-selected='true'] {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .gw__pane {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .gw__board {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    perspective: 600px;
+  }
+  .gw__row {
+    display: flex;
+    gap: 8px;
+  }
+  .gw__tile {
+    width: 58px;
+    height: 58px;
+    border: 2px solid #4a4878;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    text-transform: uppercase;
+  }
+  .gw__tile.is-filled {
+    border-color: #c9c7ff;
+  }
+  .gw__tile.is-miss {
+    background: #1b1a3a;
+    border-color: #33325a;
+  }
+  .gw__tile.is-near {
+    background: #c9a227;
+    border-color: #ddb63a;
+  }
+  .gw__tile.is-hit {
+    background: #48a51f;
+    border-color: #5cc22c;
+  }
+  .gw__msg {
+    min-height: 24px;
+    font-weight: 700;
+    color: #ffd458;
+  }
+  .gw__keys {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .gw__keyrow {
+    display: flex;
+    gap: 6px;
+  }
+  .gw__key {
+    min-width: 38px;
+    height: 50px;
+    padding: 0 6px;
+    border: 1.5px solid #6b69a0;
+    border-radius: 6px;
+    background: #0f0b5a;
+    color: #fff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .gw__key:hover {
+    border-color: #fff;
+  }
+  .gw__key--wide {
+    min-width: 64px;
+    font-size: 16px;
+  }
+  .gw__key[data-state='miss'] {
+    background: #1b1a3a;
+    border-color: #1b1a3a;
+    color: #8f8db5;
+  }
+  .gw__key[data-state='near'] {
+    background: #c9a227;
+    border-color: #c9a227;
+  }
+  .gw__key[data-state='hit'] {
+    background: #48a51f;
+    border-color: #48a51f;
+  }
+  .gw__again {
+    padding: 12px 24px;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    background: transparent;
+    color: #fff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+  }
+  .gw__again:hover {
+    background: #fff;
+    color: #05006c;
+  }
+  .gw__stats {
+    align-items: stretch;
+    gap: 14px;
+    padding: 20px;
+    border-radius: 16px;
+    background: #2f2f3a;
+  }
+  .gw__won {
+    font-size: 17px;
+  }
+  .gw__won strong {
+    color: #32e0c4;
+  }
+  .gw__stats-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+  }
+  .gw__nums {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+  }
+  .gw__nums strong {
+    display: block;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1.1;
+  }
+  .gw__nums span {
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+  .gw__dist {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .gw__dist li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+  }
+  .gw__dist li > span:first-child {
+    width: 12px;
+  }
+  .gw__bar {
+    padding: 2px 10px;
+    background: #666;
+    text-align: right;
+  }
+  .gw__bar.is-last {
+    background: #48a51f;
+  }
+  .gw__next {
+    margin-top: 6px !important;
+    text-align: center;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+  }
+  .gw__shot--dark {
+    align-items: stretch;
+    padding: 20px;
+    background: #140f86;
+  }
+
+  @media (max-width: 900px) {
+    .gw__letters,
+    .gw__ring {
+      display: none;
+    }
+  }
+  @media (max-width: 760px) {
+    .gw__today {
+      padding: 20px 16px;
+    }
+    .gw__mini-tile {
+      width: 44px;
+      height: 44px;
+      font-size: 22px;
+    }
+    .gw__game {
+      padding: 20px 12px 28px;
+      border-radius: 22px;
+    }
+    .gw__hint {
+      font-size: 13px;
+    }
+    .gw__tile {
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+    }
+    .gw__keyrow {
+      gap: 4px;
+    }
+    .gw__key {
+      min-width: 0;
+      width: 29px;
+      height: 46px;
+      padding: 0;
+      font-size: 15px;
+    }
+    .gw__key--wide {
+      width: auto;
+      padding: 0 8px;
+      font-size: 13px;
+    }
+    .gw__stats {
+      padding: 16px 12px;
+    }
+  }
+</style>

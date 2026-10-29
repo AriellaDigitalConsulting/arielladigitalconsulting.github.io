@@ -18,13 +18,6 @@ const why = [
   { title: 'See the whole user journey', text: 'Follow a search from the first query to the final click, across every application in your ecosystem, and learn what really matters to your people.' },
   { title: 'Innovate safely, in production', text: 'Run multiple search pages side by side and test new UX features, ML models and pipelines with a beta group before everyone sees them.' },
 ];
-const plainResults = [
-  { title: 'Travel Policy (v3) FINAL.docx', meta: 'Document · Updated 2 years ago' },
-  { title: 'Travel Policy (v2).docx', meta: 'Document · Updated 3 years ago' },
-  { title: 'Expenses', meta: 'Page' },
-  { title: 'Re: question about travel', meta: 'Post' },
-  { title: 'Travel Policy.pdf', meta: 'File · Updated 4 years ago' },
-];
 const sources = [
   { name: 'SharePoint', n: 128, on: true },
   { name: 'LumApps', n: 64, on: true },
@@ -168,7 +161,7 @@ const sparkle = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentCo
             <h2>From a results list<br />to an answer engine</h2>
           </div>
           <div class="cv__diff-side">
-            <p>Same LumApps. Same query. A search page that finally answers the question.</p>
+            <p>Same LumApps. A search page that finally answers the question.</p>
             <div class="cv__toggle" role="group" aria-label="Choose search experience">
               <button type="button" data-mode="before" aria-pressed="false">Standard search</button>
               <button type="button" data-mode="after" aria-pressed="true">Coveo Headless by ADC</button>
@@ -181,7 +174,7 @@ const sparkle = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentCo
             <span class="cv__dot" style="background:#FFD458"></span>
             <span class="cv__dot" style="background:#32E0C4"></span>
             <span class="cv__dot" style="background:#8e88ff"></span>
-            <span class="cv__url">yourcompany.lumapps.com / search?q=travel+expense+policy</span>
+            <span class="cv__url"><span class="cv__url-before">yourcompany.lumapps.com / search?q=knowledge+base</span><span class="cv__url-after">yourcompany.lumapps.com / search?q=travel+expense+policy</span></span>
           </div>
           <div class="cv__screen">
             <div class="cv__topbar">
@@ -190,10 +183,7 @@ const sparkle = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentCo
               <span class="cv__me" aria-hidden="true"></span>
             </div>
 
-            <div class="cv__plain">
-              <span class="cv__plain-count">Results for "travel expense policy"</span>
-              {plainResults.map((r) => <div><span>{r.title}</span><span>{r.meta}</span></div>)}
-            </div>
+            <img class="cv__plain" src="/images/coveo/standard-search.webp" alt="Standard LumApps search for knowledge base: a short AI answer that has to be expanded, author and result type filters, and a plain list of results" width="1006" height="700" loading="lazy" />
 
             <div class="cv__rich">
               <aside class="cv__facet-col" aria-label="Filters">
@@ -1124,34 +1114,19 @@ const sparkle = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentCo
   [data-mode='before'] .cv__rich {
     display: none;
   }
+  /* Standard search is a screenshot with its own LumApps header, so the mock header and URL follow the mode */
   .cv__plain {
-    max-width: 760px;
-    padding: 32px 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .cv__plain-count {
-    margin-bottom: 16px;
-    font-size: 13px;
-    color: #6b6a85;
-  }
-  .cv__plain > div {
-    padding: 16px 0;
-    border-bottom: 1px solid #ececf6;
-  }
-  .cv__plain > div:last-child {
-    border-bottom: 0;
-  }
-  .cv__plain > div span:first-child {
     display: block;
-    font-size: 16px;
-    color: #362dff;
-    text-decoration: underline;
+    width: 100%;
+    height: auto;
   }
-  .cv__plain > div span:last-child {
-    font-size: 13px;
-    color: #6b6a85;
+  [data-mode='before'] .cv__screen {
+    min-height: 0;
+  }
+  [data-mode='before'] .cv__topbar,
+  [data-mode='before'] .cv__url-after,
+  [data-mode='after'] .cv__url-before {
+    display: none;
   }
   .cv__rich {
     padding: 28px 28px 36px;
@@ -1924,9 +1899,6 @@ const sparkle = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentCo
     }
     .cv__brand {
       display: none;
-    }
-    .cv__plain {
-      padding: 20px;
     }
     .cv__rich {
       padding: 18px 14px 24px;
