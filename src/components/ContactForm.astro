@@ -1,5 +1,6 @@
 ---
-// Contact form in the homepage style. Posts to hello@adc.dev through FormSubmit.
+// Contact form in the homepage style. Step 1 of the booking funnel: the answers are
+// passed to Calendly as prefill parameters, and the visitor picks a slot there.
 
 const topics = ['Implementation', 'Integrations & Widgets', 'UI/UX Design', 'SME Support', 'Analytics'];
 const regions = [
@@ -8,7 +9,8 @@ const regions = [
 ];
 ---
 
-<form class="cf" method="POST" data-contact-form>
+<form class="cf" data-contact-form>
+  <p class="cf__step"><b>Step 1</b> Tell us about you — <b>Step 2</b> pick a slot.</p>
   <div class="cf__row">
     <label class="cf__field">
       <span>Name *</span>
@@ -54,38 +56,33 @@ const regions = [
     <textarea name="message" rows="4" placeholder="Planning a rollout, mid-migration, or looking to get more from the platform you have…"></textarea>
   </label>
   <div class="cf__submit">
-    <button type="submit">Send message <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
-    <p class="cf__status" data-status role="status" hidden></p>
+    <button type="submit">Continue to scheduling <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
   </div>
 </form>
 
 <script>
-  // The inbox is assembled here rather than written into the HTML, so scrapers can't harvest it.
-  const endpoint = `https://formsubmit.co/ajax/${['hello', 'adc.dev'].join('@')}`;
+  import { booking } from '../data/site';
 
   document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const status = form.querySelector<HTMLElement>('[data-status]')!;
-      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
       const data = new FormData(form);
-      // FormSubmit keeps only the last value of a repeated field, so send the topics as one list.
-      const topics = data.getAll('topics').join(', ');
-      data.delete('topics');
-      if (topics) data.set('topics', topics);
-      status.hidden = false;
-      status.textContent = 'Sending…';
-      btn.disabled = true;
-      try {
-        const res = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-        if (!res.ok) throw new Error(String(res.status));
-        status.textContent = "Thanks! We'll be in touch shortly.";
-        form.reset();
-      } catch {
-        status.textContent = 'Something went wrong. Please try again in a moment.';
-      } finally {
-        btn.disabled = false;
+      const params = new URLSearchParams();
+      params.set('name', String(data.get('name') ?? '').trim());
+      params.set('email', String(data.get('email') ?? '').trim());
+      // Calendly custom questions cannot be addressed by name, only by their a1, a2, … position.
+      const custom: [string, string][] = [
+        [booking.questions.company, String(data.get('company') ?? '').trim()],
+        [booking.questions.region, String(data.get('region') ?? '').trim()],
+        [booking.questions.topics, data.getAll('topics').map(String).join(', ')],
+        [booking.questions.message, String(data.get('message') ?? '').trim()],
+      ];
+      for (const [id, value] of custom) {
+        if (value) params.set(id, value);
       }
+      params.set('hide_gdpr_banner', '1');
+      params.set('primary_color', '362dff');
+      window.location.assign(`${booking.url}?${params.toString()}`);
     });
   });
 </script>
@@ -238,11 +235,14 @@ const regions = [
     opacity: 0.6;
     cursor: default;
   }
-  .cf__status {
+  .cf__step {
     margin: 0;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    color: #05006c;
+    color: #4a4870;
+  }
+  .cf__step b {
+    color: #362dff;
   }
   @media (max-width: 600px) {
     .cf__row {

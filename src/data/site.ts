@@ -19,6 +19,19 @@ export const nav: NavItem[] = [
 
 export const contactHref = '/contact';
 
+// Booking funnel: the contact form hands its answers to Calendly as prefill parameters,
+// so the visitor only has to pick a slot. The question ids are the event type's custom
+// questions, in the order they are configured on Calendly (a1, a2, …).
+export const booking = {
+  url: 'https://calendly.com/misha-arielladigitalconsulting/30min',
+  questions: {
+    company: 'a1',
+    region: 'a2',
+    topics: 'a3',
+    message: 'a4',
+  },
+};
+
 export const social = [
   { href: 'https://www.linkedin.com/company/ariella-digital-consulting', label: 'Linkedin', icon: '/images/d3858e691cc6.webp' },
   { href: 'https://www.youtube.com/@adclibrary8418', label: 'youtube/adc', icon: '/images/5b3d0ed9eea4.webp' },
