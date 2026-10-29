@@ -61,8 +61,9 @@ Original Wix article URLs keep working through redirect stubs (`src/pages/news/[
 
 ## Form
 
-The contact form posts to [FormSubmit](https://formsubmit.co) at `hello@adc.dev`. The first submission
-triggers a confirmation email to that address — activate it before relying on the form.
+The contact form has no backend: on submit it sends the visitor to the Calendly event in
+`booking` (`src/data/site.ts`) with their answers pre-filled. Name and email map natively; company,
+region, topics and message map to the event's custom questions `a1`–`a4`, so keep them in that order on Calendly.
 
 ## Deployment
 
