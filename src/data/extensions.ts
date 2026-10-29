@@ -64,7 +64,7 @@ export const extensions: Extension[] = [
   { n: 'Google Knowledge Graph', c: ['se'], d: 'Search the Google Knowledge Graph without leaving LumApps.', href: DOCS + '5620597709078528/google-knowledge-graph-search-extension' },
   { n: 'Groups Lookup & Management', c: ['tb'], d: 'Find groups and add or update members without leaving the page.', href: DOCS + '5875158197731328/groups-lookup-and-management-widget' },
   { n: 'Guess Word', c: ['eg', 'sf'], d: 'A daily word game that brings teams together.', href: '/guess-word-widget' },
-  { n: 'Holiday Spirit', c: ['sf'], d: 'Make every holiday memorable across your digital workplace.', href: '/holiday-spirit' },
+  { n: 'Holiday Spirit', c: ['sf'], d: 'Make every holiday memorable across your digital workplace.', href: '/holiday-spirits' },
   { n: 'Kaltura', c: ['ti'], d: 'Bring Kaltura live streams and on-demand video into LumApps.', href: '/kaltura' },
   { n: 'Last Modified Date & Time', c: ['cn'], d: 'Shows readers when a page was last updated.', href: DOCS + '5472087093280768/last-modified-date-widget' },
   { n: 'Looker Embed', c: ['ti'], d: 'View Looker dashboards directly inside LumApps.', href: '/looker' },

@@ -85,9 +85,17 @@ if (n.k === 'img' && n.crop?.ow) {
 }
 {
   n.k === 'img' && imgFile(n.src) && (
-    <div class="n" style={style + (n.radius ? `;border-radius:${n.radius}` : '') + ';overflow:hidden'}>
-      <img src={imgFile(n.src)} alt={n.alt?.match(/\.(png|jpe?g|gif|webp)$/i) ? '' : n.alt} loading="lazy" decoding="async" style={imgStyle} />
-    </div>
+    <Fragment>
+      {href ? (
+        <a class="n" style={style + (n.radius ? `;border-radius:${n.radius}` : '') + ';overflow:hidden'} href={href} aria-label={n.label}>
+          <img src={imgFile(n.src)} alt="" loading="lazy" decoding="async" style={imgStyle} />
+        </a>
+      ) : (
+        <div class="n" style={style + (n.radius ? `;border-radius:${n.radius}` : '') + ';overflow:hidden'}>
+          <img src={imgFile(n.src)} alt={n.alt?.match(/\.(png|jpe?g|gif|webp)$/i) ? '' : n.alt} loading="lazy" decoding="async" style={imgStyle} />
+        </div>
+      )}
+    </Fragment>
   )
 }
 {n.k === 'svg' && <div class="n n-svg" style={style} aria-hidden="true" set:html={n.html} />}

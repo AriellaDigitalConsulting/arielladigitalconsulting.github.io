@@ -6,5 +6,5 @@ export default defineConfig({
   output: 'static',
   build: { inlineStylesheets: 'auto' },
   integrations: [sitemap()],
-  redirects: { '/holiday-spirits-widget': '/holiday-spirit' },
+  redirects: { '/holiday-spirits-widget': '/holiday-spirits' },
 });
