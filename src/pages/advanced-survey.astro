@@ -1,0 +1,1499 @@
+---
+// Advanced Survey product page ("Color Blocks" template, like /soccer and /guess-word-widget).
+// Replaces the layout snapshot of /advanced-survey. The hero survey can be answered to show live results.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+const ticker = ['Native to LumApps', 'Multiple question types', 'Live analytics', 'Expiration dates', 'One dashboard', 'Any Page or Space'];
+
+const why = [
+  { bg: '#05006c', fg: '#fff', stroke: '#32E0C4', icon: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/>', text: "Deliver rich survey experiences native to LumApps' Design System, replacing outdated or external tools that need their own access controls." },
+  { bg: '#362dff', fg: '#fff', stroke: '#FFD458', icon: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>', text: 'Launch one campaign or several at once, and gain and analyze valuable employee insights.' },
+  { bg: '#32E0C4', fg: '#05006c', stroke: '#05006c', icon: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>', text: 'Streamline survey governance: see every past and ongoing survey, with all its KPIs, in one central dashboard.' },
+  { bg: '#FFD458', fg: '#05006c', stroke: '#05006c', icon: '<path d="M5 12h14M13 6l6 6-6 6"/>', text: 'Increase engagement with your LumApps content by driving traffic straight to a Page, Space or Community.' },
+];
+
+const features = [
+  {
+    name: 'Native to any Page or Space.',
+    body: 'Add a survey anywhere on your intranet, styled by the LumApps Design System, right next to the news and content employees already visit.',
+    img: { src: '/images/advanced-survey/homepage.webp', w: 2000, h: 1153, alt: 'A LumApps homepage with a Make Your Predictions survey asking who will win the FIFA World Cup, beside a customer satisfaction news slider' },
+  },
+  {
+    name: 'Built for Mobile, Too.',
+    body: 'Employees answer from the LumApps mobile app with the same experience, wherever they work.',
+    img: { src: '/images/advanced-survey/mobile.webp', w: 920, h: 2000, alt: 'A Quick Survey in the LumApps mobile app on a People Ops page, asking who will win the next FIFA World Cup' },
+  },
+  {
+    name: 'Analytics Preview & Tracking.',
+    body: 'A pre-curated group, such as leadership, Comms or HRBPs, can view and export results right from the widget, without special site roles or permissions.',
+    img: { src: '/images/6814400a1fb2.webp', w: 241, h: 862, alt: 'Survey Analytics in the widget: total responses, a pie chart and a bar chart for each question, and an export option' },
+  },
+  {
+    name: 'Question Types, Expiration & Reuse.',
+    body: 'Mix multiple choice, multiple selection and free-form questions in one survey. Set expiration dates for each campaign, and import or export questions to reuse a past survey on another Page or Space.',
+    img: { src: '/images/c68a8a7811ac.webp', w: 319, h: 544, alt: 'Survey settings with an expiration date calendar, a search group field and question settings' },
+  },
+  {
+    name: 'One Governance Dashboard.',
+    body: 'See all surveys and their engagement metrics in one place: responses, revisions, expiration dates and exports.',
+    img: { src: '/images/706febc19e98.webp', w: 1503, h: 580, alt: 'The All Surveys dashboard listing each survey with its page, number of responses, revisions, expiration date, export and delete actions' },
+  },
+];
+
+const steps = [
+  { bg: '#362dff', fg: '#fff', num: '#FFD458', body: '#eceaff', title: 'Write your questions', text: 'Add Advanced Survey to any LumApps Page or Space, then build your questions and choose who can see the results.' },
+  { bg: '#32E0C4', fg: '#05006c', num: '#362dff', title: 'Employees answer', text: 'People respond right where they work, on desktop or in the LumApps mobile app.' },
+  { bg: '#FFD458', fg: '#05006c', num: '#362dff', title: 'Act on the insights', text: 'Follow results live, export them, and compare every campaign in one dashboard.' },
+];
+
+const benefits = [
+  { title: 'Internal Communications', text: 'Launch multiple survey campaigns to gain employee insights about company events, peer feedback, and more.' },
+  { title: 'HRBPs & People Teams', text: 'Run closed and private surveys on employee sentiment, company benefits, hybrid work policies, and countless other topics.', featured: true },
+  { title: 'Teams and Team Rooms', text: 'Teams can run their own surveys about collaboration, process improvements, or project and product feedback.' },
+];
+
+// Hero survey: the question from the mobile screenshot, with a few votes already in.
+const question = 'Who will win the next FIFA World Cup?';
+const options = [
+  { name: 'Brazil', votes: 34 },
+  { name: 'France', votes: 29 },
+  { name: 'Argentina', votes: 41 },
+  { name: 'England', votes: 18 },
+];
+---
+
+<Base title="Advanced Survey | Ariella Digital Consulting" description="Advanced Survey by ADC: launch rich, native surveys in LumApps, with multiple question types, live analytics and one governance dashboard.">
+  <div class="as">
+    <section class="as__hero" data-custom-prompt-after>
+      <div class="as__sq floatSq" aria-hidden="true"></div>
+      <div class="as__chips" aria-hidden="true">
+        <span class="floatChip" style="--r:-8deg"><i class="as__radio is-on"></i>Yes</span>
+        <span class="floatChip floatChip--late" style="--r:6deg"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#05006c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span>
+        <span class="floatChip" style="--r:-3deg;animation-delay:-1.6s"><svg width="30" height="30" viewBox="0 0 24 24" fill="#05006c"><rect x="3" y="12" width="4" height="9" rx="1"></rect><rect x="10" y="6" width="4" height="15" rx="1"></rect><rect x="17" y="9" width="4" height="12" rx="1"></rect></svg></span>
+      </div>
+      <div class="as__ring ring" aria-hidden="true"></div>
+
+      <div class="as__hero-inner">
+        <a class="as__back" href="/products">← Back to Products Page</a>
+        <p class="as__kicker">ASK. LISTEN. ACT.</p>
+        <h1>Advanced<br />Survey<span>by ADC</span></h1>
+        <p class="as__lede">Embrace the power of advanced surveys, natively in LumApps. Launch rich survey campaigns where employees already work, and turn their answers into insight, engagement and action.</p>
+        <div class="as__hero-ctas">
+          <a class="as__btn as__btn--navy" href={contactHref}>Request a Demo</a>
+          <a class="as__reel-link" href="#reel">
+            <span><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg></span>
+            Watch the reel
+          </a>
+        </div>
+
+        <form class="as__survey" data-state="ask" aria-label="Try a quick survey">
+          <div class="as__survey-head">
+            <span>TRY IT · QUICK SURVEY</span>
+            <span>Question 1 of 1</span>
+          </div>
+          <fieldset>
+            <legend>{question}</legend>
+            {
+              options.map((o, i) => (
+                <label class="as__option" data-votes={o.votes}>
+                  <input type="radio" name="as-q1" value={o.name} checked={i === 1} />
+                  <span class="as__option-name">{o.name}</span>
+                  <span class="as__option-bar" aria-hidden="true"><span></span></span>
+                  <span class="as__option-pct"></span>
+                </label>
+              ))
+            }
+          </fieldset>
+          <div class="as__survey-foot">
+            <p class="as__survey-total" role="status" aria-live="polite"></p>
+            <button type="submit" class="as__submit">Submit</button>
+            <button type="button" class="as__change">Change my answer</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="as__ticker" aria-hidden="true">
+      <div class="mq">
+        {
+          [...ticker, ...ticker].map((t) => (
+            <span>
+              {t}
+              <i />
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <section>
+      <div class="as__heading as__heading--center as__why-head">
+        <p class="as__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why use it</h2>
+      </div>
+      <div class="as__why">
+        {
+          why.map((w) => (
+            <div style={`background:${w.bg};color:${w.fg}`}>
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke={w.stroke} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={w.icon} />
+              <p>{w.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="as__reel" id="reel">
+      <div class="as__reel-inner">
+        <p class="as__eyebrow">CHECK THIS OUT</p>
+        <h2>See it in action</h2>
+        <p class="as__reel-sub">A 30-second teaser of Advanced Survey in LumApps.</p>
+        <div class="as__video-wrap">
+          <div class="as__video-tilt" aria-hidden="true"></div>
+          <div class="as__video">
+            <button type="button" class="as__video-play" data-video="jyGwa9IUnCY" aria-label="Play the Advanced Survey sizzle reel">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="as__quote-sec">
+      <figure class="as__quote">
+        <svg class="as__quote-mark" width="72" height="58" viewBox="0 0 44 36" fill="#362dff" aria-hidden="true"><path d="M0 36V20C0 9 6 2 17 0l2 5c-6 2-9 6-9 11h8v20zM25 36V20c0-11 6-18 17-20l2 5c-6 2-9 6-9 11h8v20z"></path></svg>
+        <blockquote>
+          <p>This widget allows us to easily and quickly organize weekly questionnaires, quizzes and games for our teams. It collects the data we need to gather feedback, trends and determine winners. It is now a must have tool for our internal communication actions.</p>
+        </blockquote>
+        <figcaption>
+          <span class="as__quote-avatar" aria-hidden="true">A</span>
+          <span><strong>Angelo</strong><span>Advanced Survey customer · Retail</span></span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="as__does">
+      <div class="as__wrap">
+        <div class="as__heading">
+          <p class="as__eyebrow">HAVE A LOOK AT</p>
+          <h2>What it does</h2>
+        </div>
+        <div class="as__tabs-wrap">
+          <div class="as__tabs" role="tablist" aria-label="Advanced Survey features">
+            {
+              features.map((f, i) => (
+                <button type="button" role="tab" id={`as-tab-${i}`} aria-controls={`as-panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+                  <span class="as__tab-num">{String(i + 1).padStart(2, '0')}</span>
+                  <span>{f.name}</span>
+                </button>
+              ))
+            }
+          </div>
+          {
+            features.map((f, i) => (
+              <div class="as__panel" role="tabpanel" id={`as-panel-${i}`} aria-labelledby={`as-tab-${i}`} hidden={i !== 0}>
+                <div class="as__panel-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
+                <h3>{f.name}</h3>
+                <p>{f.body}</p>
+                <div class="as__shot">
+                  <img src={f.img.src} alt={f.img.alt} width={f.img.w} height={f.img.h} loading="lazy" />
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="as__steps-sec">
+      <div class="as__wrap">
+        <div class="as__heading as__heading--center">
+          <p class="as__eyebrow">ROLL IT OUT IN</p>
+          <h2>Three simple steps</h2>
+        </div>
+        <ol class="as__steps">
+          {
+            steps.map((s, i) => (
+              <li style={`background:${s.bg};color:${s.fg}`}>
+                <span style={`color:${s.num}`}>{i + 1}</span>
+                <h3>{s.title}</h3>
+                <p style={s.body ? `color:${s.body}` : undefined}>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="as__kickoff" data-custom-prompt-hide>
+          <p>Ready to hear from your people?</p>
+          <a class="as__btn as__btn--yellow" href={contactHref}>Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="as__who">
+      <div class="as__wrap">
+        <div class="as__heading as__heading--center">
+          <p class="as__eyebrow as__eyebrow--teal">LEARN MORE ABOUT</p>
+          <h2>Who benefits</h2>
+          <p class="as__who-sub">Added value for your Internal Communications, HRBPs, and team leads</p>
+        </div>
+        <div class="as__who-grid">
+          {
+            benefits.map((b, i) => (
+              <div class:list={['as__who-card', { 'as__who-card--featured': b.featured }]}>
+                <span>{i + 1}</span>
+                <h3>{b.title}</h3>
+                <p>{b.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="as__further">
+      <div class="as__wrap">
+        <div class="as__heading">
+          <p class="as__eyebrow">GO FURTHER</p>
+          <h2 class="as__h2-sm">Explore More Engaging Experiences by ADC</h2>
+        </div>
+        <div class="as__further-grid">
+          <a href="/guess-word-widget">
+            <span class="as__further-title">Guess Word widget.</span>
+            <span>Think of this as Wordle for enterprise within your LumApps instance. Engage employees with games tied to corporate or team initiatives.</span>
+            <span class="as__pill">Learn More</span>
+          </a>
+          <a href="/soccer" class="as__further-teal">
+            <span class="as__further-title">Soccer Predictions widget.</span>
+            <span>Employees predict match scores and climb a leaderboard, every matchday, all year round, right inside LumApps.</span>
+            <span class="as__pill as__pill--navy">Learn More</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="as__cta-wrap" data-custom-prompt-hide>
+      <div class="as__cta">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this widget and to see a demo</p>
+        <a class="as__btn as__btn--navy-flat" href={contactHref}>Contact us</a>
+        <p class="as__cta-note">Check out our Docs site for a listing of all our widgets: <a href="https://docs.adc.dev/docs">docs.adc.dev/docs</a></p>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Hero survey: submitting adds the visitor's answer to the votes already in and shows the results.
+  const form = document.querySelector<HTMLFormElement>('.as__survey')!;
+  const options = [...form.querySelectorAll<HTMLElement>('.as__option')];
+  const total = form.querySelector<HTMLElement>('.as__survey-total')!;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const choice = form.querySelector<HTMLInputElement>('input:checked')?.value;
+    const votes = options.map((o) => Number(o.dataset.votes) + (o.querySelector('input')!.value === choice ? 1 : 0));
+    const sum = votes.reduce((a, b) => a + b, 0);
+    options.forEach((o, i) => {
+      const pct = Math.round((votes[i] / sum) * 100);
+      o.querySelector<HTMLElement>('.as__option-bar span')!.style.width = `${pct}%`;
+      o.querySelector('.as__option-pct')!.textContent = `${pct}%`;
+    });
+    total.textContent = `Thanks! ${sum} responses so far.`;
+    form.dataset.state = 'results';
+  });
+  form.querySelector('.as__change')!.addEventListener('click', () => {
+    form.dataset.state = 'ask';
+    total.textContent = '';
+    form.querySelector<HTMLInputElement>('input:checked')?.focus();
+  });
+
+  // "What it does" tabs (arrow keys move between tabs)
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.as__tabs [role="tab"]')];
+  const panels = [...document.querySelectorAll<HTMLElement>('.as__panel')];
+  const select = (i: number, focus = false) => {
+    tabs.forEach((t, j) => {
+      t.setAttribute('aria-selected', String(i === j));
+      t.tabIndex = i === j ? 0 : -1;
+    });
+    panels.forEach((p, j) => (p.hidden = i !== j));
+    if (focus) tabs[i].focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(i));
+    t.addEventListener('keydown', (e) => {
+      const step = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      select((i + step + tabs.length) % tabs.length, true);
+    });
+  });
+
+  // The sizzle reel loads YouTube only when someone presses play.
+  const play = document.querySelector<HTMLButtonElement>('.as__video-play');
+  play?.addEventListener('click', () => {
+    const frame = document.createElement('iframe');
+    frame.src = `https://www.youtube-nocookie.com/embed/${play.dataset.video}?autoplay=1&rel=0`;
+    frame.title = 'Advanced Survey sizzle reel';
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    play.replaceWith(frame);
+  });
+</script>
+
+<style>
+
+  .as {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .as * {
+    box-sizing: border-box;
+  }
+  .as h1,
+  .as h2,
+  .as h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .as p,
+  .as ol {
+    margin: 0;
+  }
+  .as button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .as a:focus-visible,
+  .as button:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .as [hidden] {
+    display: none !important;
+  }
+  .as__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .as__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .as__eyebrow--teal {
+    color: #32e0c4;
+  }
+  .as__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .as__heading--center {
+    align-items: center;
+    text-align: center;
+  }
+  .as__heading h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 6vw, 80px);
+    color: #05006c;
+    letter-spacing: -0.03em;
+  }
+  .as__heading .as__h2-sm {
+    font-size: clamp(30px, 3.6vw, 44px);
+    letter-spacing: -0.02em;
+  }
+  .as__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 20px 40px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    transition: transform 0.15s ease;
+  }
+  .as__btn:hover {
+    transform: translate(-2px, -2px);
+  }
+  .as__btn--navy {
+    background: #05006c;
+    color: #fff;
+    box-shadow: 6px 6px 0 #ffd458;
+  }
+  .as__btn--navy:hover {
+    color: #fff;
+  }
+  .as__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+    box-shadow: 6px 6px 0 #362dff;
+  }
+  .as__btn--yellow:hover {
+    color: #05006c;
+  }
+  .as__btn--navy-flat {
+    margin-top: 8px;
+    background: #05006c;
+    color: #fff;
+  }
+  .as__btn--navy-flat:hover {
+    color: #fff;
+  }
+
+  /* Animations (off for reduced motion) */
+  .mq {
+    animation: mq 28s linear infinite;
+    will-change: transform;
+  }
+  @keyframes mq {
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  .floatSq {
+    animation: floatSq 7s ease-in-out infinite;
+  }
+  @keyframes floatSq {
+    0%,
+    100% {
+      transform: translateY(0) rotate(14deg);
+    }
+    50% {
+      transform: translateY(-22px) rotate(34deg);
+    }
+  }
+  
+  
+  
+  
+  
+  
+  .ring {
+    animation: ring 4s ease-in-out infinite;
+  }
+  @keyframes ring {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.35);
+      opacity: 0.2;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mq,
+    .floatSq,
+    .ring {
+      animation: none;
+    }
+  }
+
+  /* Hero */
+  .as__hero {
+    position: relative;
+    overflow: hidden;
+    padding: 64px 24px 96px;
+    background: #362dff;
+    color: #fff;
+  }
+  .as__sq {
+    position: absolute;
+    left: 6%;
+    top: 120px;
+    width: 90px;
+    height: 90px;
+    border-radius: 24px;
+    background: #32e0c4;
+    transform: rotate(14deg);
+  }
+  
+  
+  
+  
+  .as__ring {
+    position: absolute;
+    right: 18%;
+    top: 90px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    opacity: 0.5;
+  }
+  .as__hero-inner {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 28px;
+  }
+  .as__back {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  .as__back:hover {
+    color: #ffd458;
+    opacity: 1;
+  }
+  .as__kicker {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    font-size: 15px;
+    color: #ffd458;
+  }
+  .as h1 {
+    position: relative;
+    font-weight: 900;
+    font-size: clamp(60px, 10.5vw, 148px);
+    line-height: 0.85;
+    letter-spacing: -0.045em;
+  }
+  .as h1 span {
+    position: absolute;
+    right: -10px;
+    top: -26px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-size: 22px;
+    letter-spacing: 0;
+    transform: rotate(8deg);
+  }
+  .as__lede {
+    max-width: 760px;
+    font-size: 20px;
+    line-height: 1.65;
+    color: #eceaff;
+  }
+  .as__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+  .as__reel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .as__reel-link:hover {
+    color: #ffd458;
+  }
+  .as__reel-link span {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Sits level with the score boxes rather than the whole team column. */
+  
+  
+  
+
+  /* Ticker */
+  .as__ticker {
+    overflow: hidden;
+    padding: 20px 0;
+    background: #ffd458;
+    color: #05006c;
+    border-bottom: 3px solid #05006c;
+  }
+  .as__ticker .mq {
+    display: flex;
+    width: max-content;
+    white-space: nowrap;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+  }
+  .as__ticker .mq > span {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    padding-right: 48px;
+  }
+  .as__ticker i {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #362dff;
+  }
+
+  /* Why use it */
+  .as__why-head {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 112px 24px 48px;
+  }
+  .as__why {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .as__why > div {
+    min-height: 360px;
+    padding: 56px 40px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .as__why p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* Sizzle reel */
+  .as__reel {
+    padding: 120px 24px;
+    background: #f7f7fc;
+  }
+  .as__reel-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+  .as__reel h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    color: #05006c;
+    letter-spacing: -0.02em;
+  }
+  .as__reel-sub {
+    margin-bottom: 32px !important;
+    font-size: 19px;
+    color: #33325a;
+  }
+  .as__video-wrap {
+    position: relative;
+    width: 100%;
+  }
+  .as__video-tilt {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background: #32e0c4;
+    transform: rotate(-2.5deg);
+  }
+  .as__video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .as__video :global(iframe) {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .as__video-play {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    background: #362dff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease;
+  }
+  .as__video-play:hover {
+    transform: scale(1.06);
+  }
+
+  /* What it does */
+  .as__does {
+    padding: 120px 0;
+  }
+  .as__does .as__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .as__tabs-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .as__tabs {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .as__tabs button {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    min-height: 64px;
+    padding: 20px 24px;
+    border-radius: 18px;
+    border: 2px solid #e4e3ff;
+    background: #fff;
+    color: #05006c;
+    text-align: left;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .as__tabs button:hover {
+    border-color: #362dff;
+  }
+  .as__tabs button[aria-selected='true'] {
+    background: #362dff;
+    border-color: #362dff;
+    color: #fff;
+  }
+  .as__tab-num {
+    min-width: 32px;
+    font-weight: 900;
+    font-size: 18px;
+  }
+  .as__panel {
+    position: relative;
+    overflow: hidden;
+    flex: 999 1 560px;
+    min-width: 0;
+    min-height: 460px;
+    padding: 48px;
+    border-radius: 32px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .as__panel-num {
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 260px;
+    line-height: 1;
+    color: #140f86;
+  }
+  .as__panel h3 {
+    position: relative;
+    font-weight: 900;
+    font-size: clamp(32px, 3.6vw, 48px);
+  }
+  .as__panel > p {
+    position: relative;
+    max-width: 620px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #e4e3ff;
+  }
+  .as__shot {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    border-radius: 20px;
+    background: #f5f5ff;
+  }
+  .as__shot img {
+    display: block;
+    max-width: 100%;
+    max-height: 380px;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  /* Steps */
+  .as__steps-sec {
+    padding: 120px 0;
+    background: #f7f7fc;
+  }
+  .as__steps-sec .as__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .as__steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    border-radius: 32px;
+    overflow: hidden;
+  }
+  .as__steps li {
+    padding: 48px 40px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .as__steps li > span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 0.9;
+  }
+  .as__steps h3 {
+    font-weight: 800;
+    font-size: 28px;
+  }
+  .as__steps p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .as__kickoff {
+    padding: 40px 48px;
+    border-radius: 32px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .as__kickoff p {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(26px, 3vw, 40px);
+    letter-spacing: -0.02em;
+  }
+
+  /* Who benefits */
+  .as__who {
+    padding: 120px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .as__who .as__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .as__who .as__heading h2 {
+    color: #fff;
+  }
+  .as__who-sub {
+    font-size: 19px;
+    color: #c9c7ff;
+  }
+  .as__who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .as__who-card {
+    padding: 40px;
+    border: 2px solid #362dff;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .as__who-card > span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 88px;
+    line-height: 1;
+    color: #32e0c4;
+  }
+  .as__who-card h3 {
+    font-weight: 800;
+    font-size: 26px;
+  }
+  .as__who-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .as__who-card--featured {
+    background: #362dff;
+    transform: translateY(-24px);
+  }
+  .as__who-card--featured > span {
+    color: #ffd458;
+  }
+  .as__who-card--featured p {
+    color: #eceaff;
+  }
+
+  /* Go further */
+  .as__further {
+    padding-top: 112px;
+  }
+  .as__further .as__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .as__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    border: 3px solid #05006c;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+  .as__further-grid a {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .as__further-grid a.as__further-teal {
+    background: #32e0c4;
+    color: #05006c;
+  }
+  .as__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1.3;
+    color: #05006c;
+  }
+  .as__pill {
+    align-self: flex-start;
+    margin-top: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: #362dff;
+    color: #fff;
+    font-weight: 700;
+    transition: transform 0.15s ease;
+  }
+  .as__pill--navy {
+    background: #05006c;
+  }
+  .as__further-grid a:hover .as__pill {
+    transform: translateX(4px);
+  }
+
+  /* Got questions */
+  .as__cta-wrap {
+    padding: 112px 24px 0;
+  }
+  .as__cta {
+    padding: 96px 24px;
+    border-radius: 40px 40px 0 0;
+    background: #ffd458;
+    color: #05006c;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .as__cta h2 {
+    font-weight: 900;
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+  .as__cta > p {
+    font-size: 20px;
+  }
+  .as__cta .as__cta-note {
+    margin-top: 16px;
+    font-size: 15px;
+  }
+  .as__cta-note a {
+    color: #05006c;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    
+    .as__ring {
+      display: none;
+    }
+  }
+  @media (max-width: 760px) {
+    .as__hero {
+      padding: 40px 16px 72px;
+    }
+    .as h1 span {
+      right: -6px;
+      top: -16px;
+      font-size: 16px;
+      padding: 8px 14px;
+    }
+    .as__lede {
+      font-size: 17px;
+    }
+    .as__sq {
+      width: 56px;
+      height: 56px;
+      top: 70px;
+      left: -12px;
+    }
+    
+    
+    
+    
+    
+    
+    
+    .as__ticker .mq {
+      font-size: 20px;
+    }
+    .as__why-head {
+      padding-top: 72px;
+    }
+    .as__why > div {
+      min-height: 0;
+      padding: 40px 24px 48px;
+    }
+    .as__reel,
+    .as__does,
+    .as__steps-sec,
+    .as__who {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+    .as__video-play {
+      width: 80px;
+      height: 80px;
+      border-width: 4px;
+    }
+    .as__panel {
+      min-height: 0;
+      padding: 32px 24px;
+    }
+    .as__panel-num {
+      font-size: 160px;
+      right: -20px;
+      top: -20px;
+    }
+    .as__shot img {
+      max-height: 300px;
+    }
+    .as__tabs button {
+      font-size: 17px;
+      padding: 16px 18px;
+    }
+    .as__steps li {
+      padding: 36px 28px 44px;
+    }
+    .as__steps li > span {
+      font-size: 72px;
+    }
+    .as__kickoff {
+      padding: 32px 24px;
+    }
+    .as__who-card {
+      padding: 32px 28px;
+    }
+    .as__who-card--featured {
+      transform: none;
+    }
+    .as__further,
+    .as__cta-wrap {
+      padding-top: 72px;
+    }
+    .as__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .as__further-grid a {
+      padding: 28px;
+    }
+    .as__cta-wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .as__cta {
+      padding: 64px 20px;
+      border-radius: 28px 28px 0 0;
+    }
+  }
+
+  /* Advanced Survey additions: hero chips, the hero survey, the testimonial */
+  .floatChip {
+    animation: floatChip 5s ease-in-out infinite;
+  }
+  .floatChip--late {
+    animation-delay: -2.5s;
+  }
+  @keyframes floatChip {
+    0%,
+    100% {
+      transform: translateY(0) rotate(var(--r));
+    }
+    50% {
+      transform: translateY(-16px) rotate(var(--r));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .floatChip,
+    .as__option-bar span {
+      animation: none;
+      transition: none;
+    }
+  }
+
+  .as__chips {
+    position: absolute;
+    right: 6%;
+    bottom: 230px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .as__chips span {
+    height: 68px;
+    min-width: 68px;
+    padding: 0 18px;
+    border-radius: 16px;
+    background: #fff;
+    color: #05006c;
+    box-shadow: 0 14px 30px rgba(5, 0, 108, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+  }
+  .as__chips span:nth-child(2) {
+    padding: 0;
+    background: #32e0c4;
+  }
+  .as__chips span:nth-child(3) {
+    padding: 0;
+    background: #ffd458;
+  }
+  .as__radio {
+    width: 22px;
+    height: 22px;
+    border: 3px solid #05006c;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .as__radio.is-on::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #362dff;
+  }
+  .as__ring {
+    position: absolute;
+    right: 18%;
+    top: 90px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    opacity: 0.5;
+  }
+
+  /* Hero survey */
+  .as__survey {
+    width: 100%;
+    max-width: 560px;
+    margin-top: 24px;
+    padding: 28px 32px;
+    border-radius: 28px;
+    background: #fff;
+    color: #05006c;
+    text-align: left;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .as__survey-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ecebf7;
+    font-size: 14px;
+    color: #4a4870;
+  }
+  .as__survey-head span:first-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: #362dff;
+  }
+  .as__survey fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .as__survey legend {
+    margin-bottom: 8px;
+    padding: 0;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .as__option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 10px 14px;
+    border: 1.5px solid #e4e3ff;
+    border-radius: 12px;
+    font-size: 17px;
+    cursor: pointer;
+  }
+  .as__option:hover {
+    border-color: #362dff;
+  }
+  .as__option input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: #05006c;
+  }
+  .as__option-name {
+    flex: 1;
+  }
+  .as__option-bar,
+  .as__option-pct,
+  .as__change {
+    display: none;
+  }
+  .as__option-bar {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 11px;
+  }
+  .as__option-bar span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: #e4e3ff;
+    transition: width 0.6s ease-out;
+  }
+  .as__option-name,
+  .as__option-pct,
+  .as__option input {
+    position: relative;
+    z-index: 1;
+  }
+  .as__option-pct {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+  }
+  .as__option:has(input:checked) {
+    border-color: #05006c;
+  }
+  [data-state='results'] .as__option {
+    cursor: default;
+  }
+  [data-state='results'] .as__option-bar,
+  [data-state='results'] .as__option-pct {
+    display: block;
+  }
+  [data-state='results'] .as__option:has(input:checked) .as__option-bar span {
+    background: #32e0c4;
+  }
+  [data-state='results'] .as__option input {
+    pointer-events: none;
+  }
+  .as__survey-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  .as__survey-total {
+    flex: 1;
+    font-size: 15px;
+    color: #4a4870;
+  }
+  .as__submit,
+  .as__change {
+    min-height: 48px;
+    padding: 0 28px;
+    border-radius: 10px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+  }
+  .as__submit {
+    border: none;
+    background: #05006c;
+    color: #fff;
+  }
+  .as__submit:hover {
+    background: #362dff;
+  }
+  .as__change {
+    border: 2px solid #05006c;
+    background: #fff;
+    color: #05006c;
+  }
+  [data-state='results'] .as__submit {
+    display: none;
+  }
+  [data-state='results'] .as__change {
+    display: inline-block;
+  }
+
+  /* Testimonial */
+  .as__quote-sec {
+    padding: 0 24px 120px;
+    background: #f7f7fc;
+  }
+  .as__quote {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 64px 72px 56px;
+    border-radius: 32px;
+    background: #ffd458;
+    color: #05006c;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .as__quote-mark {
+    position: absolute;
+    top: -28px;
+    left: 56px;
+  }
+  .as__quote blockquote {
+    margin: 0;
+  }
+  .as__quote blockquote p {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: clamp(22px, 2.6vw, 32px);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+  .as__quote figcaption {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .as__quote-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #05006c;
+    color: #ffd458;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+  }
+  .as__quote figcaption > span:last-child {
+    display: flex;
+    flex-direction: column;
+  }
+  .as__quote figcaption strong {
+    font-family: 'Archivo', sans-serif;
+    font-size: 20px;
+  }
+  .as__quote figcaption strong + span {
+    font-size: 15px;
+  }
+
+  @media (max-width: 900px) {
+    .as__chips {
+      display: none;
+    }
+  }
+  @media (max-width: 760px) {
+    /* "Advanced" is wider than the other titles, so on phones the sticker sits under the title instead of on it */
+    .as h1 span {
+      position: static;
+      display: block;
+      width: fit-content;
+      margin: 14px auto 0;
+    }
+    .as__survey {
+      padding: 22px 18px;
+    }
+    .as__survey legend {
+      font-size: 19px;
+    }
+    .as__survey-head span:last-child {
+      display: none;
+    }
+    .as__quote-sec {
+      padding: 0 16px 72px;
+    }
+    .as__quote {
+      padding: 48px 24px 32px;
+      border-radius: 24px;
+    }
+    .as__quote-mark {
+      left: 24px;
+      width: 56px;
+      height: 46px;
+    }
+  }
+</style>

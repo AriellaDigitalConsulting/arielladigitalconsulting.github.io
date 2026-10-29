@@ -6,7 +6,7 @@ import LayoutPage from '../components/LayoutPage.astro';
 
 export function getStaticPaths() {
   const files = import.meta.glob('../data/layouts/*.json', { eager: true });
-  const handBuilt = new Set(['index', 'products', 'about', 'contact', 'page-reader', 'soccer', 'analytics', 'holiday-spirits-widget', 'org-chart', 'guess-word-widget']);
+  const handBuilt = new Set(['index', 'products', 'about', 'contact', 'page-reader', 'soccer', 'analytics', 'holiday-spirits-widget', 'org-chart', 'guess-word-widget', 'advanced-survey']);
   // These URLs redirect elsewhere (see `redirects` in astro.config.mjs), so no page is generated for them.
   const redirected = new Set(['services', 'search-enhancements']);
   return Object.values(files)
