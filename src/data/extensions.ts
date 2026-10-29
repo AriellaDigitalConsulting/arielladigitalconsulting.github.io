@@ -42,7 +42,7 @@ export const extensions: Extension[] = [
   { n: 'Advanced Survey', c: ['eg'], d: 'A powerful enhancement over the default LumApps survey.', href: '/advanced-survey' },
   { n: 'Table of Contents', c: ['cn'], d: 'Easy navigation through long wiki and knowledge base pages.', href: '/table-of-contents' },
   { n: 'Advent Calendar', c: ['sf'], d: 'A daily-reveal calendar for the holiday season.' },
-  { n: 'Algolia', c: ['se', 'ti'], d: 'Algolia-powered search inside LumApps.', href: '/search-enhancements' },
+  { n: 'Algolia', c: ['se', 'ti'], d: 'Algolia-powered search inside LumApps.' },
   { n: 'Back To Top', c: ['cn'], d: 'A quick, one-click way back to the top of any page or community.', href: '/wiki' },
   { n: 'Browser Tab Post Notifications', c: ['cs'], d: 'Shows a badge in the browser tab when new posts arrive.', href: DOCS + '4712358591070208/browser-tab-notifications-widget' },
   { n: 'Bunchball Leaderboard Widget', c: ['eg', 'ti'], d: 'Display one or multiple Bunchball leaderboards on any page.', href: '/bunchball-gamification-integration' },
@@ -81,7 +81,7 @@ export const extensions: Extension[] = [
   { n: 'Timezones Widget', c: ['ut'], d: 'Users personalize the time zone shown on any page.', href: '/timezone-widget' },
   { n: 'Unanswered Questions', c: ['cs'], d: 'Shows how many community questions still need an answer.', href: '/qa-support' },
   { n: 'Zoom Rooms Control Panel', c: ['ti'], d: 'Control Zoom Rooms from inside LumApps.' },
-  { n: 'Coveo Search', c: ['se', 'ti'], d: 'Coveo-powered search inside LumApps.', href: '/search-enhancements' },
+  { n: 'Coveo Search', c: ['se', 'ti'], d: 'Coveo-powered search inside LumApps.', href: '/coveo' },
 ];
 
 /** Site paths that count as product pages: the Products page plus every page a product card links to on adc.dev. */

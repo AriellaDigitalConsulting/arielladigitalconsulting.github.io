@@ -1,0 +1,1966 @@
+---
+// Coveo Headless for LumApps product page, in the "Split Editorial" look (Template B).
+// "See the difference" switches a mock intranet search page between standard results and the Coveo Headless page.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+const docs = 'https://docs.adc.dev/docs';
+
+const proof = [
+  { c: '#32E0C4', t: 'The full Coveo experience, in LumApps' },
+  { c: '#FFD458', t: "Moves with Coveo's roadmap" },
+  { c: '#8e88ff', t: 'Built on the LumApps Design System' },
+  { c: '#32E0C4', t: 'Scales across environments' },
+];
+const why = [
+  { title: 'The complete Coveo search page', text: 'Generative answers, folded results, search history and every new Coveo feature as it ships, delivered natively inside LumApps.' },
+  { title: 'You decide who sees what', text: 'Own the search token. Personalize it per person and apply your own filters, so every employee sees exactly the sources and features meant for them.' },
+  { title: 'See the whole user journey', text: 'Follow a search from the first query to the final click, across every application in your ecosystem, and learn what really matters to your people.' },
+  { title: 'Innovate safely, in production', text: 'Run multiple search pages side by side and test new UX features, ML models and pipelines with a beta group before everyone sees them.' },
+];
+const plainResults = [
+  { title: 'Travel Policy (v3) FINAL.docx', meta: 'Document · Updated 2 years ago' },
+  { title: 'Travel Policy (v2).docx', meta: 'Document · Updated 3 years ago' },
+  { title: 'Expenses', meta: 'Page' },
+  { title: 'Re: question about travel', meta: 'Post' },
+  { title: 'Travel Policy.pdf', meta: 'File · Updated 4 years ago' },
+];
+const sources = [
+  { name: 'SharePoint', n: 128, on: true },
+  { name: 'LumApps', n: 64, on: true },
+  { name: 'ServiceNow', n: 31, on: false },
+  { name: 'Answered questions', n: 15, on: false },
+];
+const citations = ['1 · Travel Policy', '2 · Expense FAQ', '3 · Finance Community'];
+const highlights = [
+  { c: '#32E0C4', t: 'Generative answers with sources' },
+  { c: '#FFD458', t: 'Folded results' },
+  { c: '#8e88ff', t: 'Search history' },
+  { c: '#32E0C4', t: 'Facets across every source' },
+];
+
+// User journeys: which session ID each click gets under each tracking approach (same color = same journey).
+const id = { 1: '#362dff', 2: '#e0263c', 3: '#32E0C4' } as const;
+const journeys = [
+  { label: 'Earlier out-of-the-box tracking', ids: [1, 1, 2, 2, 3] as const },
+  { label: 'Current out-of-the-box tracking', ids: [1, 1, 1, 1, 2] as const },
+  { label: 'ADC client-generated ID', ids: [1, 1, 1, 1, 1] as const, ours: true },
+];
+const domains = [
+  { name: 'intranet.yourcompany.com', span: 2, bg: '#05006c', fg: '#fff' },
+  { name: 'support.yourcompany.com', span: 2, bg: '#362dff', fg: '#fff' },
+  { name: 'docs.yourcompany.com', span: 1, bg: '#8e88ff', fg: '#05006c' },
+];
+const journeyCards = [
+  { title: 'Track behavior across products', text: 'See how employees search across LumApps and every connected application.' },
+  { title: 'Understand what matters', text: 'Turn complete journeys into insight about what your people really need.' },
+  { title: 'Security traceability', text: 'Give authorized users the ability to trace interactions in any application.', yellow: true },
+];
+const beta = ['Control your beta user lists', 'Support Coveo A/B testing', 'Trial UX features, ML models and source or pipeline changes', 'Give each experience its own context path'];
+const inBox = [
+  { c: '#32E0C4', title: 'Coveo Headless components', text: 'The full Coveo search page in LumApps, with out-of-the-box context and UA events, open to Headless customization.' },
+  { c: '#FFD458', title: 'Search token filtering', text: 'Personalized, signed tokens and custom filters you control.' },
+  { c: '#8e88ff', title: 'Client ID generation', text: 'User journeys that stay aligned across domains.' },
+  { c: '#32E0C4', title: 'Beta experiences', text: 'A/B test new Coveo UX features, ML models and source or pipeline configurations.' },
+];
+const related = [
+  { href: '/coveo-integrations', icon: 'answer', color: '#32E0C4', title: 'Community Post Comments Indexer.', text: 'Index LumApps community comments in Coveo, and bring answered questions into global search as their own facet.' },
+  { href: '/implementations', icon: 'grid', color: '#FFD458', title: 'LumApps Implementation Services.', text: 'Strategy, design, migration and change management from a LumApps-only partner.' },
+];
+
+const icons: Record<string, string> = {
+  search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>',
+  doc: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/>',
+  answer: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9 12l2 2 4-4"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  thumb: '<path d="M7 10v11H4V10zM7 10l4-8a3 3 0 0 1 3 3v4h6a2 2 0 0 1 2 2l-2 8a2 2 0 0 1-2 2H7"/>',
+  tick: '<path d="M5 12l5 5 9-10"/>',
+  grid: '<path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/>',
+};
+const icon = (key: string, size = 20, width = 2) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[key]}</svg>`;
+const sparkle = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 5.4L19 9l-5.2 1.6L12 16l-1.8-5.4L5 9l5.2-1.6zM19 15l.9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9z"/></svg>';
+---
+
+<Base title="Coveo Headless for LumApps | Ariella Digital Consulting" description="ADC brings the complete Coveo search page into LumApps with the Coveo Headless framework: generative answers, folded results, search history and token filtering you control.">
+  <div class="cv">
+    <section class="cv__hero" data-custom-prompt-after>
+      <div class="cv__wrap cv__hero-grid">
+        <div class="cv__hero-copy">
+          <a class="cv__back" href="/products">← Back to Products Page</a>
+          <p class="cv__tagline">Enterprise search, without limits.</p>
+          <h1>Coveo Headless<br />for LumApps <span>by ADC</span></h1>
+          <p class="cv__lede">Give your enterprise full control over the LumApps search experience. ADC replaces the API-based Coveo interface with the Coveo Headless framework, so every employee gets the complete, modern Coveo search page, with generative answers, folded results and search history, right inside LumApps.</p>
+          <div class="cv__hero-ctas">
+            <a class="cv__btn cv__btn--blue" href={contactHref}>Request a Demo</a>
+            <a class="cv__docs" href="#see-it">
+              <span set:html={icon('search', 18, 2.2)} />
+              See the search page
+            </a>
+          </div>
+        </div>
+
+        <div class="cv__comp">
+          <span class="cv__chip">Coveo Partner · LumApps Tech Partner</span>
+          <div class="cv__card" aria-hidden="true">
+            <div class="cv__query">
+              <span class="cv__query-icon" set:html={icon('search', 18, 2.2)} />
+              <span>travel expense policy</span>
+              <kbd>⌘K</kbd>
+            </div>
+            <div class="cv__answer">
+              <span class="cv__pill"><Fragment set:html={sparkle} />Generated answer</span>
+              <p>Book travel through the company travel portal. Meals are reimbursed up to the daily per diem, and receipts should be submitted within the reporting window set by Finance.</p>
+              <div class="cv__cites">{citations.map((c) => <span>{c}</span>)}</div>
+            </div>
+            <div class="cv__hit">
+              <span class="cv__hit-icon" set:html={icon('doc')} />
+              <div>
+                <span>Global Travel &amp; Expense Policy</span>
+                <span>HR Site › Policies</span>
+                <span>+ 3 related results folded together</span>
+              </div>
+            </div>
+          </div>
+          <div class="cv__facets" aria-hidden="true">
+            <span>FACETS</span>
+            <span><span>SharePoint</span><span>128</span></span>
+            <span><span>LumApps</span><span>64</span></span>
+            <span><span><i></i>Answered questions</span><span>15</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv__proof">
+      <div class="cv__wrap">
+        {proof.map((p) => <span><span class="cv__dot" style={`background:${p.c}`}></span>{p.t}</span>)}
+      </div>
+    </section>
+
+    <section class="cv__why cv__wrap">
+      <div class="cv__why-head">
+        <p class="cv__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why<br />go headless</h2>
+        <div class="cv__bar" aria-hidden="true"></div>
+        <p>Search is where employees go when they need something now. Make it a seamless part of the employee journey.</p>
+      </div>
+      <ol class="cv__why-list">
+        {
+          why.map((w, i) => (
+            <li>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="cv__diff" id="see-it">
+      <div class="cv__wrap">
+        <div class="cv__diff-head">
+          <div class="cv__heading">
+            <p class="cv__eyebrow cv__eyebrow--yellow">SEE THE DIFFERENCE</p>
+            <h2>From a results list<br />to an answer engine</h2>
+          </div>
+          <div class="cv__diff-side">
+            <p>Same LumApps. Same query. A search page that finally answers the question.</p>
+            <div class="cv__toggle" role="group" aria-label="Choose search experience">
+              <button type="button" data-mode="before" aria-pressed="false">Standard search</button>
+              <button type="button" data-mode="after" aria-pressed="true">Coveo Headless by ADC</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv__browser" data-mode="after">
+          <div class="cv__browser-bar">
+            <span class="cv__dot" style="background:#FFD458"></span>
+            <span class="cv__dot" style="background:#32E0C4"></span>
+            <span class="cv__dot" style="background:#8e88ff"></span>
+            <span class="cv__url">yourcompany.lumapps.com / search?q=travel+expense+policy</span>
+          </div>
+          <div class="cv__screen">
+            <div class="cv__topbar">
+              <span class="cv__brand"><span aria-hidden="true"></span>Your Intranet</span>
+              <div class="cv__searchbar"><Fragment set:html={icon('search', 16, 2.2)} /><span>travel expense policy</span></div>
+              <span class="cv__me" aria-hidden="true"></span>
+            </div>
+
+            <div class="cv__plain">
+              <span class="cv__plain-count">Results for "travel expense policy"</span>
+              {plainResults.map((r) => <div><span>{r.title}</span><span>{r.meta}</span></div>)}
+            </div>
+
+            <div class="cv__rich">
+              <aside class="cv__facet-col" aria-label="Filters">
+                <div>
+                  <span class="cv__label">SOURCE</span>
+                  {sources.map((s) => <span class="cv__check"><span class:list={['cv__box', { 'is-on': s.on }]} aria-hidden="true" set:html={s.on ? icon('tick', 10, 4) : ''} /><span>{s.name}</span><span>{s.n}</span></span>)}
+                </div>
+                <div>
+                  <span class="cv__label">CONTENT TYPE</span>
+                  <div class="cv__types">{['Policy', 'Article', 'Question', 'Video'].map((t, i) => <span class:list={{ 'is-on': i === 0 }}>{t}</span>)}</div>
+                </div>
+                <div>
+                  <span class="cv__label">RECENT SEARCHES</span>
+                  {['per diem rates', 'corporate card'].map((q) => <span class="cv__recent"><Fragment set:html={icon('clock', 14)} />{q}</span>)}
+                </div>
+              </aside>
+
+              <div class="cv__results">
+                <div class="cv__answer cv__answer--lg">
+                  <div class="cv__answer-head">
+                    <span class="cv__pill"><Fragment set:html={sparkle} />Generated answer</span>
+                    <span class="cv__thumbs" aria-hidden="true"><Fragment set:html={icon('thumb', 16)} /><span set:html={icon('thumb', 16)} /></span>
+                  </div>
+                  <p>Book all business travel through the company travel portal<sup>1</sup>. Meals are reimbursed up to the daily per diem, and receipts can be submitted straight from the mobile app within the reporting window set by Finance<sup>2</sup>.</p>
+                  <div class="cv__cites"><span class="cv__cites-label">Sources</span>{citations.map((c) => <span>{c}</span>)}</div>
+                </div>
+                <div class="cv__tabs-row">
+                  <span class="cv__tabs"><span class="is-on">All</span><span>Documents</span><span>Communities</span><span>People</span></span>
+                  <span>Sort by <strong>Relevance</strong></span>
+                </div>
+                <article class="cv__result">
+                  <span class="cv__hit-icon" set:html={icon('doc')} />
+                  <div>
+                    <span class="cv__result-title">Global Travel &amp; Expense Policy</span>
+                    <span class="cv__result-path">HR Site › Policies · Updated last week</span>
+                    <p>Everything you need before you go: booking, <mark>travel</mark> classes, per diem rates and how to file an <mark>expense</mark> report under the <mark>policy</mark>.</p>
+                    <div class="cv__folded">
+                      <span>Per diem rates by region</span>
+                      <span>Expense report checklist</span>
+                      <span>Show 1 more related result</span>
+                    </div>
+                  </div>
+                </article>
+                <article class="cv__result">
+                  <span class="cv__hit-icon cv__hit-icon--teal" set:html={icon('answer')} />
+                  <div>
+                    <span class="cv__result-title-row"><span class="cv__result-title">How do I submit receipts from my phone?</span><span class="cv__answered">Answered</span></span>
+                    <span class="cv__result-path">Finance Community · 12 replies</span>
+                    <p>Open the mobile app, tap Expenses, then snap a photo of each receipt. It attaches to your open report automatically.</p>
+                  </div>
+                </article>
+              </div>
+
+              <aside class="cv__people" aria-label="People">
+                <span class="cv__label">PEOPLE</span>
+                <div><span aria-hidden="true" style="background:#32E0C4">DL</span><span><strong>Dana Levi</strong><span>Travel Program Lead</span></span></div>
+                <div><span aria-hidden="true" style="background:#FFD458">SO</span><span><strong>Sam Ortiz</strong><span>Finance Operations</span></span></div>
+                <div class="cv__quick"><span>QUICK LINK</span><span>Open the travel portal →</span></div>
+              </aside>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv__highlights">
+          {highlights.map((h) => <span><span class="cv__dot cv__dot--sm" style={`background:${h.c}`}></span>{h.t}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="cv__token cv__wrap">
+      <div class="cv__copy">
+        <p class="cv__eyebrow">CONTROL SEARCH TOKEN FILTERING</p>
+        <h2 class="cv__h2-md">The right results, for the right people</h2>
+        <p>With the ADC Headless framework, you own search token generation, built on Coveo's search token logic for embedded filtering. Personalize the token for each person in LumApps and apply your own custom filters.</p>
+        <ul class="cv__ticks">
+          <li><span class="cv__tick" set:html={icon('tick', 14, 3)} /><span><strong>Digitally signed filters</strong> control which data sources specific groups or users can see</span></li>
+          <li><span class="cv__tick" set:html={icon('tick', 14, 3)} /><span><strong>Feature-level access</strong> lets certain users see certain features, but not others</span></li>
+        </ul>
+      </div>
+      <div class="cv__token-side">
+        <div class="cv__code" aria-label="Example signed search token">
+          <span class="cv__code-title">SEARCH TOKEN · SIGNED</span>
+          <code><span>user</span>: <b>"dana.levi"</b></code>
+          <code><span>groups</span>: [<b>"Finance"</b>, <b>"Travel Admins"</b>]</code>
+          <code><span>filter</span>: <b>"@source==(LumApps, SharePoint-Finance)"</b></code>
+          <code><span>features</span>: [<b>"genai"</b>, <b>"beta-facets"</b>]</code>
+        </div>
+        <div class="cv__audiences">
+          <div><strong>Finance team</strong><span>Sees Finance SharePoint, policies and generated answers</span></div>
+          <div class="is-yellow"><strong>Contractors</strong><span>See public policies only, nothing more</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv__journeys">
+      <div class="cv__wrap">
+        <div class="cv__journeys-head">
+          <div class="cv__heading">
+            <p class="cv__eyebrow">OBTAIN USER JOURNEYS</p>
+            <h2 class="cv__h2-md">One person. One journey.<br />Every application.</h2>
+          </div>
+          <p>Control the logic that generates the Coveo client ID, and follow each search from the first query to the end of the session, across your whole ecosystem.</p>
+        </div>
+        <div class="cv__table-wrap" tabindex="0" aria-label="How each tracking approach groups one person's clicks across three domains">
+          <div class="cv__table">
+            <span></span>
+            {domains.map((d) => <span class="cv__domain" style={`grid-column:span ${d.span};background:${d.bg};color:${d.fg}`}>{d.name}</span>)}
+            {
+              journeys.map((j) => (
+                <Fragment>
+                  <span class:list={['cv__row-label', { 'is-ours': j.ours }]}>{j.label}</span>
+                  {j.ids.map((n) => (
+                    <span class:list={['cv__cell', { 'is-ours': j.ours }]}>
+                      <span aria-hidden="true" style={`background:${id[n]}`}></span>
+                      <span>ID {n}</span>
+                    </span>
+                  ))}
+                </Fragment>
+              ))
+            }
+          </div>
+        </div>
+        <div class="cv__journey-cards">
+          {journeyCards.map((c) => <div class:list={{ 'is-yellow': c.yellow }}><h3>{c.title}</h3><p>{c.text}</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="cv__beta cv__wrap">
+      <div class="cv__pages" aria-hidden="true">
+        <div class="cv__page">
+          <div><span>/search</span><span>PRODUCTION · All employees</span></div>
+          <span class="cv__line" style="width:80%"></span>
+          <span class="cv__line" style="width:60%"></span>
+        </div>
+        <div class="cv__page cv__page--beta">
+          <div><span>/search-beta</span><span>BETA · Pilot group</span></div>
+          <div class="cv__page-tags">{['New UX features', 'ML model B', 'Query pipeline v2', 'Own context path'].map((t) => <span>{t}</span>)}</div>
+        </div>
+      </div>
+      <div class="cv__copy">
+        <p class="cv__eyebrow">BETA TESTING EXPERIENCE</p>
+        <h2 class="cv__h2-md">Test tomorrow's search today</h2>
+        <p>Run multiple search pages side by side. Roll out your beta experience directly on the live production environment and prove every change before it reaches everyone.</p>
+        <ul class="cv__ticks">
+          {beta.map((b) => <li><span class="cv__tick" set:html={icon('tick', 14, 3)} /><span>{b}</span></li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="cv__box-sec">
+      <div class="cv__wrap">
+        <div class="cv__heading">
+          <p class="cv__eyebrow cv__eyebrow--yellow">WHAT YOU GET</p>
+          <h2 class="cv__h2-md">Everything in the box</h2>
+        </div>
+        <div class="cv__inbox">
+          {
+            inBox.map((b, i) => (
+              <div>
+                <span style={`color:${b.c}`}>{String(i + 1).padStart(2, '0')}</span>
+                <h3>{b.title}</h3>
+                <p>{b.text}</p>
+              </div>
+            ))
+          }
+        </div>
+        <div class="cv__band" data-custom-prompt-hide>
+          <div>
+            <p class="cv__band-title">Built on the LumApps Design System. Ready on day one.</p>
+            <p>A sample search page default state, styled with LumApps components, is included.</p>
+          </div>
+          <a class="cv__btn cv__btn--navy" href={contactHref}>Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv__further cv__wrap">
+      <div class="cv__heading">
+        <p class="cv__eyebrow">GO FURTHER</p>
+        <h2 class="cv__h2-sm">More Coveo Search Integrations by ADC</h2>
+      </div>
+      <div class="cv__further-grid">
+        {
+          related.map((r) => (
+            <a href={r.href}>
+              <span class="cv__further-icon" style={`color:${r.color}`} set:html={icon(r.icon, 30)} />
+              <span class="cv__further-text">
+                <span class="cv__further-title">{r.title}</span>
+                <span>{r.text}</span>
+                <span class="cv__more">Learn More →</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="cv__cta" data-custom-prompt-hide>
+      <div class="cv__cta-blue">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this integration and to see a demo</p>
+        <div><a class="cv__btn cv__btn--yellow cv__btn--lg" href={contactHref}>Contact us</a></div>
+      </div>
+      <div class="cv__cta-yellow">
+        <p>Check out our Docs site for a listing of all our widgets and integrations:</p>
+        <a href={docs}>docs.adc.dev/docs</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // "See the difference": switch the mock search page between standard results and the Coveo Headless page.
+  const browser = document.querySelector<HTMLElement>('.cv__browser');
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.cv__toggle button');
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      if (browser) browser.dataset.mode = btn.dataset.mode;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    }),
+  );
+</script>
+
+<style>
+  .cv {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .cv * {
+    box-sizing: border-box;
+  }
+  .cv h1,
+  .cv h2,
+  .cv h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .cv p,
+  .cv ol,
+  .cv ul {
+    margin: 0;
+  }
+  .cv a:focus-visible,
+  .cv button:focus-visible,
+  .cv [tabindex]:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .cv mark {
+    padding: 0 2px;
+    border-radius: 3px;
+    background: #fff3c4;
+    color: inherit;
+  }
+  .cv__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .cv__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .cv__eyebrow--yellow {
+    color: #ffd458;
+  }
+  .cv__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cv__heading h2,
+  .cv__why-head h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .cv .cv__h2-md {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .cv__heading .cv__h2-sm {
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .cv__btn {
+    display: inline-block;
+    padding: 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease;
+  }
+  .cv__btn:hover {
+    transform: translateY(-2px);
+  }
+  .cv__btn--blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .cv__btn--blue:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .cv__btn--navy {
+    padding: 16px 30px;
+    background: #05006c;
+    color: #fff;
+  }
+  .cv__btn--navy:hover {
+    color: #fff;
+  }
+  .cv__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .cv__btn--yellow:hover {
+    color: #05006c;
+  }
+  .cv__btn--lg {
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+  .cv__dot {
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .cv__dot--sm {
+    width: 8px;
+    height: 8px;
+  }
+  .cv__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cv__copy > p:not(.cv__eyebrow) {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #33325a;
+  }
+  .cv__ticks {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 17px;
+    color: #1d1c3a;
+  }
+  .cv__ticks li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cv__tick {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #32e0c4;
+    color: #05006c;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hero */
+  .cv__hero {
+    overflow: hidden;
+    padding: 40px 0 112px;
+    background: #f5f5ff;
+  }
+  .cv__hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .cv__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .cv__back {
+    align-self: flex-start;
+    padding: 8px 16px;
+    border: 1.5px solid #05006c;
+    border-radius: 999px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .cv__back:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .cv__tagline {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #362dff;
+  }
+  .cv h1 {
+    font-weight: 900;
+    font-size: clamp(48px, 6.2vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: #05006c;
+  }
+  .cv h1 span {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #fff;
+    color: #362dff;
+    font-size: 0.42em;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .cv__lede {
+    max-width: 540px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #1d1c3a;
+  }
+  .cv__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+  .cv__docs {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .cv__docs:hover {
+    color: #362dff;
+  }
+  .cv__docs > span {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #05006c;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cv__comp {
+    position: relative;
+    padding: 24px 0 140px;
+  }
+  .cv__chip {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    z-index: 3;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    transform: rotate(3deg);
+    box-shadow: 0 10px 30px rgba(5, 0, 108, 0.2);
+  }
+  .cv__card {
+    padding: 22px;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 30px 70px rgba(5, 0, 108, 0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cv__query {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1.5px solid #d9d7ff;
+    border-radius: 14px;
+    background: #f5f5ff;
+    font-size: 15px;
+    color: #1d1c3a;
+  }
+  .cv__query > span:nth-child(2) {
+    flex: 1;
+  }
+  .cv__query-icon {
+    display: flex;
+    color: #362dff;
+  }
+  .cv__query kbd {
+    padding: 2px 6px;
+    border: 1px solid #d9d7ff;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    color: #4a496b;
+  }
+  .cv__answer {
+    padding: 18px;
+    border: 1.5px solid #e2e0ff;
+    border-radius: 18px;
+    background: #f8f7ff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cv__answer p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #1d1c3a;
+  }
+  .cv__answer--lg {
+    padding: 22px;
+    gap: 12px;
+  }
+  .cv__answer--lg p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .cv__answer sup {
+    color: #362dff;
+  }
+  .cv__pill {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #362dff;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .cv__cites {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .cv__cites > span {
+    padding: 4px 10px;
+    border: 1px solid #d9d7ff;
+    border-radius: 999px;
+    background: #fff;
+    color: #362dff;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .cv__cites .cv__cites-label {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #6b6a85;
+    font-weight: 400;
+  }
+  .cv__hit {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 6px 4px;
+  }
+  .cv__hit > div {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .cv__hit > div span:nth-child(1) {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #05006c;
+  }
+  .cv__hit > div span:nth-child(2) {
+    font-size: 12px;
+    color: #0f7a68;
+  }
+  .cv__hit > div span:nth-child(3) {
+    font-size: 13px;
+    color: #4a496b;
+  }
+  .cv__hit-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #eceaff;
+    color: #362dff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cv__hit-icon--teal {
+    background: #dcfaf4;
+    color: #0f7a68;
+  }
+  .cv__facets {
+    position: absolute;
+    left: -36px;
+    /* Overlap only the search card's bottom padding, so no result text is covered */
+    top: calc(100% - 158px);
+    z-index: 2;
+    width: 250px;
+    padding: 18px 20px;
+    border-radius: 20px;
+    background: #05006c;
+    color: #fff;
+    box-shadow: 0 24px 50px rgba(5, 0, 108, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+    animation: float 5s ease-in-out infinite;
+  }
+  .cv__facets > span:first-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: #ffd458;
+  }
+  .cv__facets > span:not(:first-child) {
+    display: flex;
+    justify-content: space-between;
+  }
+  .cv__facets > span > span:last-child {
+    color: #c9c7ff;
+  }
+  .cv__facets i {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #32e0c4;
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  /* Proof strip */
+  .cv__proof {
+    padding: 28px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .cv__proof .cv__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 32px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .cv__proof .cv__wrap > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Why go headless */
+  .cv__why {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+  }
+  .cv__why-head {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cv__why-head > p {
+    max-width: 340px;
+    margin-top: 12px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #33325a;
+  }
+  .cv__bar {
+    width: 96px;
+    height: 12px;
+    margin-top: 12px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .cv__why-list {
+    flex: 999 1 560px;
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .cv__why-list li {
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+    padding: 32px 0;
+    border-top: 1px solid #d9d7ff;
+  }
+  .cv__why-list li:first-child {
+    border-top: 2px solid #05006c;
+  }
+  .cv__why-list li:last-child {
+    border-bottom: 1px solid #d9d7ff;
+  }
+  .cv__why-list li > span {
+    min-width: 72px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: #362dff;
+  }
+  .cv__why-list li > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cv__why-list h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .cv__why-list p {
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  /* See the difference */
+  .cv__diff {
+    padding: 120px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .cv__diff .cv__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .cv__diff-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .cv__diff .cv__heading h2 {
+    color: #fff;
+  }
+  .cv__diff-side {
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cv__diff-side > p {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .cv__toggle {
+    align-self: flex-start;
+    display: inline-flex;
+    gap: 4px;
+    padding: 6px;
+    border-radius: 999px;
+    background: #1c1690;
+  }
+  .cv__toggle button {
+    min-height: 44px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #c9c7ff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .cv__toggle [data-mode='before'][aria-pressed='true'] {
+    background: #fff;
+    color: #05006c;
+  }
+  .cv__toggle [data-mode='after'][aria-pressed='true'] {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .cv__toggle [data-mode='after'][aria-pressed='false'] {
+    color: #fff;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 212, 88, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 14px rgba(255, 212, 88, 0);
+    }
+  }
+  .cv__browser {
+    padding: 10px;
+    border-radius: 24px;
+    background: #2a2499;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35);
+  }
+  .cv__browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px 12px;
+  }
+  .cv__url {
+    flex: 1;
+    min-width: 0;
+    margin-left: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #1c1690;
+    color: #c9c7ff;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cv__screen {
+    min-height: 640px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #fff;
+    color: #1d1c3a;
+  }
+  .cv__topbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 24px;
+    border-bottom: 1px solid #ececf6;
+  }
+  .cv__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #05006c;
+    white-space: nowrap;
+  }
+  .cv__brand span {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #362dff;
+  }
+  .cv__searchbar {
+    flex: 1;
+    max-width: 560px;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1.5px solid #ececf6;
+    border-radius: 12px;
+    background: #f5f5fa;
+    color: #4a496b;
+    font-size: 14px;
+  }
+  .cv__searchbar span {
+    color: #1d1c3a;
+  }
+  [data-mode='after'] .cv__searchbar {
+    border-color: #362dff;
+  }
+  .cv__me {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: #ffd458;
+  }
+  [data-mode='after'] .cv__plain,
+  [data-mode='before'] .cv__rich {
+    display: none;
+  }
+  .cv__plain {
+    max-width: 760px;
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cv__plain-count {
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #6b6a85;
+  }
+  .cv__plain > div {
+    padding: 16px 0;
+    border-bottom: 1px solid #ececf6;
+  }
+  .cv__plain > div:last-child {
+    border-bottom: 0;
+  }
+  .cv__plain > div span:first-child {
+    display: block;
+    font-size: 16px;
+    color: #362dff;
+    text-decoration: underline;
+  }
+  .cv__plain > div span:last-child {
+    font-size: 13px;
+    color: #6b6a85;
+  }
+  .cv__rich {
+    padding: 28px 28px 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    animation: pop 0.5s ease-out both;
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+  .cv__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #6b6a85;
+  }
+  .cv__facet-col {
+    flex: 1 1 190px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    font-size: 14px;
+  }
+  .cv__facet-col > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cv__check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cv__check > span:nth-child(2) {
+    flex: 1;
+  }
+  .cv__check > span:last-child {
+    color: #6b6a85;
+  }
+  .cv__box {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #c9c7e0;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  .cv__box.is-on {
+    border: 0;
+    background: #362dff;
+  }
+  .cv__types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .cv__types span {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: #f1f0fb;
+    font-size: 13px;
+  }
+  .cv__types .is-on {
+    background: #05006c;
+    color: #fff;
+  }
+  .cv__recent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #33325a;
+  }
+  .cv__recent :global(svg) {
+    color: #6b6a85;
+  }
+  .cv__results {
+    flex: 999 1 420px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .cv__answer-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .cv__thumbs {
+    display: inline-flex;
+    gap: 6px;
+    color: #6b6a85;
+  }
+  .cv__thumbs > span {
+    display: inline-flex;
+    transform: rotate(180deg);
+  }
+  .cv__tabs-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #6b6a85;
+  }
+  .cv__tabs-row strong {
+    color: #05006c;
+  }
+  .cv__tabs {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .cv__tabs span {
+    padding: 6px 12px;
+  }
+  .cv__tabs .is-on {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #05006c;
+    color: #fff;
+    font-weight: 600;
+  }
+  .cv__result {
+    display: flex;
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid #ececf6;
+    border-radius: 16px;
+  }
+  .cv__result .cv__hit-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .cv__result > div {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cv__result p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #33325a;
+  }
+  .cv__result-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #05006c;
+  }
+  .cv__result-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .cv__result-path {
+    font-size: 12px;
+    color: #0f7a68;
+  }
+  .cv__answered {
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #dcfaf4;
+    color: #0b5e50;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .cv__folded {
+    margin-top: 6px;
+    padding-left: 14px;
+    border-left: 2px solid #d9d7ff;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+  }
+  .cv__folded span {
+    color: #362dff;
+    font-weight: 600;
+  }
+  .cv__folded span:last-child {
+    color: #6b6a85;
+    font-weight: 400;
+  }
+  .cv__people {
+    flex: 1 1 210px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .cv__people > div:not(.cv__quick) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 14px;
+    background: #f8f7ff;
+  }
+  .cv__people > div > span:first-child {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+  }
+  .cv__people > div > span:last-child {
+    display: flex;
+    flex-direction: column;
+  }
+  .cv__people strong {
+    font-size: 14px;
+    color: #05006c;
+  }
+  .cv__people strong + span {
+    font-size: 12px;
+    color: #6b6a85;
+  }
+  .cv__quick {
+    margin-top: 8px;
+    padding: 16px;
+    border-radius: 14px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cv__quick span:first-child {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #ffd458;
+  }
+  .cv__quick span:last-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .cv__highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    color: #c9c7ff;
+    font-size: 15px;
+  }
+  .cv__highlights > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Token filtering */
+  .cv__token {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 64px;
+    align-items: center;
+  }
+  .cv__token-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cv__code {
+    padding: 28px;
+    border-radius: 24px;
+    background: #05006c;
+    color: #fff;
+    box-shadow: -14px 14px 0 #32e0c4;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .cv__code-title {
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: #ffd458;
+  }
+  .cv__code code {
+    display: block;
+    font: inherit;
+    overflow-wrap: anywhere;
+  }
+  .cv__code code span {
+    color: #8e88ff;
+  }
+  .cv__code code b {
+    font-weight: 400;
+    color: #32e0c4;
+  }
+  .cv__audiences {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .cv__audiences > div {
+    padding: 18px;
+    border-radius: 18px;
+    background: #f5f5ff;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    color: #33325a;
+  }
+  .cv__audiences strong {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #05006c;
+  }
+  .cv__audiences .is-yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+
+  /* User journeys */
+  .cv__journeys {
+    padding: 120px 0;
+    background: #f5f5ff;
+  }
+  .cv__journeys .cv__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .cv__journeys-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .cv__journeys-head > p {
+    max-width: 440px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #33325a;
+  }
+  .cv__table-wrap {
+    overflow-x: auto;
+    padding: 32px;
+    border-radius: 28px;
+    background: #fff;
+  }
+  .cv__table {
+    min-width: 760px;
+    display: grid;
+    grid-template-columns: 220px repeat(5, 1fr);
+    gap: 12px 10px;
+    align-items: center;
+    text-align: center;
+  }
+  .cv__domain {
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .cv__row-label {
+    text-align: left;
+    font-size: 14px;
+    color: #33325a;
+  }
+  .cv__row-label.is-ours {
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #dcfaf4;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #05006c;
+  }
+  .cv__cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #4a496b;
+  }
+  .cv__cell > span:first-child {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .cv__cell.is-ours {
+    padding: 8px 0;
+    border-radius: 12px;
+    background: #dcfaf4;
+    color: #05006c;
+    font-weight: 700;
+  }
+  .cv__journey-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .cv__journey-cards > div {
+    padding: 28px;
+    border-radius: 24px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cv__journey-cards h3 {
+    font-weight: 800;
+    font-size: 20px;
+    color: #05006c;
+  }
+  .cv__journey-cards p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .cv__journey-cards .is-yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+
+  /* Beta testing */
+  .cv__beta {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 64px;
+    align-items: center;
+  }
+  .cv__pages {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .cv__page {
+    padding: 22px;
+    border: 2px solid #05006c;
+    border-radius: 22px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cv__page > div:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .cv__page > div:first-child span:first-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #05006c;
+  }
+  .cv__page > div:first-child span:last-child {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #05006c;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .cv__line {
+    height: 10px;
+    border-radius: 5px;
+    background: #ececf6;
+  }
+  .cv__page--beta {
+    margin-left: 32px;
+    gap: 14px;
+    border: 0;
+    background: #362dff;
+    color: #fff;
+    box-shadow: 0 24px 50px rgba(54, 45, 255, 0.3);
+  }
+  .cv__page--beta > div:first-child span:first-child {
+    color: #fff;
+  }
+  .cv__page--beta > div:first-child span:last-child {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .cv__page-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .cv__page-tags span {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #1c1690;
+  }
+
+  /* What you get */
+  .cv__box-sec {
+    padding: 112px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .cv__box-sec .cv__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .cv__box-sec .cv__h2-md {
+    color: #fff;
+  }
+  .cv__inbox {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .cv__inbox > div {
+    padding: 28px;
+    border-radius: 24px;
+    background: #1c1690;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cv__inbox > div > span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+  }
+  .cv__inbox h3 {
+    font-weight: 800;
+    font-size: 20px;
+  }
+  .cv__inbox p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .cv__band {
+    padding: 32px 40px;
+    border-radius: 28px;
+    background: #ffd458;
+    color: #05006c;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .cv__band > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cv__band-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 2.4vw, 30px);
+  }
+  .cv__band p:last-child {
+    font-size: 16px;
+  }
+
+  /* Go further */
+  .cv__further {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .cv__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .cv__further-grid a {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 32px;
+    border-radius: 28px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cv__further-grid a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(54, 45, 255, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+    color: #000;
+  }
+  .cv__further-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cv__further-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .cv__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #05006c;
+  }
+  .cv__more {
+    color: #362dff;
+    font-weight: 700;
+  }
+
+  /* Got questions */
+  .cv__cta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .cv__cta > div {
+    padding: 88px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+  .cv__cta-blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .cv__cta-blue h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.02em;
+  }
+  .cv__cta-blue p {
+    max-width: 480px;
+    font-size: 19px;
+    color: #eceaff;
+  }
+  .cv__cta-blue > div {
+    margin-top: 8px;
+  }
+  .cv__cta-yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .cv__cta-yellow p {
+    max-width: 460px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  .cv__cta-yellow a {
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 3.4vw, 44px);
+    overflow-wrap: anywhere;
+  }
+  .cv__cta-yellow a:hover {
+    color: #362dff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cv__facets,
+    .cv__rich,
+    .cv__toggle button {
+      animation: none !important;
+    }
+  }
+  @media (max-width: 820px) {
+    .cv__chip {
+      display: none;
+    }
+    .cv__comp {
+      padding-bottom: 0;
+    }
+    .cv__facets {
+      position: static;
+      width: auto;
+      margin-top: 16px;
+      animation: none;
+    }
+  }
+  @media (max-width: 760px) {
+    .cv__wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .cv__hero {
+      padding-bottom: 72px;
+    }
+    .cv__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+    .cv__lede {
+      font-size: 17px;
+    }
+    .cv__why,
+    .cv__token,
+    .cv__beta,
+    .cv__further {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      gap: 32px;
+    }
+    .cv__token,
+    .cv__beta {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cv__why-list li {
+      gap: 18px;
+      padding: 24px 0;
+    }
+    .cv__why-list li > span {
+      min-width: 0;
+      font-size: 32px;
+    }
+    .cv__why-list p {
+      font-size: 17px;
+    }
+    .cv__diff,
+    .cv__journeys,
+    .cv__box-sec {
+      padding: 72px 0;
+    }
+    .cv__toggle button {
+      padding: 10px 14px;
+      font-size: 13px;
+    }
+    .cv__screen {
+      min-height: 0;
+    }
+    .cv__topbar {
+      gap: 12px;
+      padding: 12px 14px;
+    }
+    .cv__brand {
+      display: none;
+    }
+    .cv__plain {
+      padding: 20px;
+    }
+    .cv__rich {
+      padding: 18px 14px 24px;
+      gap: 22px;
+    }
+    .cv__results {
+      order: -1;
+    }
+    .cv__table-wrap {
+      padding: 20px;
+    }
+    .cv__page--beta {
+      margin-left: 16px;
+    }
+    .cv__band {
+      padding: 28px 24px;
+    }
+    .cv__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cv__further-grid a {
+      padding: 24px;
+      gap: 18px;
+    }
+    .cv__further-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+    }
+    .cv__cta > div {
+      padding: 56px 24px;
+    }
+    .cv__cta-yellow p {
+      font-size: 22px;
+    }
+  }
+</style>
