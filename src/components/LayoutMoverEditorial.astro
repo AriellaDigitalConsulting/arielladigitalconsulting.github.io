@@ -1,0 +1,1522 @@
+---
+// Layout-mover product page in the "Split Editorial" look (Template B), shared by the Space Homepage
+// Layout Copier and the Content Page Layout Mover. Pages pass copy and images only.
+// The hero has a small demo: "Copy layout" swaps the before screenshot for the after one.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+type Item = { title: string; text: string };
+type Img = { src: string; alt: string; w: number; h: number };
+type Tile = Item & { icon: string; bg: string; fg: string };
+
+interface Props {
+  name: string;
+  description: string;
+  docs: string;
+  tagline: string;
+  h1: string[];
+  lede: string;
+  demo: {
+    chip: string;
+    url: string;
+    /** Chip text in the browser bar, before and after the copy. */
+    states: [string, string];
+    before: Img;
+    after: Img;
+    title: string;
+    from: [string, string];
+    to: [string, string];
+    copying: string;
+    reset: string;
+    toast: string;
+    /** Open on the after screenshot; the toast only shows once a copy has run. */
+    startDone?: boolean;
+  };
+  proof: string[];
+  why: Item[];
+  diff: {
+    h2: string[];
+    text: string;
+    before: Img & { label: string; caption: string };
+    widget: Img;
+    after: Img & { label: string; caption: string; bg: string };
+  };
+  action: { text: string; bullets: string[]; gif: Img };
+  steps: (Item & { icon: string })[];
+  band: Item;
+  guardText: string;
+  guardrails: Tile[];
+  valueIntro: string;
+  value: (Item & { icon: string })[];
+  related: (Item & { href: string; icon: string; color: string; badge?: string })[];
+}
+
+const p = Astro.props;
+const docsHome = 'https://docs.adc.dev/docs';
+
+const icons: Record<string, string> = {
+  star: '<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/>',
+  pencil: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+  target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  copy: '<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
+  lock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+  sliders: '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/>',
+  bolt: '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+  refresh: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
+  calendar: '<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/>',
+  users: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 15c3 0 5 2 5 5"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+  grid: '<path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/>',
+  home: '<path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  palette: '<path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7H16a5 5 0 0 0 5-5c0-4-4-7.2-9-7.2z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/><circle cx="17" cy="11" r="1"/>',
+  tick: '<path d="M5 12l5 5 9-10"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+};
+const icon = (key: string, size = 28, width = 2) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[key]}</svg>`;
+
+const proofDots = ['#32E0C4', '#FFD458', '#8e88ff', '#32E0C4'];
+const stepStyle = [
+  { bg: '#362dff', fg: '#fff' },
+  { bg: '#32E0C4', fg: '#05006c' },
+  { bg: '#FFD458', fg: '#05006c' },
+];
+const valueStyle = [
+  { bg: '#f5f5ff', tileBg: '#362dff', tileFg: '#fff' },
+  { bg: '#FFD458', tileBg: '#05006c', tileFg: '#FFD458' },
+  { bg: '#f5f5ff', tileBg: '#32E0C4', tileFg: '#05006c' },
+];
+const lines = (l: string[]) => l.map((line, i) => (i > 0 ? `<br />${line}` : line)).join('');
+---
+
+<Base title={`${p.name} | Ariella Digital Consulting`} description={p.description}>
+  <div class="sl" style={`--after-bg:${p.diff.after.bg}`}>
+    <section class="sl__hero" data-custom-prompt-after>
+      <div class="sl__wrap sl__hero-grid">
+        <div class="sl__hero-copy">
+          <a class="sl__back" href="/products">← Back to Products Page</a>
+          <p class="sl__tagline">{p.tagline}</p>
+          <h1><Fragment set:html={lines(p.h1)} /> <span>by ADC</span></h1>
+          <p class="sl__lede">{p.lede}</p>
+          <div class="sl__hero-ctas">
+            <a class="sl__btn sl__btn--blue" href={contactHref}>Request a Demo</a>
+            <a class="sl__docs" href={p.docs}>
+              <span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#05006c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"></path></svg>
+              </span>
+              Read the docs
+            </a>
+          </div>
+        </div>
+
+        <div class="sl__demo" data-phase={p.demo.startDone ? 'done' : 'idle'}>
+          <span class="sl__chip">{p.demo.chip}</span>
+          <div class="sl__browser">
+            <div class="sl__browser-bar">
+              <span class="sl__dot" style="background:#FFD458"></span>
+              <span class="sl__dot" style="background:#32E0C4"></span>
+              <span class="sl__dot" style="background:#8e88ff"></span>
+              <span class="sl__url">{p.demo.url}</span>
+              <span class="sl__state"><span class="sl__state-before">{p.demo.states[0]}</span><span class="sl__state-after">{p.demo.states[1]}</span></span>
+            </div>
+            <div class="sl__screen">
+              <img class="sl__shot sl__shot--before" src={p.demo.before.src} alt={p.demo.before.alt} width={p.demo.before.w} height={p.demo.before.h} />
+              <img class="sl__shot sl__shot--after" src={p.demo.after.src} alt={p.demo.after.alt} width={p.demo.after.w} height={p.demo.after.h} />
+              <div class="sl__scan" aria-hidden="true"><div></div></div>
+              <div class="sl__toast" role="status">
+                <span set:html={icon('tick', 14, 3)} />
+                <span class="sl__toast-text">{p.demo.toast}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sl__widget">
+            <span class="sl__widget-title">{p.demo.title}</span>
+            <div class="sl__field">
+              <span>{p.demo.from[0]}</span>
+              <span>{p.demo.from[1]}</span>
+            </div>
+            <div class="sl__field">
+              <span>{p.demo.to[0]}</span>
+              <span>{p.demo.to[1]}</span>
+            </div>
+            <button type="button" class="sl__copy" data-action="copy"><Fragment set:html={icon('copy', 18, 2.2)} />Copy layout</button>
+            <button type="button" class="sl__copying" disabled>{p.demo.copying}</button>
+            <button type="button" class="sl__reset" data-action="reset">{p.demo.reset}</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sl__proof">
+      <div class="sl__wrap">
+        {p.proof.map((t, i) => <span><span class="sl__dot" style={`background:${proofDots[i % 4]}`}></span>{t}</span>)}
+      </div>
+    </section>
+
+    <section class="sl__why sl__wrap">
+      <div class="sl__why-head">
+        <p class="sl__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why<br />use it</h2>
+        <div class="sl__bar" aria-hidden="true"></div>
+      </div>
+      <ol class="sl__why-list">
+        {
+          p.why.map((w, i) => (
+            <li>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="sl__diff">
+      <div class="sl__wrap">
+        <div class="sl__diff-head">
+          <div class="sl__heading">
+            <p class="sl__eyebrow sl__eyebrow--yellow">SEE THE DIFFERENCE</p>
+            <h2 set:html={lines(p.diff.h2)} />
+          </div>
+          <p>{p.diff.text}</p>
+        </div>
+        <div class="sl__compare">
+          <figure>
+            <span class="sl__tag">BEFORE</span>
+            <div class="sl__scroll sl__scroll--before" tabindex="0" aria-label={p.diff.before.label}>
+              <img src={p.diff.before.src} alt={p.diff.before.alt} width={p.diff.before.w} height={p.diff.before.h} loading="lazy" />
+            </div>
+            <figcaption>{p.diff.before.caption}</figcaption>
+          </figure>
+          <div class="sl__oneclick">
+            <div class="sl__oneclick-shot">
+              <img src={p.diff.widget.src} alt={p.diff.widget.alt} width={p.diff.widget.w} height={p.diff.widget.h} loading="lazy" />
+            </div>
+            <span class="sl__nudge" aria-hidden="true" set:html={icon('arrow', 28, 2.6)} />
+            <span class="sl__oneclick-label">One click</span>
+          </div>
+          <figure>
+            <span class="sl__tag sl__tag--after">AFTER</span>
+            <div class="sl__scroll sl__scroll--after" tabindex="0" aria-label={p.diff.after.label}>
+              <img src={p.diff.after.src} alt={p.diff.after.alt} width={p.diff.after.w} height={p.diff.after.h} loading="lazy" />
+            </div>
+            <figcaption>{p.diff.after.caption}</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="sl__action sl__wrap">
+      <div class="sl__action-copy">
+        <p class="sl__eyebrow">SEE IT IN ACTION</p>
+        <h2 class="sl__h2-md">The whole experience, start to finish</h2>
+        <p>{p.action.text}</p>
+        <ul>
+          {p.action.bullets.map((a) => <li><span class="sl__tick" set:html={icon('tick', 14, 3)} />{a}</li>)}
+        </ul>
+      </div>
+      <figure class="sl__live">
+        <div class="sl__live-frame">
+          <span class="sl__live-badge"><span aria-hidden="true"></span>LIVE DEMO</span>
+          <img src={p.action.gif.src} alt={p.action.gif.alt} width={p.action.gif.w} height={p.action.gif.h} loading="lazy" />
+        </div>
+        <figcaption>Recorded in a live LumApps environment.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sl__steps-sec">
+      <div class="sl__wrap">
+        <div class="sl__heading">
+          <p class="sl__eyebrow">ROLL IT OUT IN</p>
+          <h2 class="sl__h2-md">Three simple steps</h2>
+        </div>
+        <ol class="sl__steps">
+          {
+            p.steps.map((s, i) => (
+              <li>
+                <span class="sl__step-icon" style={`background:${stepStyle[i % 3].bg};color:${stepStyle[i % 3].fg}`} set:html={icon(s.icon)} />
+                <span class="sl__step-num">STEP {i + 1}</span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="sl__band" data-custom-prompt-hide>
+          <div>
+            <p class="sl__band-title">{p.band.title}</p>
+            <p>{p.band.text}</p>
+          </div>
+          <a class="sl__btn sl__btn--yellow" href={contactHref}>Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sl__guard sl__wrap">
+      <div class="sl__guard-copy">
+        <p class="sl__eyebrow">POWER, WITH GUARDRAILS</p>
+        <h2 class="sl__h2-md">Governance built in</h2>
+        <p>{p.guardText}</p>
+      </div>
+      <div class="sl__guard-grid">
+        {
+          p.guardrails.map((g) => (
+            <div>
+              <span style={`background:${g.bg};color:${g.fg}`} set:html={icon(g.icon, 24)} />
+              <h3>{g.title}</h3>
+              <p>{g.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="sl__value sl__wrap">
+      <div class="sl__value-head">
+        <div class="sl__heading">
+          <p class="sl__eyebrow">LEARN MORE ABOUT</p>
+          <h2>Where it delivers value</h2>
+        </div>
+        <p>{p.valueIntro}</p>
+      </div>
+      <div class="sl__value-list">
+        {
+          p.value.map((v, i) => (
+            <div style={`background:${valueStyle[i % 3].bg}`}>
+              <div class="sl__value-title">
+                <span style={`background:${valueStyle[i % 3].tileBg};color:${valueStyle[i % 3].tileFg}`} set:html={icon(v.icon)} />
+                <h3>{v.title}</h3>
+              </div>
+              <p>{v.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="sl__further sl__wrap">
+      <div class="sl__heading">
+        <p class="sl__eyebrow">GO FURTHER</p>
+        <h2 class="sl__h2-sm">Explore More Toolbox Widgets by ADC</h2>
+      </div>
+      <div class="sl__further-grid">
+        {
+          p.related.map((r) => (
+            <a href={r.href}>
+              <span class="sl__further-icon" style={`color:${r.color}`} set:html={icon(r.icon, 30)} />
+              <span class="sl__further-text">
+                <span class="sl__further-title">{r.title}{r.badge && <span class="sl__badge">{r.badge}</span>}</span>
+                <span>{r.text}</span>
+                <span class="sl__more">Learn More →</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="sl__cta" data-custom-prompt-hide>
+      <div class="sl__cta-blue">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this widget and to see a demo</p>
+        <div><a class="sl__btn sl__btn--yellow sl__btn--lg" href={contactHref}>Contact us</a></div>
+      </div>
+      <div class="sl__cta-yellow">
+        <p>Check out our Docs site for a listing of all our widgets:</p>
+        <a href={docsHome}>docs.adc.dev/docs</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Hero demo: idle → copying (scan line) → done (after screenshot + toast); reset goes back to idle.
+  const demo = document.querySelector<HTMLElement>('.sl__demo');
+  let timer: number | undefined;
+  demo?.addEventListener('click', (e) => {
+    const action = (e.target as HTMLElement).closest<HTMLElement>('[data-action]')?.dataset.action;
+    if (action === 'copy') {
+      demo.dataset.phase = 'copying';
+      timer = window.setTimeout(() => {
+        demo.dataset.phase = 'done';
+        demo.dataset.copied = '';
+        demo.querySelector<HTMLElement>('.sl__reset')?.focus({ preventScroll: true });
+      }, 1100);
+    } else if (action === 'reset') {
+      window.clearTimeout(timer);
+      demo.dataset.phase = 'idle';
+      delete demo.dataset.copied;
+      demo.querySelector<HTMLElement>('.sl__copy')?.focus({ preventScroll: true });
+    }
+  });
+</script>
+
+<style>
+  .sl {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .sl * {
+    box-sizing: border-box;
+  }
+  .sl h1,
+  .sl h2,
+  .sl h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .sl p,
+  .sl ol,
+  .sl ul,
+  .sl figure {
+    margin: 0;
+  }
+  .sl a:focus-visible,
+  .sl button:focus-visible,
+  .sl [tabindex]:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .sl__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .sl__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .sl__eyebrow--yellow {
+    color: #ffd458;
+  }
+  .sl__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sl__heading h2,
+  .sl__why-head h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .sl .sl__h2-md {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .sl__heading .sl__h2-sm {
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .sl__btn {
+    display: inline-block;
+    padding: 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease;
+  }
+  .sl__btn:hover {
+    transform: translateY(-2px);
+  }
+  .sl__btn--blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .sl__btn--blue:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .sl__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .sl__btn--yellow:hover {
+    color: #05006c;
+  }
+  .sl__btn--lg {
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+  .sl__dot {
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  /* Hero */
+  .sl__hero {
+    overflow: hidden;
+    padding: 40px 0 112px;
+    background: #f5f5ff;
+  }
+  .sl__hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .sl__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .sl__back {
+    align-self: flex-start;
+    padding: 8px 16px;
+    border: 1.5px solid #05006c;
+    border-radius: 999px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .sl__back:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .sl__tagline {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #362dff;
+  }
+  .sl h1 {
+    font-weight: 900;
+    font-size: clamp(48px, 6.2vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: #05006c;
+  }
+  .sl h1 span {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #fff;
+    color: #362dff;
+    font-size: 0.42em;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .sl__lede {
+    max-width: 540px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #1d1c3a;
+  }
+  .sl__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+  .sl__docs {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .sl__docs:hover {
+    color: #362dff;
+  }
+  .sl__docs span {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #05006c;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hero demo */
+  .sl__demo {
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .sl__chip {
+    position: absolute;
+    top: -18px;
+    right: -8px;
+    z-index: 3;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    transform: rotate(3deg);
+    box-shadow: 0 10px 30px rgba(5, 0, 108, 0.2);
+  }
+  .sl__browser {
+    padding: 10px;
+    border-radius: 20px;
+    background: #05006c;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.3);
+  }
+  .sl__browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px 12px;
+  }
+  .sl__url {
+    flex: 1;
+    min-width: 0;
+    margin-left: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #1c1690;
+    color: #c9c7ff;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sl__state > span {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 999px;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .sl__state-before {
+    background: #ffd458;
+  }
+  .sl__state-after {
+    background: #32e0c4;
+  }
+  .sl__screen {
+    position: relative;
+    aspect-ratio: 1 / 1.02;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .sl__shot {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: opacity 0.7s ease;
+  }
+  .sl__scan {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .sl__scan div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(180deg, rgba(50, 224, 196, 0), rgba(50, 224, 196, 0.35), rgba(50, 224, 196, 0));
+    animation: scan 0.9s linear infinite;
+  }
+  @keyframes scan {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(250%);
+    }
+  }
+  .sl__toast {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #fff;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    box-shadow: 0 12px 30px rgba(5, 0, 108, 0.35);
+    animation: pop 0.45s ease-out both;
+  }
+  .sl__toast > span:first-child {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #32e0c4;
+    color: #05006c;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      translate: 0 12px;
+    }
+  }
+  .sl__widget {
+    position: absolute;
+    left: -36px;
+    bottom: 0;
+    z-index: 2;
+    width: 300px;
+    padding: 20px;
+    border-top: 6px solid #32e0c4;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 24px 50px rgba(5, 0, 108, 0.28);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sl__widget-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: #05006c;
+  }
+  .sl__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sl__field span:first-child {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #4a496b;
+  }
+  .sl__field span:last-child {
+    padding: 9px 12px;
+    border: 1px solid #d9d7ff;
+    border-radius: 10px;
+    background: #f5f5ff;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d1c3a;
+  }
+  .sl__widget button {
+    min-height: 48px;
+    border: none;
+    border-radius: 999px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .sl__copy {
+    background: #362dff;
+    color: #fff;
+    cursor: pointer;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 212, 88, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 14px rgba(255, 212, 88, 0);
+    }
+  }
+  .sl__copying {
+    background: #05006c;
+    color: #fff;
+  }
+  .sl .sl__reset {
+    border: 2px solid #05006c;
+    background: #fff;
+    color: #05006c;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  /* Demo phases: what shows in each state */
+  .sl__demo .sl__copy,
+  .sl__demo .sl__copying,
+  .sl__demo .sl__reset,
+  .sl__demo .sl__toast,
+  .sl__demo .sl__scan,
+  .sl__demo .sl__state-after {
+    display: none;
+  }
+  .sl__shot--after {
+    opacity: 0;
+  }
+  [data-phase='idle'] .sl__copy,
+  [data-phase='copying'] .sl__copying,
+  [data-phase='done'] .sl__reset,
+  [data-phase='done'][data-copied] .sl__toast {
+    display: inline-flex;
+  }
+  [data-phase='copying'] .sl__scan {
+    display: block;
+  }
+  [data-phase='done'] .sl__state-before {
+    display: none;
+  }
+  [data-phase='done'] .sl__state-after {
+    display: inline-block;
+  }
+  [data-phase='done'] .sl__shot--before {
+    opacity: 0;
+  }
+  [data-phase='done'] .sl__shot--after {
+    opacity: 1;
+  }
+
+  /* Proof strip */
+  .sl__proof {
+    padding: 28px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .sl__proof .sl__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 32px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .sl__proof .sl__wrap > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Why use it */
+  .sl__why {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+  }
+  .sl__why-head {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sl__bar {
+    width: 96px;
+    height: 12px;
+    margin-top: 12px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .sl__why-list {
+    flex: 999 1 560px;
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .sl__why-list li {
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+    padding: 32px 0;
+    border-top: 1px solid #d9d7ff;
+  }
+  .sl__why-list li:first-child {
+    border-top: 2px solid #05006c;
+  }
+  .sl__why-list li:last-child {
+    border-bottom: 1px solid #d9d7ff;
+  }
+  .sl__why-list li > span {
+    min-width: 72px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: #362dff;
+  }
+  .sl__why-list li > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sl__why-list h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .sl__why-list p {
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  /* From legacy to landmark */
+  .sl__diff {
+    padding: 120px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .sl__diff .sl__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .sl__diff-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .sl__diff .sl__heading h2 {
+    color: #fff;
+  }
+  .sl__diff-head > p {
+    max-width: 440px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .sl__compare {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+  }
+  .sl__compare figure {
+    flex: 1 1 340px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sl__compare figcaption {
+    font-size: 15px;
+    color: #c9c7ff;
+  }
+  .sl__tag {
+    align-self: flex-start;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #2a2499;
+    color: #e4e3ff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+  .sl__tag--after {
+    background: #32e0c4;
+    color: #05006c;
+  }
+  .sl__scroll {
+    height: 560px;
+    overflow-y: auto;
+    border-radius: 20px;
+  }
+  .sl__scroll img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .sl__scroll--before {
+    border: 8px solid #2a2499;
+    background: #fff;
+  }
+  .sl__scroll--after {
+    border: 8px solid #32e0c4;
+    background: var(--after-bg);
+  }
+  .sl__oneclick {
+    flex: 0 1 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  .sl__oneclick-shot {
+    width: 100%;
+    max-width: 220px;
+    border: 4px solid #32e0c4;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  .sl__oneclick-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .sl__nudge {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #ffd458;
+    color: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: nudge 1.8s ease-in-out infinite;
+  }
+  @keyframes nudge {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(8px);
+    }
+  }
+  .sl__oneclick-label {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+  }
+
+  /* See it in action */
+  .sl__action {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .sl__action-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .sl__action-copy > p:not(.sl__eyebrow) {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #33325a;
+  }
+  .sl__action-copy ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 17px;
+    color: #1d1c3a;
+  }
+  .sl__action-copy li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sl__tick {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #32e0c4;
+    color: #05006c;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sl__live {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sl__live-frame {
+    position: relative;
+    padding: 12px;
+    border-radius: 24px;
+    background: #05006c;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.28);
+  }
+  .sl__live-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    background: #fff;
+  }
+  .sl__live-badge {
+    position: absolute;
+    top: -16px;
+    left: 24px;
+    z-index: 1;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sl__live-badge span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e0263c;
+  }
+  .sl__live figcaption {
+    font-size: 15px;
+    color: #4a496b;
+  }
+
+  /* Steps */
+  .sl__steps-sec {
+    padding: 112px 0;
+    background: #f5f5ff;
+  }
+  .sl__steps-sec .sl__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .sl__steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .sl__steps li {
+    padding: 36px;
+    border-radius: 28px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .sl__step-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sl__step-num {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    color: #362dff;
+  }
+  .sl__steps h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .sl__steps p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .sl__band {
+    padding: 32px 40px;
+    border-radius: 28px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .sl__band > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .sl__band-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 2.4vw, 30px);
+  }
+  .sl__band p:last-child {
+    font-size: 16px;
+    color: #c9c7ff;
+  }
+
+  /* Governance */
+  .sl__guard {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 64px;
+    align-items: center;
+  }
+  .sl__guard-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .sl__guard-copy > p:last-child {
+    max-width: 480px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #33325a;
+  }
+  .sl__guard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .sl__guard-grid > div {
+    padding: 28px;
+    border-radius: 24px;
+    background: #f5f5ff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sl__guard-grid > div > span {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sl__guard-grid h3 {
+    font-weight: 800;
+    font-size: 20px;
+    color: #05006c;
+  }
+  .sl__guard-grid p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  /* Where it delivers value */
+  .sl__value {
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .sl__value-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .sl__value-head > p {
+    max-width: 420px;
+    font-size: 19px;
+    color: #33325a;
+  }
+  .sl__value-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .sl__value-list > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    align-items: center;
+    padding: 36px 40px;
+    border-radius: 28px;
+    color: #05006c;
+  }
+  .sl__value-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .sl__value-title > span {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sl__value-title h3 {
+    font-weight: 800;
+    font-size: 28px;
+    color: #05006c;
+  }
+  .sl__value-list p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* Go further */
+  .sl__further {
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .sl__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .sl__further-grid a {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 32px;
+    border-radius: 28px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .sl__further-grid a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(54, 45, 255, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+    color: #000;
+  }
+  .sl__further-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sl__further-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .sl__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #05006c;
+  }
+  .sl__badge {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    vertical-align: middle;
+  }
+  .sl__more {
+    color: #362dff;
+    font-weight: 700;
+  }
+
+  /* Got questions */
+  .sl__cta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .sl__cta > div {
+    padding: 88px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+  .sl__cta-blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .sl__cta-blue h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.02em;
+  }
+  .sl__cta-blue p {
+    max-width: 480px;
+    font-size: 19px;
+    color: #eceaff;
+  }
+  .sl__cta-blue > div {
+    margin-top: 8px;
+  }
+  .sl__cta-yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .sl__cta-yellow p {
+    max-width: 460px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  .sl__cta-yellow a {
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 3.4vw, 44px);
+    overflow-wrap: anywhere;
+  }
+  .sl__cta-yellow a:hover {
+    color: #362dff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sl__copy,
+    .sl__scan div,
+    .sl__toast,
+    .sl__nudge {
+      animation: none;
+    }
+    .sl__shot {
+      transition: none;
+    }
+  }
+  @media (max-width: 820px) {
+    .sl__chip {
+      display: none;
+    }
+    .sl__demo {
+      padding-bottom: 0;
+    }
+    .sl__widget {
+      position: static;
+      width: auto;
+      margin-top: 16px;
+    }
+  }
+  @media (max-width: 760px) {
+    .sl__wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .sl__hero {
+      padding-bottom: 72px;
+    }
+    .sl__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+    .sl__lede {
+      font-size: 17px;
+    }
+    .sl__why,
+    .sl__action,
+    .sl__guard {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      gap: 32px;
+    }
+    .sl__why-list li {
+      gap: 18px;
+      padding: 24px 0;
+    }
+    .sl__why-list li > span {
+      min-width: 0;
+      font-size: 32px;
+    }
+    .sl__why-list p {
+      font-size: 17px;
+    }
+    .sl__diff,
+    .sl__steps-sec {
+      padding: 72px 0;
+    }
+    .sl__scroll {
+      height: 440px;
+    }
+    .sl__oneclick {
+      flex-basis: 100%;
+    }
+    .sl__nudge :global(svg) {
+      transform: rotate(90deg);
+    }
+    .sl__action,
+    .sl__guard,
+    .sl__guard-grid,
+    .sl__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .sl__band {
+      padding: 28px 24px;
+    }
+    .sl__value {
+      padding-bottom: 72px;
+      gap: 32px;
+    }
+    .sl__value-list > div {
+      grid-template-columns: minmax(0, 1fr);
+      padding: 28px 24px;
+      gap: 16px;
+    }
+    .sl__value-title h3 {
+      font-size: 22px;
+    }
+    .sl__value-title > span {
+      width: 52px;
+      height: 52px;
+    }
+    .sl__further {
+      padding-bottom: 72px;
+    }
+    .sl__further-grid a {
+      padding: 24px;
+      gap: 18px;
+    }
+    .sl__further-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+    }
+    .sl__cta > div {
+      padding: 56px 24px;
+    }
+    .sl__cta-yellow p {
+      font-size: 22px;
+    }
+  }
+</style>

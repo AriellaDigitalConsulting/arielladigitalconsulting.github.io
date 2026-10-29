@@ -1,0 +1,89 @@
+---
+// Content Page Layout Mover product page (Template B, shared with the Space Homepage Layout Copier).
+import LayoutMoverEditorial from '../components/LayoutMoverEditorial.astro';
+import { relatedToolbox } from '../data/toolbox';
+
+const img = '/images/content-layout-mover/';
+---
+
+<LayoutMoverEditorial
+  name="Content Page Layout Mover"
+  description="Build the next version of any LumApps page while the current one stays live, then move the complete layout onto the live page in a single click."
+  docs="https://docs.adc.dev/docs/ls/content/5871951469169801/content-page-layout-mover"
+  tagline="Redesign behind the scenes. Go live in one click."
+  h1={['Content Page', 'Layout Mover']}
+  lede="Build the next version of any LumApps page while the current one stays live. When it's ready, move the complete layout, every widget, style, and header, onto the live page in a single click. No downtime, no rebuilding, no risk."
+  demo={{
+    chip: 'Before → after in one click',
+    url: 'yourcompany.lumapps.com / people-team',
+    states: ['Live page', 'New design'],
+    before: { src: `${img}hero-before.webp`, alt: 'Current People Team page: plain white layout with an org chart, key contacts, about box, quick links and a list of posts', w: 1400, h: 1444 },
+    after: { src: `${img}hero-after.webp`, alt: 'Redesigned People Team Home: branded dark hero with a welcome message and weekly survey, announcement cards and a featured content grid', w: 1400, h: 1444 },
+    title: 'CONTENT LAYOUT MOVER',
+    from: ['FROM (NEW DESIGN)', 'ADC · People Team Home'],
+    to: ['TO (LIVE PAGE)', 'ADC · People Team Legacy'],
+    copying: 'Moving layout…',
+    reset: '↺ See the before',
+    toast: 'New design is live',
+    startDone: true,
+  }}
+  proof={['Every widget, style & header', 'Within a site or across sites', 'Permission-aware by design', 'Zero setup required']}
+  why={[
+    { title: 'Big redesigns, zero disruption', text: 'Work on a major upgrade in a separate page while the live version keeps serving employees, and keeps getting its small, everyday updates.' },
+    { title: 'Nothing gets left behind', text: 'Every widget comes along, Rich Text included, with its styling and headers intact. What you approved is exactly what goes live.' },
+    { title: 'One great page, everywhere', text: 'Reuse a winning layout on another page in the same site, or carry it across sites on your LumApps platform.' },
+    { title: 'Give your team its time back', text: 'Stop rebuilding pages widget by widget. Your designers and communicators can spend their time creating, not copying.' },
+  ]}
+  diff={{
+    h2: ['From busy', 'to brilliant'],
+    text: 'Same page. Same audience. A redesign built in the background and launched in one click. Scroll each page to explore.',
+    before: {
+      src: `${img}before-full.webp`,
+      alt: 'Full original People Team page: plain white layout with org chart, key contacts, about box, quick links, posts, resources and comments',
+      w: 1000,
+      h: 1874,
+      label: 'Scrollable screenshot of the original People Team page',
+      caption: 'A crowded page where nothing stands out.',
+    },
+    widget: { src: `${img}widget.webp`, alt: 'The Content Layout Mover widget with source and destination Site and Content selectors and a Copy button', w: 800, h: 1090 },
+    after: {
+      src: `${img}after-full.webp`,
+      alt: 'Full redesigned People Team Home: dark branded hero with welcome message and weekly survey, announcement cards, featured content grid and People Team navigation',
+      w: 1100,
+      h: 1332,
+      label: 'Scrollable screenshot of the redesigned People Team Home',
+      caption: 'A modern, visual hub that guides people to what matters.',
+      bg: '#fff',
+    },
+  }}
+  action={{
+    text: "Watch a page get its new design, live inside LumApps. Choose the new design, choose the page it should go to, click Copy, and it's done.",
+    bullets: ['Runs right inside your intranet', 'Familiar, LumApps-style interface', 'Results you can see right away'],
+    gif: {
+      src: `${img}demo.gif`,
+      alt: 'Screen recording: an administrator selects People Team Home as the source and People Team Legacy as the destination, clicks Copy, and the page takes on the new layout',
+      w: 800,
+      h: 498,
+    },
+  }}
+  steps={[
+    { icon: 'pencil', title: 'Choose your new design', text: "Pick the site and the page holding the layout you've been perfecting behind the scenes." },
+    { icon: 'target', title: 'Pick where it goes', text: 'Select the destination page, on the same site or on any other site you manage.' },
+    { icon: 'copy', title: 'Confirm and go live', text: 'Review the summary, click Copy, and get instant confirmation that your new page is in place.' },
+  ]}
+  band={{ title: 'Hours of rebuilding, replaced by one click.', text: 'No installation. No configuration. Add it and start moving layouts today.' }}
+  guardText="Moving fast never means losing control. The Layout Mover knows who's asking and respects your permission model at every step, so the right people make the right changes."
+  guardrails={[
+    { icon: 'shield', bg: '#362dff', fg: '#fff', title: 'For administrators only', text: 'Only Site Administrators and above can access the widget.' },
+    { icon: 'lock', bg: '#32E0C4', fg: '#05006c', title: 'Permission-aware', text: "People only see the sites they're authorized to work in, for both the source and the destination." },
+    { icon: 'check', bg: '#FFD458', fg: '#05006c', title: 'Confirmed before and after', text: "A clear summary before every move, and a success message once it's done. No guesswork." },
+    { icon: 'bolt', bg: '#05006c', fg: '#FFD458', title: 'Zero setup', text: 'No configuration or installation needed. It works the moment you add it.' },
+  ]}
+  valueIntro="Added value for your Intranet Managers, Internal Communications, and page owners"
+  value={[
+    { icon: 'refresh', title: 'Page Redesigns & Relaunches', text: "Prepare a major overhaul of a high-traffic page in private, then launch it the moment it's approved, without a single minute of a half-finished page." },
+    { icon: 'users', title: 'Department & Team Pages', text: 'Give HR, IT, Sales, and every other team the same polished page structure, so employees always know where to look.' },
+    { icon: 'globe', title: 'Multi-Site & Regional Rollouts', text: 'Carry a proven page from your global site to regional and business-unit sites, keeping your brand consistent across the platform.' },
+  ]}
+  related={relatedToolbox('/content-layout-mover')}
+/>

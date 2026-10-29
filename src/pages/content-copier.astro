@@ -1,0 +1,1101 @@
+---
+// Content Copier product page, in the "Split Editorial" look (Template B).
+// The hero has a small demo: "Copy 6 items" fills the destination library tile by tile.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+import { relatedToolbox } from '../data/toolbox';
+
+const docs = 'https://docs.adc.dev/docs/ls/content/1403241761017233/content-copier-tool';
+const docsHome = 'https://docs.adc.dev/docs';
+
+const tiles = ['#362dff', '#32E0C4', '#FFD458', '#8e88ff', '#05006c', '#32E0C4'];
+const proof = [
+  { c: '#32E0C4', t: 'Entire libraries, one operation' },
+  { c: '#FFD458', t: 'Within a site or across sites' },
+  { c: '#8e88ff', t: 'Targeted by metadata' },
+  { c: '#32E0C4', t: 'Zero setup required' },
+];
+const why = [
+  { title: 'Scale content, not effort', text: 'Launch new sites and regions with a full content library on day one, instead of weeks of copy-and-paste.' },
+  { title: 'Complete and accurate', text: 'Rich Text, styling, featured images, and tags all carry over. What arrives matches what you sent.' },
+  { title: 'Precision when you need it', text: "Filter by metadata to move exactly the content that matters, and nothing that doesn't." },
+  { title: 'Set it and trust it', text: 'Large jobs run to completion on their own, with built-in retries and a clear confirmation at the end.' },
+];
+const steps = [
+  { bg: '#362dff', fg: '#fff', title: 'Choose source and destination', text: 'Pick the site and Custom Content Type on each side, on one site or across your platform.' },
+  { bg: '#32E0C4', fg: '#05006c', title: 'Refine and preview', text: 'Optionally filter by metadata, then see exactly how many items will be copied before you commit.' },
+  { bg: '#FFD458', fg: '#05006c', title: 'Copy and verify', text: 'Click Copy. A success message links straight to the destination so you can review the results.' },
+];
+const carries = ['All supported widgets', 'Rich Text', 'Styling', 'Featured images', 'CCT tags'];
+const features = [
+  { icon: 'lock', bg: '#362dff', fg: '#fff', title: 'Permission-aware', text: "People can only copy between sites they're authorized to manage." },
+  { icon: 'refresh', bg: '#32E0C4', fg: '#05006c', title: 'Resilient at volume', text: 'Respects LumApps API limits and retries automatically, so large jobs finish without intervention.' },
+  { icon: 'link', bg: '#FFD458', fg: '#05006c', title: 'No duplicate conflicts', text: 'Matching page URLs are resolved automatically with a suffix you choose.' },
+  { icon: 'check', bg: '#05006c', fg: '#FFD458', title: 'Verify in one click', text: 'Direct links to source and destination admin views make review fast and certain.' },
+];
+const related = relatedToolbox('/content-copier');
+
+const icons: Record<string, string> = {
+  lock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  refresh: '<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
+  link: '<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+  grid: '<path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/>',
+  home: '<path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  palette: '<path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7H16a5 5 0 0 0 5-5c0-4-4-7.2-9-7.2z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/><circle cx="17" cy="11" r="1"/>',
+  filter: '<path d="M3 5h18l-7 8v6l-4 2v-8z"/>',
+};
+const icon = (key: string, size = 24, width = 2) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[key]}</svg>`;
+---
+
+<Base title="Content Copier | Ariella Digital Consulting" description="Replicate an entire LumApps content library between Custom Content Types, within a site or across sites, in one operation.">
+  <div class="cp">
+    <section class="cp__hero" data-custom-prompt-after>
+      <div class="cp__wrap cp__hero-grid">
+        <div class="cp__hero-copy">
+          <a class="cp__back" href="/products">← Back to Products Page</a>
+          <p class="cp__tagline">Your content, wherever you need it.</p>
+          <h1>Content<br />Copier <span>by ADC</span></h1>
+          <p class="cp__lede">Replicate an entire content library between Custom Content Types, within a site or across sites, in one operation. Every widget, image, style, and tag arrives intact. No manual rebuilding.</p>
+          <div class="cp__hero-ctas">
+            <a class="cp__btn cp__btn--blue" href={contactHref}>Request a Demo</a>
+            <a class="cp__docs" href={docs}>
+              <span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#05006c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"></path></svg>
+              </span>
+              Read the docs
+            </a>
+          </div>
+        </div>
+
+        <div class="cp__demo" data-phase="idle">
+          <span class="cp__chip">Try it: click Copy ↓</span>
+          <div class="cp__board">
+            <div class="cp__libs">
+              <div class="cp__lib">
+                <div class="cp__lib-head"><span>SOURCE</span><span>Global · HR Articles</span></div>
+                <div class="cp__tiles">
+                  {tiles.map((c) => <span class="cp__tile"><span style={`background:${c}`}></span><span></span><span></span></span>)}
+                </div>
+              </div>
+              <div class="cp__lib">
+                <div class="cp__lib-head"><span>DESTINATION</span><span>Europe · HR Articles</span></div>
+                <div class="cp__tiles cp__tiles--dest" aria-hidden="true">
+                  {tiles.map((c, i) => <span class="cp__tile" style={`animation-delay:${0.05 + i * 0.1}s`}><span style={`background:${c}`}></span><span></span><span></span></span>)}
+                </div>
+                <div class="cp__empty"><span class="cp__empty-idle">Copied content will appear here</span><span class="cp__empty-copying">Copying content…</span></div>
+              </div>
+            </div>
+            <div class="cp__bar">
+              <div class="cp__bar-info">
+                <span class="cp__filter"><Fragment set:html={icon('filter', 14, 2.4)} />Metadata: Benefits</span>
+                <span class="cp__status" role="status"><span class="cp__status-ready">6 items ready to copy</span><span class="cp__status-done">6 of 6 items copied · View destination →</span></span>
+              </div>
+              <button type="button" class="cp__copy" data-action="copy">Copy 6 items</button>
+              <span class="cp__copying"><span class="cp__flow" aria-hidden="true"></span>Copying…</span>
+              <button type="button" class="cp__reset" data-action="reset">↺ Run it again</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cp__proof">
+      <div class="cp__wrap">
+        {proof.map((p) => <span><span class="cp__dot" style={`background:${p.c}`}></span>{p.t}</span>)}
+      </div>
+    </section>
+
+    <section class="cp__why cp__wrap">
+      <div class="cp__why-head">
+        <p class="cp__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why<br />use it</h2>
+        <div class="cp__bar-accent" aria-hidden="true"></div>
+      </div>
+      <ol class="cp__why-list">
+        {
+          why.map((w, i) => (
+            <li>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="cp__how">
+      <div class="cp__wrap">
+        <div class="cp__heading">
+          <p class="cp__eyebrow cp__eyebrow--yellow">ROLL IT OUT IN</p>
+          <h2 class="cp__h2-md">Three simple steps</h2>
+        </div>
+        <ol class="cp__steps">
+          {
+            steps.map((s, i) => (
+              <li>
+                <span style={`background:${s.bg};color:${s.fg}`}>{i + 1}</span>
+                <div>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="cp__scale cp__wrap">
+      <div class="cp__scale-head">
+        <div class="cp__heading">
+          <p class="cp__eyebrow">ENTERPRISE-READY</p>
+          <h2 class="cp__h2-md">Built for scale and control</h2>
+        </div>
+        <div class="cp__carries">
+          {carries.map((c) => <span>{c}</span>)}
+        </div>
+      </div>
+      <div class="cp__features">
+        {
+          features.map((f) => (
+            <div>
+              <span style={`background:${f.bg};color:${f.fg}`} set:html={icon(f.icon)} />
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="cp__band" data-custom-prompt-hide>
+        <div>
+          <p class="cp__band-title">Weeks of manual duplication, done in one operation.</p>
+          <p>No installation. No configuration. Ready the moment you add it.</p>
+        </div>
+        <a class="cp__btn cp__btn--yellow" href={contactHref}>Request a Demo</a>
+      </div>
+    </section>
+
+    <section class="cp__further cp__wrap">
+      <div class="cp__heading">
+        <p class="cp__eyebrow">GO FURTHER</p>
+        <h2 class="cp__h2-sm">Explore More Toolbox Widgets by ADC</h2>
+      </div>
+      <div class="cp__further-grid">
+        {
+          related.map((r) => (
+            <a href={r.href}>
+              <span class="cp__further-icon" style={`color:${r.color}`} set:html={icon(r.icon, 30)} />
+              <span class="cp__further-text">
+                <span class="cp__further-title">{r.title}{r.badge && <span class="cp__badge">{r.badge}</span>}</span>
+                <span>{r.text}</span>
+                <span class="cp__more">Learn More →</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="cp__cta" data-custom-prompt-hide>
+      <div class="cp__cta-blue">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this widget and to see a demo</p>
+        <div><a class="cp__btn cp__btn--yellow cp__btn--lg" href={contactHref}>Contact us</a></div>
+      </div>
+      <div class="cp__cta-yellow">
+        <p>Check out our Docs site for a listing of all our widgets:</p>
+        <a href={docsHome}>docs.adc.dev/docs</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Hero demo: idle → copying (status pill) → done (destination tiles pop in); reset goes back to idle.
+  const demo = document.querySelector<HTMLElement>('.cp__demo');
+  let timer: number | undefined;
+  demo?.addEventListener('click', (e) => {
+    const action = (e.target as HTMLElement).closest<HTMLElement>('[data-action]')?.dataset.action;
+    if (action === 'copy') {
+      demo.dataset.phase = 'copying';
+      timer = window.setTimeout(() => {
+        demo.dataset.phase = 'done';
+        demo.querySelector<HTMLElement>('.cp__reset')?.focus({ preventScroll: true });
+      }, 1200);
+    } else if (action === 'reset') {
+      window.clearTimeout(timer);
+      demo.dataset.phase = 'idle';
+      demo.querySelector<HTMLElement>('.cp__copy')?.focus({ preventScroll: true });
+    }
+  });
+</script>
+
+<style>
+  .cp {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .cp * {
+    box-sizing: border-box;
+  }
+  .cp h1,
+  .cp h2,
+  .cp h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .cp p,
+  .cp ol,
+  .cp figure {
+    margin: 0;
+  }
+  .cp a:focus-visible,
+  .cp button:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .cp__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .cp__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .cp__eyebrow--yellow {
+    color: #ffd458;
+  }
+  .cp__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cp__why-head h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .cp .cp__h2-md {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .cp .cp__h2-sm {
+    font-weight: 900;
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #05006c;
+  }
+  .cp__btn {
+    display: inline-block;
+    padding: 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease;
+  }
+  .cp__btn:hover {
+    transform: translateY(-2px);
+  }
+  .cp__btn--blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .cp__btn--blue:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .cp__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .cp__btn--yellow:hover {
+    color: #05006c;
+  }
+  .cp__btn--lg {
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+  .cp__dot {
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  /* Hero */
+  .cp__hero {
+    overflow: hidden;
+    padding: 40px 0 104px;
+    background: #f5f5ff;
+  }
+  .cp__hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .cp__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .cp__back {
+    align-self: flex-start;
+    padding: 8px 16px;
+    border: 1.5px solid #05006c;
+    border-radius: 999px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .cp__back:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .cp__tagline {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #362dff;
+  }
+  .cp h1 {
+    font-weight: 900;
+    font-size: clamp(48px, 6.2vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: #05006c;
+  }
+  .cp h1 span {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #fff;
+    color: #362dff;
+    font-size: 0.42em;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .cp__lede {
+    max-width: 540px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #1d1c3a;
+  }
+  .cp__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+  .cp__docs {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .cp__docs:hover {
+    color: #362dff;
+  }
+  .cp__docs span {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #05006c;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hero demo */
+  .cp__demo {
+    position: relative;
+  }
+  .cp__chip {
+    position: absolute;
+    top: -18px;
+    right: -8px;
+    z-index: 3;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    transform: rotate(3deg);
+    box-shadow: 0 10px 30px rgba(5, 0, 108, 0.2);
+  }
+  .cp__board {
+    padding: 28px;
+    border-radius: 28px;
+    background: #05006c;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cp__libs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .cp__lib {
+    padding: 16px;
+    border-radius: 18px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cp__lib-head {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cp__lib-head span:first-child {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #4a496b;
+  }
+  .cp__lib-head span:last-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #05006c;
+  }
+  .cp__tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .cp__tile {
+    height: 56px;
+    padding: 8px;
+    border: 1px solid #d9d7ff;
+    border-radius: 10px;
+    background: #f5f5ff;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .cp__tile span {
+    height: 6px;
+    border-radius: 3px;
+  }
+  .cp__tile span:first-child {
+    height: 16px;
+    border-radius: 4px;
+  }
+  .cp__tile span:nth-child(2) {
+    width: 80%;
+    background: #c9c7ff;
+  }
+  .cp__tile span:nth-child(3) {
+    width: 55%;
+    background: #e8e7f5;
+  }
+  .cp__tiles--dest .cp__tile {
+    border-color: #32e0c4;
+    animation: pop 0.4s ease-out both;
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.96);
+    }
+  }
+  .cp__empty {
+    height: 184px;
+    padding: 12px;
+    border: 2px dashed #c9c7ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    color: #4a496b;
+  }
+  .cp__bar {
+    padding: 16px;
+    border-radius: 18px;
+    background: #1c1690;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .cp__bar-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .cp__filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #fff;
+    color: #05006c;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .cp__filter :global(svg) {
+    color: #362dff;
+  }
+  .cp__status {
+    color: #e4e3ff;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .cp__copy,
+  .cp__copying,
+  .cp__reset {
+    min-height: 48px;
+    padding: 0 26px;
+    border-radius: 999px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    align-items: center;
+  }
+  .cp__copy {
+    border: none;
+    background: #ffd458;
+    color: #05006c;
+    cursor: pointer;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 212, 88, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 14px rgba(255, 212, 88, 0);
+    }
+  }
+  .cp__copying {
+    gap: 10px;
+    overflow: hidden;
+    background: #362dff;
+    color: #fff;
+  }
+  .cp__flow {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #32e0c4;
+    animation: flow 1s linear infinite;
+  }
+  @keyframes flow {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+  }
+  .cp__reset {
+    padding: 0 22px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  /* Demo phases: what shows in each state */
+  .cp__demo .cp__copy,
+  .cp__demo .cp__copying,
+  .cp__demo .cp__reset,
+  .cp__demo .cp__tiles--dest,
+  .cp__demo .cp__empty-copying,
+  .cp__demo .cp__status-done {
+    display: none;
+  }
+  [data-phase='idle'] .cp__copy,
+  [data-phase='copying'] .cp__copying,
+  [data-phase='done'] .cp__reset {
+    display: inline-flex;
+  }
+  [data-phase='done'] .cp__tiles--dest {
+    display: grid;
+  }
+  [data-phase='done'] .cp__empty,
+  [data-phase='copying'] .cp__empty-idle,
+  [data-phase='done'] .cp__status-ready {
+    display: none;
+  }
+  [data-phase='copying'] .cp__empty-copying,
+  [data-phase='done'] .cp__status-done {
+    display: inline;
+  }
+
+  /* Proof strip */
+  .cp__proof {
+    padding: 28px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .cp__proof .cp__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 32px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .cp__proof .cp__wrap > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Why use it */
+  .cp__why {
+    padding-top: 104px;
+    padding-bottom: 104px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+  }
+  .cp__why-head {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cp__bar-accent {
+    width: 96px;
+    height: 12px;
+    margin-top: 12px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .cp__why-list {
+    flex: 999 1 560px;
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .cp__why-list li {
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+    padding: 28px 0;
+    border-top: 1px solid #d9d7ff;
+  }
+  .cp__why-list li:first-child {
+    border-top: 2px solid #05006c;
+  }
+  .cp__why-list li:last-child {
+    border-bottom: 1px solid #d9d7ff;
+  }
+  .cp__why-list li > span {
+    min-width: 72px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: #362dff;
+  }
+  .cp__why-list li > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cp__why-list h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .cp__why-list p {
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  /* Three simple steps */
+  .cp__how {
+    padding: 104px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .cp__how .cp__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .cp__how .cp__h2-md {
+    color: #fff;
+  }
+  .cp__steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+  }
+  .cp__steps li {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .cp__steps li > span {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+  }
+  .cp__steps li > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cp__steps h3 {
+    font-weight: 800;
+    font-size: 22px;
+  }
+  .cp__steps p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+
+  /* Built for scale and control */
+  .cp__scale {
+    padding-top: 104px;
+    padding-bottom: 104px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .cp__scale-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .cp__carries {
+    max-width: 520px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cp__carries span {
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #f5f5ff;
+    color: #05006c;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .cp__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .cp__features > div {
+    padding: 28px;
+    border-radius: 24px;
+    background: #f5f5ff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cp__features > div > span {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cp__features h3 {
+    font-weight: 800;
+    font-size: 20px;
+    color: #05006c;
+  }
+  .cp__features p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .cp__band {
+    padding: 32px 40px;
+    border-radius: 28px;
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .cp__band > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cp__band-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 2.4vw, 30px);
+  }
+  .cp__band p:last-child {
+    font-size: 16px;
+    color: #c9c7ff;
+  }
+
+  /* Go further */
+  .cp__further {
+    padding-bottom: 104px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .cp__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .cp__further-grid a {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 32px;
+    border-radius: 28px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cp__further-grid a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(54, 45, 255, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+    color: #000;
+  }
+  .cp__further-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cp__further-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .cp__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #05006c;
+  }
+  .cp__badge {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    vertical-align: middle;
+  }
+  .cp__more {
+    color: #362dff;
+    font-weight: 700;
+  }
+
+  /* Got questions */
+  .cp__cta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .cp__cta > div {
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+  .cp__cta-blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .cp__cta-blue h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.02em;
+  }
+  .cp__cta-blue p {
+    max-width: 480px;
+    font-size: 19px;
+    color: #eceaff;
+  }
+  .cp__cta-blue > div {
+    margin-top: 8px;
+  }
+  .cp__cta-yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .cp__cta-yellow p {
+    max-width: 460px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  .cp__cta-yellow a {
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 3.4vw, 44px);
+    overflow-wrap: anywhere;
+  }
+  .cp__cta-yellow a:hover {
+    color: #362dff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cp__copy,
+    .cp__flow,
+    .cp__tiles--dest .cp__tile {
+      animation: none;
+    }
+  }
+  @media (max-width: 820px) {
+    .cp__chip {
+      display: none;
+    }
+  }
+  @media (max-width: 760px) {
+    .cp__wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .cp__hero {
+      padding-bottom: 72px;
+    }
+    .cp__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+    .cp__lede {
+      font-size: 17px;
+    }
+    .cp__board {
+      padding: 16px;
+      gap: 14px;
+    }
+    .cp__libs {
+      gap: 10px;
+    }
+    .cp__lib {
+      padding: 12px;
+    }
+    .cp__lib-head span:last-child {
+      font-size: 13px;
+    }
+    .cp__tiles {
+      gap: 6px;
+    }
+    .cp__why,
+    .cp__scale {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      gap: 32px;
+    }
+    .cp__why-list li {
+      gap: 18px;
+      padding: 24px 0;
+    }
+    .cp__why-list li > span {
+      min-width: 0;
+      font-size: 32px;
+    }
+    .cp__why-list p {
+      font-size: 17px;
+    }
+    .cp__how {
+      padding: 72px 0;
+    }
+    .cp__band {
+      padding: 28px 24px;
+    }
+    .cp__further {
+      padding-bottom: 72px;
+    }
+    .cp__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cp__further-grid a {
+      padding: 24px;
+      gap: 18px;
+    }
+    .cp__further-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+    }
+    .cp__cta > div {
+      padding: 56px 24px;
+    }
+    .cp__cta-yellow p {
+      font-size: 22px;
+    }
+  }
+</style>

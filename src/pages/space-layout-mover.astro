@@ -1,0 +1,88 @@
+---
+// Space Homepage Layout Copier product page (Template B, shared with the Content Page Layout Mover).
+import LayoutMoverEditorial from '../components/LayoutMoverEditorial.astro';
+import { relatedToolbox } from '../data/toolbox';
+
+const img = '/images/space-layout-mover/';
+---
+
+<LayoutMoverEditorial
+  name="Space Homepage Layout Copier"
+  description="Copy a polished LumApps Space homepage onto any other Space in a single click, and give legacy Spaces a modern, on-brand experience."
+  docs="https://docs.adc.dev/docs"
+  tagline="Design once. Deploy everywhere."
+  h1={['Space Homepage', 'Layout Copier']}
+  lede="Turn your best-designed LumApps Space into the blueprint for every other one. Copy a polished homepage onto any Space in a single click, and give legacy Spaces a modern, on-brand experience without rebuilding a thing."
+  demo={{
+    chip: 'Try it: click Copy ↓',
+    url: 'yourcompany.lumapps.com / my-legacy-space',
+    states: ['Legacy homepage', 'New homepage'],
+    before: { src: `${img}hero-before.webp`, alt: 'Legacy Space homepage: plain white layout with two featured posts and a long text article', w: 1400, h: 1537 },
+    after: { src: `${img}hero-after.webp`, alt: 'New Space homepage: branded dark layout with event gallery, event video, latest announcements, Why Attend panel and contact cards', w: 1400, h: 1537 },
+    title: 'SPACE HOMEPAGE LAYOUT COPIER',
+    from: ['FROM', 'ADC · ADC Events Space'],
+    to: ['TO', 'ADC · My Legacy Space Homepage'],
+    copying: 'Copying layout…',
+    reset: '↺ See the before again',
+    toast: 'Homepage transformed',
+  }}
+  proof={['One click, not one rebuild', 'Works across Sites', 'Admin-only, permission-aware', 'Confirmation before every change']}
+  why={[
+    { title: 'Scale your best work', text: "Your most engaging Space homepage shouldn't be a one-off. Make it the standard every team, department, and event Space starts from." },
+    { title: 'Modernize legacy Spaces, instantly', text: 'Bring outdated Space homepages up to your current design standard in seconds, instead of rebuilding them widget by widget.' },
+    { title: 'A consistent brand, everywhere', text: 'Every Space looks and feels like part of the same intranet, so employees always know where they are and where to find things.' },
+    { title: 'Give your team its time back', text: 'Free admins and communicators from repetitive layout work, so they can focus on the content and campaigns that actually move the needle.' },
+  ]}
+  diff={{
+    h2: ['From legacy', 'to landmark'],
+    text: 'Same Space. Same URL. A completely new first impression, delivered in one click. Scroll each page to explore.',
+    before: {
+      src: `${img}before-full.webp`,
+      alt: 'Full legacy Space homepage: plain white layout, two featured posts and a long text-only introduction article',
+      w: 1000,
+      h: 2064,
+      label: 'Scrollable screenshot of the legacy Space homepage',
+      caption: 'A dated, text-heavy homepage that buries what matters.',
+    },
+    widget: { src: `${img}widget.webp`, alt: 'The Space Homepage Layout Copier widget with source and destination Site and Space selectors and a Copy button', w: 900, h: 1188 },
+    after: {
+      src: `${img}after-full.webp`,
+      alt: 'Full new Space homepage: branded dark design with event gallery, event video, latest announcements, Why Attend panel, contact cards and Stay Connected section',
+      w: 1200,
+      h: 1691,
+      label: 'Scrollable screenshot of the new Space homepage',
+      caption: 'A vibrant, visual destination people actually want to explore.',
+      bg: '#05006c',
+    },
+  }}
+  action={{
+    text: 'Watch a legacy Space receive a brand-new homepage, live inside LumApps. Choose the source, choose the destination, click Copy, and the new homepage is in place.',
+    bullets: ['Runs right inside your intranet', 'No technical skills needed', 'Results you can see right away'],
+    gif: {
+      src: `${img}demo.gif`,
+      alt: 'Screen recording: an administrator selects ADC Events Space as the source and an existing Space as the destination, clicks Copy, and the destination Space homepage takes on the new layout',
+      w: 640,
+      h: 400,
+    },
+  }}
+  steps={[
+    { icon: 'star', title: 'Choose your blueprint', text: 'Pick the Site and Space whose homepage sets the standard you want everyone to match.' },
+    { icon: 'target', title: 'Pick your destination', text: 'Select the Space you want to transform, on the same Site or a different one.' },
+    { icon: 'copy', title: 'Click Copy. Done.', text: 'Confirm, and the full homepage layout lands in its new home, ready for your content.' },
+  ]}
+  band={{ title: 'Hours of rebuilding, replaced by one click.', text: 'No rebuilding widgets. No copy-pasting settings. Just a better homepage, right now.' }}
+  guardText="Moving fast never means losing control. The Layout Copier respects your intranet's permission model at every step, so the right people make the right changes."
+  guardrails={[
+    { icon: 'shield', bg: '#362dff', fg: '#fff', title: 'For administrators only', text: 'Only Site and platform administrators can see and use the widget.' },
+    { icon: 'lock', bg: '#32E0C4', fg: '#05006c', title: 'Permission-aware', text: "Admins only see the Sites they're allowed to change, so layouts can't be copied to or from places they don't manage." },
+    { icon: 'check', bg: '#FFD458', fg: '#05006c', title: 'Confirm before you commit', text: 'A clear summary and confirmation step means no surprises, every time.' },
+    { icon: 'sliders', bg: '#05006c', fg: '#FFD458', title: 'Your settings stay yours', text: "The destination Space's display preferences are never overridden, so you stay in charge of when the new homepage goes live." },
+  ]}
+  valueIntro="Added value for your Intranet Managers, Internal Communications, and Space owners"
+  value={[
+    { icon: 'refresh', title: 'Intranet Refreshes & Rebrands', text: 'Roll a new look out across dozens of Spaces without a months-long migration project, and launch your refresh with momentum.' },
+    { icon: 'calendar', title: 'Events & Campaigns', text: 'Spin up every summit, launch, or recurring campaign Space from a proven, high-engagement template, ready to go on day one.' },
+    { icon: 'users', title: 'Departments, Teams & Regions', text: 'Give every department and regional Space the same polished, recognizable structure, so employees feel at home wherever they land.' },
+  ]}
+  related={relatedToolbox('/space-layout-mover')}
+/>

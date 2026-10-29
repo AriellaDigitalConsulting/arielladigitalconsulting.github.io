@@ -1,0 +1,1039 @@
+---
+// Platform Style Manager product page, in the "Split Editorial" look (Template B).
+// The hero has a small demo: clicking "Copy style" adds a renamed copy to the style library card.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+import { relatedToolbox } from '../data/toolbox';
+
+const docs = 'https://docs.adc.dev/docs';
+const img = '/images/platform-style/';
+
+const proof = [
+  { c: '#32E0C4', t: 'Copy and rename in seconds' },
+  { c: '#FFD458', t: 'Built for multi-site environments' },
+  { c: '#8e88ff', t: 'Export and import styles as JSON' },
+  { c: '#32E0C4', t: 'Original style stays untouched' },
+];
+const why = [
+  { title: 'Scale without starting over', text: 'Every new site starts from a proven, approved style instead of a blank slate, so launches move faster.' },
+  { title: 'Brand consistency, with room to flex', text: 'Keep one shared foundation, then tailor each copy for a region, business unit, or campaign.' },
+  { title: 'Experiment risk-free', text: 'Try a refreshed look on a copy while your live style stays exactly as it is.' },
+  { title: 'Your styles, portable', text: 'Download any style as a file to back it up or share it, and import styles back in whenever you need them.' },
+];
+const related = relatedToolbox('/platform-style');
+
+const icons: Record<string, string> = {
+  copy: '<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/>',
+  chevron: '<path d="M6 9l6 6 6-6"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  home: '<path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  grid: '<path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/>',
+};
+const icon = (key: string, size = 28, width = 2) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[key]}</svg>`;
+---
+
+<Base title="Platform Style Manager | Ariella Digital Consulting" description="Copy any LumApps platform style, give it a new name, and launch new sites with a look that's already polished and on brand.">
+  <div class="ps">
+    <section class="ps__hero" data-custom-prompt-after>
+      <div class="ps__wrap ps__hero-grid">
+        <div class="ps__hero-copy">
+          <a class="ps__back" href="/products">← Back to Products Page</a>
+          <p class="ps__tagline">One brand. Every site.</p>
+          <h1>Platform Style<br />Manager <span>by ADC</span></h1>
+          <p class="ps__lede">Scaling a multi-site LumApps environment? Copy any platform style, give it a new name, and make it your own. Launch new sites with a look that's already polished, on brand, and ready to go. It's that easy.</p>
+          <div class="ps__hero-ctas">
+            <a class="ps__btn ps__btn--blue" href={contactHref}>Request a Demo</a>
+            <a class="ps__docs" href={docs}>
+              <span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#05006c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"></path></svg>
+              </span>
+              Read the docs
+            </a>
+          </div>
+        </div>
+
+        <div class="ps__demo" data-phase="idle">
+          <span class="ps__chip">Try it: click Copy ↓</span>
+          <div class="ps__widget">
+            <span class="ps__widget-title">PLATFORM STYLE MANAGER</span>
+            <div class="ps__field">
+              <span>STYLE TO COPY</span>
+              <span class="ps__select">ADC Brand<Fragment set:html={icon('chevron', 16, 2.4)} /></span>
+            </div>
+            <div class="ps__field">
+              <span>NAME FOR THE NEW COPY</span>
+              <span class="ps__input">ADC Brand — Europe</span>
+            </div>
+            <button type="button" class="ps__copy" data-action="copy"><Fragment set:html={icon('copy', 18, 2.2)} />Copy style</button>
+            <div class="ps__copying"><span class="ps__progress" aria-hidden="true"></span><span role="status">Copying style…</span></div>
+            <button type="button" class="ps__reset" data-action="reset">↺ Run it again</button>
+          </div>
+
+          <div class="ps__library">
+            <span class="ps__library-title">YOUR PLATFORM STYLES</span>
+            <div class="ps__style">
+              <span class="ps__swatches" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span>ADC Brand</span>
+            </div>
+            <div class="ps__style ps__style--new" role="status">
+              <span class="ps__swatches" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span>ADC Brand — Europe</span>
+              <span class="ps__new">NEW</span>
+            </div>
+            <div class="ps__placeholder">Your new copy will appear here</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ps__proof">
+      <div class="ps__wrap">
+        {proof.map((p) => <span><span class="ps__dot" style={`background:${p.c}`}></span>{p.t}</span>)}
+      </div>
+    </section>
+
+    <section class="ps__why ps__wrap">
+      <div class="ps__why-head">
+        <p class="ps__eyebrow">HAVE A LOOK AT</p>
+        <h2>Why<br />use it</h2>
+        <div class="ps__bar" aria-hidden="true"></div>
+      </div>
+      <ol class="ps__why-list">
+        {
+          why.map((w, i) => (
+            <li>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="ps__how">
+      <div class="ps__wrap">
+        <div class="ps__how-head">
+          <div class="ps__heading">
+            <p class="ps__eyebrow ps__eyebrow--yellow">FROM COPY TO LIVE</p>
+            <h2>Copy it. Name it.<br />Use it anywhere.</h2>
+          </div>
+          <p>Choose a style, enter a name, click Copy. Your new style is instantly ready to select in any site's style settings.</p>
+        </div>
+        <div class="ps__shots">
+          <figure class="ps__shot-wide">
+            <span class="ps__tag">1 · COPY IN THE WIDGET</span>
+            <div class="ps__frame">
+              <img src={`${img}widget.webp`} alt="The Platform Style Manager widget: a Global styles picker, a Refresh styles button and an option to import a global style from a JSON file" width="1400" height="702" loading="lazy" />
+            </div>
+            <figcaption>Pick any global style to copy, download, or import.</figcaption>
+          </figure>
+          <span class="ps__nudge" aria-hidden="true" set:html={icon('arrow', 28, 2.6)} />
+          <figure class="ps__shot-narrow">
+            <span class="ps__tag ps__tag--teal">2 · APPLY TO ANY SITE</span>
+            <div class="ps__frame ps__frame--teal">
+              <img src={`${img}style-settings.webp`} alt="LumApps Style settings with Platform style selected and ADC Brand chosen as the selected style" width="500" height="967" loading="lazy" />
+            </div>
+            <figcaption>Select it as the platform style, then fine-tune.</figcaption>
+          </figure>
+        </div>
+        <div class="ps__band" data-custom-prompt-hide>
+          <div>
+            <p class="ps__band-title">A new site style in seconds, not days.</p>
+            <p>No rebuilding palettes. No recreating headers and footers. Just copy, rename, and go.</p>
+          </div>
+          <a class="ps__btn ps__btn--blue" href={contactHref}>Request a Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ps__further ps__wrap">
+      <div class="ps__heading">
+        <p class="ps__eyebrow">GO FURTHER</p>
+        <h2 class="ps__h2-sm">Explore More Toolbox Widgets by ADC</h2>
+      </div>
+      <div class="ps__further-grid">
+        {
+          related.map((r) => (
+            <a href={r.href}>
+              <span class="ps__further-icon" style={`color:${r.color}`} set:html={icon(r.icon, 30)} />
+              <span class="ps__further-text">
+                <span class="ps__further-title">{r.title}</span>
+                <span>{r.text}</span>
+                <span class="ps__more">Learn More →</span>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="ps__cta" data-custom-prompt-hide>
+      <div class="ps__cta-blue">
+        <h2>Got questions?</h2>
+        <p>Get in touch to learn more about this widget and to see a demo</p>
+        <div><a class="ps__btn ps__btn--yellow ps__btn--lg" href={contactHref}>Contact us</a></div>
+      </div>
+      <div class="ps__cta-yellow">
+        <p>Check out our Docs site for a listing of all our widgets:</p>
+        <a href={docs}>docs.adc.dev/docs</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  // Hero demo: idle → copying (progress bar) → done (new style in the library); reset goes back to idle.
+  const demo = document.querySelector<HTMLElement>('.ps__demo');
+  let timer: number | undefined;
+  demo?.addEventListener('click', (e) => {
+    const action = (e.target as HTMLElement).closest<HTMLElement>('[data-action]')?.dataset.action;
+    if (action === 'copy') {
+      demo.dataset.phase = 'copying';
+      timer = window.setTimeout(() => {
+        demo.dataset.phase = 'done';
+        demo.querySelector<HTMLElement>('.ps__reset')?.focus({ preventScroll: true });
+      }, 1100);
+    } else if (action === 'reset') {
+      window.clearTimeout(timer);
+      demo.dataset.phase = 'idle';
+      demo.querySelector<HTMLElement>('.ps__copy')?.focus({ preventScroll: true });
+    }
+  });
+</script>
+
+<style>
+  .ps {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .ps * {
+    box-sizing: border-box;
+  }
+  .ps h1,
+  .ps h2,
+  .ps h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .ps p,
+  .ps ol,
+  .ps figure {
+    margin: 0;
+  }
+  .ps a:focus-visible,
+  .ps button:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .ps__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .ps__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    color: #362dff;
+  }
+  .ps__eyebrow--yellow {
+    color: #ffd458;
+  }
+  .ps__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ps__heading h2,
+  .ps__why-head h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #05006c;
+  }
+  .ps__heading .ps__h2-sm {
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .ps__btn {
+    display: inline-block;
+    padding: 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease;
+  }
+  .ps__btn:hover {
+    transform: translateY(-2px);
+  }
+  .ps__btn--blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .ps__btn--blue:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .ps__btn--yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .ps__btn--yellow:hover {
+    color: #05006c;
+  }
+  .ps__btn--lg {
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+  .ps__dot {
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  /* Hero */
+  .ps__hero {
+    overflow: hidden;
+    padding: 40px 0 112px;
+    background: #f5f5ff;
+  }
+  .ps__hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .ps__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .ps__back {
+    align-self: flex-start;
+    padding: 8px 16px;
+    border: 1.5px solid #05006c;
+    border-radius: 999px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .ps__back:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .ps__tagline {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #362dff;
+  }
+  .ps h1 {
+    font-weight: 900;
+    font-size: clamp(48px, 6.2vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: #05006c;
+  }
+  .ps h1 span {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #fff;
+    color: #362dff;
+    font-size: 0.42em;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .ps__lede {
+    max-width: 540px;
+    font-size: 19px;
+    line-height: 1.65;
+    color: #1d1c3a;
+  }
+  .ps__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+  .ps__docs {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .ps__docs:hover {
+    color: #362dff;
+  }
+  .ps__docs span {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #05006c;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hero demo */
+  .ps__demo {
+    position: relative;
+    padding-bottom: 168px;
+  }
+  .ps__chip {
+    position: absolute;
+    top: -18px;
+    right: -8px;
+    z-index: 3;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    transform: rotate(3deg);
+    box-shadow: 0 10px 30px rgba(5, 0, 108, 0.2);
+  }
+  .ps__widget {
+    width: 86%;
+    padding: 32px;
+    border-top: 6px solid #32e0c4;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 30px 60px rgba(5, 0, 108, 0.22);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .ps__widget-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    color: #05006c;
+  }
+  .ps__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ps__field > span:first-child {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #4a496b;
+  }
+  .ps__select,
+  .ps__input {
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1d1c3a;
+  }
+  .ps__select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #d9d7ff;
+    background: #f5f5ff;
+  }
+  .ps__select :global(svg) {
+    color: #05006c;
+  }
+  .ps__input {
+    padding: 11px 14px;
+    border: 2px solid #362dff;
+    background: #fff;
+  }
+  .ps__widget button,
+  .ps__copying {
+    min-height: 52px;
+    border: none;
+    border-radius: 999px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .ps__copy {
+    background: #362dff;
+    color: #fff;
+    cursor: pointer;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 212, 88, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 14px rgba(255, 212, 88, 0);
+    }
+  }
+  .ps__copying {
+    position: relative;
+    overflow: hidden;
+    background: #05006c;
+    color: #fff;
+    font-size: 16px;
+  }
+  .ps__copying span:last-child {
+    position: relative;
+  }
+  .ps__progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: #362dff;
+    animation: progress 1s ease-out both;
+  }
+  @keyframes progress {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  .ps .ps__reset {
+    border: 2px solid #05006c;
+    background: #fff;
+    color: #05006c;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .ps__library {
+    position: absolute;
+    right: 0;
+    /* Overlap only the widget's bottom padding; the card grows downward when the copy appears */
+    top: calc(100% - 192px);
+    z-index: 2;
+    width: 330px;
+    padding: 24px;
+    border-radius: 24px;
+    background: #05006c;
+    color: #fff;
+    box-shadow: 0 24px 50px rgba(5, 0, 108, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ps__library-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: #ffd458;
+  }
+  .ps__style {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #1c1690;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .ps__style--new {
+    background: #fff;
+    color: #05006c;
+    animation: pop 0.45s ease-out both;
+  }
+  .ps__style--new > span:nth-child(2) {
+    flex: 1;
+  }
+  @keyframes pop {
+    0% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+  .ps__swatches {
+    display: flex;
+    gap: 3px;
+  }
+  .ps__swatches span {
+    width: 14px;
+    height: 28px;
+    border-radius: 4px;
+    background: #362dff;
+  }
+  .ps__swatches span:nth-child(2) {
+    background: #32e0c4;
+  }
+  .ps__swatches span:nth-child(3) {
+    background: #ffd458;
+  }
+  .ps__new {
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #32e0c4;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .ps__placeholder {
+    padding: 14px;
+    border: 2px dashed #3d37b8;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: #c9c7ff;
+  }
+  /* Demo phases: what shows in each state */
+  .ps__demo .ps__copy,
+  .ps__demo .ps__copying,
+  .ps__demo .ps__reset,
+  .ps__demo .ps__style--new {
+    display: none;
+  }
+  [data-phase='idle'] .ps__copy,
+  [data-phase='copying'] .ps__copying,
+  [data-phase='done'] .ps__reset,
+  [data-phase='done'] .ps__style--new {
+    display: flex;
+  }
+  [data-phase='done'] .ps__placeholder {
+    display: none;
+  }
+
+  /* Proof strip */
+  .ps__proof {
+    padding: 28px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .ps__proof .ps__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 32px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .ps__proof .ps__wrap > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Why use it */
+  .ps__why {
+    padding-top: 112px;
+    padding-bottom: 112px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+  }
+  .ps__why-head {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ps__bar {
+    width: 96px;
+    height: 12px;
+    margin-top: 12px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .ps__why-list {
+    flex: 999 1 560px;
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .ps__why-list li {
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+    padding: 28px 0;
+    border-top: 1px solid #d9d7ff;
+  }
+  .ps__why-list li:first-child {
+    border-top: 2px solid #05006c;
+  }
+  .ps__why-list li:last-child {
+    border-bottom: 1px solid #d9d7ff;
+  }
+  .ps__why-list li > span {
+    min-width: 72px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    color: #362dff;
+  }
+  .ps__why-list li > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ps__why-list h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .ps__why-list p {
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  /* From copy to live */
+  .ps__how {
+    padding: 112px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .ps__how .ps__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .ps__how-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .ps__how .ps__heading h2 {
+    color: #fff;
+  }
+  .ps__how-head > p {
+    max-width: 420px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .ps__shots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+  }
+  .ps__shots figure {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ps__shot-wide {
+    flex: 999 1 560px;
+  }
+  .ps__shot-narrow {
+    flex: 1 1 260px;
+    max-width: 320px;
+  }
+  .ps__shots figcaption {
+    font-size: 15px;
+    color: #c9c7ff;
+  }
+  .ps__tag {
+    align-self: flex-start;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+  .ps__tag--teal {
+    background: #32e0c4;
+  }
+  .ps__frame {
+    overflow: hidden;
+    border: 8px solid #fff;
+    border-radius: 20px;
+    background: #fff;
+  }
+  .ps__frame--teal {
+    border-color: #32e0c4;
+  }
+  .ps__frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .ps__nudge {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #ffd458;
+    color: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: nudge 1.8s ease-in-out infinite;
+  }
+  @keyframes nudge {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(8px);
+    }
+  }
+  .ps__band {
+    padding: 32px 40px;
+    border-radius: 28px;
+    background: #fff;
+    color: #05006c;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .ps__band > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ps__band-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 2.4vw, 30px);
+  }
+  .ps__band p:last-child {
+    font-size: 16px;
+    color: #33325a;
+  }
+
+  /* Go further */
+  .ps__further {
+    padding-top: 112px;
+    padding-bottom: 112px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .ps__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .ps__further-grid a {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 32px;
+    border-radius: 28px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .ps__further-grid a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(54, 45, 255, 0.16), 0 2px 6px rgba(0, 0, 0, 0.04);
+    color: #000;
+  }
+  .ps__further-icon {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ps__further-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .ps__further-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #05006c;
+  }
+  .ps__more {
+    color: #362dff;
+    font-weight: 700;
+  }
+
+  /* Got questions */
+  .ps__cta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .ps__cta > div {
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+  .ps__cta-blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .ps__cta-blue h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.02em;
+  }
+  .ps__cta-blue p {
+    max-width: 480px;
+    font-size: 19px;
+    color: #eceaff;
+  }
+  .ps__cta-blue > div {
+    margin-top: 8px;
+  }
+  .ps__cta-yellow {
+    background: #ffd458;
+    color: #05006c;
+  }
+  .ps__cta-yellow p {
+    max-width: 460px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  .ps__cta-yellow a {
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 3.4vw, 44px);
+    overflow-wrap: anywhere;
+  }
+  .ps__cta-yellow a:hover {
+    color: #362dff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ps__copy,
+    .ps__progress,
+    .ps__style--new,
+    .ps__nudge {
+      animation: none;
+    }
+  }
+  @media (max-width: 820px) {
+    .ps__chip {
+      display: none;
+    }
+    .ps__demo {
+      padding-bottom: 0;
+    }
+    .ps__widget {
+      width: auto;
+    }
+    .ps__library {
+      position: static;
+      width: auto;
+      margin-top: 16px;
+    }
+  }
+  @media (max-width: 760px) {
+    .ps__wrap {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .ps__hero {
+      padding-bottom: 72px;
+    }
+    .ps__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+    .ps__lede {
+      font-size: 17px;
+    }
+    .ps__widget {
+      padding: 24px;
+    }
+    .ps__why,
+    .ps__further {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      gap: 32px;
+    }
+    .ps__why-list li {
+      gap: 18px;
+      padding: 24px 0;
+    }
+    .ps__why-list li > span {
+      min-width: 0;
+      font-size: 32px;
+    }
+    .ps__why-list p {
+      font-size: 17px;
+    }
+    .ps__how {
+      padding: 72px 0;
+    }
+    .ps__shot-narrow {
+      max-width: none;
+    }
+    .ps__nudge {
+      margin: 0 auto;
+    }
+    .ps__nudge :global(svg) {
+      transform: rotate(90deg);
+    }
+    .ps__band {
+      padding: 28px 24px;
+    }
+    .ps__further-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .ps__further-grid a {
+      padding: 24px;
+      gap: 18px;
+    }
+    .ps__further-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+    }
+    .ps__cta > div {
+      padding: 56px 24px;
+    }
+    .ps__cta-yellow p {
+      font-size: 22px;
+    }
+  }
+</style>
