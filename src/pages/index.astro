@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Insights from '../components/Insights.astro';
+import AdcLiveInvite from '../components/AdcLiveInvite.astro';
 import { contactHref } from '../data/site';
 
 const docsUrl = 'https://docs.adc.dev';
@@ -113,10 +114,10 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
         <div class="hero__copy">
           <div class="pill"><span class="dot" aria-hidden="true"></span>Working with a team you can trust</div>
           <h1>Making LumApps a <span class="teal">simpler</span>, <span class="yellow">happier</span> experience.</h1>
-          <p class="hero__lede">Boutique consulting for the enterprise. We do end-to-end implementations, design, and extend LumApps for your workforce — and your team can run it with confidence.</p>
-          <div class="actions">
-            <a class="ui-btn ui-btn-primary ui-btn--lg" href={contactHref}>Book a discovery call <Fragment set:html={arrow} /></a>
-            <a class="ui-btn ui-btn-ghost ui-btn--lg" href="#widgets">Explore our widgets</a>
+          <p class="hero__lede">Boutique consulting for the enterprise. We do <strong>end-to-end implementations</strong>, design, and extend LumApps for your workforce — and your team can run it with confidence.</p>
+          <div class="actions" data-custom-prompt-after>
+            <a class="ui-btn ui-btn-teal ui-btn--lg" href="#services">Explore our services <Fragment set:html={arrow} /></a>
+            <a class="ui-btn ui-btn-ghost ui-btn--lg" href="#widgets">Browse our widgets</a>
           </div>
           <div class="hero__stats">
             <div><strong>Since 2017</strong>in the LumApps ecosystem</div>
@@ -178,6 +179,9 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
         {certifications.map((c) => <span class="creds__item"><Fragment set:html={shield} /><Fragment set:html={c} /></span>)}
       </div>
     </section>
+
+    <!-- ADC LIVE! -->
+    <AdcLiveInvite />
 
     <!-- SERVICES -->
     <section id="services" class="container section">
@@ -256,7 +260,7 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
     <Insights />
 
     <!-- CTA -->
-    <section id="contact" class="container cta-wrap">
+    <section id="contact" class="container cta-wrap" data-custom-prompt-hide>
       <div class="cta">
         <div class="cta__pills" aria-hidden="true"><span></span><span></span></div>
         <div class="cta__copy">
@@ -324,6 +328,15 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
   .ui-btn-primary:hover {
     background: var(--blue-hover);
     color: #fff;
+  }
+  .ui-btn-teal {
+    background: #32e0c4;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .ui-btn-teal:hover {
+    background: #6aead6;
+    color: var(--navy);
   }
   .ui-btn-ghost {
     color: #fff;
@@ -426,6 +439,10 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
   }
   .yellow {
     color: var(--yellow);
+  }
+  .hero__lede strong {
+    color: #fff;
+    font-weight: 700;
   }
   .hero__lede {
     font-size: 19px;

@@ -41,6 +41,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </main>
     <SiteFooter />
     {isProductPage(Astro.url.pathname) && <CustomBuildPrompt />}
+    {Astro.url.pathname === '/' && <CustomBuildPrompt variant="call" />}
     <script>
       import { enableSmoothAnchors } from '../lib/smoothScroll';
       enableSmoothAnchors();

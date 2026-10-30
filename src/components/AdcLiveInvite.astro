@@ -1,0 +1,454 @@
+---
+// "ADC Live!" invite band on the homepage: the ticket card with the ADC Bot peeking over it.
+// Update the event details below for each month's webinar.
+const event = {
+  title: 'LumApps Play, with a guest from The Glass Guru',
+  date: 'Wed, Nov 18',
+  time: '11:30 AM ET',
+  registerUrl: 'https://www.linkedin.com/events/7517990236740747265/',
+};
+
+const replays = [
+  { label: 'LumApps Agents, Agents Space & MCP', href: '/news/replay-adc-live-presents-lumapps-agents-agents-space-mcp' },
+  { label: 'Becoming a Beekeeper Developer', href: '/news/adc-live-presents-the-lumapps-beekeeper-value-and-a-beekeeper-deep-dive' },
+  { label: 'Release Notes Backstage', href: '/news/adc-live-presents-release-notes-backstage' },
+];
+---
+
+<section class="live" aria-labelledby="live-title">
+  <div class="live__inner">
+    <div class="live__stage">
+      <!-- ADC Bot peeking from behind the ticket -->
+      <div class="live__bot" aria-hidden="true">
+        <div class="live__bot-face peek">
+          <div class="live__eyes look"><span class="blink"></span><span class="blink"></span></div>
+          <span class="live__mouth"></span>
+        </div>
+      </div>
+      <div class="live__hands hands" aria-hidden="true"><span></span><span></span></div>
+      <div class="live__bubble bubble" aria-hidden="true">Psst… seats are free.</div>
+      <span class="live__bang bang" aria-hidden="true">!</span>
+
+      <div class="live__ticket">
+        <div class="live__main">
+          <span class="live__orb" aria-hidden="true"></span>
+          <div class="live__disc" aria-hidden="true">
+            <svg class="spin" width="168" height="168" viewBox="0 0 168 168">
+              <defs><path id="liveRing" d="M84,84 m-66,0 a66,66 0 1,1 132,0 a66,66 0 1,1 -132,0"></path></defs>
+              <text font-family="Archivo, sans-serif" font-weight="800" font-size="15" letter-spacing="3.2" fill="#fff"><textPath href="#liveRing">ADC LIVE! • FREE • MONTHLY • ON AIR • </textPath></text>
+            </svg>
+            <span class="live__play"><svg width="28" height="28" viewBox="0 0 24 24" fill="#05006C"><path d="M7 4l13 8-13 8z"></path></svg></span>
+          </div>
+          <div class="live__copy">
+            <span class="live__kicker"><span class="pulse" aria-hidden="true"></span>You're invited · ADC Live!</span>
+            <h2 id="live-title">{event.title}</h2>
+            <p>Our free monthly webinar for LumApps teams. Live demos, real answers, and the release highlights that matter to your intranet.</p>
+          </div>
+        </div>
+        <div class="live__stub">
+          <span class="live__free wiggle">FREE</span>
+          <div class="live__field"><span>Date</span><strong>{event.date}</strong></div>
+          <div class="live__field"><span>Time</span><strong>{event.time}</strong></div>
+          <a class="live__cta glow" href={event.registerUrl}>
+            Save my seat
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="live__replays">
+      <span>Missed one? Catch the replays:</span>
+      {replays.map((r) => <a href={r.href}>{r.label}</a>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .live {
+    background: #fff;
+    color: #1b1a3a;
+    font-family: 'Open Sans', system-ui, sans-serif;
+  }
+  .live__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 24px 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .live__stage {
+    position: relative;
+  }
+
+  /* ADC Bot */
+  .live__bot {
+    position: absolute;
+    right: 76px;
+    top: -100px;
+    width: 120px;
+    height: 104px;
+    overflow: hidden;
+  }
+  .live__bot-face {
+    position: relative;
+    width: 120px;
+    height: 104px;
+    border-radius: 26px;
+    background: #05006c;
+  }
+  .live__eyes {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 26px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+  .live__eyes span {
+    width: 11px;
+    height: 24px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .live__mouth {
+    position: absolute;
+    left: 50%;
+    top: 64px;
+    width: 36px;
+    height: 12px;
+    margin-left: -18px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .live__hands {
+    position: absolute;
+    right: 80px;
+    top: -10px;
+    z-index: 2;
+    width: 112px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .live__hands span {
+    width: 26px;
+    height: 18px;
+    border-radius: 9px;
+    background: #32e0c4;
+  }
+  .live__bubble {
+    position: absolute;
+    right: 214px;
+    top: -92px;
+    z-index: 2;
+    padding: 12px 16px;
+    border-radius: 18px 18px 4px 18px;
+    background: #f1f0ff;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  .live__bang {
+    position: absolute;
+    right: 52px;
+    top: -120px;
+    z-index: 2;
+    color: #362dff;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+  }
+
+  /* Ticket */
+  .live__ticket {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(54, 45, 255, 0.28);
+  }
+  .live__main {
+    position: relative;
+    flex: 999 1 560px;
+    min-width: 0;
+    padding: 44px 48px;
+    overflow: hidden;
+    background: #362dff;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 36px;
+  }
+  .live__orb {
+    position: absolute;
+    right: -120px;
+    top: -140px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    border: 64px solid rgba(5, 0, 108, 0.25);
+  }
+  .live__disc {
+    position: relative;
+    flex: none;
+    width: 168px;
+    height: 168px;
+  }
+  .live__disc > svg {
+    position: absolute;
+    inset: 0;
+  }
+  .live__play {
+    position: absolute;
+    left: 44px;
+    top: 44px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ffd458;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .live__copy {
+    position: relative;
+    flex: 1 1 320px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .live__kicker {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(5, 0, 108, 0.35);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+  .live__kicker span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #32e0c4;
+  }
+  .live__copy h2 {
+    margin: 0;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(30px, 3.4vw, 44px);
+    line-height: 1.06;
+    letter-spacing: -1px;
+  }
+  .live__copy p {
+    margin: 0;
+    max-width: 560px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #e6e5ff;
+  }
+  .live__stub {
+    position: relative;
+    flex: 1 1 260px;
+    min-width: 0;
+    padding: 40px 36px;
+    border-left: 3px dashed rgba(255, 255, 255, 0.35);
+    background: #05006c;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+  }
+  .live__free {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    padding: 7px 11px;
+    border-radius: 10px;
+    background: #32e0c4;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .live__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .live__field span {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #32e0c4;
+  }
+  .live__field strong {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+  }
+  .live__cta {
+    min-height: 44px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .live__cta:hover {
+    background: #ffe18a;
+    color: #05006c;
+  }
+
+  /* Replays */
+  .live__replays {
+    padding: 4px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 24px;
+    font-size: 15px;
+    color: #4a4870;
+  }
+  .live__replays span {
+    font-weight: 700;
+    color: #05006c;
+  }
+  .live__replays a {
+    color: #4a4870;
+    text-decoration: none;
+  }
+  .live__replays a:hover {
+    color: #362dff;
+  }
+
+  /* Motion */
+  @keyframes adcPeek {
+    0%, 8% { transform: translateY(110px); }
+    16%, 76% { transform: translateY(0); }
+    20% { transform: translateY(-8px); }
+    24% { transform: translateY(0); }
+    86%, 100% { transform: translateY(110px); }
+  }
+  @keyframes adcHands {
+    0%, 10% { transform: translateY(40px); opacity: 0; }
+    17%, 76% { transform: translateY(0); opacity: 1; }
+    84%, 100% { transform: translateY(40px); opacity: 0; }
+  }
+  @keyframes adcLook {
+    0%, 26% { transform: translate(0, 0); }
+    32%, 48% { transform: translate(-10px, 2px); }
+    54%, 70% { transform: translate(0, 10px); }
+    76%, 100% { transform: translate(0, 0); }
+  }
+  @keyframes adcBlink {
+    0%, 40%, 44%, 62%, 66%, 100% { transform: scaleY(1); }
+    42%, 64% { transform: scaleY(0.12); }
+  }
+  @keyframes adcBubble {
+    0%, 26% { opacity: 0; transform: translateY(10px) scale(0.9); }
+    32%, 72% { opacity: 1; transform: translateY(0) scale(1); }
+    78%, 100% { opacity: 0; transform: translateY(10px) scale(0.9); }
+  }
+  @keyframes adcBang {
+    0%, 52% { opacity: 0; transform: translateY(6px) scale(0.6); }
+    56%, 70% { opacity: 1; transform: translateY(0) scale(1); }
+    74%, 100% { opacity: 0; }
+  }
+  @keyframes adcGlow {
+    0%, 52% { box-shadow: 0 0 0 0 rgba(255, 212, 88, 0); }
+    58%, 68% { box-shadow: 0 0 0 8px rgba(255, 212, 88, 0.45); }
+    74%, 100% { box-shadow: 0 0 0 0 rgba(255, 212, 88, 0); }
+  }
+  @keyframes adcSpin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes adcWiggle {
+    0%, 86%, 100% { transform: rotate(-8deg) scale(1); }
+    90% { transform: rotate(4deg) scale(1.08); }
+    94% { transform: rotate(-12deg) scale(1.04); }
+  }
+  @keyframes adcPulse {
+    0% { box-shadow: 0 0 0 0 rgba(50, 224, 196, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(50, 224, 196, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(50, 224, 196, 0); }
+  }
+  .peek { animation: adcPeek 9s ease-in-out infinite; }
+  .hands { animation: adcHands 9s ease-in-out infinite; }
+  .look { animation: adcLook 9s ease-in-out infinite; }
+  .blink { animation: adcBlink 9s infinite; transform-origin: 50% 50%; }
+  .bubble { opacity: 0; animation: adcBubble 9s ease-out infinite; transform-origin: 100% 100%; }
+  .bang { opacity: 0; animation: adcBang 9s ease-out infinite; }
+  .glow { animation: adcGlow 9s ease-out infinite; }
+  .spin { animation: adcSpin 18s linear infinite; transform-origin: 50% 50%; }
+  .wiggle { animation: adcWiggle 5s ease-in-out infinite; }
+  .pulse { animation: adcPulse 1.8s infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .peek, .hands, .look, .blink, .bubble, .bang, .glow, .spin, .wiggle, .pulse {
+      animation: none !important;
+    }
+    .bubble {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .live__inner {
+      padding: 112px 16px 64px;
+    }
+    .live__bot {
+      right: 32px;
+    }
+    .live__hands {
+      right: 36px;
+    }
+    .live__bang {
+      right: 12px;
+    }
+    .live__bubble {
+      right: 166px;
+      font-size: 14px;
+      padding: 10px 12px;
+    }
+    .live__main {
+      padding: 32px 24px;
+      gap: 24px;
+    }
+    .live__disc {
+      transform: scale(0.8);
+      transform-origin: left center;
+      margin: -16px 0;
+    }
+    .live__stub {
+      padding: 32px 24px;
+      border-left: 0;
+      border-top: 3px dashed rgba(255, 255, 255, 0.35);
+    }
+  }
+  @media (max-width: 380px) {
+    .live__bubble {
+      display: none;
+    }
+  }
+</style>

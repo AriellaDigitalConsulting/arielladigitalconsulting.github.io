@@ -1,0 +1,42 @@
+---
+// The ADC Bot face as a small icon: teal face, navy eyes and mouth, an occasional blink.
+// Used by the floating CustomBuildPrompt and the "Need something custom?" card on /products.
+interface Props {
+  size?: number;
+}
+const { size = 32 } = Astro.props;
+---
+
+<svg class="bot" width={size} height={Math.round((size * 104) / 120)} viewBox="0 0 120 104" aria-hidden="true">
+  <rect width="120" height="104" rx="26" fill="#32E0C4"></rect>
+  <g class="bot__eyes" fill="#05006C">
+    <rect x="34.5" y="26" width="11" height="24" rx="5.5"></rect>
+    <rect x="74.5" y="26" width="11" height="24" rx="5.5"></rect>
+  </g>
+  <rect x="42" y="64" width="36" height="12" rx="6" fill="#05006C"></rect>
+</svg>
+
+<style>
+  .bot {
+    flex: none;
+    display: block;
+  }
+  .bot__eyes {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: botBlink 6s infinite;
+  }
+  @keyframes botBlink {
+    0%, 92%, 96%, 100% {
+      transform: scaleY(1);
+    }
+    94% {
+      transform: scaleY(0.12);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bot__eyes {
+      animation: none;
+    }
+  }
+</style>

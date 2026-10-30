@@ -5,17 +5,27 @@
 // It appears once the visitor scrolls past the element marked [data-custom-prompt-after] (or one screen down if
 // the page marks none), hides while any [data-custom-prompt-hide] element or the footer is on screen, and its ×
 // dismisses it on every product page for the rest of the visit.
+//
+// The homepage reuses it as a "Book a discovery call" prompt (variant="call"), dismissed separately.
 import { contactHref } from '../data/site';
+import AdcBotIcon from './AdcBotIcon.astro';
+
+interface Props {
+  variant?: 'custom' | 'call';
+}
+const { variant = 'custom' } = Astro.props;
+const copy = {
+  custom: { title: 'Need something custom?', cta: 'Start a conversation →', key: 'custom-prompt-dismissed' },
+  call: { title: 'Ready to talk LumApps?', cta: 'Book a discovery call →', key: 'call-prompt-dismissed' },
+}[variant];
 ---
 
-<div class="cbp" data-show="false">
+<div class="cbp" data-show="false" data-key={copy.key}>
   <a class="cbp__link" href={contactHref}>
-    <span class="cbp__icon" aria-hidden="true">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#05006C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0 5 5l-8.4 8.4a2.1 2.1 0 0 1-3-3z"></path><path d="M14.7 6.3 17 4l3 3-2.3 2.3"></path></svg>
-    </span>
+    <span class="cbp__bot"><AdcBotIcon /></span>
     <span class="cbp__text">
-      <span class="cbp__title">Need something custom?</span>
-      <span class="cbp__cta">Start a conversation →</span>
+      <span class="cbp__title">{copy.title}</span>
+      <span class="cbp__cta">{copy.cta}</span>
     </span>
   </a>
   <button type="button" class="cbp__close" aria-label="Hide this message">×</button>
@@ -23,7 +33,7 @@ import { contactHref } from '../data/site';
 
 <script>
   const prompt = document.querySelector<HTMLElement>('.cbp')!;
-  const KEY = 'custom-prompt-dismissed';
+  const KEY = prompt.dataset.key!;
   let dismissed = false;
   try {
     dismissed = sessionStorage.getItem(KEY) === '1';
@@ -100,15 +110,8 @@ import { contactHref } from '../data/site';
     outline: 3px solid #32e0c4;
     outline-offset: 2px;
   }
-  .cbp__icon {
-    flex: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: #32e0c4;
+  .cbp__bot {
     display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .cbp__text {
     display: flex;
