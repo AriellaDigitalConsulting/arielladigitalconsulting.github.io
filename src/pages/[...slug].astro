@@ -8,7 +8,7 @@ export function getStaticPaths() {
   const files = import.meta.glob('../data/layouts/*.json', { eager: true });
   const handBuilt = new Set(['index', 'products', 'about', 'contact', 'page-reader', 'soccer', 'analytics', 'holiday-spirits-widget', 'org-chart', 'guess-word-widget', 'advanced-survey', 'follow-actions', 'admin-enhancements-widgets-bundle']);
   // These URLs redirect elsewhere (see `redirects` in astro.config.mjs), so no page is generated for them.
-  const redirected = new Set(['services', 'search-enhancements']);
+  const redirected = new Set(['services', 'search-enhancements', 'third-party-integrations']);
   return Object.values(files)
     .map((m: any) => m.default)
     .filter((l) => !handBuilt.has(l.slug) && !redirected.has(l.slug))

@@ -10,5 +10,6 @@ export default defineConfig({
     '/holiday-spirits-widget': '/holiday-spirits',
     '/search-enhancements': '/products',
     '/services': '/implementations',
+    '/third-party-integrations': '/integrations',
   },
 });

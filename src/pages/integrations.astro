@@ -1,0 +1,1017 @@
+---
+// Integrations by ADC services page ("Orbit" design, like Building MicroExperiences).
+// The design's nav and footer are replaced by the site-wide header and footer.
+// Featured integrations link to their product pages.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+const pillars = [
+  { tileBg: '#362dff', tileFg: '#fff', icon: '<path d="M3 10.5L12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/>', title: 'One front door', text: 'Fewer tabs, fewer logins, less hunting. Employees find what they need where they already are.' },
+  { tileBg: '#32E0C4', tileFg: '#05006c', icon: '<path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.5-.8 1.5-1.5 0-.9-.7-1.3-.7-2.2 0-.8.7-1.3 1.5-1.3H17a4 4 0 0 0 4-4c0-5-4-9-9-9z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/>', title: 'Native by design', text: 'Every integration looks and feels like LumApps, so new capabilities arrive without new learning curves.' },
+  { tileBg: '#FFD458', tileFg: '#05006c', icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>', title: 'Secure and governed', text: 'Data reaches the right people with the access controls your IT and security teams expect.' },
+  { tileBg: '#05006c', tileFg: '#fff', icon: '<path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/>', title: 'Built to grow with you', text: 'We support what we build, so your integrations keep pace as LumApps and your business evolve.' },
+];
+
+const more = [
+  { href: '/achievers', tag: 'RECOGNITION', title: 'Achievers', text: 'Rewards and recognition campaigns brought into LumApps for one unified employee experience.' },
+  { href: '/bunchball-gamification-integration', tag: 'GAMIFICATION', title: 'Bunchball (Nitro Studio)', text: 'Employees rewarded for LumApps-specific actions, turning participation into momentum.' },
+];
+
+const tools = ['Google Workspace', 'MicroApps & AI (RAG, Chatbots)', 'ETL Connectors (Fivetran)', 'Freshdesk', 'FieldPulse', 'Asana', 'BigQuery', 'Enterprise Search'];
+
+const proof = [
+  { big: '50+', label: 'LumApps extensions built by ADC' },
+  { mid: 'Second only to LumApps', label: 'in extensions on the LumApps Marketplace' },
+  { mid: 'LumApps Tech Partner', label: 'Certified to build on the platform' },
+  { big: '2017', label: 'Building in the LumApps ecosystem since' },
+];
+
+const icon = (paths: string, size = 26) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+const arrow = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+---
+
+<Base title="Integrations | Ariella Digital Consulting" description="Integrations by ADC: we connect the video, analytics, recognition and business tools your people rely on, so LumApps becomes the front door to work.">
+  <div class="ig">
+    <section class="ig__hero" data-custom-prompt-after>
+      <div class="ig__wrap ig__hero-grid">
+        <div class="ig__hero-copy">
+          <a class="ig__back" href="/implementations">← Back to Services</a>
+          <p class="ig__badge">INTEGRATION SERVICES</p>
+          <h1>One platform. <span><i>Every tool.</i></span></h1>
+          <p class="ig__lede">We extend LumApps so it becomes the place where work actually happens. ADC connects the video, analytics, recognition and business tools your people rely on, so every employee starts the day in one place.</p>
+          <div class="ig__hero-ctas">
+            <a class="ig__btn ig__btn--teal" href={contactHref}>Plan your integration <Fragment set:html={arrow} /></a>
+            <a class="ig__see" href="#featured">See our integrations</a>
+          </div>
+        </div>
+
+        <div class="ig__orbit">
+          <div class="ig__ring ig__ring--outer orb1" aria-hidden="true">
+            <span style="left:70px;top:66px;width:10px;height:10px;background:#fff"></span>
+            <span style="right:30px;bottom:140px;width:8px;height:8px;background:#32E0C4"></span>
+          </div>
+          <div class="ig__ring ig__ring--inner orb2" aria-hidden="true">
+            <span style="right:40px;top:30px;width:8px;height:8px;background:#fff"></span>
+            <span style="left:20px;bottom:70px;width:10px;height:10px;background:#fff"></span>
+          </div>
+          <div class="ig__core">
+            <svg width="130" height="108" viewBox="0 0 120 100" role="img" aria-label="ADC Bot"><rect x="0" y="30" width="14" height="40" rx="4" fill="#fff"></rect><rect x="106" y="30" width="14" height="40" rx="4" fill="#fff"></rect><rect x="12" y="6" width="96" height="88" rx="16" fill="#fff"></rect><rect x="26" y="20" width="68" height="60" rx="10" fill="#05006c"></rect><rect class="eye" x="42" y="38" width="6" height="12" rx="2" fill="#32E0C4"></rect><rect class="eye" x="72" y="38" width="6" height="12" rx="2" fill="#32E0C4"></rect><rect x="50" y="58" width="20" height="6" rx="3" fill="#32E0C4"></rect></svg>
+            <span>LUMAPPS</span>
+          </div>
+          <ul class="ig__pills" aria-label="Example integrations">
+            <li class="ig__pill ig__pill--1 bob">Kaltura Video</li>
+            <li class="ig__pill ig__pill--2 bob2">Looker</li>
+            <li class="ig__pill ig__pill--3 bob3">Achievers</li>
+            <li class="ig__pill ig__pill--4 bob">Bunchball</li>
+            <li class="ig__pill ig__pill--5 bob2">Google Workspace</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="ig__vision">
+      <div class="ig__wrap">
+        <p class="ig__eyebrow">OUR VISION</p>
+        <h2>Your employee experience platform should be the <span>front door</span> to everything your people do.</h2>
+        <p>LumApps is a powerful foundation. Its full value appears when it stops being one more tab and starts being the hub that connects your organization's tools, data and moments. That's the work we do.</p>
+      </div>
+    </section>
+
+    <section class="ig__pillars">
+      <div class="ig__wrap ig__pillar-grid">
+        {
+          pillars.map((p, i) => (
+            <div>
+              <div class="ig__pillar-top">
+                <span style={`background:${p.tileBg};color:${p.tileFg}`} set:html={icon(p.icon)} />
+                <span>{String(i + 1).padStart(2, '0')}</span>
+              </div>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="ig__featured" id="featured">
+      <div class="ig__wrap">
+        <div class="ig__featured-head">
+          <div>
+            <p class="ig__eyebrow ig__eyebrow--teal">3RD PARTY INTEGRATIONS</p>
+            <h2>Your tools, <i>inside</i> LumApps</h2>
+          </div>
+          <p>A few of the platforms we've brought into the LumApps experience for our customers.</p>
+        </div>
+        <div class="ig__big-grid">
+          <a class="ig__big ig__big--white" href="/kaltura">
+            <span class="ig__shot ig__shot--video" aria-hidden="true">
+              <span class="ig__live">LIVE</span>
+              <span class="ig__play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#05006c"><path d="M7 4v16l13-8z"></path></svg></span>
+              <span class="ig__dots"><span style="background:#362dff"></span><span style="background:#FFD458"></span><span style="background:#32E0C4"></span></span>
+              <span class="ig__progress"><span></span></span>
+            </span>
+            <span class="ig__tag">VIDEO</span>
+            <span class="ig__big-title">Kaltura Video</span>
+            <span class="ig__big-text">Town halls and leadership moments, streamed live where employees already gather. Live reactions, video on demand and viewing analytics, all inside LumApps.</span>
+            <span class="ig__more">Learn More <Fragment set:html={arrow} /></span>
+          </a>
+          <a class="ig__big ig__big--blue" href="/looker">
+            <span class="ig__shot ig__shot--dash" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <span class="ig__bars">
+                {[40, 65, 50, 85, 70, 95].map((h, i) => <span style={`height:${h}%;background:${['#d9d7ff', '#b9b6ff', '#d9d7ff', '#362dff', '#b9b6ff', '#05006c'][i]}`} />)}
+              </span>
+            </span>
+            <span class="ig__tag">ANALYTICS</span>
+            <span class="ig__big-title">Looker</span>
+            <span class="ig__big-text">Decisions made with the numbers in view. Secure Looker dashboards appear directly in LumApps, saving time and cost while keeping insight close to the conversation.</span>
+            <span class="ig__more">Learn More <Fragment set:html={arrow} /></span>
+          </a>
+        </div>
+        <div class="ig__small-grid">
+          {
+            more.map((m) => (
+              <a class="ig__small" href={m.href}>
+                <span class="ig__tag">{m.tag}</span>
+                <span class="ig__small-title">{m.title}</span>
+                <span class="ig__small-text">{m.text}</span>
+                <span class="ig__more">Learn More <Fragment set:html={arrow} /></span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="ig__also">
+      <div class="ig__wrap ig__also-row">
+        <div class="ig__also-copy">
+          <p class="ig__eyebrow">CUSTOM DEVELOPMENT</p>
+          <h2>If your teams use it, we can bring it in.</h2>
+          <p>Beyond our featured integrations, we've connected LumApps to a wide range of tools.</p>
+        </div>
+        <ul class="ig__chips">
+          {tools.map((t) => <li>{t}</li>)}
+          <li class="ig__chip--more"><a href="/products">and more…</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ig__proof">
+      <div class="ig__wrap">
+        <dl class="ig__proof-grid">
+          {
+            proof.map((p) => (
+              <div>
+                <dt class:list={[p.big ? 'ig__proof-big' : 'ig__proof-mid']}>{p.big ?? p.mid}</dt>
+                <dd>{p.label}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </section>
+
+    <section class="ig__cta" data-custom-prompt-hide>
+      <div class="ig__wrap">
+        <div class="ig__cta-box">
+          <div class="ig__cta-tab" aria-hidden="true"></div>
+          <div class="ig__cta-inner">
+            <h2>What should LumApps <span>connect to next?</span></h2>
+            <p>Tell us which tools your people live in. We'll show you how they could come together in LumApps.</p>
+            <a class="ig__btn ig__btn--teal ig__btn--lg" href={contactHref}>Book a free consultation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .ig {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .ig * {
+    box-sizing: border-box;
+  }
+  .ig h1,
+  .ig h2,
+  .ig h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .ig p,
+  .ig ul,
+  .ig dl,
+  .ig dd {
+    margin: 0;
+  }
+  .ig a:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .ig__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .ig__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 14px;
+    color: #362dff;
+  }
+  .ig__eyebrow--teal {
+    color: #32e0c4;
+  }
+  .ig__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 30px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease;
+  }
+  .ig__btn:hover {
+    transform: translateY(-2px);
+  }
+  .ig__btn--teal,
+  .ig__btn--teal:hover {
+    background: #32e0c4;
+    color: #05006c;
+  }
+  .ig__btn--lg {
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+  .ig__more {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+  }
+
+  /* Animations (off for reduced motion) */
+  .orb1 {
+    animation: spin 70s linear infinite;
+  }
+  .orb2 {
+    animation: spin 100s linear infinite reverse;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .bob {
+    animation: bob 3.4s ease-in-out infinite;
+  }
+  .bob2 {
+    animation: bob 3.4s ease-in-out 1.1s infinite;
+  }
+  .bob3 {
+    animation: bob 3.4s ease-in-out 2.2s infinite;
+  }
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  .eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: blink 4s infinite;
+  }
+  @keyframes blink {
+    0%,
+    92%,
+    100% {
+      transform: scaleY(1);
+    }
+    96% {
+      transform: scaleY(0.1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .orb1,
+    .orb2,
+    .bob,
+    .bob2,
+    .bob3,
+    .eye {
+      animation: none;
+    }
+  }
+
+  /* Hero */
+  .ig__hero {
+    position: relative;
+    overflow: hidden;
+    background: #05006c;
+    color: #fff;
+  }
+  .ig__hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 48px;
+    align-items: center;
+    padding-top: 64px;
+    padding-bottom: 88px;
+  }
+  .ig__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .ig__back {
+    align-self: flex-start;
+    color: #32e0c4;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .ig__back:hover {
+    color: #fff;
+  }
+  .ig__badge {
+    align-self: flex-start;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #32e0c4;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+  }
+  .ig h1 {
+    font-weight: 900;
+    font-size: clamp(52px, 7vw, 92px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+  .ig h1 span {
+    display: block;
+    color: #32e0c4;
+  }
+  .ig__lede {
+    max-width: 560px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .ig__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .ig__see {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .ig__see:hover {
+    color: #32e0c4;
+  }
+  .ig__orbit {
+    position: relative;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ig__ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+  }
+  .ig__ring span {
+    position: absolute;
+  }
+  .ig__ring--outer {
+    width: 520px;
+    height: 520px;
+    margin: -260px 0 0 -260px;
+  }
+  .ig__ring--inner {
+    width: 330px;
+    height: 330px;
+    margin: -165px 0 0 -165px;
+  }
+  .ig__core {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .ig__core span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+  }
+  .ig__pills {
+    padding: 0;
+    list-style: none;
+  }
+  .ig__pill {
+    position: absolute;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+  .ig__pill--1 {
+    left: 6%;
+    top: 40px;
+    background: #fff;
+    color: #05006c;
+  }
+  .ig__pill--2 {
+    right: 2%;
+    top: 110px;
+    background: #362dff;
+    color: #fff;
+  }
+  .ig__pill--3 {
+    left: 0;
+    bottom: 120px;
+    background: #ffd458;
+    color: #05006c;
+  }
+  .ig__pill--4 {
+    right: 6%;
+    bottom: 60px;
+    background: #32e0c4;
+    color: #05006c;
+  }
+  .ig__pill--5 {
+    left: 38%;
+    bottom: 0;
+    padding: 10px 18px;
+    background: #fff;
+    color: #05006c;
+    font-size: 14px;
+  }
+
+  /* Vision */
+  .ig__vision {
+    padding: 112px 0 48px;
+  }
+  .ig__vision .ig__wrap {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    text-align: center;
+  }
+  .ig__vision h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 4.6vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #05006c;
+  }
+  .ig__vision h2 span {
+    color: #362dff;
+  }
+  .ig__vision p:last-child {
+    max-width: 760px;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #33325a;
+  }
+
+  /* Pillars */
+  .ig__pillars {
+    padding: 48px 0 112px;
+  }
+  .ig__pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .ig__pillar-grid > div {
+    padding: 32px;
+    border-radius: 24px;
+    background: #f5f5ff;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .ig__pillar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ig__pillar-top > span:first-child {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ig__pillar-top > span:last-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    color: #d9d7ff;
+  }
+  .ig__pillar-grid h3 {
+    font-weight: 800;
+    font-size: 23px;
+    color: #05006c;
+  }
+  .ig__pillar-grid p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Featured */
+  .ig__featured {
+    padding: 120px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .ig__featured .ig__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .ig__featured-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .ig__featured-head > div {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ig__featured-head h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .ig__featured-head h2 i {
+    color: #32e0c4;
+  }
+  .ig__featured-head > p {
+    max-width: 380px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .ig__big-grid,
+  .ig__small-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+  }
+  .ig__big {
+    padding: 36px;
+    border-radius: 28px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: transform 0.15s ease;
+  }
+  .ig__big:hover,
+  .ig__small:hover {
+    transform: translateY(-3px);
+  }
+  .ig__big--white,
+  .ig__big--white:hover {
+    background: #fff;
+    color: #000;
+  }
+  .ig__big--white .ig__tag,
+  .ig__big--white .ig__more {
+    color: #362dff;
+  }
+  .ig__big--blue,
+  .ig__big--blue:hover {
+    background: #362dff;
+    color: #eceaff;
+  }
+  .ig__big--blue .ig__tag,
+  .ig__big--blue .ig__more {
+    color: #32e0c4;
+  }
+  .ig__tag {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  .ig__big-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 34px;
+    line-height: 1.1;
+  }
+  .ig__big--white .ig__big-title {
+    color: #05006c;
+  }
+  .ig__big--blue .ig__big-title {
+    color: #fff;
+  }
+  .ig__big-text {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .ig__shot {
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ig__shot--video {
+    background: #05006c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ig__live {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #ffd458;
+    color: #05006c;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  .ig__play {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #32e0c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ig__dots {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    display: flex;
+    gap: 6px;
+  }
+  .ig__dots span {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+  .ig__progress {
+    position: absolute;
+    left: 14px;
+    right: 110px;
+    bottom: 24px;
+    height: 4px;
+    border-radius: 2px;
+    background: #1c1690;
+  }
+  .ig__progress span {
+    display: block;
+    width: 40%;
+    height: 4px;
+    border-radius: 2px;
+    background: #32e0c4;
+  }
+  .ig__shot--dash {
+    padding: 18px;
+    background: #fff;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+  }
+  .ig__shot--dash > span:not(.ig__bars) {
+    height: 34px;
+    border-radius: 8px;
+    background: #f5f5ff;
+  }
+  .ig__bars {
+    grid-column: span 3;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 6px 4px 0;
+    border-bottom: 2px solid #d9d7ff;
+  }
+  .ig__bars span {
+    flex: 1;
+    border-radius: 4px 4px 0 0;
+  }
+  .ig__small {
+    padding: 32px;
+    border: 2px solid #362dff;
+    border-radius: 24px;
+    color: #e4e3ff;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .ig__small:hover {
+    border-color: #32e0c4;
+    color: #e4e3ff;
+  }
+  .ig__small .ig__tag {
+    color: #ffd458;
+  }
+  .ig__small-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: #fff;
+  }
+  .ig__small-text {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .ig__small .ig__more {
+    color: #32e0c4;
+  }
+
+  /* Also integrated */
+  .ig__also {
+    padding: 112px 0;
+    background: #f7f7fc;
+  }
+  .ig__also-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+    align-items: center;
+  }
+  .ig__also-copy {
+    flex: 1 1 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .ig__also-copy h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #05006c;
+  }
+  .ig__also-copy p:last-child {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #33325a;
+  }
+  .ig__chips {
+    flex: 999 1 560px;
+    min-width: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ig__chips li {
+    padding: 14px 22px;
+    border: 2px solid #e4e3ff;
+    border-radius: 999px;
+    background: #fff;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .ig__chips .ig__chip--more {
+    padding: 0;
+    border-color: #05006c;
+    background: #05006c;
+  }
+  .ig__chip--more a {
+    display: block;
+    padding: 14px 22px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .ig__chip--more a:hover {
+    color: #32e0c4;
+  }
+
+  /* Proof */
+  .ig__proof {
+    padding: 96px 0;
+  }
+  .ig__proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    border: 2px solid #05006c;
+    border-radius: 28px;
+    overflow: hidden;
+  }
+  .ig__proof-grid > div {
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 1px 0 0 #d9d7ff, 0 1px 0 #d9d7ff;
+  }
+  .ig__proof-big,
+  .ig__proof-mid {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+  }
+  .ig__proof-big {
+    font-size: 56px;
+    line-height: 1;
+    color: #362dff;
+  }
+  .ig__proof-mid {
+    font-size: 32px;
+    line-height: 1.1;
+    color: #05006c;
+  }
+  .ig__proof-grid dd {
+    font-size: 16px;
+    color: #33325a;
+  }
+
+  /* CTA */
+  .ig__cta {
+    padding-bottom: 112px;
+  }
+  .ig__cta-box {
+    position: relative;
+    padding-top: 26px;
+  }
+  .ig__cta-tab {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 28px;
+    border-radius: 6px 6px 0 0;
+    background: #32e0c4;
+  }
+  .ig__cta-inner {
+    padding: 72px 48px;
+    border: 2px solid #32e0c4;
+    border-radius: 0 20px 20px 20px;
+    background-color: #05006c;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 96px 96px;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .ig__cta-inner h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 4.5vw, 56px);
+  }
+  .ig__cta-inner h2 span {
+    color: #32e0c4;
+  }
+  .ig__cta-inner p {
+    max-width: 640px;
+    font-size: 19px;
+    color: #e4e3ff;
+  }
+
+  @media (max-width: 760px) {
+    .ig__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      padding-top: 40px;
+      padding-bottom: 56px;
+    }
+    .ig__lede {
+      font-size: 17px;
+    }
+    .ig__orbit {
+      min-height: 420px;
+    }
+    .ig__ring--outer {
+      width: 340px;
+      height: 340px;
+      margin: -170px 0 0 -170px;
+    }
+    .ig__ring--inner {
+      width: 220px;
+      height: 220px;
+      margin: -110px 0 0 -110px;
+    }
+    .ig__pill {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+    .ig__pill--1 {
+      left: 0;
+      top: 20px;
+    }
+    .ig__pill--2 {
+      right: 0;
+      top: 90px;
+    }
+    .ig__pill--3 {
+      left: 0;
+      bottom: 90px;
+    }
+    .ig__pill--4 {
+      right: 0;
+      bottom: 40px;
+    }
+    .ig__pill--5 {
+      left: 50%;
+      bottom: 0;
+      margin-left: -76px;
+    }
+    .ig__vision {
+      padding: 72px 0 32px;
+    }
+    .ig__pillars {
+      padding: 32px 0 72px;
+    }
+    .ig__featured,
+    .ig__also {
+      padding: 72px 0;
+    }
+    .ig__featured .ig__wrap {
+      gap: 32px;
+    }
+    .ig__big-grid,
+    .ig__small-grid,
+    .ig__pillar-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .ig__big {
+      padding: 24px;
+    }
+    .ig__big-title {
+      font-size: 28px;
+    }
+    .ig__small {
+      padding: 24px;
+    }
+    .ig__also-row {
+      gap: 32px;
+    }
+    .ig__chips li,
+    .ig__chip--more a {
+      padding: 10px 16px;
+      font-size: 15px;
+    }
+    .ig__chips .ig__chip--more {
+      padding: 0;
+    }
+    .ig__proof {
+      padding: 64px 0;
+    }
+    .ig__proof-grid > div {
+      padding: 28px 24px;
+    }
+    .ig__cta {
+      padding-bottom: 72px;
+    }
+    .ig__cta-inner {
+      padding: 56px 24px;
+    }
+  }
+</style>
