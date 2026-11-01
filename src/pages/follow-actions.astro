@@ -227,10 +227,6 @@ const plus = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke
         <p>Get in touch to learn more about this bundle and to see a demo</p>
         <div><a class="fa__btn fa__btn--yellow fa__btn--lg" href={contactHref}>Contact us</a></div>
       </div>
-      <div class="fa__cta-yellow">
-        <p>Check out our Docs site for a listing of all our widgets:</p>
-        <a href="https://docs.adc.dev/docs">docs.adc.dev/docs</a>
-      </div>
     </section>
   </div>
 </Base>
@@ -864,7 +860,6 @@ const plus = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke
   /* Got questions */
   .fa__cta {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
   .fa__cta > div {
     padding: 88px 48px;
@@ -874,6 +869,8 @@ const plus = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke
     justify-content: center;
   }
   .fa__cta-blue {
+    align-items: center;
+    text-align: center;
     background: #362dff;
     color: #fff;
   }
@@ -889,27 +886,6 @@ const plus = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke
   }
   .fa__cta-blue > div {
     margin-top: 8px;
-  }
-  .fa__cta-yellow {
-    background: #ffd458;
-    color: #05006c;
-  }
-  .fa__cta-yellow p {
-    max-width: 460px;
-    font-family: 'Archivo', sans-serif;
-    font-weight: 800;
-    font-size: 28px;
-    line-height: 1.3;
-  }
-  .fa__cta-yellow a {
-    color: #05006c;
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: clamp(28px, 3.4vw, 44px);
-    overflow-wrap: anywhere;
-  }
-  .fa__cta-yellow a:hover {
-    color: #362dff;
   }
 
   /* Hero follow buttons */
@@ -1138,8 +1114,5 @@ const plus = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke
     .fa__cta > div {
       padding: 56px 24px;
     }
-    .fa__cta-yellow p {
-      font-size: 22px;
     }
-  }
 </style>

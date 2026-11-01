@@ -29,7 +29,7 @@ const filterAttrs = filterable
   ? {
       'data-cats': ext.c.join(' '),
       'data-pop': ext.pop,
-      'data-text': [ext.n, ext.d, ...ext.c.map((id) => cats[id].label), ext.pop ? 'most popular' : ''].join(' ').toLowerCase(),
+      'data-text': [ext.n, ext.d, ...ext.c.map((id) => cats[id].label), ext.pop ? 'most popular' : '', ext.bundle ? 'bundle' : ''].join(' ').toLowerCase(),
     }
   : {};
 const tile = `background:${primary.chip};color:${primary.ink}`;
@@ -50,6 +50,7 @@ const tile = `background:${primary.chip};color:${primary.ink}`;
         <span class="xc__body">
           <span class="xc__title">
             <span class="xc__name">{ext.n}</span>
+            {ext.bundle && <span class="xc__bundle">BUNDLE</span>}
             {ext.pop && <span class="xc__pop">POPULAR</span>}
           </span>
           <span class="xc__desc">{ext.d}</span>
@@ -167,6 +168,14 @@ const tile = `background:${primary.chip};color:${primary.ink}`;
     padding: 2px 8px;
     border-radius: 6px;
     background: #ffd458;
+    color: #05006c;
+  }
+  .xc__bundle {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: #32e0c4;
     color: #05006c;
   }
   .xc__desc {

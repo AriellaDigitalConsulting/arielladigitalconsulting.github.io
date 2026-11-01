@@ -1,5 +1,5 @@
 // ADC extension library for the Products page, from the ADC Extensions Listing.
-// c = categories, primary first; pop = Most Popular rank (1 shows first); href = the sheet's External URL (adc.dev links kept site-relative).
+// c = categories, primary first; pop = Most Popular rank (1 shows first); bundle = a multi-widget bundle; href = the sheet's External URL (adc.dev links kept site-relative).
 // Items with no URL render as non-link cards marked "Page coming soon...".
 
 const DOCS = 'https://docs.adc.dev/docs/ls/content/';
@@ -19,6 +19,7 @@ export interface Extension {
   d: string;
   href?: string;
   pop?: number;
+  bundle?: boolean;
 }
 
 export const categories: Category[] = [
@@ -60,6 +61,7 @@ export const extensions: Extension[] = [
   { n: 'Enhanced Search Filter Widget', c: ['se'], d: 'An upgrade to LumApps’ out-of-the-box content filter.', href: DOCS + '6544390651641856/enhanced-search-filter-widget' },
   { n: 'Estimated Reading Time', c: ['cn'], pop: 4, d: 'Automatically calculates and displays how long a page takes to read.', href: '/estimated-reading-time' },
   { n: 'Fireworks', c: ['sf'], d: 'Add some flair to a homepage or landing page.', href: '/fireworks' },
+  { n: 'Follow Actions Bundle', c: ['cs'], bundle: true, d: 'Follow People, Spaces, Communities and Interests from one guided page.', href: '/follow-actions' },
   { n: 'Follow Interests', c: ['cs'], d: 'Enhances the native LumApps “follow interest” experience.', href: '/follow-interests' },
   { n: 'Follow People', c: ['cs'], d: 'Enhances the native LumApps “follow user” experience.', href: '/follow-actions' },
   { n: 'Follow Space or Community', c: ['cs'], d: 'Follow Spaces and Communities from any page.', href: '/follow-actions' },
