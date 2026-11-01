@@ -3,6 +3,8 @@
 // Items with no URL render as non-link cards marked "Page coming soon...".
 
 const DOCS = 'https://docs.adc.dev/docs/ls/content/';
+// Toolbox widgets without a page of their own link to the ADC Toolbox bundle page.
+const TOOLBOX = '/admin-enhancements-widgets-bundle';
 
 export type CatId = 'eg' | 'tb' | 'cn' | 'cs' | 'se' | 'ti' | 'sf' | 'ut' | 'ac' | 'ma';
 
@@ -37,7 +39,7 @@ export const categories: Category[] = [
 
 export const extensions: Extension[] = [
   { n: 'Achievers', c: ['eg', 'ti'], d: 'Employee recognition, connected to LumApps.', href: '/achievers' },
-  { n: 'License Management', c: ['tb'], d: 'Manage ADC widget licenses in one place.' },
+  { n: 'License Management', c: ['tb'], d: 'Manage ADC widget licenses in one place.', href: TOOLBOX },
   { n: 'Platform Style Manager', c: ['tb'], pop: 3, d: 'Manage your platform’s styles from one place.', href: '/platform-style' },
   { n: 'Advanced Survey', c: ['eg'], d: 'A powerful enhancement over the default LumApps survey.', href: '/advanced-survey' },
   { n: 'Table of Contents', c: ['cn'], d: 'Easy navigation through long wiki and knowledge base pages.', href: '/table-of-contents' },
@@ -47,13 +49,13 @@ export const extensions: Extension[] = [
   { n: 'Browser Tab Post Notifications', c: ['cs'], d: 'Shows a badge in the browser tab when new posts arrive.', href: DOCS + '4712358591070208/browser-tab-notifications-widget' },
   { n: 'Bunchball Leaderboard Widget', c: ['eg', 'ti'], d: 'Display one or multiple Bunchball leaderboards on any page.', href: '/bunchball-gamification-integration' },
   { n: 'Bunchball Profile Widget', c: ['eg', 'ti'], d: 'Shows each user’s Bunchball gamification profile.', href: '/bunchball-gamification-integration' },
-  { n: 'Community Homepage Layout Mover', c: ['tb'], d: 'Move layouts between community homepages.' },
+  { n: 'Community Homepage Layout Mover', c: ['tb'], d: 'Move layouts between community homepages.', href: TOOLBOX },
   { n: 'Community Posts in Real Time', c: ['cs'], d: 'A manual or dynamic selection of community posts that updates live.', href: '/town-hall' },
   { n: 'Confetti', c: ['sf'], d: 'Celebrate team or org-wide milestones with a burst of confetti.', href: '/confetti' },
   { n: 'Content Copier Tool', c: ['tb'], d: 'Efficiently duplicate LumApps content.', href: '/content-copier' },
   { n: 'Content Page Layout Mover', c: ['tb'], d: 'Streamlines moving layouts between content pages.', href: '/content-layout-mover' },
   { n: 'Content Summary', c: ['cn'], d: 'Gives readers a short summary of long pages, so they get the gist at a glance.', href: '/wiki' },
-  { n: 'Debug Widget', c: ['tb'], d: 'Inspect and troubleshoot widgets while you build.' },
+  { n: 'Debug Widget', c: ['tb'], d: 'Inspect and troubleshoot widgets while you build.', href: TOOLBOX },
   { n: 'Display a QR Code', c: ['ma'], d: 'Show a QR code on any page.' },
   { n: 'Enhanced Search Filter Widget', c: ['se'], d: 'An upgrade to LumApps’ out-of-the-box content filter.', href: DOCS + '6544390651641856/enhanced-search-filter-widget' },
   { n: 'Estimated Reading Time', c: ['cn'], pop: 4, d: 'Automatically calculates and displays how long a page takes to read.', href: '/estimated-reading-time' },

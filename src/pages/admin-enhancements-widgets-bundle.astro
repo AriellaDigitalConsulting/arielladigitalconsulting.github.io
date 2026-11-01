@@ -7,6 +7,8 @@ import { contactHref } from '../data/site';
 import { extensions } from '../data/extensions';
 
 const tools = extensions.filter((e) => e.c.includes('tb') && !e.bundle).sort((a, b) => a.n.localeCompare(b.n));
+// Tools whose Products card points back here have no page of their own, so their cards don't link.
+const ownPage = (href?: string) => (href && href !== Astro.url.pathname.replace(/\/$/, '') ? href : undefined);
 
 const why = [
   { title: 'Less manual overhead', text: 'Spend far less time managing and maintaining groups, metadata, media and site architecture by hand.' },
@@ -151,16 +153,17 @@ const toolIcons = [
         <ul class="tb__tools">
           {
             tools.map((t) => {
-              const Tag = t.href ? 'a' : 'div';
+              const href = ownPage(t.href);
+              const Tag = href ? 'a' : 'div';
               return (
                 <li>
-                  <Tag class="tb__tool" href={t.href}>
+                  <Tag class="tb__tool" href={href}>
                     <span class="tb__tool-mark" set:html={adcMark} />
                     <span class="tb__tool-body">
                       <span class="tb__tool-name">{t.n}</span>
                       <span class="tb__tool-type">WIDGET</span>
                       <span class="tb__tool-desc">{t.d}</span>
-                      {t.href ? <span class="tb__more">Learn More →</span> : <span class="tb__tool-soon">Page coming soon</span>}
+                      {href ? <span class="tb__more">Learn More →</span> : <span class="tb__tool-soon">Included in this bundle</span>}
                     </span>
                   </Tag>
                 </li>
