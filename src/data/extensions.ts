@@ -3,7 +3,7 @@
 // Items with no URL render as non-link cards marked "Page coming soon...".
 
 const DOCS = 'https://docs.adc.dev/docs/ls/content/';
-// Toolbox widgets without a page of their own link to the ADC Toolbox bundle page.
+// Toolbox widgets without a page of their own on adc.dev link to the ADC Toolbox bundle page.
 const TOOLBOX = '/admin-enhancements-widgets-bundle';
 
 export type CatId = 'eg' | 'tb' | 'cn' | 'cs' | 'se' | 'ti' | 'sf' | 'ut' | 'ac' | 'ma';
@@ -65,14 +65,14 @@ export const extensions: Extension[] = [
   { n: 'Follow People', c: ['cs'], d: 'Enhances the native LumApps “follow user” experience.', href: '/follow-actions' },
   { n: 'Follow Space or Community', c: ['cs'], d: 'Follow Spaces and Communities from any page.', href: '/follow-actions' },
   { n: 'Google Knowledge Graph', c: ['se'], d: 'Search the Google Knowledge Graph without leaving LumApps.', href: DOCS + '5620597709078528/google-knowledge-graph-search-extension' },
-  { n: 'Groups Lookup & Management', c: ['tb'], d: 'Find groups and add or update members without leaving the page.', href: DOCS + '5875158197731328/groups-lookup-and-management-widget' },
+  { n: 'Groups Lookup & Management', c: ['tb'], d: 'Find groups and add or update members without leaving the page.', href: TOOLBOX },
   { n: 'Guess Word', c: ['eg', 'sf'], d: 'A daily word game that brings teams together.', href: '/guess-word-widget' },
   { n: 'Holiday Spirit', c: ['sf'], d: 'Make every holiday memorable across your digital workplace.', href: '/holiday-spirits' },
   { n: 'Kaltura', c: ['ti'], d: 'Bring Kaltura live streams and on-demand video into LumApps.', href: '/kaltura' },
   { n: 'Last Modified Date & Time', c: ['cn'], d: 'Shows readers when a page was last updated.', href: DOCS + '5472087093280768/last-modified-date-widget' },
   { n: 'Looker Embed', c: ['ti'], d: 'View Looker dashboards directly inside LumApps.', href: '/looker' },
-  { n: 'Media Mover', c: ['tb'], d: 'Search for any media file and move it where it belongs.', href: DOCS + '6739543057235968/media-mover-widget' },
-  { n: 'Metadata Lookup & Edit', c: ['tb'], d: 'Lets site admins quickly find and edit metadata.', href: DOCS + '5978440819802112/metadata-edit-and-lookup' },
+  { n: 'Media Mover', c: ['tb'], d: 'Search for any media file and move it where it belongs.', href: TOOLBOX },
+  { n: 'Metadata Lookup & Edit', c: ['tb'], d: 'Lets site admins quickly find and edit metadata.', href: TOOLBOX },
   { n: 'Metadata Mover', c: ['tb'], d: 'Reorganize your metadata structure.', href: '/metadata-mover' },
   { n: 'Organization Chart', c: ['ut', 'cn'], pop: 5, d: 'Displays your reporting structure as an org chart.', href: '/org-chart' },
   { n: 'Page Reader (Text-to-speech)', c: ['ac', 'cn'], pop: 1, d: 'Lets employees listen to LumApps content anytime, anywhere.', href: '/page-reader' },
