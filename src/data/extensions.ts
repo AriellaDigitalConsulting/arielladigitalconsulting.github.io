@@ -4,7 +4,7 @@
 
 const DOCS = 'https://docs.adc.dev/docs/ls/content/';
 
-export type CatId = 'eg' | 'tb' | 'cn' | 'cs' | 'se' | 'ti' | 'sf' | 'ut' | 'pd' | 'ac' | 'dt' | 'ma' | 'ai';
+export type CatId = 'eg' | 'tb' | 'cn' | 'cs' | 'se' | 'ti' | 'sf' | 'ut' | 'ac' | 'ma';
 
 export interface Category {
   id: CatId;
@@ -31,11 +31,8 @@ export const categories: Category[] = [
   { id: 'ti', label: '3rd Party Integrations', chip: '#32E0C4', ink: '#05006C' },
   { id: 'sf', label: 'Seasonal & Fun', chip: '#FFD458', ink: '#05006C' },
   { id: 'ut', label: 'Utilities', chip: '#8F89FF', ink: '#05006C' },
-  { id: 'pd', label: 'People & Directory', chip: '#FFFFFF', ink: '#05006C' },
   { id: 'ac', label: 'Accessibility', chip: '#32E0C4', ink: '#05006C' },
-  { id: 'dt', label: 'Developer & Testing', chip: '#362DFF', ink: '#FFFFFF' },
-  { id: 'ma', label: 'MicroApps', chip: '#32E0C4', ink: '#05006C' },
-  { id: 'ai', label: 'AskAI', chip: '#8F89FF', ink: '#05006C' },
+  { id: 'ma', label: 'AskAI & MicroApps', chip: '#32E0C4', ink: '#05006C' },
 ];
 
 export const extensions: Extension[] = [
@@ -56,7 +53,7 @@ export const extensions: Extension[] = [
   { n: 'Content Copier Tool', c: ['tb'], d: 'Efficiently duplicate LumApps content.', href: '/content-copier' },
   { n: 'Content Page Layout Mover', c: ['tb'], d: 'Streamlines moving layouts between content pages.', href: '/content-layout-mover' },
   { n: 'Content Summary', c: ['cn'], d: 'Gives readers a short summary of long pages, so they get the gist at a glance.', href: '/wiki' },
-  { n: 'Debug Widget', c: ['dt'], d: 'Inspect and troubleshoot widgets while you build.' },
+  { n: 'Debug Widget', c: ['tb'], d: 'Inspect and troubleshoot widgets while you build.' },
   { n: 'Display a QR Code', c: ['ma'], d: 'Show a QR code on any page.' },
   { n: 'Enhanced Search Filter Widget', c: ['se'], d: 'An upgrade to LumApps’ out-of-the-box content filter.', href: DOCS + '6544390651641856/enhanced-search-filter-widget' },
   { n: 'Estimated Reading Time', c: ['cn'], pop: 4, d: 'Automatically calculates and displays how long a page takes to read.', href: '/estimated-reading-time' },
@@ -75,7 +72,7 @@ export const extensions: Extension[] = [
   { n: 'Media Mover', c: ['tb'], d: 'Search for any media file and move it where it belongs.', href: DOCS + '6739543057235968/media-mover-widget' },
   { n: 'Metadata Lookup & Edit', c: ['tb'], d: 'Lets site admins quickly find and edit metadata.', href: DOCS + '5978440819802112/metadata-edit-and-lookup' },
   { n: 'Metadata Mover', c: ['tb'], d: 'Reorganize your metadata structure.', href: '/metadata-mover' },
-  { n: 'Organization Chart', c: ['pd', 'cn'], pop: 5, d: 'Displays your reporting structure as an org chart.', href: '/org-chart' },
+  { n: 'Organization Chart', c: ['ut', 'cn'], pop: 5, d: 'Displays your reporting structure as an org chart.', href: '/org-chart' },
   { n: 'Page Reader (Text-to-speech)', c: ['ac', 'cn'], pop: 1, d: 'Lets employees listen to LumApps content anytime, anywhere.', href: '/page-reader' },
   { n: 'Quick Post', c: ['cs'], d: 'Post to any Space or Community in one click.', href: '/town-hall' },
   { n: 'Search Community Posts in Real Time', c: ['se', 'ti'], d: 'Search community posts as they’re published.' },
@@ -86,7 +83,7 @@ export const extensions: Extension[] = [
   { n: 'Unanswered Questions', c: ['cs'], d: 'Shows how many community questions still need an answer.', href: '/qa-support' },
   { n: 'Zoom Rooms Control Panel', c: ['ti'], d: 'Control Zoom Rooms from inside LumApps.' },
   { n: 'Coveo Search', c: ['se', 'ti'], d: 'Coveo-powered search inside LumApps.', href: '/coveo' },
-  { n: 'LumApps DataLake MCP', c: ['ma', 'ai'], d: 'Ask AskAI questions about your LumApps DataLake.' },
+  { n: 'LumApps DataLake MCP', c: ['ma'], d: 'Ask AskAI questions about your LumApps DataLake.' },
   { n: 'Query the LumApps Datalake', c: ['ma'], d: 'Run queries against your LumApps DataLake from a MicroApp.' },
   { n: 'Shift Swapper MicroApp', c: ['ma'], d: 'Lets employees request and swap shifts inside LumApps.' },
   { n: 'Import RAG', c: ['ma'], d: 'Import content into a RAG source for AI-powered answers.' },
