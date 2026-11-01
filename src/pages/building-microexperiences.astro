@@ -1,0 +1,1147 @@
+---
+// Building MicroExperiences: ADC's LumApps MicroApps services page ("Orbit" design).
+// The design's nav and footer are replaced by the site-wide header and footer; its architecture
+// diagram placeholder is left out until there's a real diagram to show.
+import Base from '../layouts/Base.astro';
+import { contactHref } from '../data/site';
+
+const REPLAY = '/news/replay-adc-live-presents-building-microexperiences-with-lumapps-microapps';
+// YouTube ID of the MicroApps snippet from ADC Live! Without one, the reel shows a "coming soon" placeholder.
+const SNIPPET_YOUTUBE_ID = '63NXjHpokv8';
+
+const ticker = ['Strategy', 'Connector setup', 'MCP integration', 'Adaptive Cards design', 'Deployment', 'Ongoing maintenance'];
+
+const builds = [
+  { tileBg: '#362dff', tileFg: '#fff', icon: '<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5L6.5 17M12 11.5l5.5 5.5"/>', title: 'Connect to any MCP', text: 'We connect your LumApps MicroApps to any MCP (Model Context Protocol) server in your organization, then set up and test the connectors.' },
+  { tileBg: '#32E0C4', tileFg: '#05006c', icon: '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>', title: 'Automate everyday tasks', text: 'We map multi-step requests, like swapping a shift, into guided MicroApp flows and configure them in your LumApps environment.' },
+  { tileBg: '#05006c', tileFg: '#fff', icon: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16v4M17 18h4"/>', title: 'Leverage AskAI', text: 'We expose AskAI features through MicroApps where people need answers, such as querying the LumApps DataLake in plain language.' },
+];
+
+const offering = [
+  { tone: 'white', icon: '<path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/>', title: 'Creating & Executing Connectors' },
+  { tone: 'blue', icon: '<rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="15" width="7" height="6" rx="1.5"/><path d="M6.5 9v4a2 2 0 0 0 2 2H14"/>', title: 'MicroApp Architecture Flow Diagram' },
+  { tone: 'blue', icon: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/>', title: 'MicroApp Adaptive Cards Design' },
+  { tone: 'white', icon: '<path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 8a4 4 0 0 1 0 8"/><path d="M12 12v9M9 15l3-3 3 3"/>', title: 'Deploy the MicroApp into Your Environment' },
+  { tone: 'white', icon: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16v4M17 18h4"/>', title: 'Exposing New AskAI Features via MicroApps' },
+  { tone: 'blue', icon: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M5.6 5.6l3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/>', title: 'White Glove Post-Launch Support & Maintenance' },
+];
+
+const pkg = ['Setup of three (3) MicroApps', 'Strategy Consultation', 'Engineering Services', 'Starter Training', 'Documentation'];
+
+const related = [
+  { href: '/implementations', icon: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>', title: 'LumApps Implementations.', text: 'Nearly nine years of LumApps deployments, from first launch to platform-wide redesigns.' },
+  { href: '/analytics', icon: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>', title: 'LumApps Analytics.', text: 'Measure what your MicroExperiences change, with dashboards built on your LumApps data.' },
+];
+
+const icon = (paths: string, size = 26) =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+const sparkle = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#362dff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>';
+const arrow = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+---
+
+<Base title="Building MicroExperiences | Ariella Digital Consulting" description="MicroApps services by ADC: we plan, set up, deploy and maintain LumApps MicroApps, from MCP connectors to AskAI.">
+  <div class="mx">
+    <section class="mx__hero" data-custom-prompt-after>
+      <div class="mx__wrap mx__hero-grid">
+        <div class="mx__hero-copy">
+          <a class="mx__back" href="/implementations">← Back to Services</a>
+          <p class="mx__badge">MICROEXPERIENCES BY ADC</p>
+          <h1>MicroApps Services <span>by <i>ADC.</i></span></h1>
+          <p class="mx__lede">LumApps MicroApps can bring transmedia-like experiences into your Employee Experience. ADC helps you plan, set up, deploy and maintain them, so your team gets the value without the engineering lift.</p>
+          <div class="mx__hero-ctas">
+            <a class="mx__btn mx__btn--teal" href={contactHref}>Book a Free Consultation <Fragment set:html={arrow} /></a>
+            <a class="mx__play-link" href="#reel">
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="#32E0C4" aria-hidden="true"><path d="M7 4v16l13-8z"></path></svg></span>
+              See our work in action
+            </a>
+          </div>
+        </div>
+
+        <div class="mx__orbit">
+          <div class="mx__ring mx__ring--outer orb1" aria-hidden="true">
+            <span style="left:70px;top:66px;width:10px;height:10px;background:#fff"></span>
+            <span style="right:30px;bottom:140px;width:8px;height:8px;background:#32E0C4"></span>
+          </div>
+          <div class="mx__ring mx__ring--inner orb2" aria-hidden="true">
+            <span style="right:40px;top:30px;width:8px;height:8px;background:#fff"></span>
+            <span style="left:20px;bottom:70px;width:10px;height:10px;background:#fff"></span>
+          </div>
+          <svg class="mx__bot" width="150" height="125" viewBox="0 0 120 100" role="img" aria-label="ADC Bot"><rect x="0" y="30" width="14" height="40" rx="4" fill="#fff"></rect><rect x="106" y="30" width="14" height="40" rx="4" fill="#fff"></rect><rect x="12" y="6" width="96" height="88" rx="16" fill="#fff"></rect><rect x="26" y="20" width="68" height="60" rx="10" fill="#05006c"></rect><rect class="eye" x="42" y="38" width="6" height="12" rx="2" fill="#32E0C4"></rect><rect class="eye" x="72" y="38" width="6" height="12" rx="2" fill="#32E0C4"></rect><rect x="50" y="58" width="20" height="6" rx="3" fill="#32E0C4"></rect></svg>
+
+          <div class="mx__card mx__card--shift bob" aria-hidden="true">
+            <span class="mx__card-eyebrow">EXAMPLE BUILD · SHIFT SWAPPER</span>
+            <span class="mx__card-title">Step 1 — Select a Shift</span>
+            <span class="mx__card-text">Hi Misha! Let's start by selecting the shift you'd like to swap.</span>
+            <span class="mx__card-select">Please choose <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span>
+            <span class="mx__card-btn">Next</span>
+          </div>
+          <div class="mx__card mx__card--ask bob2" aria-hidden="true">
+            <span class="mx__card-title mx__card-title--sm"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#32E0C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path><path d="M19 16v4M17 18h4"></path></svg>AskAI · LumApps DataLake</span>
+            <span class="mx__card-text">Ask a question about the LumApps DataLake</span>
+            <span class="mx__card-input">Type your question here!</span>
+            <span class="mx__card-btn mx__card-btn--teal">Ask!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mx__ticker" aria-hidden="true">
+      <div class="mq">
+        {[...ticker, ...ticker].map((t) => <span>{t}<Fragment set:html={sparkle} /></span>)}
+      </div>
+    </div>
+
+    <section class="mx__build">
+      <div class="mx__wrap">
+        <div class="mx__heading">
+          <p class="mx__eyebrow">WHERE WE HELP</p>
+          <h2>What we help you build</h2>
+        </div>
+        <div class="mx__build-grid">
+          {
+            builds.map((b, i) => (
+              <div>
+                <div class="mx__build-top">
+                  <span style={`background:${b.tileBg};color:${b.tileFg}`} set:html={icon(b.icon)} />
+                  <span>{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <h3>{b.title}</h3>
+                <p>{b.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="mx__reel" id="reel">
+      <div class="mx__wrap mx__reel-row">
+        <div class="mx__video">
+          {
+            SNIPPET_YOUTUBE_ID ? (
+              <iframe src={`https://www.youtube-nocookie.com/embed/${SNIPPET_YOUTUBE_ID}`} title="MicroApps walkthrough from ADC Live!" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+            ) : (
+              <div class="mx__video-soon">
+                <span class="mx__video-ring mx__video-ring--lg" aria-hidden="true" />
+                <span class="mx__video-ring" aria-hidden="true" />
+                <span class="mx__video-play" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="#05006c"><path d="M7 4v16l13-8z" /></svg></span>
+                <span class="mx__video-note">Video coming soon</span>
+              </div>
+            )
+          }
+        </div>
+        <div class="mx__reel-copy">
+          <p class="mx__eyebrow">CHECK THIS OUT</p>
+          <h2>Our Work<br />in Action</h2>
+          <div class="mx__bar" aria-hidden="true"></div>
+          <p>A snippet from our ADC Live! deep dive with ADC Technical Director Ivo Bellin Salarin: how LumApps MicroApps are built, shared, and wired into AskAI, live in a LumApps environment.</p>
+          <a class="mx__article" href={REPLAY}>
+            <span class="mx__article-tag">ADC LIVE! REPLAY</span>
+            <span class="mx__article-title">Building “MicroExperiences” with LumApps’ MicroApps</span>
+            <span class="mx__more">Read the recap &amp; watch the full episode <Fragment set:html={arrow} /></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx__offer">
+      <div class="mx__wrap mx__offer-row">
+        <div class="mx__offer-head">
+          <p class="mx__eyebrow mx__eyebrow--teal">OUR SERVICES</p>
+          <h2><i>MicroExperiences</i><br />Offering</h2>
+          <p>MicroApps are part of LumApps. Our services cover everything around them, from the first architecture diagram to ongoing maintenance after launch.</p>
+        </div>
+        <div class="mx__offer-grid">
+          {
+            offering.map((o) => (
+              <div class={`mx__offer-card mx__offer-card--${o.tone}`}>
+                <span set:html={icon(o.icon, 32)} />
+                <h3>{o.title}</h3>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="mx__starter">
+      <div class="mx__wrap mx__starter-grid">
+        <div class="mx__starter-copy">
+          <p class="mx__eyebrow">GET STARTED</p>
+          <h2>The Starter Package</h2>
+          <p>An engagement to get your first MicroApps live: we plan, configure and deploy them with you, then hand over training and documentation so your team can run them.</p>
+          <div class="mx__consult">
+            <span>Contact us for a <span>Free Consultation</span></span>
+            <a href={contactHref}>Get in touch with ADC →</a>
+          </div>
+        </div>
+        <div class="mx__pkg-wrap">
+          <div class="mx__pkg-shadow" aria-hidden="true"></div>
+          <div class="mx__pkg">
+            <h3>Starter Package Includes:</h3>
+            <ul>
+              {
+                pkg.map((p) => (
+                  <li>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#362dff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" /></svg>
+                    {p}
+                  </li>
+                ))
+              }
+            </ul>
+            <a class="mx__btn mx__btn--blue" href={contactHref}>Plan your first MicroApps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx__further">
+      <div class="mx__wrap">
+        <div class="mx__heading">
+          <p class="mx__eyebrow">GO FURTHER</p>
+          <h2 class="mx__h2-sm">More ways ADC makes LumApps work harder</h2>
+        </div>
+        <div class="mx__further-grid">
+          {
+            related.map((r) => (
+              <a href={r.href}>
+                <span class="mx__further-icon" set:html={icon(r.icon)} />
+                <h3>{r.title}</h3>
+                <p>{r.text}</p>
+                <span class="mx__more">Learn More <Fragment set:html={arrow} /></span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="mx__cta" data-custom-prompt-hide>
+      <div class="mx__wrap">
+        <div class="mx__cta-box">
+          <div class="mx__cta-tab" aria-hidden="true"></div>
+          <div class="mx__cta-inner">
+            <h2>Need a hand with <span>MicroApps?</span></h2>
+            <div class="mx__cta-bars" aria-hidden="true">{Array.from({ length: 18 }, () => <span />)}</div>
+            <p>Book a free consultation and we'll walk through how we'd set up and maintain MicroApps in your LumApps environment.</p>
+            <a class="mx__btn mx__btn--teal mx__btn--lg" href={contactHref}>Contact us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .mx {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #000;
+    line-height: 1.5;
+  }
+  .mx * {
+    box-sizing: border-box;
+  }
+  .mx h1,
+  .mx h2,
+  .mx h3 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .mx p,
+  .mx ul {
+    margin: 0;
+  }
+  .mx a:focus-visible {
+    outline: 3px solid #32e0c4;
+    outline-offset: 2px;
+  }
+  .mx__wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .mx__eyebrow {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 14px;
+    color: #362dff;
+  }
+  .mx__eyebrow--teal {
+    color: #32e0c4;
+  }
+  .mx__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 760px;
+  }
+  .mx__heading h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #05006c;
+  }
+  .mx__heading .mx__h2-sm {
+    font-size: clamp(32px, 4vw, 48px);
+  }
+  .mx__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 30px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    transition: transform 0.15s ease;
+  }
+  .mx__btn:hover {
+    transform: translateY(-2px);
+  }
+  .mx__btn--teal,
+  .mx__btn--teal:hover {
+    background: #32e0c4;
+    color: #05006c;
+  }
+  .mx__btn--blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .mx__btn--blue:hover {
+    background: #05006c;
+    color: #fff;
+  }
+  .mx__btn--lg {
+    padding: 18px 34px;
+    font-size: 18px;
+  }
+  .mx__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #362dff;
+    font-weight: 700;
+  }
+
+  /* Animations (off for reduced motion) */
+  .mq {
+    animation: mq 30s linear infinite;
+  }
+  @keyframes mq {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .bob {
+    animation: bob 3.4s ease-in-out infinite;
+  }
+  .bob2 {
+    animation: bob 3.4s ease-in-out 1.7s infinite;
+  }
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .orb1 {
+    animation: spin 60s linear infinite;
+  }
+  .orb2 {
+    animation: spin 90s linear infinite reverse;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: blink 4s infinite;
+  }
+  @keyframes blink {
+    0%,
+    92%,
+    100% {
+      transform: scaleY(1);
+    }
+    96% {
+      transform: scaleY(0.1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mq,
+    .bob,
+    .bob2,
+    .orb1,
+    .orb2,
+    .eye {
+      animation: none;
+    }
+  }
+
+  /* Hero */
+  .mx__hero {
+    position: relative;
+    overflow: hidden;
+    background: #05006c;
+    color: #fff;
+  }
+  .mx__hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 48px;
+    align-items: center;
+    padding-top: 64px;
+    padding-bottom: 88px;
+  }
+  .mx__hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .mx__back {
+    align-self: flex-start;
+    color: #32e0c4;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .mx__back:hover {
+    color: #fff;
+  }
+  .mx__badge {
+    align-self: flex-start;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #32e0c4;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+  }
+  .mx h1 {
+    font-weight: 900;
+    font-size: clamp(52px, 7.4vw, 96px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+  .mx h1 span {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.5em;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .mx h1 i {
+    color: #32e0c4;
+  }
+  .mx__lede {
+    max-width: 560px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .mx__hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .mx__play-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .mx__play-link:hover {
+    color: #32e0c4;
+  }
+  .mx__play-link span {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #32e0c4;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mx__orbit {
+    position: relative;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mx__ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+  }
+  .mx__ring span {
+    position: absolute;
+  }
+  .mx__ring--outer {
+    width: 520px;
+    height: 520px;
+    margin: -260px 0 0 -260px;
+  }
+  .mx__ring--inner {
+    width: 340px;
+    height: 340px;
+    margin: -170px 0 0 -170px;
+  }
+  .mx__bot {
+    position: relative;
+  }
+  .mx__card {
+    position: absolute;
+    width: 280px;
+    padding: 18px 20px;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .mx__card--shift {
+    left: -8px;
+    top: 24px;
+    background: #fff;
+    color: #05006c;
+  }
+  .mx__card--ask {
+    right: -8px;
+    bottom: 20px;
+    background: #362dff;
+    color: #fff;
+  }
+  .mx__card-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #362dff;
+  }
+  .mx__card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .mx__card-title--sm {
+    font-size: 16px;
+  }
+  .mx__card--shift .mx__card-text {
+    color: #4a496b;
+  }
+  .mx__card--ask .mx__card-text {
+    color: #eceaff;
+  }
+  .mx__card-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 12px;
+    border: 1px solid #d9d7ff;
+    border-radius: 8px;
+    color: #4a496b;
+  }
+  .mx__card-input {
+    padding: 9px 12px;
+    border-radius: 8px;
+    background: #fff;
+    color: #4a496b;
+  }
+  .mx__card-btn {
+    padding: 9px;
+    border-radius: 8px;
+    background: #05006c;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+  }
+  .mx__card-btn--teal {
+    background: #32e0c4;
+    color: #05006c;
+    font-weight: 800;
+  }
+
+  /* Ticker */
+  .mx__ticker {
+    overflow: hidden;
+    padding: 20px 0;
+    background: #32e0c4;
+    color: #05006c;
+    border-bottom: 3px solid #05006c;
+  }
+  .mx__ticker .mq {
+    display: flex;
+    gap: 48px;
+    width: max-content;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    white-space: nowrap;
+  }
+  .mx__ticker .mq > span {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+
+  /* What we help you build */
+  .mx__build {
+    padding: 112px 0 96px;
+  }
+  .mx__build .mx__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .mx__build-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .mx__build-grid > div {
+    padding: 32px;
+    border-radius: 24px;
+    background: #f5f5ff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .mx__build-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mx__build-top > span:first-child {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mx__build-top > span:last-child {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    color: #d9d7ff;
+  }
+  .mx__build h3 {
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .mx__build-grid p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* Reel */
+  .mx__reel {
+    padding: 112px 0;
+    background: #f5f5ff;
+    color: #05006c;
+  }
+  .mx__reel-row {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 64px;
+    align-items: center;
+  }
+  .mx__video {
+    flex: 999 1 560px;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #05006c;
+    box-shadow: -16px 16px 0 #32e0c4;
+  }
+  .mx__video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .mx__video-soon {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mx__video-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+  }
+  .mx__video-ring--lg {
+    width: 320px;
+    height: 320px;
+    margin: -160px 0 0 -160px;
+  }
+  .mx__video-play {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: #32e0c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mx__video-note {
+    position: absolute;
+    left: 20px;
+    bottom: 16px;
+    color: #b9b6ff;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .mx__reel-copy {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mx__reel-copy h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .mx__bar {
+    width: 96px;
+    height: 12px;
+    border-radius: 6px;
+    background: #32e0c4;
+  }
+  .mx__reel-copy > p:not(.mx__eyebrow) {
+    font-size: 19px;
+    color: #33325a;
+  }
+  .mx__article {
+    margin-top: 8px;
+    padding: 20px 22px;
+    border-radius: 20px;
+    background: #fff;
+    border: 2px solid #e4e3ff;
+    color: #05006c;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .mx__article:hover {
+    border-color: #362dff;
+    color: #05006c;
+    transform: translateY(-2px);
+  }
+  .mx__article-tag {
+    align-self: flex-start;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #ffd458;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  .mx__article-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.25;
+  }
+  .mx__article .mx__more {
+    font-size: 15px;
+  }
+
+  /* Offering */
+  .mx__offer {
+    padding: 120px 0;
+    background: #05006c;
+    color: #fff;
+  }
+  .mx__offer-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+    align-items: flex-start;
+  }
+  .mx__offer-head {
+    flex: 1 1 320px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .mx__offer-head h2 {
+    font-weight: 900;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .mx__offer-head h2 i {
+    color: #32e0c4;
+  }
+  .mx__offer-head > p:last-child {
+    max-width: 380px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #e4e3ff;
+  }
+  .mx__offer-grid {
+    flex: 999 1 560px;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .mx__offer-card {
+    padding: 32px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mx__offer-card h3 {
+    font-weight: 800;
+    font-size: 22px;
+  }
+  .mx__offer-card--white {
+    background: #fff;
+    color: #05006c;
+  }
+  .mx__offer-card--white > span {
+    color: #362dff;
+  }
+  .mx__offer-card--blue {
+    background: #362dff;
+    color: #fff;
+  }
+  .mx__offer-card--blue > span {
+    color: #32e0c4;
+  }
+
+  /* Starter package */
+  .mx__starter {
+    padding: 112px 0;
+    background: #f7f7fc;
+  }
+  .mx__starter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 56px;
+    align-items: center;
+  }
+  .mx__starter-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .mx__starter-copy h2 {
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #05006c;
+  }
+  .mx__starter-copy > p:not(.mx__eyebrow) {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #33325a;
+  }
+  .mx__consult {
+    margin-top: 8px;
+    padding: 22px 26px;
+    border-radius: 20px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .mx__consult > span {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #05006c;
+  }
+  .mx__consult > span span {
+    color: #362dff;
+  }
+  .mx__consult a {
+    color: #362dff;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .mx__consult a:hover {
+    color: #05006c;
+  }
+  .mx__pkg-wrap {
+    position: relative;
+    padding: 0 20px 20px 0;
+  }
+  .mx__pkg-shadow {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    background: #05006c;
+  }
+  .mx__pkg {
+    position: relative;
+    padding: 44px 44px 48px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(54, 45, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .mx__pkg h3 {
+    font-weight: 800;
+    font-size: 26px;
+    color: #05006c;
+  }
+  .mx__pkg ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .mx__pkg li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ececf6;
+    font-size: 18px;
+    color: #05006c;
+  }
+  .mx__pkg li svg {
+    flex-shrink: 0;
+  }
+  .mx__pkg .mx__btn {
+    align-self: flex-start;
+    margin-top: 8px;
+    font-size: 16px;
+    padding: 16px 28px;
+  }
+
+  /* Go further */
+  .mx__further {
+    padding: 112px 0 64px;
+  }
+  .mx__further .mx__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .mx__further-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .mx__further-grid a {
+    padding: 36px;
+    border: 2px solid #e4e3ff;
+    border-radius: 28px;
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .mx__further-grid a:hover {
+    border-color: #362dff;
+    color: #000;
+    transform: translateY(-3px);
+  }
+  .mx__further-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: #f5f5ff;
+    color: #362dff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mx__further h3 {
+    font-weight: 800;
+    font-size: 26px;
+    color: #05006c;
+  }
+  .mx__further-grid p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .mx__cta {
+    padding: 32px 0 112px;
+  }
+  .mx__cta-box {
+    position: relative;
+    padding-top: 26px;
+  }
+  .mx__cta-tab {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 28px;
+    border-radius: 6px 6px 0 0;
+    background: #32e0c4;
+  }
+  .mx__cta-inner {
+    padding: 72px 48px;
+    border: 2px solid #32e0c4;
+    border-radius: 0 20px 20px 20px;
+    background-color: #05006c;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 96px 96px;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .mx__cta-inner h2 {
+    font-weight: 900;
+    font-size: clamp(36px, 4.5vw, 56px);
+  }
+  .mx__cta-inner h2 span {
+    color: #32e0c4;
+  }
+  .mx__cta-bars {
+    width: 520px;
+    max-width: 100%;
+    height: 26px;
+    padding: 3px;
+    border: 2px solid #32e0c4;
+    display: flex;
+    gap: 3px;
+    overflow: hidden;
+  }
+  .mx__cta-bars span {
+    flex: 0 0 12px;
+    background: #32e0c4;
+  }
+  .mx__cta-inner p {
+    max-width: 620px;
+    font-size: 19px;
+    color: #e4e3ff;
+  }
+
+  @media (max-width: 760px) {
+    .mx__hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      padding-top: 40px;
+      padding-bottom: 56px;
+    }
+    .mx__lede {
+      font-size: 17px;
+    }
+    .mx__orbit {
+      min-height: 0;
+      flex-direction: column;
+      gap: 20px;
+      padding: 32px 0 8px;
+    }
+    .mx__ring--outer {
+      width: 340px;
+      height: 340px;
+      margin: -170px 0 0 -170px;
+    }
+    .mx__ring--inner {
+      width: 220px;
+      height: 220px;
+      margin: -110px 0 0 -110px;
+    }
+    .mx__card {
+      position: relative;
+      left: auto;
+      right: auto;
+      top: auto;
+      bottom: auto;
+      width: 100%;
+      max-width: 320px;
+    }
+    .mx__ticker .mq {
+      font-size: 22px;
+    }
+    .mx__build,
+    .mx__reel,
+    .mx__offer,
+    .mx__starter {
+      padding: 72px 0;
+    }
+    .mx__reel-row,
+    .mx__offer-row {
+      gap: 40px;
+    }
+    .mx__offer-head h2 {
+      font-size: clamp(30px, 9.4vw, 44px);
+    }
+    .mx__video {
+      flex-basis: 100%;
+      box-shadow: -10px 10px 0 #32e0c4;
+    }
+    .mx__build-grid,
+    .mx__offer-grid,
+    .mx__further-grid,
+    .mx__starter-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .mx__pkg {
+      padding: 32px 24px;
+    }
+    .mx__further {
+      padding: 72px 0 40px;
+    }
+    .mx__further-grid a {
+      padding: 28px 24px;
+    }
+    .mx__cta {
+      padding-bottom: 72px;
+    }
+    .mx__cta-inner {
+      padding: 56px 24px;
+    }
+  }
+</style>

@@ -11,6 +11,7 @@ export const nav: NavItem[] = [
       { href: '/implementations', label: 'Implementations' },
       { href: '/sme-support', label: 'SME Support' },
       { href: '/analytics', label: 'Analytics' },
+      { href: '/building-microexperiences', label: 'Building MicroExperiences' },
       { href: '/design', label: 'UI/UX Design' },
     ],
   },
