@@ -5,6 +5,8 @@
 const DOCS = 'https://docs.adc.dev/docs/ls/content/';
 // Toolbox widgets without a page of their own on adc.dev link to the ADC Toolbox bundle page.
 const TOOLBOX = '/admin-enhancements-widgets-bundle';
+// AskAI & MicroApps items link to the AskAI & MicroApps page.
+const MICRO = '/building-microexperiences';
 
 export type CatId = 'eg' | 'tb' | 'cn' | 'cs' | 'se' | 'ti' | 'sf' | 'ut' | 'ac' | 'ma';
 
@@ -56,7 +58,7 @@ export const extensions: Extension[] = [
   { n: 'Content Page Layout Mover', c: ['tb'], d: 'Streamlines moving layouts between content pages.', href: '/content-layout-mover' },
   { n: 'Content Summary', c: ['cn'], d: 'Gives readers a short summary of long pages, so they get the gist at a glance.', href: '/wiki' },
   { n: 'Debug Widget', c: ['tb'], d: 'Inspect and troubleshoot widgets while you build.', href: TOOLBOX },
-  { n: 'Display a QR Code', c: ['ma'], d: 'Show a QR code on any page.' },
+  { n: 'Display a QR Code', c: ['ma'], d: 'Show a QR code on any page.', href: MICRO },
   { n: 'Enhanced Search Filter Widget', c: ['se'], d: 'An upgrade to LumApps’ out-of-the-box content filter.', href: DOCS + '6544390651641856/enhanced-search-filter-widget' },
   { n: 'Estimated Reading Time', c: ['cn'], pop: 4, d: 'Automatically calculates and displays how long a page takes to read.', href: '/estimated-reading-time' },
   { n: 'Fireworks', c: ['sf'], d: 'Add some flair to a homepage or landing page.', href: '/fireworks' },
@@ -85,10 +87,10 @@ export const extensions: Extension[] = [
   { n: 'Unanswered Questions', c: ['cs'], d: 'Shows how many community questions still need an answer.', href: '/qa-support' },
   { n: 'Zoom Rooms Control Panel', c: ['ti'], d: 'Control Zoom Rooms from inside LumApps.' },
   { n: 'Coveo Search', c: ['se', 'ti'], d: 'Coveo-powered search inside LumApps.', href: '/coveo' },
-  { n: 'LumApps DataLake MCP', c: ['ma'], d: 'Ask AskAI questions about your LumApps DataLake.' },
-  { n: 'Query the LumApps Datalake', c: ['ma'], d: 'Run queries against your LumApps DataLake from a MicroApp.' },
-  { n: 'Shift Swapper MicroApp', c: ['ma'], d: 'Lets employees request and swap shifts inside LumApps.' },
-  { n: 'Import RAG', c: ['ma'], d: 'Import content into a RAG source for AI-powered answers.' },
+  { n: 'LumApps DataLake MCP', c: ['ma'], d: 'Ask AskAI questions about your LumApps DataLake.', href: MICRO },
+  { n: 'Query the LumApps Datalake', c: ['ma'], d: 'Run queries against your LumApps DataLake from a MicroApp.', href: MICRO },
+  { n: 'Shift Swapper MicroApp', c: ['ma'], d: 'Lets employees request and swap shifts inside LumApps.', href: MICRO },
+  { n: 'Import RAG', c: ['ma'], d: 'Import content into a RAG source for AI-powered answers.', href: MICRO },
 ];
 
 /** Site paths that count as product pages: the Products page plus every page a product card links to on adc.dev. */
