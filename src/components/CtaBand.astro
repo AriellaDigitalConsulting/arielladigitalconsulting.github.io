@@ -1,0 +1,115 @@
+---
+// Blue "Book a discovery call" band, as on the homepage.
+import { contactHref } from '../data/site';
+
+interface Props {
+  title?: string;
+  body?: string;
+}
+const {
+  title = 'Ready to make your intranet simpler and happier?',
+  body = "Tell us where you are with LumApps. We'll show you where it can go.",
+} = Astro.props;
+---
+
+<section class="ctab">
+  <div class="ctab__panel">
+    <div class="ctab__pills" aria-hidden="true"><span></span><span></span></div>
+    <div class="ctab__copy">
+      <h2>{title}</h2>
+      <p>{body}</p>
+    </div>
+    <a class="ctab__btn" href={contactHref}>Book a discovery call <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+  </div>
+</section>
+
+<style>
+  .ctab {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 112px 24px;
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  .ctab * {
+    box-sizing: border-box;
+  }
+  .ctab__panel {
+    position: relative;
+    overflow: hidden;
+    background: #362dff;
+    color: #fff;
+    border-radius: 32px;
+    padding: clamp(40px, 6vw, 72px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .ctab__pills {
+    position: absolute;
+    right: -60px;
+    bottom: -60px;
+    display: flex;
+    gap: 14px;
+    transform: rotate(-30deg);
+  }
+  .ctab__pills span {
+    width: 70px;
+    height: 200px;
+    border-radius: 999px;
+    background: #32e0c4;
+  }
+  .ctab__pills span + span {
+    background: #ffd458;
+    margin-top: 40px;
+  }
+  .ctab__copy {
+    position: relative;
+    flex: 1 1 420px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ctab h2 {
+    margin: 0;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: clamp(30px, 3.6vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -1px;
+    color: #fff;
+  }
+  .ctab p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #e6e5ff;
+  }
+  .ctab__btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 16px 28px;
+    border-radius: 999px;
+    background: #fff;
+    color: #05006c;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+  .ctab__btn:hover {
+    background: #f1f0ff;
+  }
+  @media (max-width: 600px) {
+    .ctab {
+      padding: 72px 16px;
+    }
+  }
+</style>

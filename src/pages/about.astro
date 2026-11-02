@@ -1,340 +1,711 @@
 ---
+// About: intro and stats, LumApps certifications, the team (long bios fade out and open in a "Read more" dialog), CTA band.
 import Base from '../layouts/Base.astro';
-import { img } from '../lib/img';
+import CtaBand from '../components/CtaBand.astro';
+
+const stats = [
+  { big: 'First', small: 'LumApps deployment consultant onboarded in the US', bg: '#362dff', big_c: '#fff', small_c: '#e4e3ff' },
+  { big: 'Since 2017', small: 'in the LumApps ecosystem', bg: '#ddf8f2' },
+  { big: 'NORAM & EMEA', small: 'enterprise teams we serve', bg: '#fff4d6' },
+];
 
 const certs = [
-  img('e756b8_f589142b59c24bf19c5c19db28a9977b~mv2.png'),
-  img('79b064_cd49b2faac93431c9bf7071133ce6762~mv2.png'),
-  img('79b064_08b98bd09c614912bb194fb548c8e929~mv2.png'),
+  { src: '/images/cert-trusted-partner.webp', alt: 'LumApps Partner Program: Trusted Partner, Consulting, Training & Design', title: 'Trusted Partner', sub: 'Consulting, Training & Design' },
+  { src: '/images/cert-authorized-partner.webp', alt: 'LumApps Partner Program: Authorized Partner, Technical Implementation', title: 'Authorized Partner', sub: 'Technical Implementation' },
+  { src: '/images/cert-agent-hub.webp', alt: 'LumApps Partner Program: Agent Hub Certification', title: 'Agent Hub Certification', sub: 'Agent Hub Deployment' },
 ];
+
+const certList = ['Trusted Partner — Consulting, Training & Design', 'Agent Hub Deployment', 'MicroApps', 'Implementation & Technology Partner'];
 
 const team = [
   {
     name: 'Misha Zubarev',
-    height: 847,
-    role: 'Founder and Managing Director',
-    photo: '/images/misha-zubarev.webp',
-    email: 'misha@arielladigitalconsulting.com',
+    role: 'Founder & Managing Director',
+    photo: '/images/about-misha-zubarev.webp',
+    pos: 'center center',
     linkedin: 'https://www.linkedin.com/company/ariella-digital-consulting',
+    quote: '“Most enterprises use only a fraction of what LumApps can do. The gap usually isn’t the platform. It’s knowing which parts matter for your people, and how to make them work together.”',
     bio: [
-      'Misha founded ADC in 2020 and became a LumApps partner. As a former Lumie, and one of the first deployment specialists in North America, he brings creative thought partnership and cross-industry expertise to his customers to help solve for their unique enterprise challenges relating to Enterprise Search, Architecture &amp; Taxonomy and Employee Productivity, through strategic and solutions-oriented consulting as well as custom integrations.',
-      "Misha's cross-industry experience includes Fintech, Healthcare, Gaming, Application Performance Management, Real Estate, among many others. This, combined with his deep product knowledge and customer experience positions him well to provide well rounded advice and be a trusted partner and advisor to his customers.",
+      'Misha has spent nearly nine years in the LumApps ecosystem, longer than almost anyone in North America.',
+      'He joined LumApps in 2017 as the first deployment consultant onboarded in the US, and he learned the product from the inside as it evolved. Leading deployments across fintech, healthcare, software, application performance management, renewable energy, real estate, and more gave him a rare view of how different organizations put the same platform to work. That experience shapes the practical, well-rounded advice his clients rely on.',
+      'In 2020 he founded ADC and became a LumApps partner. Today ADC works with some of LumApps’ largest enterprise customers, including Fortune 100 and Fortune 500 companies. Its work spans strategic consulting, custom widgets, integrations and analytics, and finding where existing deployments can deliver more. Misha worked alongside Mike on the Ascension and Capital One deployments, and with Colin on Intuit’s rollout.',
+      'At ADC, Misha leads the company and stays hands-on with clients. He brings a long view of where the platform has been and where it’s headed.',
     ],
   },
   {
     name: 'Ivo Bellin Salarin',
-    height: 568,
     role: 'Technical Director',
-    photo: img('79b064_09dff7281dd944c9ac3969d7b366ef85~mv2.jpeg'),
-    email: 'ivo@arielladigitalconsulting.com',
+    photo: '/images/about-ivo-bellin-salarin.webp',
+    pos: 'center 18%',
     linkedin: 'https://www.linkedin.com/in/bellin/',
+    quote: '“I am persuaded that everything we imagine can be brought to reality. It’s just a matter of determining your Most Valuable Product.”',
     bio: [
-      'Experienced in all the fields of the Software Craftmanship, from the QA to the development, from the Product Ownership to the Engineering Management. Also an ex-Lumie, Ivo is very hands-on and solutions oriented, bringing the art of technical reality to life. Ivo has a strong passion for everything related to Search and AI, and In his words "I am persuaded that everything we imagine can be brought to reality - it\'s just a matter of determining your Most Valuable Product."',
+      'Ivo is experienced in every field of software craftsmanship, from QA to development, and from product ownership to engineering management. Hands-on and solutions-oriented, he focuses on finding the Most Valuable Product for each client’s needs.',
+      'His main motivation is bringing value to the customer through analysis, methodology, and choosing the right technology for the job. A Certified Scrum Product Owner and Scrum Master, experienced in eXtreme Programming, and a human-centered engineering manager, he organizes teams of software engineers and leads them to a steady, sustainable delivery pace.',
+      'Throughout his career, quality and automation have been the common thread: always having a measurable view of the risk in each increment, so people can spend their time more effectively. Experience has taught him to stay focused on what the customer needs and set aside lower-priority topics.',
     ],
   },
   {
     name: 'Ariella Zubarev',
-    height: 926,
-    role: 'Marketing Director',
-    photo: img('79b064_8175de7fd8ea4908926bdd5dce16bd58~mv2.jpeg'),
-    email: 'misha@arielladigitalconsulting.com',
+    role: 'Marketing & Content Lead',
+    photo: '/images/about-ariella-zubarev.webp',
+    pos: 'center center',
     linkedin: 'https://www.linkedin.com/in/ariella-zubarev-ba04b361/',
+    quote: '“Great work doesn’t speak for itself. Someone has to tell the story, and in enterprise tech, the best stories are about the people a platform actually helps.”',
     bio: [
-      'Ariella focuses on creating high-impact ADC content and delivering it across multiple channels to elevate brand visibility, deepen customer engagement, and support revenue objectives.',
-      'I develop content-driven marketing strategies that integrate with company goals — strengthening customer relationships and deliver measurable business value. My work spans digital marketing, content production, and customer storytelling.',
+      'Ariella turns what ADC builds and delivers into stories that people want to read, watch, and share.',
+      'She builds content-driven marketing strategies tied directly to company goals. Her work spans digital marketing, content production, and customer storytelling. Whether it’s a launch announcement, a customer success story, or a campaign across several channels, her focus is the same: make it worth paying attention to, and make it move the business forward.',
+      'At ADC, Ariella leads the content that carries the company’s voice. That includes stories from LumApps customers, the launches behind ADC’s widget portfolio, and the ADC Live! webinar series. She shapes how ADC shows up in the LumApps community, building visibility, deepening relationships with clients, and helping turn attention into new business.',
+    ],
+  },
+  {
+    name: 'Mike Biersma',
+    role: 'Director of Client Experience',
+    photo: '/images/about-mike-biersma.webp',
+    pos: 'center 25%',
+    linkedin: '',
+    quote: '“An intranet is a brand experience your employees live in every day, and too often it’s treated as a CMS to configure.”',
+    bio: [
+      'Mike brings 30 years across brand, design, and enterprise technology to ADC, including over four years focused on LumApps implementations.',
+      'At Maven Wave and Atos, he shaped solution approaches and led teams through full LumApps implementations and complex SharePoint and Jive migrations. He and his team brought together information architecture, UX and visual design, branding, and front-end development, as well as program and change management.',
+      'His clients included Capital One, Ascension Health, Verizon Media, Irvine Company, Match Group, National Geographic, and Intuit, and he worked alongside Misha on the Ascension and Intuit deployments.',
+      'Over 13 years there, Mike led digital experience and design for Fortune 500 clients, most recently serving as Atos’s Director of AI Experience for North America. Before that, he founded and ran a Chicago branding agency for 15 years. At ADC, he works with Misha on the company’s growth and partners with clients from first conversation through delivery.',
+    ],
+  },
+  {
+    name: 'Colin Ryan',
+    role: 'Workforce Technology & Collaboration Manager',
+    photo: '/images/about-colin-ryan.webp',
+    pos: 'center 30%',
+    linkedin: '',
+    quote: '“Employees don’t adopt platforms. They adopt whatever helps them find what they need and get on with their day. That’s why workforce technology has to be run like a product, not launched like a project.”',
+    bio: [
+      'Colin brings 20 years of work on the platforms employees use to communicate, collaborate, and find information. That includes leading one of the earliest enterprise LumApps rollouts in the US.',
+      'At Intuit, Colin moved from technical support into learning and instructional design. He then joined IT as product manager for the intranet and enterprise search, serving more than 15,000 employees. In 2018 he led Intuit’s LumApps implementation strategy and migration. Intuit also became one of the first companies to connect LumApps with Coveo enterprise search. That rollout is where he and Misha first worked together.',
+      'He later shifted his focus to search and AI. He took ChatGPT Enterprise from a small pilot to company-wide use, and he built an enterprise search skill for Intuit’s Claude deployment that employees still rely on today.',
+      'Across intranet, community, search, and collaboration migrations, Colin works the way strong product teams do. He starts by understanding the people, explores widely before narrowing, and tests ideas cheaply before committing to them. His background in adult learning and change leadership shapes how he defines success: by what people are still using months after launch.',
+      'At ADC, Colin guides clients through the full lifecycle: discovery and platform strategy, migration planning, information architecture and search, and adoption and change. He also leads ADC’s work on bringing AI into the digital workplace in ways employees trust and actually use.',
     ],
   },
 ];
-
-const partners = [
-  {
-    name: 'LumApps',
-    href: 'https://www.lumapps.com/',
-    logo: img('e756b8_9830afd379414028a94b474ad639a37d~mv2.webp'),
-    logoW: 49,
-    blurb: 'LumApps is an employee experience platform that engages every employee with personalized communications, regardless of location or language, and empowers them to do their best work.',
-  },
-  {
-    name: 'Bunchball',
-    href: 'https://www.biworldwide.com/gamification/bunchball-nitro/',
-    logo: img('e756b8_d19baea7a2ee4656a00c915837e84a46~mv2.png'),
-    logoW: 122,
-    blurb: "Tap into the power of gamification to engage your audience - employees, sales teams, channel partners and customers - with BI WORLDWIDE's Bunchball Nitro, the leading enterprise gamification platform.",
-  },
-  {
-    name: 'Covehill',
-    href: 'https://www.covehill.com/',
-    logo: img('e756b8_5a4e9d97897b480da6461a7148dfc7f3~mv2.png'),
-    logoW: 144,
-    blurb: 'Providing Advice And Consulting Services To Senior Management Of Organizations Large And Small Is What We Do.',
-  },
-  {
-    name: 'Coveo',
-    href: 'https://www.coveo.com/',
-    logo: img('79b064_f3e4b6d7c00d4dc2ae37b846edd7c7ff~mv2.png'),
-    logoW: 150,
-    blurb: 'Coveo is the industry standard search engine, powered by artificial intelligence based in Quebec, Canada. The Coveo AI platform is built to make digital experiences delightful, relevant &amp; profitable.',
-  },
-];
+const n = team.length;
 ---
 
-<Base title="About | Ariella Digital Consulting" description="ADC is a certified LumApps Technology and Implementation partner: deep integrations, AI, implementation, search, custom widgets and UI/UX design.">
-  <section class="band about-band">
-    <img class="about-band__badge" src={img('79b064_0421aa1a850e4d6d8af9de3f088c6590~mv2.png')} alt="LumApps Trusted Partner" width="219" height="215" />
-    <div class="wrap">
-      <h1>About</h1>
-      <p>
-        ADC is a certified LumApps <b>Technology</b> and <b>Implementation</b> partner. Our founder was the first LumApps
-        deployment consultant onboarded in the US, and we've served LumApps customers ever since. We're a boutique consulting
-        and engineering firm specializing in deep integrations, AI (MCPs, Skills, Connectors), implementation, search, custom
-        widget development, and enterprise UI/UX design. Our mission is simple: making LumApps a <b>simpler, happier experience</b>, for the teams who run it and the employees who use it every day.
+<Base title="About | Ariella Digital Consulting" description="ADC is a certified LumApps Technology and Implementation partner serving enterprise teams across NORAM and EMEA.">
+  <div class="adr">
+    <section class="intro wrapx">
+      <span class="eyebrow">About ADC</span>
+      <h1>A boutique LumApps partner with an insider's view.</h1>
+      <p class="lede">
+        We're a certified LumApps Technology and Implementation partner, specializing in implementations, integrations and AI (MCPs, Skills,
+        Connectors), enterprise search, custom widgets and enterprise UI/UX design. Our mission is simple:
+        making LumApps a <strong>simpler, happier experience</strong>.
       </p>
-    </div>
-  </section>
-
-  <div class="about">
-    {
-      team.map((p, i) => (
-        <section class:list={['person', { 'person--flip': i % 2 === 1 }]} style={`--h:${p.height}px`}>
-          <div class="person__text">
-            <h2>{p.name}</h2>
-            <h3>{p.role}</h3>
-            {p.bio.map((b) => <p set:html={b} />)}
-            <div class="person__actions">
-              <a class="btn btn--lg btn--plain person__btn" href={p.linkedin}>Learn More</a>
-              <a href={`mailto:${p.email}`} aria-label={`Email ${p.name}`}>
-                <img src={img('e756b8_e1ad2244dc114f639d915d447990831d~mv2.png')} alt="" width="40" height="40" />
-              </a>
-              <a href={p.linkedin} aria-label={`${p.name} on LinkedIn`}>
-                <img src={img('11062b_72c275822d4344358ee379f14e7e115f~mv2.png')} alt="" width="40" height="40" />
-              </a>
-              {certs.map((c) => <img class="person__cert" src={c} alt="LumApps certification" width="61" height="58" />)}
-            </div>
-          </div>
-          <img class="person__photo" src={p.photo} alt={p.name} width="530" loading={i ? 'lazy' : 'eager'} />
-        </section>
-      ))
-    }
-
-    <section class="partners">
-      <h2>OUR PARTNERS</h2>
-      <div class="partners__grid">
+      <div class="stats">
         {
-          partners.map((p) => (
-            <article class="partner">
-              <div class="partner__frame">
-                <h3><a href={p.href}>{p.name}</a></h3>
-                <p set:html={p.blurb} />
-                <a class="partner__logo" href={p.href}>
-                  <img src={p.logo} alt={p.name} width={p.logoW} height="50" loading="lazy" />
-                </a>
-              </div>
-            </article>
+          stats.map((s) => (
+            <div class="stat" style={`background:${s.bg}`}>
+              <div class="stat__big" style={s.big_c && `color:${s.big_c}`}>{s.big}</div>
+              <div class="stat__small" style={s.small_c && `color:${s.small_c}`}>{s.small}</div>
+            </div>
           ))
         }
       </div>
     </section>
+
+    <section class="creds" aria-labelledby="creds-h">
+      <div class="wrapx creds__inner">
+        <div class="creds__head">
+          <div>
+            <span class="eyebrow">LumApps certified</span>
+            <h2 id="creds-h">A fully certified LumApps partner.</h2>
+          </div>
+          <p>Certified by LumApps across consulting and design, technical implementation, Agent Hub and MicroApps, so one partner can take you from strategy to production.</p>
+        </div>
+        <div class="creds__grid">
+          {
+            certs.map((c) => (
+              <figure class="cert">
+                <img src={c.src} alt={c.alt} width="190" height="187" loading="lazy" />
+                <figcaption>
+                  <strong>{c.title}</strong>
+                  <span>{c.sub}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+        <ul class="creds__list" aria-label="All LumApps certifications">
+          {
+            certList.map((c) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B7A5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10" /></svg>
+                {c}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="team wrapx" aria-labelledby="team-h">
+      <span class="eyebrow">The team</span>
+      <h2 id="team-h">Dedicated team with deep platform expertise.</h2>
+      {
+        team.map((p, i) => (
+          <article class:list={['person', { 'person--flip': i % 2 === 1 }]}>
+            <img class="person__photo" src={p.photo} alt={p.name} style={`object-position:${p.pos}`} loading={i ? 'lazy' : 'eager'} />
+            <div class="person__body">
+              <span class="role">{p.role}</span>
+              <h3>{p.name}</h3>
+              <div class="quote">{p.quote}</div>
+              <div class="person__bio">
+                {p.bio.map((b) => <p>{b}</p>)}
+              </div>
+              <div class="person__actions">
+                <button type="button" class="more" data-open={i} aria-haspopup="dialog">
+                  Read more<span class="more__arrow" aria-hidden="true">→</span>
+                </button>
+                {p.linkedin && <a class="pill" href={p.linkedin}>LinkedIn</a>}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+
+    {
+      team.map((p, i) => (
+        <dialog class="dlg" id={`adr-dlg-${i}`} aria-labelledby={`adr-dlg-name-${i}`}>
+          <div class="dlg__card">
+            <button type="button" class="dlg__close" data-close aria-label="Close profile">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+            <div class="dlg__photo">
+              <img src={p.photo} alt="" style={`object-position:${p.pos}`} loading="lazy" />
+            </div>
+            <div class="dlg__body">
+              <span class="role">{p.role}</span>
+              <h2 id={`adr-dlg-name-${i}`}>{p.name}</h2>
+              <div class="quote quote--lg">{p.quote}</div>
+              <div class="dlg__bio">
+                {p.bio.map((b) => <p>{b}</p>)}
+              </div>
+              {p.linkedin && (
+                <div class="dlg__links">
+                  <a class="pill" href={p.linkedin}>LinkedIn</a>
+                </div>
+              )}
+              <div class="dlg__nav">
+                <button type="button" class="ghost" data-open={(i - 1 + n) % n}><span aria-hidden="true">←</span> {team[(i - 1 + n) % n].name}</button>
+                <button type="button" class="ghost" data-open={(i + 1) % n}>{team[(i + 1) % n].name} <span aria-hidden="true">→</span></button>
+              </div>
+            </div>
+          </div>
+        </dialog>
+      ))
+    }
   </div>
+  <CtaBand />
 </Base>
 
+<script>
+  // "Read more": open a team member's profile dialog; prev/next swap dialogs; backdrop click or the close button closes.
+  const dialogs = [...document.querySelectorAll<HTMLDialogElement>('.adr .dlg')];
+  const open = (i: number) => {
+    dialogs.forEach((d) => d.open && d.close());
+    dialogs[i]?.showModal();
+  };
+  document.querySelectorAll<HTMLElement>('.adr [data-open]').forEach((b) => b.addEventListener('click', () => open(Number(b.dataset.open))));
+  dialogs.forEach((d) => {
+    d.querySelector('[data-close]')?.addEventListener('click', () => d.close());
+    d.addEventListener('click', (e) => e.target === d && d.close());
+  });
+</script>
+
 <style>
-  .about-band {
-    min-height: 346px;
-    padding: 55px 0 40px;
+  .adr {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #4a4866;
+    line-height: 1.5;
   }
-  .about-band__badge {
-    position: absolute;
-    top: 65px;
-    left: calc(50% - 673px);
-    width: 219px;
+  .adr * {
+    box-sizing: border-box;
   }
-  .about-band p {
-    max-width: 900px;
-    margin: 13px auto 0;
-    padding-left: 64px;
+  .adr h1,
+  .adr h2,
+  .adr h3 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    color: #05006c;
+    margin: 0;
   }
-  .about {
-    background: var(--lilac);
-    padding: 35px 0 106px;
+  .adr p {
+    margin: 0;
   }
-  .person {
-    width: min(1060px, 100% - 32px);
-    margin: 0 auto 66px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: var(--h);
-    background: #fff;
+  .wrapx {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
   }
-  .person--flip .person__text {
-    order: 2;
-  }
-  .person__text {
-    padding: 59px 35px 60px;
-  }
-  .person__text h2 {
-    font-family: var(--f-text);
+  .eyebrow {
+    display: block;
+    font-size: 13px;
     font-weight: 700;
-    font-size: 40px;
-    line-height: 1.4;
-    letter-spacing: 2px;
-    color: var(--blue);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #362dff;
   }
-  .person__text h3 {
-    font-family: var(--f-display);
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.4;
-    margin-bottom: 12px;
+
+  /* Intro */
+  .intro {
+    padding-top: 96px;
+    padding-bottom: 64px;
   }
-  .person__text p {
-    font-family: var(--f-text);
-    font-size: 20px;
-    line-height: 1.4;
-    max-width: 460px;
+  .intro h1 {
+    margin-top: 18px;
+    max-width: 760px;
+    font-size: clamp(40px, 5vw, 62px);
+    line-height: 1.04;
+    letter-spacing: -1px;
   }
-  .person__text p + p {
-    margin-top: 28px;
+  .lede {
+    margin-top: 28px !important;
+    max-width: 720px;
+    font-size: 19px;
+    line-height: 1.6;
   }
-  .person__actions {
+  .lede strong {
+    color: #05006c;
+  }
+  .stats {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .stat {
+    border-radius: 22px;
+    padding: 28px 28px 36px;
+    min-height: 168px;
+  }
+  .stat__big {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 1.1;
+    color: #05006c;
+  }
+  .stat__small {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* Certifications */
+  .creds {
+    background: #f7f7fc;
+    border-top: 1px solid #ecebfb;
+    border-bottom: 1px solid #ecebfb;
+  }
+  .creds__inner {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .creds__head {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .creds__head > div {
+    max-width: 620px;
+  }
+  .creds h2 {
+    margin-top: 14px;
+    font-size: clamp(32px, 3.8vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+  }
+  .creds__head p {
+    max-width: 440px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .creds__grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .cert {
+    margin: 0;
+    padding: 32px 28px 28px;
+    border-radius: 22px;
+    background: #fff;
+    border: 1px solid #ecebfb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  .cert img {
+    width: 190px;
+    height: auto;
+  }
+  .cert strong {
+    display: block;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #05006c;
+  }
+  .cert span {
+    display: block;
+    margin-top: 6px;
+    font-size: 15px;
+  }
+  .creds__list {
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .creds__list li {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin-top: 48px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid #ecebfb;
+    font-size: 15px;
+    font-weight: 600;
+    color: #05006c;
   }
-  .person__actions img {
-    width: 40px;
-    height: 40px;
+
+  /* Team: each text column is capped at the photo height; long bios fade out and open in a dialog */
+  .team {
+    padding-top: 88px;
+    padding-bottom: 0;
   }
-  .person__actions .person__cert {
-    width: 61px;
-    height: 58px;
-    margin-left: -6px;
+  .team > h2 {
+    margin-top: 14px;
+    max-width: 640px;
+    font-size: clamp(34px, 4vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
   }
-  .person__btn {
-    width: 142px;
-    font-weight: 400;
-    letter-spacing: 1.4px;
-    margin-right: 19px;
+  .person {
+    margin-top: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    align-items: stretch;
+  }
+  .person--flip {
+    flex-direction: row-reverse;
   }
   .person__photo {
+    flex: 1 1 420px;
+    max-width: 520px;
+    width: 100%;
+    height: 446px;
+    object-fit: cover;
+    border-radius: 22px;
+  }
+  .person__body {
+    flex: 1 1 460px;
+    min-width: 0;
+    height: 446px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .role {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #0b7a5c;
+  }
+  .person h3 {
+    margin-top: 12px;
+    font-size: 34px;
+  }
+  .quote {
+    margin-top: 18px;
+    flex-shrink: 0;
+    padding: 16px 20px;
+    border-radius: 14px;
+    background: #f5f5ff;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #05006c;
+  }
+  .person__bio {
+    position: relative;
+    margin-top: 16px;
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .person__bio::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 72px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+  }
+  .person__actions,
+  .dlg__links {
+    margin-top: 18px;
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  .more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 999px;
+    background: #362dff;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+  .more:hover {
+    background: #05006c;
+    transform: translateY(-1px);
+  }
+  .more__arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .more:hover .more__arrow {
+    transform: translateX(3px);
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: 1.5px solid #362dff;
+    color: #362dff;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .pill:hover {
+    background: #362dff;
+    color: #fff;
+  }
+
+  /* Profile dialog */
+  .dlg {
+    width: calc(100% - 48px);
+    max-width: 980px;
+    max-height: calc(100vh - 48px);
+    padding: 0;
+    border: 0;
+    border-radius: 28px;
+    background: #fff;
+    box-shadow: 0 30px 80px rgba(5, 0, 108, 0.35);
+    overflow: auto;
+  }
+  .dlg[open] {
+    animation: adrRise 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .dlg::backdrop {
+    background: rgba(5, 0, 108, 0.55);
+    backdrop-filter: blur(8px);
+  }
+  .dlg__card {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .dlg__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 0;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 2px 10px rgba(5, 0, 108, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #05006c;
+  }
+  .dlg__photo {
+    flex: 1 1 320px;
+    min-height: 360px;
+    position: relative;
+    background: #f5f5ff;
+  }
+  .dlg__photo img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
-  .partners {
-    width: min(1060px, 100% - 32px);
-    margin: 100px auto 0;
+  .dlg__photo::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #362dff 0 50%, #32e0c4 50% 75%, #ffd458 75% 100%);
   }
-  .partners h2 {
-    font-family: var(--f-display);
-    font-weight: 400;
-    font-size: 45px;
-    letter-spacing: 2.25px;
-    text-align: center;
+  .dlg__body {
+    flex: 999 1 420px;
+    min-width: 0;
+    padding: 48px 48px 36px;
   }
-  .partners__grid {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  .dlg h2 {
+    margin-top: 12px;
+    font-size: 36px;
   }
-  .partner {
-    background: #fff;
-    padding: 73px 13px 73px 10px;
+  .quote--lg {
+    margin-top: 20px;
+    padding: 18px 22px;
+    font-size: 16px;
   }
-  .partner__frame {
-    position: relative;
-    height: 384px;
-    border: 3px solid var(--blue);
-    border-radius: 28px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-    padding: 40px 18px 0;
-    text-align: center;
+  .dlg__bio {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  .dlg__links {
+    margin-top: 24px;
+  }
+  .dlg__nav {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid #ecebfb;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .ghost {
+    display: inline-flex;
     align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid #ecebfb;
+    background: #fff;
+    color: #05006c;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
   }
-  .partner h3 {
-    position: absolute;
-    top: -29px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 162px;
-    height: 50px;
-    display: grid;
-    place-items: center;
-    background: var(--blue);
-    border-radius: 10px;
-    font-family: var(--f-text);
-    font-weight: 700;
-    font-size: 22px;
-    letter-spacing: 1.1px;
-    color: #fff;
+  .ghost:hover {
+    background: #f5f5ff;
+    border-color: #362dff;
   }
-  .partner h3 a {
-    text-decoration: none;
+  @keyframes adrRise {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
-  .partner p {
-    font-family: var(--f-text);
-    font-size: 18px;
-    line-height: 1.4;
-  }
-  .partner__logo {
-    margin-top: auto;
-    margin-bottom: 26px;
-  }
-  .partner__logo img {
-    height: 50px;
-    width: auto;
+  @media (prefers-reduced-motion: reduce) {
+    .dlg[open] {
+      animation: none;
+    }
   }
 
-  @media (max-width: 1000px) {
-    .about-band__badge {
-      position: relative;
-      left: auto;
-      top: auto;
-      width: 140px;
-      margin: 0 auto 16px;
-    }
-    .about-band p {
-      padding-left: 0;
-    }
-    .person {
-      grid-template-columns: 1fr;
-      min-height: 0;
-    }
-    .person--flip .person__text {
-      order: 0;
+  @media (max-width: 860px) {
+    .person,
+    .person--flip {
+      flex-direction: column;
+      gap: 24px;
     }
     .person__photo {
-      max-height: 520px;
+      flex: none;
+      max-width: none;
+      height: 360px;
     }
-    .partners__grid {
-      grid-template-columns: repeat(2, 1fr);
-      row-gap: 32px;
+    .person__body {
+      flex: none;
+      height: auto;
+    }
+    .person__bio {
+      max-height: 200px;
     }
   }
-  @media (max-width: 760px) {
-    .person__text {
-      padding: 32px 20px;
+  @media (max-width: 600px) {
+    .wrapx {
+      padding-left: 16px;
+      padding-right: 16px;
     }
-    .person__text h2 {
+    .intro {
+      padding-top: 64px;
+    }
+    .creds__inner {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+    .team {
+      padding-top: 64px;
+    }
+    .person__photo {
+      height: 300px;
+    }
+    .dlg {
+      width: calc(100% - 24px);
+      max-height: calc(100vh - 24px);
+    }
+    .dlg__photo {
+      min-height: 260px;
+    }
+    .dlg__body {
+      padding: 32px 22px 24px;
+    }
+    .dlg h2 {
       font-size: 30px;
-    }
-    .person__text p {
-      font-size: 18px;
-    }
-    .person__actions {
-      flex-wrap: wrap;
-    }
-    .partners h2 {
-      font-size: 32px;
-    }
-    .partners__grid {
-      grid-template-columns: 1fr;
-      max-width: 300px;
-      margin-inline: auto;
     }
   }
 </style>
