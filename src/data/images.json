@@ -1198,5 +1198,40 @@
   "file": "/images/adc-live-microapps-deep-dive.webp",
   "w": 1280,
   "h": 720
+ },
+ "bright-2026-booth-hero.webp": {
+  "file": "/images/bright-2026-booth-hero.webp",
+  "w": 1560,
+  "h": 878
+ },
+ "bright-2026-ivo-misha-elie.webp": {
+  "file": "/images/bright-2026-ivo-misha-elie.webp",
+  "w": 1400,
+  "h": 1050
+ },
+ "bright-2026-keynote.webp": {
+  "file": "/images/bright-2026-keynote.webp",
+  "w": 1400,
+  "h": 1050
+ },
+ "bright-2026-ivo-networking.webp": {
+  "file": "/images/bright-2026-ivo-networking.webp",
+  "w": 1400,
+  "h": 952
+ },
+ "bright-2026-friends.webp": {
+  "file": "/images/bright-2026-friends.webp",
+  "w": 1400,
+  "h": 1050
+ },
+ "bright-2026-misha-josue.webp": {
+  "file": "/images/bright-2026-misha-josue.webp",
+  "w": 900,
+  "h": 1200
+ },
+ "bright-2026-selfie.webp": {
+  "file": "/images/bright-2026-selfie.webp",
+  "w": 900,
+  "h": 1200
  }
 }

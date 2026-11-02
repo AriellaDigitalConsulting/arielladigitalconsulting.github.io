@@ -613,6 +613,27 @@ const related = [...others.filter((p) => p.category === post.category), ...other
     height: auto;
     border-radius: 20px;
   }
+  .ar__content :global(figcaption) {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #5b5a7a;
+  }
+  /* Two photos side by side; stacks on phones */
+  .ar__content :global(.ar-gallery) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .ar__content :global(.ar-gallery figure) {
+    margin: 0;
+  }
+  @media (max-width: 600px) {
+    .ar__content :global(.ar-gallery) {
+      grid-template-columns: 1fr;
+    }
+  }
   .ar__content :global(figure.video) {
     aspect-ratio: 16 / 9;
     border-radius: 20px;
