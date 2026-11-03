@@ -1,0 +1,46 @@
+---
+// Follow People product page, in the Follow Actions Bundle's look (FollowWidgetEditorial).
+// Copy comes from the ADC docs page for the widget; screenshots are from the docs.
+import FollowWidgetEditorial from '../components/FollowWidgetEditorial.astro';
+---
+
+<FollowWidgetEditorial
+  name="Follow People"
+  description="The Follow People widget by ADC: put a Follow button for any LumApps user, such as a leader, on any page, including the homepage."
+  docs="https://docs.adc.dev/docs/ls/content/8282013190743127/subnavigation/follow-actions-bundle/follow-people"
+  tagline="Follow your leaders, from anywhere."
+  h1={['Follow', 'People']}
+  lede="LumApps only lets people follow a colleague from that person’s profile. This widget puts a “Follow CXO” button on any page, including the homepage, so employees can follow leaders and see what they share in their LumApps Personal Feed."
+  follows={['Following our CEO', 'Follow our CFO', 'Follow our CHRO']}
+  mock={{ src: '/images/follow-people-leadership-blogs.webp', w: 504, h: 415 }}
+  why={[
+    { title: 'Follow from any page', text: 'Get past the native limit of following someone only from their profile, and put the follow button anywhere on your site.' },
+    { title: 'Always shows the right state', text: 'Each button reflects whether the employee already follows that person, so nobody clicks twice.' },
+    { title: 'Bring leaders closer', text: 'Once employees follow a leader, content created by that leader, or on their behalf, shows up in their Personal Feed.' },
+  ]}
+  shots={[
+    { src: '/images/follow-people-leadership-blogs.webp', alt: 'A Latest Leadership Blogs carousel with a Follow our CEO button underneath', w: 504, h: 415, caption: 'A Follow our CEO button right under the latest leadership blogs.' },
+    { src: '/images/follow-people-settings.webp', alt: 'The Follow People widget settings: label, hide user details and the user to follow', w: 313, h: 459, caption: 'Pick the person to follow, add a custom label, and choose whether to show their details.' },
+  ]}
+  features={[
+    { title: 'One Button per Person.', text: 'Each button is tied to a specific LumApps user, such as a leader or an expert.' },
+    { title: 'Follow in Real Time.', text: 'Clicking follows or unfollows instantly, and the button updates to match.' },
+    { title: 'Multiple Buttons per Page.', text: 'Position as many buttons as you like anywhere within the same page layout.' },
+    { title: 'Styled by LumApps Designer.', text: 'A responsive design built with LumApps Designer best practices, styled to match your site theme.' },
+  ]}
+  steps={[
+    { title: 'Add the widget', text: 'Place the Follow People widget on any page, including the homepage or a leadership page.' },
+    { title: 'Pick the person', text: 'Search for the user to follow by name or email and add a custom label, such as “Follow our CEO”.' },
+    { title: 'Employees follow', text: 'One click follows or unfollows in real time, and the button shows the current state.' },
+  ]}
+  valueIntro="Added value for your page administrators, your employees, and the leaders they follow"
+  value={[
+    { icon: 'shield', title: 'Administrators & Experience Managers', text: 'Put a follow button for any leader on the homepage or a leadership page, positioned and styled like any other widget.' },
+    { icon: 'users', title: 'Employees', text: 'Follow the leaders and colleagues that matter to them in one click, without hunting for their profile first.' },
+    { icon: 'megaphone', title: 'Leaders & Internal Communications', text: 'Grow the audience for leadership messages, so what leaders share reaches more Personal Feeds.' },
+  ]}
+  related={[
+    { href: '/follow-actions', icon: 'grid', title: 'Follow Actions Bundle.', text: 'Get Follow People together with Follow Interests and Follow Spaces & Communities in one bundle.' },
+    { href: '/follow-spaces', icon: 'chat', title: 'Follow Spaces & Communities widget.', text: 'Let employees follow any Space or Community in one click, from any page.' },
+  ]}
+/>

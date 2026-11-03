@@ -65,7 +65,7 @@ export const extensions: Extension[] = [
   { n: 'Fireworks', c: ['sf'], d: 'Add some flair to a homepage or landing page.', href: '/fireworks' },
   { n: 'Follow Actions Bundle', c: ['cs'], bundle: true, d: 'Follow People, Spaces, Communities and Interests from one guided page.', href: '/follow-actions' },
   { n: 'Follow Interests', c: ['cs'], d: 'Enhances the native LumApps “follow interest” experience.', href: '/follow-interests' },
-  { n: 'Follow People', c: ['cs'], d: 'Enhances the native LumApps “follow user” experience.', href: '/follow-actions' },
+  { n: 'Follow People', c: ['cs'], d: 'Enhances the native LumApps “follow user” experience.', href: '/follow-people' },
   { n: 'Follow Space or Community', c: ['cs'], d: 'Follow Spaces and Communities from any page.', href: '/follow-spaces' },
   { n: 'Google Knowledge Graph', c: ['se'], d: 'Search the Google Knowledge Graph without leaving LumApps.', href: DOCS + '5620597709078528/google-knowledge-graph-search-extension' },
   { n: 'Groups Lookup & Management', c: ['tb'], d: 'Find groups and add or update members without leaving the page.', href: TOOLBOX },
