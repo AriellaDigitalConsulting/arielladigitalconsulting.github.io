@@ -1,0 +1,46 @@
+---
+// Follow Interests product page, in the Follow Actions Bundle's look (FollowWidgetEditorial).
+// Copy comes from the original /follow-interests page and the ADC docs; screenshots are from the original page.
+import FollowWidgetEditorial from '../components/FollowWidgetEditorial.astro';
+---
+
+<FollowWidgetEditorial
+  name="Follow Interests"
+  description="The Follow Interests widget by ADC: put a Follow Interest button on any LumApps page, so employees subscribe to topics and email notifications in one click."
+  docs="https://docs.adc.dev/docs/ls/content/129068931960333/subnavigation/follow-actions-bundle/follow-interest"
+  tagline="Subscribe to what matters, in one click."
+  h1={['Follow', 'Interests']}
+  lede="Put a Follow Interest button on any page, right next to the content it describes. One click subscribes employees to the interest and its email notifications, with no second step and no extra pages to maintain."
+  follows={['Following Toronto News', 'Follow Benefits News', 'Follow HR Initiatives']}
+  mock={{ src: '/images/b229bcef8c0d.webp', w: 494, h: 736 }}
+  why={[
+    { title: 'Opt in with one click', text: 'A simple, one-click way for employees to follow an interest and turn on its email notifications at the same time.' },
+    { title: 'Grow content engagement', text: 'Put a follow button where people read, and help more employees engage with the LumApps content that matters to them.' },
+    { title: 'Fewer pages to maintain', text: 'Remove the administrative tax of creating and maintaining a page just to host one follow interest button.' },
+  ]}
+  shots={[
+    { src: '/images/b229bcef8c0d.webp', alt: 'A News for me page with Follow Toronto News and Follow Benefits News buttons under the news feed', w: 494, h: 736, caption: 'Follow buttons placed right under the news they relate to, several per page.' },
+    { src: '/images/e04f5c9ba22b.webp', alt: 'The Follow Interests Button widget settings: label, hide interest details, content type and search source metadata', w: 319, h: 524, caption: 'Set the label, then point the button at a Content Type and a metadata.' },
+  ]}
+  features={[
+    { title: 'Multiple Interests per Page.', text: 'Display as many follow interests as you like on one page, without a content list or content filter widget.' },
+    { title: 'Email Notifications Included.', text: 'Users are opted in to email notifications automatically, with no second action to take.' },
+    { title: 'Content Type & Metadata.', text: 'Configure each button to a Content Type and a metadata for the interest.' },
+    { title: 'Native Subscriptions.', text: 'Users are subscribed to the interest in Subscriptions, just as they expect from the native experience.' },
+  ]}
+  steps={[
+    { title: 'Add the widget', text: 'Drop the Follow Interests Button widget anywhere on a page, including the homepage.' },
+    { title: 'Pick the interest', text: 'Choose a Content Type and a metadata, then give the button a custom label that matches your use case.' },
+    { title: 'Employees follow', text: 'One click subscribes them to the interest and its email notifications, and the button shows they are following.' },
+  ]}
+  valueIntro="Added value for your page administrators, your employees, and the teams publishing the news"
+  value={[
+    { icon: 'shield', title: 'Administrators & Experience Managers', text: 'No more pages built just to host a follow button. Customize each label in seconds and place as many interests as you need on one page.' },
+    { icon: 'users', title: 'Employees', text: 'Follow the topics that matter right where they read about them, and get the email notifications without hunting for a setting.' },
+    { icon: 'megaphone', title: 'Communications Teams', text: 'Grow the audience for each news stream by inviting readers to subscribe at the moment they are most interested.' },
+  ]}
+  related={[
+    { href: '/follow-actions', icon: 'grid', title: 'Follow Actions Bundle.', text: 'Get Follow Interests together with Follow People and Follow Spaces & Communities in one bundle.' },
+    { href: '/follow-spaces', icon: 'chat', title: 'Follow Spaces & Communities widget.', text: 'Let employees follow any Space or Community in one click, from any page.' },
+  ]}
+/>
