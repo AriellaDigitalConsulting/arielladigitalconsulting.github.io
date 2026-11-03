@@ -40,7 +40,7 @@ const tile = `background:${primary.chip};color:${primary.ink}`;
     variant === 'featured' ? (
       <>
         <span class="fc__tile" aria-hidden="true" style={tile}>{initials}</span>
-        <span class="fc__name">{ext.n}</span>
+        <span class="fc__name">{ext.n}{ext.isNew && <span class="fc__new">NEW</span>}</span>
         <span class="fc__desc">{ext.d}</span>
         {ext.href && <span class="fc__cta">Learn more <span aria-hidden="true">→</span></span>}
       </>
@@ -102,6 +102,17 @@ const tile = `background:${primary.chip};color:${primary.ink}`;
     font-weight: 700;
     font-size: 19px;
     line-height: 1.2;
+  }
+  .fc__new {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: 3px;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: #ffd458;
+    color: #05006c;
   }
   .fc__desc {
     flex: 1;

@@ -1,5 +1,5 @@
 // ADC extension library for the Products page, from the ADC Extensions Listing.
-// c = categories, primary first; pop = Most Popular rank (1 shows first); bundle = a multi-widget bundle; href = the sheet's External URL (adc.dev links kept site-relative).
+// c = categories, primary first; pop = Most Popular rank (1 shows first); isNew = a NEW badge on its Most Popular card; bundle = a multi-widget bundle; href = the sheet's External URL (adc.dev links kept site-relative).
 // Items with no URL render as non-link cards marked "Page coming soon...".
 
 const DOCS = 'https://docs.adc.dev/docs/ls/content/';
@@ -23,6 +23,7 @@ export interface Extension {
   d: string;
   href?: string;
   pop?: number;
+  isNew?: boolean;
   bundle?: boolean;
 }
 
@@ -42,7 +43,7 @@ export const categories: Category[] = [
 export const extensions: Extension[] = [
   { n: 'Achievers', c: ['eg', 'ti'], d: 'Employee recognition, connected to LumApps.', href: '/achievers' },
   { n: 'License Management', c: ['tb'], d: 'Manage ADC widget licenses in one place.', href: TOOLBOX },
-  { n: 'Platform Style Manager', c: ['tb'], pop: 3, d: 'Manage your platform’s styles from one place.', href: '/platform-style' },
+  { n: 'Platform Style Manager', c: ['tb'], pop: 3, isNew: true, d: 'Manage your platform’s styles from one place.', href: '/platform-style' },
   { n: 'Advanced Survey', c: ['eg'], d: 'A powerful enhancement over the default LumApps survey.', href: '/advanced-survey' },
   { n: 'Table of Contents', c: ['cn'], d: 'Easy navigation through long wiki and knowledge base pages.', href: '/table-of-contents' },
   { n: 'Advent Calendar', c: ['sf'], d: 'A daily-reveal calendar for the holiday season.' },
