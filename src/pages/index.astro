@@ -65,13 +65,13 @@ const widgetTags = {
   Admin: 'tag--blue',
 };
 
-const widgets: { tag: keyof typeof widgetTags; title: string; href: string; body: string }[] = [
+const widgets: { tag: keyof typeof widgetTags; title: string; href: string; body: string; badge?: string }[] = [
   { tag: 'Engagement', title: 'Guess Word', href: '/guess-word-widget', body: 'A daily word game that brings people back to the homepage.' },
   { tag: 'Engagement', title: 'Soccer Predictions', href: '/soccer', body: 'Team leaderboards around the tournaments your company sponsors.' },
   { tag: 'Accessibility', title: 'Page Reader (Text-to-speech)', href: '/page-reader', body: 'Read any page aloud, helping you meet accessibility goals.' },
   { tag: 'Content', title: 'Organization Chart', href: '/org-chart', body: 'Build a dynamic organization chart and add it to any page.' },
-  { tag: 'Content', title: 'Advanced Table of Contents', href: '/table-of-contents', body: 'Auto-built navigation for long pages and knowledge articles.' },
-  { tag: 'Admin', title: 'Content Page Layout Mover', href: '/content-layout-mover', body: 'Copy page layouts between content in seconds, not hours.' },
+  { tag: 'Admin', title: 'Platform Style Manager', href: '/platform-style', badge: 'NEW', body: 'Copy and rename any platform style to launch new sites already on brand.' },
+  { tag: 'Admin', title: 'Space Homepage Layout Mover', href: '/space-layout-mover', body: 'Copy a polished Space homepage onto any other Space in a single click.' },
 ];
 
 const testimonials = [
@@ -224,7 +224,7 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
             widgets.map((w) => (
               <a class="widget" href={w.href}>
                 <span class:list={['tag', widgetTags[w.tag]]}>{w.tag}</span>
-                <h3>{w.title}</h3>
+                <h3>{w.title}{w.badge && <span class="widget__badge">{w.badge}</span>}</h3>
                 <p>{w.body}</p>
               </a>
             ))
@@ -846,6 +846,18 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
   .widget h3 {
     font-size: 19px;
     line-height: 1.25;
+  }
+  .widget__badge {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #ffd458;
+    color: #05006c;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    vertical-align: middle;
   }
   .widget p {
     font-size: 14px;
