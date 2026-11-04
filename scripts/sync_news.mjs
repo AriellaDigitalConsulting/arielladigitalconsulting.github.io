@@ -10,6 +10,17 @@ const FILE = new URL('../src/data/articles.json', import.meta.url);
 const all = process.argv.includes('--all');
 // Wix slugs carry brackets, colons, curly quotes…; the static site uses plain ASCII ones.
 const slugify = (s) => s.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+// Some Wix posts kept the slug of the template article they were written over; give those a slug matching their title.
+// The old URL still works: it differs from `slug`, so it gets a redirect stub (src/pages/news/[...wix].astro).
+const slugOverrides = {
+  '5-most-promising-fintech-startups': 'replay-adc-live-presents-lumapps-site-content-gardening',
+  'best-smart-wearables-of-2023': 'reimagining-etl-lessons-from-the-field',
+  'entering-a-new-era-of-iot': 'lumapps-office-hours-with-adc',
+  'gadget-review:-release-of-new-airy-pods': 'lumapps-announces-adcs-extensions',
+  'how-technology-can-help-curb-attention-disorders': 'partnership-with-the-glass-guru-on-the-looker-to-lumapps-integration',
+  'long-term-benefits-of-clean-energy-sources': 'do-you-use-ai-to-evaluate-cvs',
+  'test-adc': 'replay-adc-live-presents-governing-your-ai-agents-in-lumapps',
+};
 
 const listItems = () => {
   const media = (u) => (u?.match(/static\.wixstatic\.com\/media\/([^/?")]+)/) || [])[1];
@@ -124,7 +135,7 @@ await Promise.all(Array.from({ length: 4 }, async () => {
   while (queue.length) { const [it, i] = queue.shift(); full[i] = await fetchArticle(it); }
 }));
 const out = items.map((it, i) => ({
-  slug: slugify(it.slug),
+  slug: slugOverrides[it.slug] ?? slugify(it.slug),
   wixSlug: it.slug,
   title: full[i].title || it.title,
   author: it.author,

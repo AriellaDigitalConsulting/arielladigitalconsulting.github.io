@@ -16,8 +16,29 @@ export function getStaticPaths() {
 }
 
 const { layout } = Astro.props;
+
+// Several snapshots kept a generic Wix title shared with other pages; give each one its own.
+const titles: Record<string, string> = {
+  'animations-widgets-bundle': 'Animation & Gamification Widgets for LumApps | ADC',
+  'bunchball-gamification-integration': 'Bunchball Gamification for LumApps | ADC',
+  'community-posts': 'Community Posts List Widget for LumApps | ADC',
+  'coveo-integrations': 'Coveo Integrations for LumApps | ADC',
+  'extension-widgets': 'LumApps Extension Widgets & Bundles | ADC',
+  kaltura: 'Kaltura Integration for LumApps | ADC',
+  'last-modified-date': 'Last Modified Date Widget for LumApps | ADC',
+  looker: 'Looker Integration for LumApps | ADC',
+  'metadata-mover': 'Metadata Mover for LumApps | ADC',
+  'qa-support': 'Q&A Support Community Bundle for LumApps | ADC',
+  'search-expertise': 'LumApps Enterprise Search Expertise | ADC',
+  'table-of-contents': 'Advanced Table of Contents for LumApps | ADC',
+  'timezone-widget': 'Timezone Widget for LumApps | ADC',
+  'town-hall': 'Town Hall Bundle for LumApps | ADC',
+  'ui-enhancements-widget-bundle': 'UI Enhancements Widget Bundle for LumApps | ADC',
+  'user-engagement-widget-bundle': 'User Engagement Widget Bundle for LumApps | ADC',
+  wiki: 'Wiki & Knowledge Base Bundle for LumApps | ADC',
+};
 ---
 
-<Base title={layout.title} description={layout.description}>
+<Base title={titles[layout.slug] ?? layout.title} description={layout.description}>
   <LayoutPage layout={layout} />
 </Base>

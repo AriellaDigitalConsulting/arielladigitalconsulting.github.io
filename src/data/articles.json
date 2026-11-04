@@ -476,7 +476,7 @@
   "html": "<p>Randy Bell shares his deep experience in enterprise communities, intranet strategy, and knowledge management, drawing from over 25 years of working with technologies like SharePoint, Yammer, Jive, and now LumApps. He emphasizes the value of subtle, behind-the-scenes efforts in digital experience and community management, using the analogy of “when you do things right, people won’t be sure you’ve done anything at all.” Randy discusses how traditional intranets are often seen as cost centers, but when designed with role-based experiences and measurable outcomes—especially in sales and support functions—they can become powerful cost-saving tools.</p><br><p>He advocates for understanding employee personas to deliver targeted content, microlearning, and community engagement strategies that drive stickiness and repeat usage. Randy emphasizes the importance of organic community growth, gamification, and thoughtful moderation to foster collaboration. He encourages digital and community managers to focus on long-term value, not immediate metrics, suggesting that real engagement takes time to build but can ultimately become self-sustaining and deeply impactful.</p><br><p>Watch the replay below:</p><br><figure class=\"video\"><iframe src=\"https://www.youtube-nocookie.com/embed/Kbac7M9uu20\" title=\"Video\" loading=\"lazy\" allowfullscreen></iframe></figure><br>"
  },
  {
-  "slug": "long-term-benefits-of-clean-energy-sources",
+  "slug": "do-you-use-ai-to-evaluate-cvs",
   "wixSlug": "long-term-benefits-of-clean-energy-sources",
   "title": "Do you use AI to evaluate CVs?",
   "author": "Ivo Bellin Salarin",
@@ -504,7 +504,7 @@
   "html": "<figure class=\"video\"><iframe src=\"https://www.youtube-nocookie.com/embed/jyGwa9IUnCY\" title=\"Video\" loading=\"lazy\" allowfullscreen></iframe></figure><figure></figure><p>ired of juggling external survey tools, clunky permissions, and disconnected data? Our new <a href=\"/advanced-survey\"><u>Advanced Survey</u></a> Widget for LumApps brings rich, flexible survey experiences right inside your LumApps environment—designed to match the look and feel of your intranet.</p><br><p><strong>Why teams will love it:</strong></p><ul><li><p>Fully native experience — Deliver branded surveys seamlessly using LumApps’ Design System—no extra logins or tools required.</p></li><li><p>Run smarter campaigns — Launch single or multiple surveys, target specific audiences, and track all KPIs from one centralized dashboard.</p></li><li><p>Boost engagement — Drive traffic directly to your LumApps pages, Spaces, or Communities.</p></li><li><p>Powerful governance — See all past and ongoing surveys, manage permissions, expiration dates, and export results easily.</p></li><li><p>Advanced analytics — Leadership, Comms, HRBPs can securely access and analyze results—without special roles or complex workflows.</p></li><li><p>Reuse &amp; scale — Import/export questions to replicate successful surveys across your digital workplace.</p></li></ul><br><p><strong>Who benefits?</strong></p><ul><li><p>Internal Comms — Gain insights on events, peer feedback, DEI, and more.</p></li><li><p>HR &amp; People Teams — Run private surveys to gauge employee sentiment, benefits, hybrid work policies—you name it.</p></li><li><p>Team Leads — Quickly gather feedback on processes, collaboration, and project performance.</p></li></ul>"
  },
  {
-  "slug": "5-most-promising-fintech-startups",
+  "slug": "replay-adc-live-presents-lumapps-site-content-gardening",
   "wixSlug": "5-most-promising-fintech-startups",
   "title": "REPLAY - ADC Live! Presents: LumApps Site Content Gardening w/ an Industry Expert",
   "author": "Misha Zubarev",
@@ -518,7 +518,7 @@
   "html": "<p>Watch the replay of ADC's latest webinar on LumApps Content Gardening to gain more insights, best practices and hear \"industry war stories\" live!</p><br><p>Sit back and enjoy the replay below! 💪 ▶️ 🍷 ⛱️</p><br><figure class=\"video\"><iframe src=\"https://www.youtube-nocookie.com/embed/huCphPpb6Ss\" title=\"Video\" loading=\"lazy\" allowfullscreen></iframe></figure><br>"
  },
  {
-  "slug": "test-adc",
+  "slug": "replay-adc-live-presents-governing-your-ai-agents-in-lumapps",
   "wixSlug": "test-adc",
   "title": "REPLAY - ADC Live! Presents: Governing your AI Agents in LumApps",
   "author": "Ivo Bellin Salarin",
@@ -532,7 +532,7 @@
   "html": "<p>Watch his ADC Live! episode to learn how you can seamlessly integrate your own AI Agents directly into LumApps.</p><br><p>Watch the replay directly from <a href=\"https://www.linkedin.com/events/7333915121460666370/comments/\"><u>LinkedIn</u></a></p><br>"
  },
  {
-  "slug": "best-smart-wearables-of-2023",
+  "slug": "reimagining-etl-lessons-from-the-field",
   "wixSlug": "best-smart-wearables-of-2023",
   "title": "Reimagining ETL: Lessons from the Field",
   "author": "Misha Zubarev",
@@ -546,7 +546,7 @@
   "html": "<p>ETL is often seen as a solved problem—but at scale, and in the real world, it’s rarely straightforward. Recently, our team worked on a series of projects that reminded us how much value lies in crafting resilient, well-designed data pipelines that do more than just move data. We built and deployed multiple custom connectors designed to make external APIs compatible with Fivetran ingestions, among others. </p><br><p>These connectors didn’t just pass data through—they actively transformed the source format, managed state, handled pagination, dealt with API-specific quirks like error retrieval and rate limiting, and seamlessly interfaced with Fivetran’s expectations. Each connector was deployed as a stateless Cloud Run function, making them easy to scale and maintain. </p><br><p>In parallel, we designed a dbt-based transformation layer for a BigQuery dataset from a different data source. This let us modularize the logic, bring transparency to the data lineage, and align closely with the needs of downstream consumers—proof that dbt’s declarative model continues to be a force multiplier for data teams.</p>"
  },
  {
-  "slug": "entering-a-new-era-of-iot",
+  "slug": "lumapps-office-hours-with-adc",
   "wixSlug": "entering-a-new-era-of-iot",
   "title": "LumApps Office Hours with ADC",
   "author": "Misha Zubarev",
@@ -560,7 +560,7 @@
   "html": "<p>This is a replay of the Partner Office Hour on LumApps' The Hive, where partner with The Glass Guru and discuss how ADC helped them create a custom analytics dashboard to better understand usage of their LumApps platform.</p><br><p>See the replay below!</p><figure class=\"video\"><iframe src=\"https://www.youtube-nocookie.com/embed/-cf7wJm_hBE\" title=\"Video\" loading=\"lazy\" allowfullscreen></iframe></figure><br>"
  },
  {
-  "slug": "gadget-review-release-of-new-airy-pods",
+  "slug": "lumapps-announces-adcs-extensions",
   "wixSlug": "gadget-review:-release-of-new-airy-pods",
   "title": "LumApps Announces ADC’s Extensions",
   "author": "Misha Zubarev",
@@ -574,7 +574,7 @@
   "html": "<p>As a publisher of 25+ LumApps Extension Widgets, we're excited that LumApps has highlighted two of our third-party integrations which we’ve created for our customers:</p><br><p><strong>Kaltura Integration</strong></p><p>LumApps Customers who are also using the <a href=\"https://www.linkedin.com/company/kaltura/\"><strong><u>Kaltura</u></strong></a> service can live stream a corporate event securely, directly inside their LumApps intranet via a dedicated widget. </p><p><a href=\"/kaltura\"><strong><u>Learn more&gt;</u></strong></a></p><br><p><strong>Looker Integration</strong></p><p>The Looker Extension enables business analytics constructed in a <a href=\"https://cloud.google.com/looker?hl=en\"><strong><u>Looker</u></strong></a> Dashboard, Look or Query Visualizations to be consumed by teams or managers <strong>securely</strong> from a LumApps Storefront page, Resource page or Project / Team Space/Community without ever having to be authenticated in Looker.</p><p><a href=\"/looker\"><strong><u>Learn more &gt;</u></strong></a></p><p>See a past recording of our <a href=\"https://www.linkedin.com/events/customerstory-howtheglassgurufr7105582294400163840/comments/\"><strong><u>Looker Webinar here</u></strong></a>! </p><br><p>We continue to be very thankful to our <a href=\"https://www.linkedin.com/company/lumapps/\"><strong><u>LumApps</u></strong></a> partners and our customers for continuing to give us such great opportunities to collaborate and grow together!</p>"
  },
  {
-  "slug": "how-technology-can-help-curb-attention-disorders",
+  "slug": "partnership-with-the-glass-guru-on-the-looker-to-lumapps-integration",
   "wixSlug": "how-technology-can-help-curb-attention-disorders",
   "title": "Partnership with The Glass Guru on the Looker to LumApps Integration",
   "author": "Misha Zubarev",
