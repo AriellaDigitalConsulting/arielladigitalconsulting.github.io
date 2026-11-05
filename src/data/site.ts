@@ -14,7 +14,6 @@ export const nav: NavItem[] = [
       { href: '/sme-support', label: 'SME Support' },
       { href: '/analytics', label: 'Analytics' },
       { href: '/building-microexperiences', label: 'AskAI & MicroApps' },
-      { href: '/design', label: 'UI/UX Design' },
     ],
   },
   { href: '/about', label: 'About' },
