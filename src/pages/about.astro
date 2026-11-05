@@ -113,7 +113,7 @@ const n = team.length;
         <div class="creds__head">
           <div>
             <span class="eyebrow">LumApps certified</span>
-            <h2 id="creds-h">A fully certified LumApps partner.</h2>
+            <h2 id="creds-h">A <span class="creds__hl">Trusted</span> LumApps <span class="creds__hl">Partner</span></h2>
           </div>
           <p>Certified by LumApps across consulting and design, technical implementation, Agent Hub and change management, so one partner can take you from strategy to production.</p>
         </div>
@@ -314,6 +314,10 @@ const n = team.length;
     font-size: clamp(32px, 3.8vw, 46px);
     line-height: 1.08;
     letter-spacing: -0.5px;
+  }
+  .creds__hl {
+    color: var(--blue);
+    font-weight: 800;
   }
   .creds__head p {
     max-width: 440px;
