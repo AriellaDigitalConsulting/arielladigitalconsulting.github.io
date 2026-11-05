@@ -1233,5 +1233,20 @@
   "file": "/images/bright-2026-selfie.webp",
   "w": 900,
   "h": 1200
+ },
+ "adc-expands-2027-hero.webp": {
+  "file": "/images/adc-expands-2027-hero.webp",
+  "w": 2000,
+  "h": 1050
+ },
+ "about-mike-biersma.webp": {
+  "file": "/images/about-mike-biersma.webp",
+  "w": 1040,
+  "h": 1040
+ },
+ "about-colin-ryan.webp": {
+  "file": "/images/about-colin-ryan.webp",
+  "w": 800,
+  "h": 800
  }
 }

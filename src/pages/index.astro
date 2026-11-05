@@ -126,20 +126,26 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
           </div>
         </div>
 
-        <div class="hero__visual" role="img" aria-label="Examples of ADC widgets running in LumApps">
-          <div class="mock mock--word">
+        <div class="hero__visual">
+          <a class="mock mock--press" href="/news/adc-expands-for-2027-adds-lumapps-veterans-mike-biersma-and-colin-ryan">
             <div class="mock__head">
-              <span class="mock__title">Guess Word</span>
-              <span class="mock__badge">Daily game</span>
+              <span class="mock__badge mock__badge--new">Press release</span>
+              <span class="press__date">Nov 3, 2026</span>
             </div>
-            <div class="word-grid" aria-hidden="true">
-              {['T', 'E', 'A', 'M', 'S'].map((l, i) => <div class={i === 1 ? 'tile tile--yellow' : i === 3 ? 'tile tile--teal' : 'tile'}>{l}</div>)}
-              {['S', 'M', 'I', 'L', 'E'].map((l) => <div class="tile tile--teal">{l}</div>)}
-              {[0, 1, 2, 3, 4].map(() => <div class="tile tile--empty">·</div>)}
+            <div class="press__people">
+              <figure class="press__person">
+                <img src="/images/about-mike-biersma.webp" alt="" width="160" height="160" />
+                <figcaption class="press__name press__name--teal"><b>Mike Biersma</b>Customer Experience</figcaption>
+              </figure>
+              <figure class="press__person">
+                <img src="/images/about-colin-ryan.webp" alt="" width="160" height="160" />
+                <figcaption class="press__name press__name--yellow"><b>Colin Ryan</b>Workforce Technology</figcaption>
+              </figure>
             </div>
-            <div class="mock__note">Solved in 2 — share your streak with the team</div>
-          </div>
-          <div class="hero__stack">
+            <span class="press__title">ADC expands for 2027</span>
+            <span class="press__more">Learn more <span aria-hidden="true">→</span></span>
+          </a>
+          <div class="hero__stack" role="img" aria-label="Examples of ADC widgets running in LumApps">
             <div class="mock">
               <div class="mock__head">
                 <span class="mock__title">Match Predictions</span>
@@ -499,10 +505,16 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
     gap: 12px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
   }
-  .mock--word {
+  .mock--press {
     flex: 1 1 220px;
     padding: 22px;
     gap: 14px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .mock--press:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 36px 70px rgba(0, 0, 0, 0.32);
   }
   .mock__head {
     display: flex;
@@ -522,35 +534,67 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
     padding: 4px 10px;
     border-radius: 999px;
   }
-  .mock__note {
-    font-size: 13px;
+  .mock__badge--new {
+    background: var(--yellow);
+    color: var(--navy);
+    font-weight: 800;
+  }
+  .press__date {
+    font-size: 12px;
+    font-weight: 600;
     color: var(--muted);
   }
-  .word-grid {
+  .press__people {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 6px;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .press__person {
+    margin: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .press__person img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: 50% 20%;
+  }
+  .press__name {
+    padding: 8px 10px 10px;
+    font-size: 11px;
+    line-height: 1.3;
+    color: var(--navy);
+    flex: 1;
+  }
+  .press__name b {
+    display: block;
     font-family: var(--f-display);
-    font-weight: 700;
-    font-size: 18px;
-    text-align: center;
+    font-size: 13px;
   }
-  .tile {
-    background: #ededf5;
-    border-radius: 8px;
-    padding: 9px 0;
-  }
-  .tile--yellow {
-    background: var(--yellow);
-  }
-  .tile--teal {
+  .press__name--teal {
     background: var(--teal);
   }
-  .tile--empty {
-    background: none;
-    border: 2px solid #e2e1f0;
-    padding: 7px 0;
-    color: transparent;
+  .press__name--yellow {
+    background: var(--yellow);
+  }
+  .press__title {
+    font-family: var(--f-display);
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.15;
+  }
+  .press__more {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue, #362dff);
+  }
+  .mock--press:hover .press__more span {
+    display: inline-block;
+    transform: translateX(3px);
   }
   .score {
     display: flex;
