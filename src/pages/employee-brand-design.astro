@@ -1,0 +1,555 @@
+---
+// Employee Brand Design (Services › Integrations). Built from the "Employee Brand Identity, reworked (from V2)" design.
+// The design's inline styles are kept as-is; its scaled mockups read their size from the --ebd-* variables set below.
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Employee Brand Design | Ariella Digital Consulting"
+  description="Employee brand design by ADC: we turn your brand inward inside LumApps, with a name, voice and identity system that give your people a reason to keep coming back."
+>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Caveat:wght@700&family=Space+Mono:wght@400;700&family=Open+Sans:wght@400;600;700&family=Bricolage+Grotesque:wght@500;800&display=swap"
+  />
+  <div class="ebd" style="font-family: 'Open Sans', system-ui, sans-serif; color: #05006c; background: #fbfaf5; font-size: 17px; line-height: 1.65">
+    <script is:inline>
+      (function () {
+        var root = document.currentScript.parentElement;
+        function fit() {
+          var vw = window.innerWidth || 1280;
+          var content = Math.min(vw, 1120) - 48;
+          var stageS = Math.min(1, content / 960);
+          var wide = vw >= 980;
+          var typeW = Math.min(720, wide ? content - 56 - 340 : content);
+          var typeS = typeW / 720;
+          var sideS = wide ? Math.min(1, (content - 32) / 2 / 520) : Math.min(1, content / 520);
+          var v = {
+            stageS: stageS, stageW: Math.round(960 * stageS) + 'px', stageH: Math.round(620 * stageS) + 'px',
+            typeS: typeS, typeW: Math.round(typeW) + 'px', typeH: Math.round(540 * typeS) + 'px',
+            typePos: wide ? 'sticky' : 'static',
+            sideS: sideS, sideW: Math.round(520 * sideS) + 'px', sideH: Math.round(420 * sideS) + 'px',
+            kitS: stageS, kitW: Math.round(960 * stageS) + 'px', kitH: Math.round(560 * stageS) + 'px'
+          };
+          for (var k in v) root.style.setProperty('--ebd-' + k, v[k]);
+        }
+        fit();
+        window.addEventListener('resize', fit);
+      })();
+    </script>
+
+<!-- HERO -->
+<section style="background: #05006c; color: #fff; overflow: hidden">
+<div style="max-width: 1120px; margin: 0 auto; padding: 64px 24px 56px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 22px">
+<p style="margin: 0; background: #ffd458; color: #05006c; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; padding: 7px 12px; transform: rotate(-1.5deg)">Employee Brand Design</p>
+<h1 style="margin: 0; font-family: Archivo, sans-serif; font-size: clamp(44px, 7.2vw, 88px); line-height: 1; font-weight: 900; letter-spacing: -2.5px; text-wrap: balance">Your brand, <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; letter-spacing: -1px; color: #ffd458">turned inward.</em></h1>
+<p style="margin: 0; font-size: 19px; max-width: 38em">Your people see your logo, colors and taglines every working day. They don't need them repeated on the intranet. ADC builds an employee-facing spin on your brand inside LumApps, with the same roots and a story, voice and look that give your people a reason to keep coming back.</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px">
+<a href="#dial" style="background: #32e0c4; color: #05006c; text-decoration: none; font-family: Archivo, sans-serif; font-size: 17px; font-weight: 800; border-radius: 999px; padding: 16px 30px">See how it works</a>
+<a href="/contact" style="color: #fff; text-decoration: none; font-family: Archivo, sans-serif; font-size: 17px; font-weight: 800; border-radius: 999px; padding: 14px 28px; border: 2px solid #ffffff80">Book a call</a>
+</div>
+</div>
+
+<div style="width: var(--ebd-stageW); height: var(--ebd-stageH); margin: 0 auto; max-width: 100%">
+<div role="img" aria-label="Sample company ACME's employee brand, The Branch, on a desktop monitor and a phone, with team photos, shout-outs and a poll" style="position: relative; width: 960px; height: 620px; transform: scale(var(--ebd-stageS)); transform-origin: 0 0; font-family: 'Bricolage Grotesque', sans-serif; color: #1a1426; line-height: 1.3">
+<div style="position: absolute; left: 44px; top: 44px; width: 720px; height: 470px; box-sizing: border-box; background: #000; border-radius: 16px; padding: 12px; box-shadow: 0 24px 48px #00000066">
+<div style="width: 100%; height: 100%; background: #fff4d6; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column">
+<div style="height: 42px; flex: none; background: #ff6b4a; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; box-sizing: border-box">
+<div style="display: flex; align-items: center; gap: 8px">
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20.5C8 15 12 11 19.5 4.5" fill="none" stroke="#1a1426" stroke-width="2.4" stroke-linecap="round"></path><path d="M11.5 12.5C7 13 4 11 3.5 6.5 8 6 11 8.5 11.5 12.5Z" fill="#1a1426"></path><path d="M15 9C14.5 5 16.5 2.5 21 2.5 21 7 18.5 9.5 15 9Z" fill="#1a1426"></path></svg>
+<span style="font-size: 18px; font-weight: 800">The Branch</span><span style="font-size: 10px; font-weight: 500">by ACME</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; font-size: 12px; font-weight: 800"><span>The Feed</span><span>People</span><span>Toolbox</span><span>Events</span><span style="width: 26px; height: 26px; border-radius: 50%; background: #1a1426; color: #fff4d6; display: flex; align-items: center; justify-content: center; font-size: 11px">S</span></div>
+</div>
+<div style="flex: 1; padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 10px; min-height: 0">
+<div style="position: relative; height: 158px; flex: none; border-radius: 12px; overflow: hidden">
+<img src="/images/employee-brand/19489c1fb239.webp" alt="Coworkers laughing together over pizza" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%">
+<div style="position: absolute; left: 12px; bottom: 12px; background: #1a1426; color: #fff4d6; border-radius: 10px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+<span style="font-family: Caveat, cursive; font-size: 20px; color: #ffd458; line-height: 1">Morning, Sam.</span>
+<span style="font-size: 26px; line-height: 1; font-weight: 800; letter-spacing: -.5px">Let's grow something good today.</span>
+</div>
+</div>
+<div style="flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; font-size: 11px; line-height: 1.3; min-height: 0">
+<div style="background: #fff; border-radius: 14px; padding: 10px; display: flex; flex-direction: column; gap: 6px">
+<strong style="font-size: 15px">Shout-outs</strong>
+<div style="display: flex; gap: 8px; align-items: center">
+<img src="/images/employee-brand/31d329668427.webp" alt="Omar" style="width: 38px; height: 38px; flex: none; border-radius: 50%; object-fit: cover; object-position: 36% 30%">
+<div style="display: flex; flex-direction: column"><strong style="font-size: 12px">Omar R. · Elm St. branch</strong><span>from Marcus, Lending</span></div>
+</div>
+<span>Stayed after close to help a customer unlock a frozen account. Absolute legend.</span>
+<div style="margin-top: auto; display: flex; gap: 6px; font-weight: 800"><span style="background: #fff4d6; border-radius: 999px; padding: 3px 8px">Kudos 24</span><span style="background: #fff4d6; border-radius: 999px; padding: 3px 8px">Replies 9</span></div>
+</div>
+<div style="background: #1a1426; color: #fff4d6; border-radius: 14px; padding: 10px; display: flex; flex-direction: column; gap: 8px">
+<strong style="font-size: 15px">New on the team</strong>
+<div style="display: flex; gap: 6px">
+<img src="/images/employee-brand/da3dd06c24c6.webp" alt="Luis" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #ff6b4a">
+<img src="/images/employee-brand/1d90eea5cb69.webp" alt="Ben" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #ff6b4a">
+<img src="/images/employee-brand/b4db42b2f2c8.webp" alt="Mia" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #ff6b4a">
+<img src="/images/employee-brand/ceae12d7a029.webp" alt="Ruby" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #ff6b4a">
+</div>
+<span>Luis, Ben, Mia and Ruby joined branches across the region this week. Say hi in the Feed.</span>
+<span style="margin-top: auto; align-self: flex-start; background: #7be0d0; color: #1a1426; border-radius: 999px; padding: 4px 10px; font-weight: 800">Say hi</span>
+</div>
+<div style="background: #7be0d0; border-radius: 14px; padding: 10px; display: flex; flex-direction: column; gap: 6px">
+<strong style="font-size: 15px">Community Day vote</strong>
+<span>Help pick where we volunteer. Votes close Friday, 3 pm.</span>
+<div style="display: flex; flex-direction: column; gap: 3px"><div style="display: flex; justify-content: space-between; font-weight: 800"><span>City food bank</span><span>62%</span></div><div style="height: 8px; border-radius: 4px; background: #ffffff99"><div style="width: 62%; height: 100%; border-radius: 4px; background: #1a1426"></div></div></div>
+<div style="display: flex; flex-direction: column; gap: 3px"><div style="display: flex; justify-content: space-between; font-weight: 800"><span>Riverside cleanup</span><span>38%</span></div><div style="height: 8px; border-radius: 4px; background: #ffffff99"><div style="width: 38%; height: 100%; border-radius: 4px; background: #1a1426"></div></div></div>
+<span style="margin-top: auto; font-weight: 800">143 votes so far</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="position: absolute; left: 330px; top: 514px; width: 148px; height: 44px; background: #000"></div>
+<div style="position: absolute; left: 270px; top: 558px; width: 268px; height: 12px; border-radius: 6px; background: #000"></div>
+<div style="position: absolute; left: 704px; top: 130px; width: 216px; height: 460px; box-sizing: border-box; background: #000; border-radius: 30px; padding: 10px; box-shadow: 0 24px 48px #00000080">
+<div style="width: 100%; height: 100%; box-sizing: border-box; background: #fff4d6; border-radius: 22px; overflow: hidden; padding: 18px 12px 10px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 6px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20.5C8 15 12 11 19.5 4.5" fill="none" stroke="#1a1426" stroke-width="2.4" stroke-linecap="round"></path><path d="M11.5 12.5C7 13 4 11 3.5 6.5 8 6 11 8.5 11.5 12.5Z" fill="#1a1426"></path><path d="M15 9C14.5 5 16.5 2.5 21 2.5 21 7 18.5 9.5 15 9Z" fill="#1a1426"></path></svg><span style="font-size: 13px; font-weight: 800">The Branch</span></div>
+<span style="font-size: 25px; line-height: .98; font-weight: 800; letter-spacing: -.8px; color: #c4361b">Hey Sam, doors open at 9.</span>
+<div style="background: #ff6b4a; border-radius: 14px; padding: 8px; display: flex; flex-direction: column; gap: 6px; font-size: 11px; line-height: 1.25">
+<img src="/images/employee-brand/2da35ad6294e.webp" alt="A teller smiling as he hands cash to a customer" style="display: block; width: 100%; height: 86px; border-radius: 10px; object-fit: cover; object-position: 62% 62%">
+<strong style="font-size: 13px">Raj at Elm St.: five stars all month</strong><span>Kudos 41 · see the reviews</span>
+</div>
+<div style="background: #1a1426; color: #fff4d6; border-radius: 14px; padding: 10px; font-size: 11px; line-height: 1.25; display: flex; justify-content: space-between; align-items: center"><div style="display: flex; flex-direction: column"><strong style="font-size: 13px">Community Day</strong><span>Volunteer sign-ups open</span></div><span style="font-family: Caveat, cursive; font-size: 20px; color: #ffd458; line-height: 1">12 days</span></div>
+<div style="margin-top: auto; display: flex; justify-content: space-around; border-top: 1px solid #1a142626; padding-top: 7px; font-size: 9px; font-weight: 800"><span>Feed</span><span>People</span><span>Toolbox</span><span>Me</span></div>
+</div>
+</div>
+<div style="position: absolute; left: 790px; top: 10px; width: 170px; font-family: Caveat, cursive; font-size: 28px; line-height: 1; font-weight: 700; color: #ffd458; transform: rotate(-3deg)">same brand, turned inward</div>
+<svg width="60" height="50" viewBox="0 0 60 50" fill="none" stroke="#ffd458" stroke-width="3" stroke-linecap="round" aria-hidden="true" style="position: absolute; left: 800px; top: 78px"><path d="M40 4C34 22 26 32 12 42"></path><path d="M12 42l4-13M12 42l13-3"></path></svg>
+</div>
+</div>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 13px; color: #c9c7f2; text-align: center">ACME is a sample brand.</p>
+</div>
+</section>
+
+<!-- INSIGHT -->
+<section style="background: #fbfaf5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px 56px">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">They know your logo by heart. <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">Do they know what it stands for?</em></h2>
+<div style="display: flex; flex-direction: column; gap: 16px; color: #000">
+<p style="margin: 0">Your people sell under your brand, ship it and answer the phone with it. The public identity is the most familiar thing in the building, so showing it back to them on the intranet adds nothing new.</p>
+<p style="margin: 0">What often gets lost is the meaning behind it: the purpose, the story, why the work matters. That's what an employee brand is for. It takes the brand everyone already recognizes and speaks to the people inside.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px 48px; background: #05006c; color: #fff; border-radius: 24px; padding: 40px 44px">
+<span style="font-family: Archivo, sans-serif; font-size: 112px; line-height: .9; font-weight: 900; letter-spacing: -4px; color: #ffd458">41%</span>
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 10px">
+<p style="margin: 0; font-family: Archivo, sans-serif; font-size: 24px; line-height: 1.25; font-weight: 800">of U.S. workers strongly agree they know what their company stands for and what makes its brand different.</p>
+<p style="margin: 0; font-size: 16px; color: #e1e0fa">Among front-line employees in financial services, it's just 22%.</p>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 12px; color: #c9c7f2">Source: Gallup, survey of 3,000+ U.S. workers</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 28px">
+<div style="background: #fff; padding: 28px; display: flex; flex-direction: column; gap: 10px; transform: rotate(-1.5deg); box-shadow: 0 14px 28px #05006c26">
+<h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 34px; line-height: 1.1; font-weight: 700">Welcome</h3>
+<p style="margin: 0; font-size: 16px; color: #33325a">A name and voice that sound like colleagues, not a press release. New hires feel part of something from day one.</p>
+</div>
+<div style="background: #ffd458; padding: 28px; display: flex; flex-direction: column; gap: 10px; transform: rotate(1deg); box-shadow: 0 14px 28px #05006c26">
+<h3 style="margin: 0; font-family: Caveat, cursive; font-size: 42px; line-height: 1; font-weight: 700">Engaged</h3>
+<p style="margin: 0; font-size: 16px">Room for humor, rituals and inside references: the things your public brand could never say out loud.</p>
+</div>
+<div style="background: #fff; padding: 28px; display: flex; flex-direction: column; gap: 10px; transform: rotate(-.75deg); box-shadow: 0 14px 28px #05006c26">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 30px; line-height: 1.15; font-weight: 900; letter-spacing: -1px; color: #362dff">ALIGNED</h3>
+<p style="margin: 0; font-size: 16px; color: #33325a">A shared story that connects everyday work to the company's goals and purpose.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STICKY -->
+<section id="sticky" style="background: #fff">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #362dff">After launch day</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">Most intranets peak at launch. <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">Yours should keep growing.</em></h2>
+<p style="margin: 0; color: #000">A new intranet gets a burst of curiosity on day one. Then the novelty fades, visits slide, and an expensive platform quietly becomes the place nobody checks.</p>
+<p style="margin: 0; color: #000">More features rarely fix that. A reason to belong does. When the intranet has its own name, voice and rituals, it stops being "the intranet" and becomes a place people go: "it's on the Branch."</p>
+</div>
+<figure style="margin: 0; background: #fbfaf5; border-radius: 24px; padding: 28px 28px 20px; display: flex; flex-direction: column; gap: 10px">
+<svg viewBox="0 0 560 250" width="100%" role="img" aria-label="Illustrative chart: visits to a typical intranet spike at launch and then fall away, while visits to an intranet with an employee brand hold steady and grow over twelve months" style="display: block; font-family: 'Space Mono', monospace">
+<line x1="40" y1="205" x2="545" y2="205" stroke="#05006c" stroke-opacity=".25" stroke-width="2"></line>
+<line x1="40" y1="20" x2="40" y2="205" stroke="#05006c" stroke-opacity=".25" stroke-width="2"></line>
+<path d="M40 200 C62 200 74 34 96 34 C126 34 150 150 220 172 S400 190 545 192" fill="none" stroke="#8f8cb8" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 9"></path>
+<path d="M40 200 C62 200 78 66 100 66 C138 66 168 104 238 98 S420 66 545 34" fill="none" stroke="#362dff" stroke-width="5" stroke-linecap="round"></path>
+<circle cx="545" cy="34" r="7" fill="#ffd458" stroke="#362dff" stroke-width="3"></circle>
+<text x="545" y="20" text-anchor="end" font-size="14" font-weight="700" fill="#362dff">With an employee brand</text>
+<text x="545" y="180" text-anchor="end" font-size="14" font-weight="700" fill="#5b5880">Typical launch</text>
+<text x="40" y="228" font-size="13" fill="#33325a">Launch</text>
+<text x="545" y="228" text-anchor="end" font-size="13" fill="#33325a">Month 12</text>
+<text x="30" y="112" text-anchor="middle" font-size="13" fill="#33325a" transform="rotate(-90 30 112)">Visits</text>
+</svg>
+<figcaption style="font-family: 'Space Mono', monospace; font-size: 12px; color: #33325a">Illustrative, not client data.</figcaption>
+</figure>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px">
+<div style="background: #fbfaf5; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#362dff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.15; font-weight: 900">Rituals to return for</h3>
+<p style="margin: 0; font-size: 15px; color: #000">Named series, events and traditions give people a reason to check in every week, not just on launch day.</p>
+<p style="margin: auto 0 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1.05; color: #362dff">Community Day, Monday kudos, coffee with the CEO</p>
+</div>
+<div style="background: #fbfaf5; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#362dff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"></path><circle cx="17.5" cy="9" r="2.5"></circle><path d="M17 14.5c2.4.2 4 1.8 4.5 4.5"></path></svg>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.15; font-weight: 900">People see their people</h3>
+<p style="margin: 0; font-size: 15px; color: #000">Shout-outs, new-hire welcomes and real photos of real colleagues. Nothing pulls people back like seeing their own team.</p>
+<p style="margin: auto 0 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1.05; color: #362dff">Omar's shout-out: 24 kudos by lunch</p>
+</div>
+<div style="background: #fbfaf5; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#362dff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path><path d="M8 9.5h8M8 12.5h5"></path></svg>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.15; font-weight: 900">An invitation to join in</h3>
+<p style="margin: 0; font-size: 15px; color: #000">A voice that asks instead of announces. Polls, comments, reactions and stories employees share themselves.</p>
+<p style="margin: auto 0 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1.05; color: #362dff">143 votes on where to volunteer</p>
+</div>
+<div style="background: #fbfaf5; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#362dff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"></path><path d="M20 4v5h-5"></path></svg>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.15; font-weight: 900">Always something new</h3>
+<p style="margin: 0; font-size: 15px; color: #000">Templates and a clear voice make it easy for communicators to publish fresh, on-brand content every week. Stale pages are what kill intranets.</p>
+<p style="margin: auto 0 0; font-family: Caveat, cursive; font-size: 24px; line-height: 1.05; color: #362dff">Fresh on the Feed every morning</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- THE DIAL -->
+<section id="dial" style="background: #05006c; color: #fff">
+<div style="max-width: 1120px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 24px 56px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #ffd458">Same roots, new voice</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">Still your brand. <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #ffd458">Just pointed at the people inside.</em></h2>
+</div>
+<p style="margin: 0">An employee brand isn't a rival to the corporate one. It grows from the same foundation, then speaks differently to a different audience. How far you take it is up to you. It's not only allowed, it's encouraged.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px">
+<div style="border: 1px solid #ffffff40; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 24px; font-weight: 900">Carries over</h3>
+<p style="margin: 0; font-size: 15px; color: #e1e0fa">The foundation people already trust.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: Archivo, sans-serif; font-size: 15px; font-weight: 700">
+<span style="border: 1px solid #ffffff66; border-radius: 999px; padding: 6px 14px">Logo and mark</span>
+<span style="border: 1px solid #ffffff66; border-radius: 999px; padding: 6px 14px">Color palette</span>
+<span style="border: 1px solid #ffffff66; border-radius: 999px; padding: 6px 14px">Typography</span>
+<span style="border: 1px solid #ffffff66; border-radius: 999px; padding: 6px 14px">Brand standards</span>
+</div>
+</div>
+<div style="background: #ffd458; color: #05006c; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 24px; font-weight: 900">Turns inward</h3>
+<p style="margin: 0; font-size: 15px">Where the employee brand finds its own personality.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: Archivo, sans-serif; font-size: 15px; font-weight: 700">
+<span style="background: #05006c; color: #fff; border-radius: 999px; padding: 6px 14px">Name</span>
+<span style="background: #05006c; color: #fff; border-radius: 999px; padding: 6px 14px">Narrative and story</span>
+<span style="background: #05006c; color: #fff; border-radius: 999px; padding: 6px 14px">Voice and tone</span>
+<span style="background: #05006c; color: #fff; border-radius: 999px; padding: 6px 14px">Purpose and goals</span>
+<span style="background: #05006c; color: #fff; border-radius: 999px; padding: 6px 14px">Imagery</span>
+<span style="background: #05006c; color: #fff; border-radius: 999px; padding: 6px 14px">Iconography</span>
+<span style="background: #05006c; color: #fff; border-radius: 999px; padding: 6px 14px">Rituals</span>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: center; gap: 16px; font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #e1e0fa">
+<span>Close to corporate</span>
+<div style="flex: 1; height: 2px; background: #ffffff40; position: relative"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" style="position: absolute; right: -2px; top: -5px"><path d="M2 1l8 5-8 5" fill="none" stroke="#ffffff66" stroke-width="2"></path></svg></div>
+<span>Its own personality</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px; font-family: 'Bricolage Grotesque', sans-serif">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="background: #fff; color: #1a1426; border-radius: 14px; overflow: hidden; height: 236px; display: flex; flex-direction: column">
+<div style="height: 40px; flex: none; border-bottom: 1px solid #1a14261f; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font-size: 12px; font-weight: 800"><span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 14px; background: #ff6b4a; border-radius: 3px"></span><span style="font-size: 16px">ACME</span><span style="font-weight: 500; color: #5d5668">Inside</span></span><span style="font-weight: 500; color: #5d5668">News · Policies · Tools</span></div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 12px">
+<span style="color: #5d5668">Good morning, Sam</span>
+<strong style="font-size: 22px; line-height: 1.1">Company news</strong>
+<div style="display: flex; gap: 10px"><img src="/images/employee-brand/991a740d248b.webp" alt="Employees in an audience watching a presentation on stage" style="width: 90px; height: 64px; flex: none; border-radius: 6px; object-fit: cover; object-position: 55% 45%"><div style="display: flex; flex-direction: column; gap: 2px"><strong>Q4 town hall recap</strong><span style="color: #5d5668">Leadership update and service awards</span></div></div>
+</div>
+</div>
+<p style="margin: 0; font-family: 'Open Sans', sans-serif; font-size: 15px"><strong>A light touch.</strong> Same look, its own name, a warmer greeting.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="background: #fff4d6; color: #1a1426; border-radius: 14px; overflow: hidden; height: 236px; display: flex; flex-direction: column">
+<div style="height: 40px; flex: none; background: #1a1426; color: #fff4d6; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font-size: 12px; font-weight: 800"><span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 14px; background: #ff6b4a; border-radius: 3px"></span><span style="font-size: 16px">ACME</span><span style="color: #7be0d0">Hub</span></span><span>News · People · Tools</span></div>
+<div style="padding: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 12px">
+<strong style="font-size: 22px; line-height: 1.1">Morning, team. Here's what's new.</strong>
+<div style="display: flex; gap: 10px; align-items: center"><img src="/images/employee-brand/a29b42660b56.webp" alt="Team laughing around a meeting table" style="width: 90px; height: 64px; flex: none; border-radius: 10px; object-fit: cover; object-position: 62% 45%"><div style="display: flex; flex-direction: column; gap: 2px"><strong>Meet the Denver branch team</strong><span style="background: #7be0d0; border-radius: 999px; padding: 2px 8px; align-self: flex-start; font-weight: 800">People of ACME</span></div></div>
+</div>
+</div>
+<p style="margin: 0; font-family: 'Open Sans', sans-serif; font-size: 15px"><strong>Somewhere in between.</strong> Corporate colors with new accents, real faces and a friendlier voice.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="background: #ff6b4a; color: #1a1426; border-radius: 14px; overflow: hidden; height: 236px; display: flex; flex-direction: column">
+<div style="height: 40px; flex: none; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font-size: 12px; font-weight: 800"><span style="display: flex; align-items: center; gap: 6px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20.5C8 15 12 11 19.5 4.5" fill="none" stroke="#1a1426" stroke-width="2.4" stroke-linecap="round"></path><path d="M11.5 12.5C7 13 4 11 3.5 6.5 8 6 11 8.5 11.5 12.5Z" fill="#1a1426"></path><path d="M15 9C14.5 5 16.5 2.5 21 2.5 21 7 18.5 9.5 15 9Z" fill="#1a1426"></path></svg><span style="font-size: 16px">The Branch</span></span><span>Feed · People · Toolbox</span></div>
+<div style="padding: 4px 16px 16px; display: flex; flex-direction: column; gap: 8px; font-size: 12px">
+<strong style="font-size: 28px; line-height: .95; letter-spacing: -.8px; color: #fff4d6">Hey Sam, doors open at 9.</strong>
+<div style="display: flex; gap: 10px; align-items: center"><img src="/images/employee-brand/eaab8546becb.webp" alt="Coworkers in matching t-shirts packing food bank boxes" style="width: 90px; height: 64px; flex: none; border-radius: 10px; object-fit: cover; object-position: 66% 35%"><div style="display: flex; flex-direction: column; gap: 2px"><strong>Community Day: vote now</strong><span style="font-family: Caveat, cursive; font-size: 18px; line-height: 1">made by us, for us</span></div></div>
+</div>
+</div>
+<p style="margin: 0; font-family: 'Open Sans', sans-serif; font-size: 15px"><strong>A personality of its own.</strong> New name, mark, rituals and voice, still clearly ACME.</p>
+</div>
+</div>
+<p style="margin: 0; font-family: Caveat, cursive; font-size: 30px; line-height: 1.1; color: #ffd458">You pick the setting. We help you get there.</p>
+</div>
+</div>
+</section>
+
+<!-- SIDE BY SIDE -->
+<section style="background: #fbfaf5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 760px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #362dff">One company, two audiences</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">What customers see. <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">What your people see.</em></h2>
+<p style="margin: 0; color: #000">The public site is written for buyers: polished, persuasive and careful. The intranet is written for colleagues, so it can use first names, real photos and inside jokes.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="width: var(--ebd-sideW); height: var(--ebd-sideH)">
+<div role="img" aria-label="ACME's public website: an advisor meeting photo, formal headline and an Open an account button" style="position: relative; width: 520px; height: 420px; transform: scale(var(--ebd-sideS)); transform-origin: 0 0; font-family: 'Bricolage Grotesque', sans-serif; color: #1a1426; line-height: 1.3">
+<div style="width: 520px; height: 420px; box-sizing: border-box; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 14px 28px #05006c26; display: flex; flex-direction: column">
+<div style="height: 26px; flex: none; background: #ece9f2; display: flex; align-items: center; gap: 6px; padding: 0 12px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #c9c3d6"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #c9c3d6"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #c9c3d6"></span><span style="margin-left: 10px; font-size: 10px; color: #5d5668">acme.com</span></div>
+<div style="height: 46px; flex: none; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-size: 12px; font-weight: 800; border-bottom: 1px solid #1a14261f"><span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 14px; background: #ff6b4a; border-radius: 3px"></span><span style="font-size: 17px">ACME</span></span><span style="display: flex; gap: 14px; font-weight: 500"><span>Personal</span><span>Business</span><span>Rates</span></span><span style="background: #1a1426; color: #fff; border-radius: 6px; padding: 6px 12px">Open an account</span></div>
+<img src="/images/employee-brand/b16d02d81cc0.webp" alt="A financial advisor meeting with clients" style="display: block; width: 100%; height: 150px; flex: none; object-fit: cover; object-position: 62% 32%">
+<div style="padding: 18px; display: flex; flex-direction: column; gap: 8px">
+<strong style="font-size: 26px; line-height: 1.05; letter-spacing: -.5px">Banking built around you.</strong>
+<span style="font-size: 13px; color: #5d5668">Checking, savings and lending for every stage of life.</span>
+<div style="display: flex; gap: 8px; margin-top: 4px"><span style="width: 70px; height: 18px; border-radius: 4px; background: #ece9f2"></span><span style="width: 70px; height: 18px; border-radius: 4px; background: #ece9f2"></span><span style="width: 70px; height: 18px; border-radius: 4px; background: #ece9f2"></span><span style="width: 70px; height: 18px; border-radius: 4px; background: #ece9f2"></span></div>
+</div>
+</div>
+</div>
+</div>
+<p style="margin: 0; font-size: 15px; color: #000"><strong>acme.com</strong>, for buyers. Polished, persuasive, careful.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="width: var(--ebd-sideW); height: var(--ebd-sideH)">
+<div role="img" aria-label="ACME's intranet, The Branch: candid team photo, a named shout-out and a vote" style="position: relative; width: 520px; height: 420px; transform: scale(var(--ebd-sideS)); transform-origin: 0 0; font-family: 'Bricolage Grotesque', sans-serif; color: #1a1426; line-height: 1.3">
+<div style="width: 520px; height: 420px; box-sizing: border-box; background: #fff4d6; border-radius: 16px; overflow: hidden; box-shadow: 0 14px 28px #05006c26; display: flex; flex-direction: column">
+<div style="height: 26px; flex: none; background: #ece9f2; display: flex; align-items: center; gap: 6px; padding: 0 12px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #c9c3d6"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #c9c3d6"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #c9c3d6"></span><span style="margin-left: 10px; font-size: 10px; color: #5d5668">branch.acme.com</span></div>
+<div style="height: 46px; flex: none; background: #ff6b4a; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; font-size: 12px; font-weight: 800"><span style="display: flex; align-items: center; gap: 6px"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20.5C8 15 12 11 19.5 4.5" fill="none" stroke="#1a1426" stroke-width="2.4" stroke-linecap="round"></path><path d="M11.5 12.5C7 13 4 11 3.5 6.5 8 6 11 8.5 11.5 12.5Z" fill="#1a1426"></path><path d="M15 9C14.5 5 16.5 2.5 21 2.5 21 7 18.5 9.5 15 9Z" fill="#1a1426"></path></svg><span style="font-size: 17px">The Branch</span></span><span style="display: flex; gap: 14px"><span>The Feed</span><span>People</span><span>Toolbox</span></span></div>
+<div style="flex: 1; padding: 14px; display: flex; flex-direction: column; gap: 10px; min-height: 0">
+<strong style="font-size: 30px; line-height: 1; letter-spacing: -.8px">Morning, team.</strong>
+<div style="flex: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; min-height: 0; font-size: 11px">
+<div style="position: relative; border-radius: 12px; overflow: hidden">
+<img src="/images/employee-brand/0f9e93a0a58e.webp" alt="Coworkers taking a group selfie at the office" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 32% 45%">
+<span style="position: absolute; left: 8px; right: 8px; bottom: 8px; background: #1a1426; color: #fff4d6; border-radius: 8px; padding: 6px 8px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; letter-spacing: 0; font-weight: 800">Elm St. team after the food drive</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; min-height: 0">
+<div style="flex: 1; background: #fff; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; gap: 8px; align-items: center"><img src="/images/employee-brand/354cf0c0a782.webp" alt="Ken" style="width: 32px; height: 32px; flex: none; border-radius: 50%; object-fit: cover; object-position: 52% 22%"><strong style="font-size: 12px">Dee thanked Ken</strong></div>
+<span>"Covered my Saturday shift so I could make my kid's game. You're the best."</span>
+<strong>Kudos 18</strong>
+</div>
+<div style="background: #7be0d0; border-radius: 12px; padding: 10px; display: flex; justify-content: space-between; align-items: center"><strong style="font-size: 12px">Community Day in 12 days</strong><span style="background: #1a1426; color: #fff4d6; border-radius: 999px; padding: 3px 10px; font-weight: 800">RSVP</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p style="margin: 0; font-size: 15px; color: #000"><strong>The Branch</strong>, for colleagues. Candid, named, a little playful.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- IDENTITY SYSTEM -->
+<section id="elements" style="background: #05006c; color: #fff">
+<div style="max-width: 1120px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 40px 56px">
+<div style="flex: 0 1 var(--ebd-typeW); min-width: 0; position: var(--ebd-typePos); top: 24px; align-self: flex-start; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #ffd458">The identity system</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">A system your communicators <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #ffd458">can keep using.</em></h2>
+<p style="margin: 0; color: #fff">A banner and a color swap won't carry a brand. ADC builds a complete, documented system inside LumApps, so communicators can keep publishing fresh, on-brand content long after launch. That steady stream is what keeps people coming back.</p>
+<div style="width: var(--ebd-typeW); height: var(--ebd-typeH); max-width: 100%">
+<div role="img" aria-label="Three printed type specimen sheets scattered on a navy desk" style="position: relative; width: 720px; height: 540px; transform: scale(var(--ebd-typeS)); transform-origin: 0 0; font-family: 'Space Mono', monospace; line-height: 1.3">
+<div style="position: absolute; left: 30px; top: 56px; width: 300px; height: 390px; box-sizing: border-box; padding: 28px; background: #fbfaf5; transform: rotate(-7deg); box-shadow: 0 18px 36px #00000066; display: flex; flex-direction: column; justify-content: space-between; color: #05006c">
+<span style="font-size: 12px">Display / Serif</span>
+<span style="font-family: 'Playfair Display', serif; font-size: 170px; line-height: 1; font-weight: 700">Aa</span>
+<span style="font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; line-height: 1.3">The story we tell each other.</span>
+</div>
+<div style="position: absolute; left: 390px; top: 20px; width: 300px; height: 330px; box-sizing: border-box; padding: 28px; background: #fff; transform: rotate(5deg); box-shadow: 0 18px 36px #00000066; display: flex; flex-direction: column; justify-content: space-between; color: #362dff">
+<span style="font-size: 12px">Headline / Grotesque</span>
+<span style="font-family: Archivo, sans-serif; font-size: 150px; line-height: 1; font-weight: 900; letter-spacing: -6px">Rg</span>
+<span style="font-family: Archivo, sans-serif; font-size: 22px; font-weight: 900; line-height: 1.15">LOUD ENOUGH FOR MONDAY.</span>
+</div>
+<div style="position: absolute; left: 250px; top: 330px; width: 300px; height: 190px; box-sizing: border-box; padding: 24px 28px; background: #ffd458; transform: rotate(-2deg); box-shadow: 0 18px 36px #00000066; display: flex; flex-direction: column; justify-content: space-between; color: #05006c">
+<span style="font-size: 12px">Accent / Handwritten</span>
+<span style="font-family: Caveat, cursive; font-size: 60px; line-height: 1; font-weight: 700">Made by us, for us</span>
+</div>
+</div>
+</div>
+</div>
+
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; border-bottom: 1px solid #ffffff40; align-self: flex-start">
+<details open="" style="border-top: 1px solid #ffffff40">
+<summary style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 0; min-height: 44px"><span style="display: flex; flex-direction: column; gap: 2px"><strong style="font-family: Archivo, sans-serif; font-size: 19px; font-weight: 800">Brand Tenets</strong><span style="font-size: 15px; color: #e1e0fa">A few beliefs, in words people actually say.</span></span><span class="plus" aria-hidden="true" style="flex: none; display: flex; padding-top: 6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 1v12M1 7h12"></path></svg></span></summary>
+<div style="padding: 0 0 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">It all starts with purpose. We put your beliefs into plain words employees can repeat, and those words shape every decision about how the brand looks and sounds.</p><p style="margin: 0; color: #c9c7f2">In LumApps: tenets anchor your homepage story, onboarding content and leadership communications.</p></div>
+</details>
+<details style="border-top: 1px solid #ffffff40">
+<summary style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 0; min-height: 44px"><span style="display: flex; flex-direction: column; gap: 2px"><strong style="font-family: Archivo, sans-serif; font-size: 19px; font-weight: 800">Logo System</strong><span style="font-size: 15px; color: #e1e0fa">A mark that sits beside the corporate logo without competing.</span></span><span class="plus" aria-hidden="true" style="flex: none; display: flex; padding-top: 6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 1v12M1 7h12"></path></svg></span></summary>
+<div style="padding: 0 0 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">Your platform deserves a mark that's clearly related to the corporate logo and unmistakable at any size. We design the variations it needs to look right wherever it appears.</p><p style="margin: 0; color: #c9c7f2">In LumApps: sized for the platform header, site navigation and mobile app.</p></div>
+</details>
+<details style="border-top: 1px solid #ffffff40">
+<summary style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 0; min-height: 44px"><span style="display: flex; flex-direction: column; gap: 2px"><strong style="font-family: Archivo, sans-serif; font-size: 19px; font-weight: 800">Color Schemes</strong><span style="font-size: 15px; color: #e1e0fa">Your public palette, plus colors it was never allowed to use.</span></span><span class="plus" aria-hidden="true" style="flex: none; display: flex; padding-top: 6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 1v12M1 7h12"></path></svg></span></summary>
+<div style="padding: 0 0 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">Primary and secondary palettes stay in the family with your public colors, then add the energy an internal brand can afford.</p><p style="margin: 0; color: #c9c7f2">In LumApps: mapped to your platform styles and checked for accessible contrast.</p></div>
+</details>
+<details style="border-top: 1px solid #ffffff40">
+<summary style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 0; min-height: 44px"><span style="display: flex; flex-direction: column; gap: 2px"><strong style="font-family: Archivo, sans-serif; font-size: 19px; font-weight: 800">Font Guidelines</strong><span style="font-size: 15px; color: #e1e0fa">Type rules authors never have to think about.</span></span><span class="plus" aria-hidden="true" style="flex: none; display: flex; padding-top: 6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 1v12M1 7h12"></path></svg></span></summary>
+<div style="padding: 0 0 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">A primary type family with clear rules for weights and sizes keeps headlines, body copy and calls to action consistent and easy to read.</p><p style="margin: 0; color: #c9c7f2">In LumApps: applied through platform styling, so authors get the right type automatically.</p></div>
+</details>
+<details style="border-top: 1px solid #ffffff40">
+<summary style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 0; min-height: 44px"><span style="display: flex; flex-direction: column; gap: 2px"><strong style="font-family: Archivo, sans-serif; font-size: 19px; font-weight: 800">Standard Templates</strong><span style="font-size: 15px; color: #e1e0fa">No communicator starts from a blank page again.</span></span><span class="plus" aria-hidden="true" style="flex: none; display: flex; padding-top: 6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 1v12M1 7h12"></path></svg></span></summary>
+<div style="padding: 0 0 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">Reusable layouts with banners, margins and type already decided, so every communicator starts on brand.</p><p style="margin: 0; color: #c9c7f2">In LumApps: built as page and content templates your authors can pick up right away.</p></div>
+</details>
+<details style="border-top: 1px solid #ffffff40">
+<summary style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 0; min-height: 44px"><span style="display: flex; flex-direction: column; gap: 2px"><strong style="font-family: Archivo, sans-serif; font-size: 19px; font-weight: 800">Channel Protocols</strong><span style="font-size: 15px; color: #e1e0fa">How the brand behaves in every space employees use.</span></span><span class="plus" aria-hidden="true" style="flex: none; display: flex; padding-top: 6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 1v12M1 7h12"></path></svg></span></summary>
+<div style="padding: 0 0 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">Clear guidance on design and content for every digital touchpoint, including the social and community spaces where employees talk to each other.</p><p style="margin: 0; color: #c9c7f2">In LumApps: covers sites, communities, Broadcasts and the mobile app.</p></div>
+</details>
+<details style="border-top: 1px solid #ffffff40">
+<summary style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 0; min-height: 44px"><span style="display: flex; flex-direction: column; gap: 2px"><strong style="font-family: Archivo, sans-serif; font-size: 19px; font-weight: 800">Asset Library</strong><span style="font-size: 15px; color: #e1e0fa">Everything the next campaign needs, already on brand.</span></span><span class="plus" aria-hidden="true" style="flex: none; display: flex; padding-top: 6px"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 1v12M1 7h12"></path></svg></span></summary>
+<div style="padding: 0 0 18px; font-size: 15px; line-height: 1.55; display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">A growing collection of imagery, icons, font files and plug-and-play media, ready when a new campaign or team needs it.</p><p style="margin: 0; color: #c9c7f2">In LumApps: organized and handed over so your team can keep building after launch.</p></div>
+</details>
+</div>
+</div>
+</section>
+
+<!-- BEYOND THE SCREEN -->
+<section style="background: #fbfaf5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 24px 56px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #362dff">Beyond the screen</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">A brand people <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">wear, share and keep.</em></h2>
+</div>
+<p style="margin: 0; color: #000">The same system carries into welcome kits, badges, swag and signage. When the brand shows up on day one and on the break-room wall, the intranet feels like a place, not just a page.</p>
+</div>
+<div style="width: var(--ebd-kitW); height: var(--ebd-kitH); margin: 0 auto; max-width: 100%">
+<div role="img" aria-label="The Branch brand on physical items: a t-shirt, an employee badge, a Community Day poster, a phone home screen, a sticker sheet and a welcome box" style="position: relative; width: 960px; height: 560px; transform: scale(var(--ebd-kitS)); transform-origin: 0 0; font-family: 'Bricolage Grotesque', sans-serif; color: #1a1426; line-height: 1.2; background: #ece5d3; border-radius: 24px; overflow: hidden">
+<svg width="300" height="290" viewBox="0 0 300 290" aria-hidden="true" style="position: absolute; left: 24px; top: 30px; transform: rotate(-6deg)"><path d="M95 10 L60 22 L8 70 L44 118 L70 98 L70 280 L230 280 L230 98 L256 118 L292 70 L240 22 L205 10 Q150 50 95 10 Z" fill="#1a1426"></path><g transform="translate(120 108) scale(2.5)"><path d="M4.5 20.5C8 15 12 11 19.5 4.5" fill="none" stroke="#ff6b4a" stroke-width="2.4" stroke-linecap="round"></path><path d="M11.5 12.5C7 13 4 11 3.5 6.5 8 6 11 8.5 11.5 12.5Z" fill="#ff6b4a"></path><path d="M15 9C14.5 5 16.5 2.5 21 2.5 21 7 18.5 9.5 15 9Z" fill="#ff6b4a"></path></g><text x="150" y="208" text-anchor="middle" fill="#fff4d6" font-family="Bricolage Grotesque, sans-serif" font-size="22" font-weight="800">THE BRANCH</text></svg>
+<div style="position: absolute; left: 352px; top: -10px; width: 26px; height: 90px; background: #7be0d0; transform: rotate(4deg)"></div>
+<div style="position: absolute; left: 300px; top: 70px; width: 170px; height: 250px; box-sizing: border-box; background: #fff; border-radius: 12px; overflow: hidden; transform: rotate(4deg); box-shadow: 0 14px 28px #1a142640; display: flex; flex-direction: column; align-items: center">
+<div style="width: 100%; height: 50px; flex: none; background: #ff6b4a; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 13px; font-weight: 800"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20.5C8 15 12 11 19.5 4.5" fill="none" stroke="#1a1426" stroke-width="2.4" stroke-linecap="round"></path><path d="M11.5 12.5C7 13 4 11 3.5 6.5 8 6 11 8.5 11.5 12.5Z" fill="#1a1426"></path><path d="M15 9C14.5 5 16.5 2.5 21 2.5 21 7 18.5 9.5 15 9Z" fill="#1a1426"></path></svg>The Branch</div>
+<img src="/images/employee-brand/ccfd69599832.webp" alt="Employee badge photo" style="width: 92px; height: 92px; margin-top: 18px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 3px solid #ff6b4a">
+<strong style="margin-top: 14px; font-size: 18px">Sam Ortiz</strong>
+<span style="font-size: 12px">Elm St. branch · since 2021</span>
+</div>
+<div style="position: absolute; left: 510px; top: 26px; width: 230px; height: 300px; box-sizing: border-box; background: #ff6b4a; padding: 22px; transform: rotate(-3deg); box-shadow: 0 14px 28px #1a142640; display: flex; flex-direction: column; justify-content: space-between">
+<span style="font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700">THE BRANCH PRESENTS</span>
+<strong style="font-size: 58px; line-height: .9; letter-spacing: -2px; color: #fff4d6">Pitch in.</strong>
+<span style="font-size: 14px; font-weight: 800">Community Day is coming. Sign up in the Feed.</span>
+<span style="font-family: Caveat, cursive; font-size: 30px; line-height: 1; color: #1a1426">made by us, for us</span>
+</div>
+<div style="position: absolute; left: 784px; top: 44px; width: 150px; height: 300px; box-sizing: border-box; background: #000; border-radius: 24px; padding: 8px; transform: rotate(5deg); box-shadow: 0 14px 28px #1a142640">
+<div style="width: 100%; height: 100%; box-sizing: border-box; border-radius: 18px; background: #362dff; padding: 26px 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 52px; gap: 6px; justify-items: center">
+<span style="width: 32px; height: 32px; border-radius: 9px; background: #ffffff59"></span>
+<span style="width: 32px; height: 32px; border-radius: 9px; background: #ffffff59"></span>
+<span style="width: 32px; height: 32px; border-radius: 9px; background: #ffffff59"></span>
+<span style="width: 32px; height: 32px; border-radius: 9px; background: #ffffff59"></span>
+<span style="display: flex; flex-direction: column; align-items: center; gap: 3px"><span style="width: 32px; height: 32px; border-radius: 9px; background: #ff6b4a; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20.5C8 15 12 11 19.5 4.5" fill="none" stroke="#1a1426" stroke-width="2.4" stroke-linecap="round"></path><path d="M11.5 12.5C7 13 4 11 3.5 6.5 8 6 11 8.5 11.5 12.5Z" fill="#1a1426"></path><path d="M15 9C14.5 5 16.5 2.5 21 2.5 21 7 18.5 9.5 15 9Z" fill="#1a1426"></path></svg></span><span style="font-size: 8px; color: #fff; font-weight: 800">Branch</span></span>
+<span style="width: 32px; height: 32px; border-radius: 9px; background: #ffffff59"></span>
+<span style="width: 32px; height: 32px; border-radius: 9px; background: #ffffff59"></span>
+<span style="width: 32px; height: 32px; border-radius: 9px; background: #ffffff59"></span>
+<span style="width: 32px; height: 32px; border-radius: 9px; background: #ffffff59"></span>
+</div>
+</div>
+<div style="position: absolute; left: 40px; top: 330px; width: 300px; height: 200px; box-sizing: border-box; background: #fff; border-radius: 10px; transform: rotate(-3deg); box-shadow: 0 14px 28px #1a142633">
+<span style="position: absolute; left: 18px; top: 18px; width: 92px; height: 92px; border-radius: 50%; background: #ffd458; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; transform: rotate(-10deg)">Day one</span>
+<span style="position: absolute; left: 124px; top: 14px; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center"><svg width="70" height="70" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20.5C8 15 12 11 19.5 4.5" fill="none" stroke="#ff6b4a" stroke-width="2.4" stroke-linecap="round"></path><path d="M11.5 12.5C7 13 4 11 3.5 6.5 8 6 11 8.5 11.5 12.5Z" fill="#ff6b4a"></path><path d="M15 9C14.5 5 16.5 2.5 21 2.5 21 7 18.5 9.5 15 9Z" fill="#ff6b4a"></path></svg></span>
+<span style="position: absolute; left: 204px; top: 20px; width: 80px; height: 80px; border-radius: 50%; background: #1a1426; color: #fff4d6; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13px; font-weight: 800; line-height: 1.05; transform: rotate(8deg)">Proud to<br>pitch<br>in</span>
+<span style="position: absolute; left: 40px; top: 120px; width: 230px; height: 62px; border-radius: 999px; background: #7be0d0; display: flex; align-items: center; justify-content: center; font-family: Caveat, cursive; font-size: 32px; transform: rotate(-3deg)">Made by us, for us</span>
+</div>
+<div style="position: absolute; left: 390px; top: 352px; width: 340px; height: 180px; box-sizing: border-box; background: #1a1426; border-radius: 8px; box-shadow: 0 14px 28px #1a142640; display: flex; flex-direction: column; overflow: hidden">
+<div style="height: 30px; flex: none; background: #ff6b4a"></div>
+<div style="flex: 1; padding: 16px 22px; display: flex; flex-direction: column; justify-content: center; gap: 6px; color: #fff4d6">
+<strong style="font-size: 30px; line-height: 1; letter-spacing: -.8px">Welcome to the Branch, Sam.</strong>
+<span style="font-size: 13px">Your first week starts here. Open me before Monday.</span>
+</div>
+</div>
+<span style="position: absolute; left: 766px; top: 410px; width: 170px; font-family: Caveat, cursive; font-size: 28px; line-height: 1; color: #362dff; transform: rotate(-4deg)">one system, everywhere it shows up</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROOF -->
+<section style="background: #fff">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #362dff">Engagement that lasts</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">The best intranets <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">have a name of their own.</em></h2>
+</div>
+<div style="display: flex; align-items: center; gap: 24px">
+<span style="font-family: Archivo, sans-serif; font-size: 96px; line-height: .9; font-weight: 900; letter-spacing: -4px; color: #362dff; flex: none">9/10</span>
+<p style="margin: 0; color: #000">winners of Nielsen Norman Group's 2018 Intranet Design Annual showed the intranet's own name in its logo, often paired with the company's.</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px">
+<div style="background: #fbfaf5; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #33325a">Just Eat Takeaway · on LumApps</span>
+<strong style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; line-height: 1">The Kitchen</strong>
+<p style="margin: 0; font-size: 15px; color: #000">A global hub with a name only a food company would choose, used to bring teams together after a major merger.</p>
+<p style="margin: auto 0 0; font-family: Archivo, sans-serif; font-size: 26px; font-weight: 900; line-height: 1.05; color: #362dff">83% employee adoption</p>
+</div>
+<div style="background: #fbfaf5; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #33325a">Veolia · on LumApps</span>
+<strong style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; line-height: 1">Water Tech</strong>
+<p style="margin: 0; font-size: 15px; color: #000">One named intranet for 54 countries, with shared templates and design standards, launched with a treasure-hunt campaign.</p>
+<p style="margin: auto 0 0; font-family: Archivo, sans-serif; font-size: 26px; font-weight: 900; line-height: 1.05; color: #362dff">Average visit up from 1:43 to 2:34</p>
+</div>
+<div style="background: #05006c; color: #fff; border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #ffd458">Global Payments · on LumApps</span>
+<strong style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 30px; line-height: 1">MyGPN</strong>
+<p style="margin: 0; font-size: 15px">A named, rebuilt intranet on LumApps, launched alongside benefits enrollment.</p>
+<p style="margin: auto 0 0; font-family: Archivo, sans-serif; font-size: 26px; font-weight: 900; line-height: 1.05; color: #ffd458">55× more traffic than the old intranet</p>
+</div>
+</div>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 12px; color: #33325a">Sources: Nielsen Norman Group (2018); LumApps customer stories: Just Eat Takeaway, Veolia, Global Payments.</p>
+</div>
+</section>
+
+<!-- LUMAPPS ONLY -->
+<section style="background: #fbfaf5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 88px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px 56px; align-items: start">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">Employee brand design from people who <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">only do LumApps.</em></h2>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px; color: #000">
+<p style="margin: 0">LumApps is the only platform we support, and we've been building in its ecosystem since 2017. We know what it can do, so the identity we design is one your platform can deliver and your team can maintain.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-family: Archivo, sans-serif; font-size: 16px; font-weight: 700">
+<a href="/design">UI/UX Design</a>
+<a href="/implementations">Implementations</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section style="background: #362dff; color: #fff">
+<div style="max-width: 880px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: clamp(38px, 5.4vw, 64px); line-height: 1.05; font-weight: 900; letter-spacing: -1.5px">What would your people <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #ffd458">call it?</em></h2>
+<p style="margin: 0; font-size: 19px; max-width: 32em">Tell us about your culture and your platform. We'll help you turn your brand inward and give your people a place they want to come back to.</p>
+<a href="/contact" style="background: #32e0c4; color: #05006c; text-decoration: none; font-family: Archivo, sans-serif; font-size: 17px; font-weight: 800; border-radius: 999px; padding: 16px 30px">Book a free consultation</a>
+</div>
+</section>
+  </div>
+</Base>
+
+<style is:global>
+  .ebd {
+    /* Defaults for a 1280px viewport, used until the script above runs. */
+    --ebd-stageS: 1; --ebd-stageW: 960px; --ebd-stageH: 620px;
+    --ebd-typeS: 0.9389; --ebd-typeW: 676px; --ebd-typeH: 507px; --ebd-typePos: sticky;
+    --ebd-sideS: 1; --ebd-sideW: 520px; --ebd-sideH: 420px;
+    --ebd-kitS: 1; --ebd-kitW: 960px; --ebd-kitH: 560px;
+    overflow-x: clip;
+  }
+  .ebd a { color: #362dff; }
+  .ebd a:hover { color: #05006c; }
+  .ebd summary { list-style: none; cursor: pointer; }
+  .ebd summary::-webkit-details-marker { display: none; }
+  .ebd summary:focus-visible, .ebd a:focus-visible { outline: 3px solid #ffd458; outline-offset: 3px; }
+  .ebd details .plus { transition: transform 0.2s ease; }
+  .ebd details[open] .plus { transform: rotate(45deg); color: #ffd458; }
+  .ebd details:hover strong { color: #ffd458; }
+  .ebd .ph { background-color: #e6d8bd; background-image: repeating-linear-gradient(135deg, #e6d8bd 0 9px, #ddcdae 9px 18px); color: #5c4a2e; font-family: 'Space Mono', monospace; font-weight: 700; letter-spacing: 0.5px; display: flex; align-items: flex-end; box-sizing: border-box; overflow: hidden; }
+  .ebd .ph-dk { background-color: #3a3048; background-image: repeating-linear-gradient(135deg, #3a3048 0 9px, #2f2640 9px 18px); color: #d9d2e6; }
+  @media (prefers-reduced-motion: reduce) { .ebd details .plus { transition: none; } }
+</style>

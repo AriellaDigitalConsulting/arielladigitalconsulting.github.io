@@ -10,6 +10,7 @@ export const nav: NavItem[] = [
     children: [
       { href: '/implementations', label: 'Implementations' },
       { href: '/integrations', label: 'Integrations' },
+      { href: '/employee-brand-design', label: 'Employee Brand Design' },
       { href: '/sme-support', label: 'SME Support' },
       { href: '/analytics', label: 'Analytics' },
       { href: '/building-microexperiences', label: 'AskAI & MicroApps' },
