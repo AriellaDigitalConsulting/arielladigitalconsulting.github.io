@@ -1,0 +1,389 @@
+---
+// Change Management (Services › Change Management). Built from the "Change Management service page" design.
+// The design's inline styles are kept as-is; the scaled launch-timeline stage reads its size from the --cm-* variables set below.
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Change Management | Ariella Digital Consulting"
+  description="LumApps change management by ADC: communications, role-based training and launch momentum that turn go-live into a lasting habit, so your people use the platform and your investment pays off."
+>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Caveat:wght@700&family=Space+Mono:wght@400;700&family=Open+Sans:wght@400;600;700&family=Bricolage+Grotesque:wght@500;800&display=swap"
+  />
+  <div class="cm" style="font-family: 'Open Sans', system-ui, sans-serif; color: #05006c; background: #fbfaf5; font-size: 17px; line-height: 1.65">
+    <script is:inline>
+      (function () {
+        var root = document.currentScript.parentElement;
+        function fit() {
+          var vw = window.innerWidth || 1280;
+          var content = Math.min(vw, 1120) - 48;
+          var s = Math.min(1, content / 960);
+          root.style.setProperty('--cm-stageS', s);
+          root.style.setProperty('--cm-stageW', Math.round(960 * s) + 'px');
+          root.style.setProperty('--cm-stageH', Math.round(560 * s) + 'px');
+        }
+        fit();
+        window.addEventListener('resize', fit);
+      })();
+    </script>
+<!-- HERO -->
+<section style="background: #05006c; color: #fff; overflow: hidden">
+<div style="max-width: 1120px; margin: 0 auto; padding: 64px 24px 56px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 22px">
+<p style="margin: 0; background: #ffd458; color: #05006c; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; padding: 7px 12px; transform: rotate(-1.5deg)">Change Management</p>
+<h1 style="margin: 0; font-family: Archivo, sans-serif; font-size: clamp(44px, 6.8vw, 84px); line-height: 1; font-weight: 900; letter-spacing: -2.5px; text-wrap: balance">Go-live is one day. <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; letter-spacing: -1px; color: #ffd458">Adoption is every day after.</em></h1>
+<p style="margin: 0; font-size: 19px; max-width: 38em">A new intranet changes how people find information, share news and get work done. ADC plans the communications, training and momentum that turn a LumApps launch into a habit, so people use it, come back to it, and your organization gets the full return on what it invested.</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px">
+<a href="#pillars" style="background: #32e0c4; color: #05006c; text-decoration: none; font-family: Archivo, sans-serif; font-size: 17px; font-weight: 800; border-radius: 999px; padding: 16px 30px">See how it works</a>
+<a href="/contact" style="color: #fff; text-decoration: none; font-family: Archivo, sans-serif; font-size: 17px; font-weight: 800; border-radius: 999px; padding: 14px 28px; border: 2px solid #ffffff80">Book a call</a>
+</div>
+</div>
+
+<div style="width: var(--cm-stageW); height: var(--cm-stageH); margin: 0 auto; max-width: 100%">
+<div role="img" aria-label="A sample launch timeline for ACME's intranet, the Branch: a CEO email six weeks before, author training three weeks before, a launch-day announcement, a day-30 pulse survey and a month-3 feature update" style="position: relative; width: 960px; height: 560px; transform: scale(var(--cm-stageS)); transform-origin: 0 0; font-family: 'Bricolage Grotesque', sans-serif; color: #1a1426; line-height: 1.3">
+
+<div style="position: absolute; left: 20px; top: 30px; width: 250px; box-sizing: border-box; background: #fff; border-radius: 14px; padding: 14px; box-shadow: 0 18px 36px #00000059; transform: rotate(-2deg); display: flex; flex-direction: column; gap: 8px; font-size: 12px">
+<span style="font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: #5d5668">EMAIL</span>
+<div style="display: flex; align-items: center; gap: 8px"><img src="/images/cm-ceo.jpg" alt="Martin Hale" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; object-position: 50% 30%"><div style="display: flex; flex-direction: column"><strong>Martin Hale, CEO</strong><span style="color: #5d5668">To: All ACME employees</span></div></div>
+<strong style="font-size: 16px; line-height: 1.15">Something new is growing</strong>
+<span>On March 3 we launch the Branch, one home for news, people and tools. Here's why it matters, and what changes for you.</span>
+</div>
+
+<div style="position: absolute; left: 215px; top: 262px; width: 250px; box-sizing: border-box; background: #fff4d6; border-radius: 14px; padding: 14px; box-shadow: 0 18px 36px #00000059; transform: rotate(1.5deg); display: flex; flex-direction: column; gap: 8px; font-size: 12px">
+<span style="font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: #5d5668">CALENDAR INVITE</span>
+<strong style="font-size: 16px; line-height: 1.15">Content author training, session 2 of 3</strong>
+<span>Tue, Feb 18 · 10:00 to 11:00 · Templates and targeting</span>
+<div style="display: flex; align-items: center; gap: 4px"><img src="/images/cm-author-1.jpg" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover"><img src="/images/cm-author-2.jpg" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover"><img src="/images/cm-author-3.jpg" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover"><img src="/images/cm-author-4.jpg" alt="" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover"><span style="margin-left: 4px; font-weight: 800">+18 authors</span></div>
+</div>
+
+<div style="position: absolute; left: 390px; top: 14px; width: 232px; box-sizing: border-box; background: #ff6b4a; border-radius: 14px; padding: 10px; box-shadow: 0 18px 36px #00000066; transform: rotate(-1deg); display: flex; flex-direction: column; gap: 7px; font-size: 12px">
+<img src="/images/cm-launch-banner.jpg" alt="" style="display: block; width: 100%; height: 84px; border-radius: 9px; object-fit: cover; object-position: 50% 35%">
+<div style="display: flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20.5C8 15 12 11 19.5 4.5" fill="none" stroke="#1a1426" stroke-width="2.4" stroke-linecap="round"></path><path d="M11.5 12.5C7 13 4 11 3.5 6.5 8 6 11 8.5 11.5 12.5Z" fill="#1a1426"></path><path d="M15 9C14.5 5 16.5 2.5 21 2.5 21 7 18.5 9.5 15 9Z" fill="#1a1426"></path></svg><span style="font-weight: 800">The Branch</span></div>
+<strong style="font-size: 22px; line-height: 1; letter-spacing: -.5px; color: #fff4d6">The Branch is live.</strong>
+<span>Find your branch, meet your team, say hi.</span>
+<span style="align-self: flex-start; background: #1a1426; color: #fff4d6; border-radius: 999px; padding: 4px 12px; font-weight: 800">Take the tour</span>
+</div>
+
+<div style="position: absolute; left: 598px; top: 262px; width: 232px; box-sizing: border-box; background: #fff; border-radius: 14px; padding: 14px; box-shadow: 0 18px 36px #00000059; transform: rotate(-1.5deg); display: flex; flex-direction: column; gap: 7px; font-size: 12px">
+<span style="font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: #5d5668">PULSE SURVEY</span>
+<strong style="font-size: 16px; line-height: 1.15">How's the Branch working for you?</strong>
+<div style="display: flex; flex-direction: column; gap: 3px"><div style="display: flex; justify-content: space-between; font-weight: 800"><span>Love it</span><span>46%</span></div><div style="height: 7px; border-radius: 4px; background: #ece9f2"><div style="width: 46%; height: 100%; border-radius: 4px; background: #362dff"></div></div></div>
+<div style="display: flex; flex-direction: column; gap: 3px"><div style="display: flex; justify-content: space-between; font-weight: 800"><span>Getting there</span><span>41%</span></div><div style="height: 7px; border-radius: 4px; background: #ece9f2"><div style="width: 41%; height: 100%; border-radius: 4px; background: #362dff"></div></div></div>
+<div style="display: flex; flex-direction: column; gap: 3px"><div style="display: flex; justify-content: space-between; font-weight: 800"><span>I need help</span><span>13%</span></div><div style="height: 7px; border-radius: 4px; background: #ece9f2"><div style="width: 13%; height: 100%; border-radius: 4px; background: #362dff"></div></div></div>
+</div>
+
+<div style="position: absolute; left: 718px; top: 40px; width: 222px; box-sizing: border-box; background: #7be0d0; border-radius: 14px; padding: 14px; box-shadow: 0 18px 36px #00000059; transform: rotate(2deg); display: flex; flex-direction: column; gap: 7px; font-size: 12px">
+<span style="font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700">WHAT'S NEW</span>
+<strong style="font-size: 16px; line-height: 1.15">Shift swaps are now in the Branch app</strong>
+<span>See how it works in 60 seconds.</span>
+<span style="font-family: Caveat, cursive; font-size: 20px; line-height: 1">you asked, we built it</span>
+</div>
+
+<div style="position: absolute; left: 40px; right: 40px; top: 470px; height: 3px; background: #ffffff59"></div>
+<div style="position: absolute; left: 137px; top: 462px; width: 18px; height: 18px; border-radius: 50%; background: #05006c; border: 3px solid #ffd458; box-sizing: border-box"></div>
+<div style="position: absolute; left: 331px; top: 462px; width: 18px; height: 18px; border-radius: 50%; background: #05006c; border: 3px solid #ffd458; box-sizing: border-box"></div>
+<div style="position: absolute; left: 495px; top: 458px; width: 26px; height: 26px; border-radius: 50%; background: #ffd458"></div>
+<div style="position: absolute; left: 705px; top: 462px; width: 18px; height: 18px; border-radius: 50%; background: #05006c; border: 3px solid #ffd458; box-sizing: border-box"></div>
+<div style="position: absolute; left: 820px; top: 462px; width: 18px; height: 18px; border-radius: 50%; background: #05006c; border: 3px solid #ffd458; box-sizing: border-box"></div>
+<span style="position: absolute; left: 86px; top: 494px; width: 120px; text-align: center; font-family: 'Space Mono', monospace; font-size: 12px; color: #e1e0fa">6 weeks before</span>
+<span style="position: absolute; left: 280px; top: 494px; width: 120px; text-align: center; font-family: 'Space Mono', monospace; font-size: 12px; color: #e1e0fa">3 weeks before</span>
+<span style="position: absolute; left: 448px; top: 494px; width: 120px; text-align: center; font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #ffd458">Launch day</span>
+<span style="position: absolute; left: 654px; top: 494px; width: 120px; text-align: center; font-family: 'Space Mono', monospace; font-size: 12px; color: #e1e0fa">Day 30</span>
+<span style="position: absolute; left: 769px; top: 494px; width: 120px; text-align: center; font-family: 'Space Mono', monospace; font-size: 12px; color: #e1e0fa">Month 3</span>
+</div>
+</div>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 13px; color: #c9c7f2; text-align: center">ACME and the Branch are a sample brand.</p>
+</div>
+</section>
+
+<!-- THE PROBLEM -->
+<section style="background: #fbfaf5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px 56px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #362dff">Why launches stall</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">Your people are tired of change. <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">Make this one feel different.</em></h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; color: #000">
+<p style="margin: 0">To most employees, a new intranet looks like one more system to learn. Launch it without a plan and the pattern is familiar: a burst of curiosity, then confusion, irritation and a slow drift back to email and the old site.</p>
+<p style="margin: 0">Change management turns that around. People understand why it's happening, know what changes for them, and get the help they need, so the new way becomes the easy way.</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 20px">
+<div style="background: #05006c; color: #fff; border-radius: 24px; padding: 32px 36px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap"><span style="font-family: Archivo, sans-serif; font-size: 40px; font-weight: 900; color: #c9c7f2; text-decoration: line-through">74%</span><span style="font-family: Archivo, sans-serif; font-size: 88px; line-height: .9; font-weight: 900; letter-spacing: -3px; color: #ffd458">43%</span></div>
+<p style="margin: 0; font-family: Archivo, sans-serif; font-size: 20px; line-height: 1.3; font-weight: 800">Employees willing to support enterprise change, 2016 vs. 2022.</p>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 12px; color: #c9c7f2">Source: Gartner, via Harvard Business Review (2023)</p>
+</div>
+<div style="background: #fff; border-radius: 24px; padding: 32px 36px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 14px 28px #05006c1a">
+<span style="font-family: Archivo, sans-serif; font-size: 88px; line-height: .9; font-weight: 900; letter-spacing: -3px; color: #362dff">10</span>
+<p style="margin: 0; font-family: Archivo, sans-serif; font-size: 20px; line-height: 1.3; font-weight: 800">planned changes the average employee went through in 2022, up from two in 2016.</p>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 12px; color: #33325a">Source: Gartner, via Harvard Business Review (2023)</p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px">
+<div style="border: 2px dashed #05006c40; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; font-weight: 900; color: #5b5880">Launch without a plan</h3>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: #33325a; font-size: 16px">
+<li>A traffic spike on day one, then a steady slide</li>
+<li>"Where did that page go?" floods the help desk</li>
+<li>Leaders announce it once, then never post</li>
+<li>Authors guess, so content goes stale fast</li>
+<li>The old intranet quietly stays in use</li>
+</ul>
+</div>
+<div style="background: #ffd458; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; font-weight: 900">Launch with change management</h3>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 16px">
+<li>People know why, what changes and when</li>
+<li>Every group trained for the way it works</li>
+<li>Leaders and managers model the new habit</li>
+<li>Authors publish fresh, on-brand content from day one</li>
+<li>Usage that holds and grows after launch</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROSCI BAND -->
+<section style="background: #362dff; color: #fff">
+<div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 32px">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 36px; line-height: 1.1; font-weight: 900; letter-spacing: -1px; max-width: 24em; text-wrap: balance">The research is clear: <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #ffd458">managing the people side pays off.</em></h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Archivo, sans-serif; font-size: 72px; line-height: .9; font-weight: 900; letter-spacing: -3px; color: #ffd458">7×</span>
+<p style="margin: 0; font-size: 16px">more likely to meet objectives with excellent change management. 88% did, vs. 13% with poor change management.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Archivo, sans-serif; font-size: 72px; line-height: .9; font-weight: 900; letter-spacing: -3px; color: #ffd458">5×</span>
+<p style="margin: 0; font-size: 16px">more likely to finish on or ahead of schedule.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: Archivo, sans-serif; font-size: 72px; line-height: .9; font-weight: 900; letter-spacing: -3px; color: #ffd458">79%</span>
+<p style="margin: 0; font-size: 16px">of projects with very effective sponsors met their objectives, vs. 27% with ineffective sponsors. Sponsorship has been the top success factor since 1998.</p>
+</div>
+</div>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 12px; color: #e1e0fa">Source: Prosci, Best Practices in Change Management research (2,600+ practitioners)</p>
+</div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars" style="background: #fbfaf5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 24px 56px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #362dff">How we do it</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">Three pillars. <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">One new habit.</em></h2>
+</div>
+<p style="margin: 0; color: #000">Our change team works alongside your implementation from kickoff, not as an afterthought at launch, so adoption is planned as carefully as the build. Every plan is shaped around your people, your platform and how far the change reaches.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px">
+
+<div style="background: #fff; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 14px 28px #05006c1a">
+<span style="font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #362dff">01</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 900">Communicate</h3>
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; line-height: 1.35">The right message, from the right person, at the right time.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: Archivo, sans-serif; font-size: 13px; font-weight: 700"><span style="background: #eceaff; border-radius: 999px; padding: 4px 12px">Leadership</span><span style="background: #eceaff; border-radius: 999px; padding: 4px 12px">Employees</span><span style="background: #eceaff; border-radius: 999px; padding: 4px 12px">Content owners and authors</span></div>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; color: #000">
+<li>Communication strategy and calendar</li>
+<li>Sponsor messages and leadership talking points</li>
+<li>Manager toolkits for team huddles</li>
+<li>Launch countdown, announcements and FAQs</li>
+<li>"Where did it go?" guides for the old site</li>
+<li>Updates on future phases and the roadmap</li>
+</ul>
+<div style="margin-top: auto; border-top: 1px solid #05006c26; padding-top: 14px; display: flex; flex-direction: column; gap: 4px">
+<p style="margin: 0; font-size: 15px; color: #000"><strong style="font-family: Archivo, sans-serif; font-size: 22px; color: #362dff">58%</strong> of employees want to hear how a change affects them from their own supervisor. So we equip managers, not just executives.</p>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 11px; color: #33325a">Source: Prosci</p>
+</div>
+</div>
+
+<div style="background: #fff; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 14px 28px #05006c1a">
+<span style="font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #362dff">02</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 900">Enable</h3>
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; line-height: 1.35">Training that starts with how each group works today.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: Archivo, sans-serif; font-size: 13px; font-weight: 700"><span style="background: #eceaff; border-radius: 999px; padding: 4px 12px">Content owners and authors</span><span style="background: #eceaff; border-radius: 999px; padding: 4px 12px">Department heads</span><span style="background: #eceaff; border-radius: 999px; padding: 4px 12px">Team leads</span><span style="background: #eceaff; border-radius: 999px; padding: 4px 12px">Front-line workers</span><span style="background: #eceaff; border-radius: 999px; padding: 4px 12px">Every employee</span></div>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; color: #000">
+<li>Role-based training paths, from light to deep</li>
+<li>Live sessions, recordings and how-to videos</li>
+<li>Quick-reference guides: old way, new way</li>
+<li>Short, mobile-first how-tos for front-line teams</li>
+<li>Office hours and a clear place to get help</li>
+<li>A champion network in every team</li>
+</ul>
+<div style="margin-top: auto; border-top: 1px solid #05006c26; padding-top: 14px; display: flex; flex-direction: column; gap: 4px">
+<p style="margin: 0; font-size: 15px; color: #000"><strong style="font-family: Archivo, sans-serif; font-size: 22px; color: #362dff">#1</strong> Mid-level managers are the group most resistant to change. So department heads and team leads get their own track, early.</p>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 11px; color: #33325a">Source: Prosci</p>
+</div>
+</div>
+
+<div style="background: #05006c; color: #fff; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 14px 28px #05006c33">
+<span style="font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: #ffd458">03</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 28px; line-height: 1.1; font-weight: 900">Energize and sustain</h3>
+<p style="margin: 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; line-height: 1.35; color: #ffd458">Momentum before, during and long after launch.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: Archivo, sans-serif; font-size: 13px; font-weight: 700"><span style="border: 1px solid #ffffff66; border-radius: 999px; padding: 3px 12px">Before</span><span style="border: 1px solid #ffffff66; border-radius: 999px; padding: 3px 12px">During</span><span style="border: 1px solid #ffffff66; border-radius: 999px; padding: 3px 12px">After</span></div>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 15px">
+<li>Teasers, sneak peeks and a name reveal</li>
+<li>Launch events, guided tours and scavenger hunts</li>
+<li>An engagement plan for the first 100 days and beyond</li>
+<li>Feedback loops: pulse surveys, polls, listening sessions</li>
+<li>"What's new" campaigns for every new tool, feature and AI agent</li>
+</ul>
+<div style="margin-top: auto; border-top: 1px solid #ffffff40; padding-top: 14px">
+<p style="margin: 0; font-size: 15px">Pairs with <a href="/employee-brand-design" style="color: #ffd458; font-weight: 700">Employee Brand Design</a>: the brand gives people a reason to come back, and change management builds the habit.</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- OLD WAY NEW WAY -->
+<section style="background: #05006c; color: #fff">
+<div style="max-width: 1120px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 760px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #ffd458">Old way, new way</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">People don't learn features. <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #ffd458">They learn a better way to do their job.</em></h2>
+<p style="margin: 0">Whether you're moving from Jive, SharePoint, an older intranet or nothing at all, training starts with how each group gets things done today, then shows the shortcut.</p>
+</div>
+<div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; border: 1px solid #ffffff33">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 1px; background: #ffffff14">
+<span style="padding: 14px 22px; color: #c9c7f2">How it used to work</span>
+<span style="padding: 14px 22px; color: #ffd458">How it works in LumApps</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #ffffff26; font-size: 16px"><span style="padding: 16px 22px; color: #e1e0fa">Send an all-staff email and hope people read it</span><span style="padding: 16px 22px; font-weight: 600">Post once, target the right audiences, and mark what's a must-read</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #ffffff26; font-size: 16px"><span style="padding: 16px 22px; color: #e1e0fa">Ask IT to update a page, then wait</span><span style="padding: 16px 22px; font-weight: 600">Content owners publish themselves, with ready-made templates</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #ffffff26; font-size: 16px"><span style="padding: 16px 22px; color: #e1e0fa">Dig through shared drives and old folders</span><span style="padding: 16px 22px; font-weight: 600">Search news, people, documents and tools in one place</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #ffffff26; font-size: 16px"><span style="padding: 16px 22px; color: #e1e0fa">Front-line teams hear the news last</span><span style="padding: 16px 22px; font-weight: 600">News reaches every phone, wherever people work</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #ffffff26; font-size: 16px"><span style="padding: 16px 22px; color: #e1e0fa">Find an expert by asking around</span><span style="padding: 16px 22px; font-weight: 600">Look them up in the people directory and communities</span></div>
+</div>
+</div>
+</section>
+
+<!-- TIMELINE -->
+<section style="background: #fbfaf5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 760px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #362dff">Before, during and after</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">Change doesn't end at launch. <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">Neither do we.</em></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px">
+<div style="background: #fff; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px; border-top: 6px solid #c9c7f2">
+<span style="font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; color: #33325a">WEEKS −8 TO −1</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; font-weight: 900">Before launch</h3>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; color: #000">
+<li>Sponsor kickoff message</li>
+<li>Manager toolkits</li>
+<li>Author and owner training</li>
+<li>Champions recruited and trained</li>
+<li>Teasers and countdown</li>
+</ul>
+</div>
+<div style="background: #ffd458; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px; border-top: 6px solid #05006c">
+<span style="font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700">LAUNCH WEEK</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; font-weight: 900">Go-live</h3>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 15px">
+<li>All-hands announcement</li>
+<li>Guided tours and live Q&amp;A</li>
+<li>Scavenger hunt or launch event</li>
+<li>Office hours and help desk support</li>
+<li>Redirects from the old site</li>
+</ul>
+</div>
+<div style="background: #fff; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px; border-top: 6px solid #362dff">
+<span style="font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; color: #33325a">DAYS 1 TO 100</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; font-weight: 900">Build the habit</h3>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; color: #000">
+<li>Pulse surveys at day 30, 60 and 100</li>
+<li>Usage reviews and quick fixes</li>
+<li>Refresher sessions by role</li>
+<li>Recognition for top contributors</li>
+<li>Recurring rituals and series</li>
+</ul>
+</div>
+<div style="background: #05006c; color: #fff; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px; border-top: 6px solid #32e0c4">
+<span style="font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; color: #32e0c4">EVERY PHASE AFTER</span>
+<h3 style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; font-weight: 900">Keep it growing</h3>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 15px">
+<li>Roadmap updates</li>
+<li>"What's new" for each feature and AI agent</li>
+<li>Feedback into the next phase</li>
+<li>Onboarding for new hires</li>
+<li>Fresh training as tools change</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- OUTCOMES -->
+<section style="background: #fff">
+<div style="max-width: 1120px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 44px">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 760px">
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; color: #362dff">Insurance on your investment</p>
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">Get everything you bought LumApps <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">to do.</em></h2>
+<p style="margin: 0; color: #000">Licenses, implementation, migration, design: an employee hub is a real investment. It only delivers what LumApps promises if people actually use it. Change management is how you make sure they do.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-family: Archivo, sans-serif; font-weight: 900">
+<span style="background: #05006c; color: #fff; border-radius: 16px; padding: 18px 24px; font-size: 24px">Adoption</span>
+<svg width="34" height="20" viewBox="0 0 34 20" fill="none" stroke="#362dff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10h28M22 3l8 7-8 7"></path></svg>
+<span style="background: #362dff; color: #fff; border-radius: 16px; padding: 18px 24px; font-size: 24px">Habit</span>
+<svg width="34" height="20" viewBox="0 0 34 20" fill="none" stroke="#362dff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10h28M22 3l8 7-8 7"></path></svg>
+<span style="background: #ffd458; color: #05006c; border-radius: 16px; padding: 18px 24px; font-size: 24px">Engagement</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 16px">
+<div style="background: #fbfaf5; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: Archivo, sans-serif; font-size: 20px">Communication that drives action</strong><span style="font-size: 15px; color: #000">The right message reaches the right people, and they act on it.</span></div>
+<div style="background: #fbfaf5; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: Archivo, sans-serif; font-size: 20px">Work without the back-and-forth</strong><span style="font-size: 15px; color: #000">Search, tools and requests in one place, instead of email chains.</span></div>
+<div style="background: #fbfaf5; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: Archivo, sans-serif; font-size: 20px">Growth from day one</strong><span style="font-size: 15px; color: #000">Onboarding and learning that new hires actually use.</span></div>
+<div style="background: #fbfaf5; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: Archivo, sans-serif; font-size: 20px">Every location aligned</strong><span style="font-size: 15px; color: #000">Goals and priorities reach the front line, not just HQ.</span></div>
+<div style="background: #fbfaf5; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 6px"><strong style="font-family: Archivo, sans-serif; font-size: 20px">Belonging and purpose</strong><span style="font-size: 15px; color: #000">People feel connected, see their impact and want to come back.</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px 40px; background: #05006c; color: #fff; border-radius: 24px; padding: 32px 40px">
+<span style="font-family: Archivo, sans-serif; font-size: 88px; line-height: .9; font-weight: 900; letter-spacing: -3px; color: #ffd458">~20%</span>
+<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-family: Archivo, sans-serif; font-size: 22px; line-height: 1.3; font-weight: 800">of the workweek goes to looking for internal information or tracking down colleagues who can help.</p>
+<p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 12px; color: #c9c7f2">Source: McKinsey Global Institute, The social economy (2012)</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LUMAPPS ONLY -->
+<section style="background: #fbfaf5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 88px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px 56px; align-items: start">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: 44px; line-height: 1.08; font-weight: 900; letter-spacing: -1px; text-wrap: balance">Change management from people who <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #362dff">only do LumApps.</em></h2>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px; color: #000">
+<p style="margin: 0">We've guided LumApps launches and migrations from Jive, SharePoint and legacy intranets, and for companies starting from scratch. Because we know the platform inside out, our communications and training match exactly what your people will see on day one.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-family: Archivo, sans-serif; font-size: 16px; font-weight: 700">
+<a href="/implementations">Implementations</a>
+<a href="/employee-brand-design">Employee Brand Design</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section style="background: #362dff; color: #fff">
+<div style="max-width: 880px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
+<h2 style="margin: 0; font-family: Archivo, sans-serif; font-size: clamp(38px, 5.4vw, 64px); line-height: 1.05; font-weight: 900; letter-spacing: -1.5px">What happens on <em style="font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; color: #ffd458">day 100?</em></h2>
+<p style="margin: 0; font-size: 19px; max-width: 32em">Tell us about your launch, your people and where they work today. We'll plan the change that keeps them using it long after go-live.</p>
+<a href="/contact" style="background: #32e0c4; color: #05006c; text-decoration: none; font-family: Archivo, sans-serif; font-size: 17px; font-weight: 800; border-radius: 999px; padding: 16px 30px">Book a free consultation</a>
+</div>
+</section>
+  </div>
+</Base>
+
+<style is:global>
+  .cm {
+    /* Defaults for a 1280px viewport, used until the script above runs. */
+    --cm-stageS: 1; --cm-stageW: 960px; --cm-stageH: 560px;
+    overflow-x: clip;
+  }
+  .cm a { color: #362dff; }
+  .cm a:hover { color: #05006c; }
+  .cm a:focus-visible { outline: 3px solid #ffd458; outline-offset: 3px; }
+</style>
