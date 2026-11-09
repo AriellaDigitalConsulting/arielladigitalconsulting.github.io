@@ -9,8 +9,8 @@ export const nav: NavItem[] = [
     label: 'Services',
     children: [
       { href: '/implementations', label: 'Implementations' },
+      { href: '/integrations', label: 'Custom Integrations' },
       { href: '/change-management', label: 'Change Management' },
-      { href: '/integrations', label: 'Integrations' },
       { href: '/employee-brand-design', label: 'Employee Brand Design' },
       { href: '/sme-support', label: 'SME Support' },
       { href: '/analytics', label: 'Analytics' },
