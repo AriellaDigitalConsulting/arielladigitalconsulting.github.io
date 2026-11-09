@@ -44,7 +44,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     {Astro.url.pathname === '/' && <CustomBuildPrompt variant="call" />}
     <script>
       import { enableSmoothAnchors } from '../lib/smoothScroll';
+      import { initConsent } from '../lib/consent';
       enableSmoothAnchors();
+      initConsent(import.meta.env.PUBLIC_GA_ID);
     </script>
   </body>
 </html>
