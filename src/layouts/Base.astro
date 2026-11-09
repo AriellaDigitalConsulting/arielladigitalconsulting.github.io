@@ -44,7 +44,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     {Astro.url.pathname === '/' && <CustomBuildPrompt variant="call" />}
     <script>
       import { enableSmoothAnchors } from '../lib/smoothScroll';
+      import { initConsent } from '../lib/consent';
       enableSmoothAnchors();
+      // Measurement IDs are public; PUBLIC_GA_ID overrides it (set it empty to disable analytics)
+      initConsent(import.meta.env.PUBLIC_GA_ID ?? 'G-YDRE7MHF2L');
     </script>
   </body>
 </html>
