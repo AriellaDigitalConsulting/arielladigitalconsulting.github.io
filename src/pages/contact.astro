@@ -2,6 +2,7 @@
 // Contact: intro, a blue CTA-style panel that holds the form, and the regions we serve.
 import Base from '../layouts/Base.astro';
 import ContactForm from '../components/ContactForm.astro';
+import ContactBot from '../components/ContactBot.astro';
 
 const globe = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>';
 ---
@@ -15,6 +16,7 @@ const globe = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" strok
     </section>
 
     <section class="cc__wrap">
+      <ContactBot />
       <div class="cc__panel">
         <div class="cc__pills" aria-hidden="true"><span></span><span></span></div>
         <div class="cc__copy">
@@ -95,12 +97,15 @@ const globe = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" strok
     color: #4a4870;
   }
   .cc__wrap {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
   }
   .cc__panel {
     position: relative;
+    /* Above the ADC Bot, which rises from behind the panel's top edge */
+    z-index: 1;
     overflow: hidden;
     background: #362dff;
     color: #fff;
@@ -224,9 +229,15 @@ const globe = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" strok
     line-height: 1.6;
     color: #4a4870;
   }
+  /* Once the intro text can reach under the ADC Bot, give the bot its own band above the panel */
+  @media (max-width: 1360px) {
+    .cc__intro {
+      padding-bottom: 176px;
+    }
+  }
   @media (max-width: 600px) {
     .cc__intro {
-      padding: 64px 16px 32px;
+      padding: 64px 16px 124px;
     }
     .cc__wrap {
       padding: 0 16px;

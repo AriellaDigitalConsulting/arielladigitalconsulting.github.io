@@ -14,6 +14,8 @@ export interface Article {
   hero?: string | null;
   lead: string;
   html: string;
+  /** One-liner the ADC Bot says about this post on the Contact page. */
+  botLine?: string;
 }
 
 const files = images as Record<string, { file: string; w?: number; h?: number }>;

@@ -1,0 +1,368 @@
+---
+// The ADC Bot on /contact. It rises from behind the blue panel, waves, and opens a chat bubble with a one-liner about
+// a recent news post (each post's `botLine` in articles.json; the bubble links to the post). Each visit starts on the
+// next line, so a line repeats only after the whole set has been shown. When the visitor scrolls down, the bot jumps
+// down to the corner of the screen and cheers them on; once they start filling in the form it only ever says FORM_LINE.
+// Place it inside a positioned wrapper, before the panel it hides behind (the panel needs a higher z-index).
+import { posts } from '../lib/news';
+
+const FORM_LINE = "We're looking forward to connecting soon!";
+const cheers = [
+  'Ooh, are we doing this? Go on!',
+  "Can't wait to hear what you're working on!",
+  'This is the good part. Tell us everything!',
+  "You're one form away from a real conversation!",
+];
+const short = (t: string) => {
+  const s = t.replace(/^\[[^\]]*\]\s*/, '');
+  return s.length > 52 ? s.slice(0, 50).trimEnd() + '…' : s;
+};
+const lines = posts.slice(0, 20).map((p) => ({ t: p.botLine ?? `New on our blog: ${short(p.title)}`, h: `/news/${p.slug}` }));
+---
+
+<div class="cbot" data-place="top" data-lines={JSON.stringify(lines)} data-cheers={JSON.stringify(cheers)} data-form-line={FORM_LINE}>
+  <a class="cbot__bubble" data-open="false"><span class="cbot__text"></span><span class="cbot__more" aria-hidden="true"> →</span></a>
+  <div class="cbot__robot" aria-hidden="true">
+    <svg viewBox="70 56 370 422" fill="#fff" stroke="#05006c" stroke-width="5" stroke-linejoin="round">
+      <!-- legs -->
+      <path d="M190 418h42v50h-57a15 15 0 0 1 15-15z"></path>
+      <path d="M327 418h-42v50h57a15 15 0 0 0-15-15z"></path>
+      <!-- arms -->
+      <g class="cbot__arm cbot__arm--l">
+        <rect x="107" y="327" width="34" height="81" rx="17"></rect>
+        <path d="M107 381h34" fill="none"></path>
+      </g>
+      <g class="cbot__arm cbot__arm--r">
+        <rect x="370" y="327" width="34" height="81" rx="17"></rect>
+        <path d="M370 381h34" fill="none"></path>
+      </g>
+      <!-- body -->
+      <rect x="153" y="313" width="207" height="92" rx="22"></rect>
+      <g fill="#05006c" stroke="none">
+        <rect x="200" y="335" width="10" height="12"></rect>
+        <rect x="221" y="335" width="10" height="12"></rect>
+        <rect x="242" y="335" width="10" height="12"></rect>
+        <rect x="200" y="366" width="100" height="6"></rect>
+      </g>
+      <!-- head -->
+      <g class="cbot__head">
+        <path d="M115 140h-13a20 20 0 0 0-20 20v48a20 20 0 0 0 20 20h13z"></path>
+        <path d="M395 140h13a20 20 0 0 1 20 20v48a20 20 0 0 1-20 20h-13z"></path>
+        <rect x="125" y="68" width="260" height="230" rx="40"></rect>
+        <rect x="160" y="103" width="185" height="167" rx="42" fill="#05006c" stroke="#3b8cff" stroke-width="4"></rect>
+        <g fill="#5fe0cd" stroke="none">
+          <g class="cbot__eyes">
+            <rect x="211" y="153" width="9" height="25" rx="4.5"></rect>
+            <rect x="286" y="153" width="9" height="25" rx="4.5"></rect>
+          </g>
+          <rect x="232" y="199" width="50" height="17" rx="8.5"></rect>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<script>
+  const bot = document.querySelector<HTMLElement>('.cbot');
+  if (bot) {
+    const bubble = bot.querySelector<HTMLAnchorElement>('.cbot__bubble')!;
+    const text = bot.querySelector<HTMLElement>('.cbot__text')!;
+    const lines: { t: string; h: string }[] = JSON.parse(bot.dataset.lines || '[]');
+    const cheers: string[] = JSON.parse(bot.dataset.cheers || '[]');
+    const formLine = bot.dataset.formLine!;
+    const panel = bot.parentElement?.querySelector<HTMLElement>('.cc__panel');
+    const form = document.querySelector<HTMLElement>('[data-contact-form]');
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const KEY = 'adc-bot-line';
+
+    // Each visit starts on the line after the last one shown.
+    let at = 0;
+    try {
+      at = (Number(localStorage.getItem(KEY) ?? -1) + 1) % Math.max(1, lines.length);
+    } catch {}
+    const remember = () => {
+      try {
+        localStorage.setItem(KEY, String(at));
+      } catch {}
+    };
+
+    let docked = false;
+    let filling = false;
+    let swap = 0;
+    let fold = 0;
+
+    // Close the bubble, change what it says, open it again. Docked bubbles fold away after a while so they
+    // don't sit on top of the form.
+    const say = (line: string, href?: string) => {
+      clearTimeout(swap);
+      clearTimeout(fold);
+      bubble.dataset.open = 'false';
+      swap = window.setTimeout(
+        () => {
+          text.textContent = line;
+          if (href) bubble.href = href;
+          else bubble.removeAttribute('href');
+          bubble.dataset.open = 'true';
+          if (docked) fold = window.setTimeout(() => (bubble.dataset.open = 'false'), 7000);
+        },
+        still ? 0 : 280
+      );
+    };
+    const sayNews = () => {
+      const l = lines[at];
+      if (l) say(l.t, l.h);
+      remember();
+    };
+    const act = (name: string, ms: number) => {
+      if (still) return;
+      bot.classList.remove('is-waving', 'is-cheering');
+      void bot.offsetWidth;
+      bot.classList.add(name);
+      setTimeout(() => bot.classList.remove(name), ms);
+    };
+
+    // Entrance: up from behind the panel, a wave, then the bubble.
+    const enter = () => {
+      bot.classList.remove('is-up');
+      void bot.offsetWidth;
+      bot.classList.add('is-up');
+      setTimeout(() => !docked && act('is-waving', 1700), still ? 0 : 800);
+      setTimeout(() => !docked && (filling ? say(formLine) : sayNews()), still ? 0 : 1500);
+    };
+
+    // Jump down to the corner of the screen (and back up when the visitor returns to the top).
+    const dock = (down: boolean) => {
+      if (down === docked) return;
+      docked = down;
+      const from = bot.getBoundingClientRect();
+      bot.dataset.place = down ? 'corner' : 'top';
+      bubble.dataset.open = 'false';
+      if (!down) return enter();
+      const to = bot.getBoundingClientRect();
+      const dx = from.right - to.right;
+      const dy = from.bottom - to.bottom;
+      if (!still) {
+        bot.animate(
+          [
+            { transform: `translate(${dx}px, ${dy}px)`, easing: 'cubic-bezier(0.3, 0, 0.6, 1)' },
+            { transform: `translate(${dx * 0.45}px, ${Math.min(dy, 0) * 0.55 - 70}px)`, offset: 0.42, easing: 'cubic-bezier(0.5, 0, 0.9, 0.6)' },
+            { transform: 'translate(0, 0)' },
+          ],
+          { duration: 650 }
+        );
+        setTimeout(() => docked && act('is-cheering', 1500), 620);
+      }
+      setTimeout(() => docked && say(filling ? formLine : cheers[Math.floor(Math.random() * cheers.length)]), still ? 0 : 700);
+    };
+
+    if (panel) {
+      // Jump down just before the bot's head would slide under the sticky header; come back once there is room again.
+      const header = document.querySelector<HTMLElement>('.mh');
+      const small = matchMedia('(max-width: 600px)');
+      const check = () => {
+        const top = panel.getBoundingClientRect().top;
+        const room = (header?.offsetHeight ?? 72) + (small.matches ? 104 : 160) * 0.9 + 12;
+        if (!docked && top < room) dock(true);
+        else if (docked && top > room + 50) dock(false);
+      };
+      addEventListener('scroll', check, { passive: true });
+      addEventListener('resize', check);
+      requestAnimationFrame(() => {
+        check();
+        if (!docked) enter();
+      });
+    }
+
+    // While the visitor lingers at the top, move on to the next news line now and then.
+    setInterval(() => {
+      if (docked || filling || document.hidden || lines.length < 2) return;
+      at = (at + 1) % lines.length;
+      sayNews();
+    }, 12000);
+
+    // From the first keystroke or choice in the form, the bot has one thing left to say.
+    const started = () => {
+      if (filling) return;
+      filling = true;
+      say(formLine);
+    };
+    form?.addEventListener('input', started);
+    form?.addEventListener('change', started);
+  }
+</script>
+
+<style>
+  .cbot {
+    --w: 160px;
+    position: absolute;
+    right: 56px;
+    /* The legs stay tucked behind the panel */
+    bottom: calc(100% - var(--w) * 0.24);
+    z-index: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    pointer-events: none;
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+  }
+  .cbot[data-place='corner'] {
+    --w: 96px;
+    position: fixed;
+    right: 20px;
+    bottom: 16px;
+    z-index: 20;
+  }
+  .cbot__robot {
+    flex: none;
+    width: var(--w);
+    transform-origin: 50% 100%;
+  }
+  .cbot[data-place='corner'] .cbot__robot {
+    filter: drop-shadow(0 10px 18px rgba(5, 0, 108, 0.28));
+  }
+  .cbot svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .cbot__arm--l {
+    transform-origin: 124px 340px;
+  }
+  .cbot__arm--r {
+    transform-origin: 387px 340px;
+  }
+  .cbot__head {
+    transform-origin: 255px 298px;
+    animation: cbotNod 7s ease-in-out infinite;
+  }
+  .cbot__eyes {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: cbotBlink 6s infinite;
+  }
+
+  .cbot__bubble {
+    margin-top: calc(var(--w) * 0.12);
+    max-width: min(330px, calc(100vw - var(--w) - 64px));
+    padding: 12px 16px;
+    border-radius: 18px 18px 4px 18px;
+    background: #f1f0ff;
+    border: 1px solid #dddbfb;
+    color: #05006c;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.3;
+    text-decoration: none;
+    pointer-events: auto;
+    transform-origin: 100% 60%;
+    transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.2, 1.4, 0.4, 1), visibility 0.35s;
+  }
+  .cbot[data-place='corner'] .cbot__bubble {
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(5, 0, 108, 0.22);
+  }
+  .cbot__bubble[data-open='false'] {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.2);
+    transition: opacity 0.2s ease, transform 0.25s ease-in, visibility 0.25s;
+  }
+  .cbot__more {
+    color: #362dff;
+    white-space: nowrap;
+  }
+  .cbot__bubble:not([href]) .cbot__more {
+    display: none;
+  }
+  a.cbot__bubble[href]:hover {
+    background: #e7e5ff;
+    color: #05006c;
+  }
+  .cbot__bubble:focus-visible {
+    outline: 3px solid #362dff;
+    outline-offset: 2px;
+  }
+
+  /* At the top the bot waits out of sight behind the panel until its entrance */
+  .cbot[data-place='top'] .cbot__robot {
+    transform: translateY(105%);
+  }
+  .cbot[data-place='top'].is-up .cbot__robot {
+    transform: translateY(0);
+    transition: transform 0.9s cubic-bezier(0.2, 1.3, 0.4, 1);
+  }
+  .cbot.is-waving .cbot__arm--r {
+    animation: cbotWave 1.7s ease-in-out both;
+  }
+  .cbot.is-cheering .cbot__robot {
+    animation: cbotCheer 1.5s ease-in-out both;
+  }
+  .cbot.is-cheering .cbot__arm--l {
+    animation: cbotArmsUpL 1.5s ease-in-out both;
+  }
+  .cbot.is-cheering .cbot__arm--r {
+    animation: cbotArmsUpR 1.5s ease-in-out both;
+  }
+  @keyframes cbotWave {
+    0%, 100% { transform: rotate(0); }
+    18%, 82% { transform: rotate(-150deg); }
+    30%, 54% { transform: rotate(-120deg); }
+    42%, 66% { transform: rotate(-165deg); }
+  }
+  @keyframes cbotCheer {
+    0%, 100% { transform: translateY(0) scale(1); }
+    12% { transform: translateY(0) scale(1.08, 0.9); }
+    30% { transform: translateY(-22px) scale(0.97, 1.04); }
+    48% { transform: translateY(0) scale(1.05, 0.94); }
+    66% { transform: translateY(-12px) scale(1); }
+    84% { transform: translateY(0) scale(1.02, 0.98); }
+  }
+  @keyframes cbotArmsUpL {
+    0%, 100% { transform: rotate(0); }
+    20%, 80% { transform: rotate(150deg); }
+    50% { transform: rotate(130deg); }
+  }
+  @keyframes cbotArmsUpR {
+    0%, 100% { transform: rotate(0); }
+    20%, 80% { transform: rotate(-150deg); }
+    50% { transform: rotate(-130deg); }
+  }
+  @keyframes cbotNod {
+    0%, 100% { transform: rotate(0); }
+    40% { transform: rotate(-2.5deg); }
+    70% { transform: rotate(2deg); }
+  }
+  @keyframes cbotBlink {
+    0%, 44%, 48%, 100% { transform: scaleY(1); }
+    46% { transform: scaleY(0.12); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cbot__head,
+    .cbot__eyes {
+      animation: none;
+    }
+    .cbot__bubble,
+    .cbot__bubble[data-open='false'],
+    .cbot[data-place='top'].is-up .cbot__robot {
+      transition: none;
+    }
+  }
+  @media (max-width: 600px) {
+    .cbot {
+      --w: 104px;
+      right: 28px;
+      gap: 8px;
+    }
+    .cbot[data-place='corner'] {
+      --w: 68px;
+      right: 10px;
+      bottom: 10px;
+    }
+    .cbot__bubble {
+      padding: 10px 13px;
+      font-size: 14px;
+    }
+  }
+</style>
