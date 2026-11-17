@@ -1,0 +1,40 @@
+---
+// Site search, using the same service and web component as docs.adc.dev. No `collection` attribute, so results
+// cover every indexed source: adc.dev pages, the ADC docs and the LumApps docs. The site has no dark theme, so the
+// bar is pinned to light instead of following the visitor's system preference.
+---
+
+<div class="ms">
+  <adc-search
+    placeholder="Search adc.dev + docs"
+    label="Search adc.dev and the docs"
+    theme="light"
+  ></adc-search>
+</div>
+
+<script>
+  import '@arielladigitalconsulting/adc-ask';
+
+  // The proxy runs on Cloud Run and scales to zero. Any request starts an instance, even one that answers 404, so
+  // ping the service root on load, on focus and every minute while the page is visible to keep the first search fast.
+  const proxy = 'https://chatgpt-proxy-530008831989.us-central1.run.app/';
+  const wake = () => {
+    if (document.visibilityState === 'visible') fetch(proxy, { mode: 'no-cors', cache: 'no-store' }).catch(() => {});
+  };
+  wake();
+  addEventListener('focus', wake);
+  setInterval(wake, 60_000);
+</script>
+
+<style>
+  .ms {
+    width: 100%;
+  }
+  adc-search {
+    width: 100%;
+    --adc-search-width: 100%;
+    /* On phones the results are fixed below the header, whose height SiteHeader keeps in --header-h */
+    --adc-search-panel-top: var(--header-h, 72px);
+    --adc-ask-z: 40;
+  }
+</style>

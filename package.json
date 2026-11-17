@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@arielladigitalconsulting/adc-ask": "file:vendor/arielladigitalconsulting-adc-ask-0.2.0.tgz",
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.4.1"
   }

@@ -59,6 +59,22 @@ referenced by Wix media id, see `images.json`).
 
 Original Wix article URLs keep working through redirect stubs (`src/pages/news/[...wix].astro`).
 
+## Search
+
+The header search (`src/components/SiteSearch.astro`) uses the ADC search service through
+`@arielladigitalconsulting/adc-ask`, vendored in `vendor/` so CI installs it without a registry token. With no
+`collection` attribute it searches every indexed source: adc.dev pages (`adc_site`), the widget docs
+(`adc_docs`, at docs.adc.dev) and the LumApps docs (`lumapps_docs`).
+
+The service and the indexer live in the `chatbot` repository (`chatgpt_proxy`). adc.dev pages are crawled from
+`sitemap-index.xml` and re-indexed when their text changes; the weekly index job also picks them up. Until the
+service is deployed with the `adc_site` source and the job has run once, results only come from the docs. To index
+new pages right after a deploy, run the job:
+
+```bash
+gcloud run jobs execute chatgpt-proxy-index --project healthy-silo-351114 --region us-central1 --wait
+```
+
 ## Form
 
 The contact form has no backend: on submit it sends the visitor to the Calendly event in
