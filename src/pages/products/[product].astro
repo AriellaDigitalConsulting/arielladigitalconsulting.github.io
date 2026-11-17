@@ -1,0 +1,333 @@
+---
+// A product's page when it has no page of its own: the card's copy, where to find it, and related extensions.
+// Products with a dedicated page (Looker, Timezone, …) keep that page as their single URL instead.
+import Base from '../../layouts/Base.astro';
+import ExtensionCard from '../../components/ExtensionCard.astro';
+import { categories, extensions, type Extension } from '../../data/extensions';
+import { contactHref } from '../../data/site';
+import { hasOwnPage, productCategories, productSlug } from '../../lib/products';
+
+export function getStaticPaths() {
+  return extensions
+    .filter((ext) => !hasOwnPage(ext))
+    .map((ext) => ({ params: { product: productSlug(ext.n) }, props: { ext } }));
+}
+
+const { ext } = Astro.props as { ext: Extension };
+const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
+const primary = catById[ext.c[0]];
+const labels = productCategories(ext);
+const related = extensions
+  .filter((e) => e.n !== ext.n && e.c[0] === ext.c[0])
+  .sort((a, b) => a.n.localeCompare(b.n))
+  .slice(0, 3);
+
+const external = ext.href?.startsWith('http') ? ext.href : undefined;
+const shared = !external && ext.href?.startsWith('/') ? ext.href : undefined;
+const sharedLabel: Record<string, string> = {
+  '/admin-enhancements-widgets-bundle': 'the ADC Toolbox',
+  '/building-microexperiences': 'AskAI & MicroApps',
+  '/wiki': 'the Wiki bundle',
+  '/bunchball-gamification-integration': 'the Bunchball integration',
+};
+const cta = external
+  ? { href: external, label: 'Read the docs', external: true }
+  : shared
+    ? { href: shared, label: `See ${sharedLabel[shared] ?? 'the full collection'}`, external: false }
+    : undefined;
+const availability = external
+  ? 'Documented in the ADC docs.'
+  : shared
+    ? `Available as part of ${sharedLabel[shared] ?? 'a larger ADC collection'}.`
+    : 'Available on request while this page is being written.';
+const initials = ext.n
+  .split(/\s+/)
+  .filter((w) => /^[A-Za-z0-9]/.test(w))
+  .slice(0, 2)
+  .map((w) => w[0])
+  .join('')
+  .toUpperCase();
+---
+
+<Base title={`${ext.n} | ADC Extensions`} description={`${ext.d} A ${primary.label} extension for LumApps by Ariella Digital Consulting.`}>
+  <div class="pd">
+    <header class="pd__hero">
+      <div class="pd__hero-inner">
+        <a class="pd__back" href="/products">← All extensions</a>
+        <span class="pd__tile" aria-hidden="true" style={`background:${primary.chip};color:${primary.ink}`}>{initials}</span>
+        <p class="pd__eyebrow">{primary.label}</p>
+        <h1>{ext.n}</h1>
+        <p class="pd__desc">{ext.d}</p>
+        <div class="pd__ctas">
+          {cta && (
+            <a class="pd__btn" href={cta.href} target={cta.external ? '_blank' : undefined} rel={cta.external ? 'noopener noreferrer' : undefined}>
+              {cta.label} <span aria-hidden="true">→</span>
+            </a>
+          )}
+          <a class:list={['pd__btn', cta ? 'pd__btn--ghost' : '']} href={contactHref}>Talk to us <span aria-hidden="true">→</span></a>
+        </div>
+        <ul class="pd__tags">
+          {ext.c.map((id) => (
+            <li><span aria-hidden="true" style={`background:${catById[id].chip}`} />{catById[id].label}</li>
+          ))}
+        </ul>
+      </div>
+    </header>
+
+    <section class="pd__body">
+      <div class="pd__body-inner">
+        <div class="pd__copy">
+          <h2>What it does</h2>
+          <p>{ext.d}</p>
+          {ext.bundle && <p>It is part of an ADC bundle, so it can be deployed alongside related extensions.</p>}
+          <p>ADC builds and maintains this extension for LumApps, including setup, upgrades and support.</p>
+        </div>
+        <aside class="pd__facts">
+          <h2>Availability</h2>
+          <p>{availability}</p>
+          {cta && <a href={cta.href} target={cta.external ? '_blank' : undefined} rel={cta.external ? 'noopener noreferrer' : undefined}>{cta.label} →</a>}
+          <h2>Categories</h2>
+          <ul>
+            {labels.map((label) => <li>{label}</li>)}
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    {related.length > 0 && (
+      <section class="pd__related">
+        <div class="pd__related-inner">
+          <div class="pd__related-head">
+            <h2>More in {primary.label}</h2>
+            <a href="/products">See all extensions →</a>
+          </div>
+          <div class="pd__grid">
+            {related.map((e) => <ExtensionCard ext={e} cats={catById} />)}
+          </div>
+        </div>
+      </section>
+    )}
+  </div>
+</Base>
+
+<style>
+  .pd {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #1b1a3a;
+    line-height: 1.5;
+  }
+  .pd * {
+    box-sizing: border-box;
+  }
+  .pd h1,
+  .pd h2 {
+    font-family: 'Archivo', sans-serif;
+    margin: 0;
+  }
+  .pd p {
+    margin: 0;
+  }
+  .pd__hero {
+    background: #05006c;
+    color: #fff;
+  }
+  .pd__hero-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .pd__back {
+    color: #32e0c4;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  .pd__back:hover {
+    color: #fff;
+  }
+  .pd__tile {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    box-shadow: inset 0 0 0 1px rgba(5, 0, 108, 0.12);
+  }
+  .pd__eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #32e0c4;
+    margin-top: 6px;
+  }
+  .pd h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .pd__desc {
+    max-width: 46rem;
+    font-size: 20px;
+    color: #d4d2f5;
+  }
+  .pd__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .pd__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: #32e0c4;
+    color: #05006c;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+  .pd__btn:hover {
+    background: #fff;
+    color: #05006c;
+  }
+  .pd__btn--ghost {
+    background: transparent;
+    color: #fff;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  }
+  .pd__btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+  .pd__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pd__tags li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .pd__tags li span {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+  }
+
+  .pd__body {
+    background: #fff;
+  }
+  .pd__body-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 56px 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(220px, 1fr);
+    gap: 56px;
+  }
+  .pd__copy h2,
+  .pd__facts h2 {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #362dff;
+    margin-bottom: 10px;
+  }
+  .pd__copy p {
+    font-size: 18px;
+    margin-bottom: 14px;
+    color: #3a3860;
+  }
+  .pd__facts {
+    padding: 22px;
+    border-radius: 18px;
+    background: #f5f5ff;
+  }
+  .pd__facts p {
+    margin-bottom: 10px;
+    color: #3a3860;
+  }
+  .pd__facts a {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #362dff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .pd__facts a:hover {
+    text-decoration: underline;
+  }
+  .pd__facts ul {
+    margin: 0;
+    padding-left: 18px;
+    color: #3a3860;
+  }
+
+  .pd__related {
+    background: #05006c;
+    color: #fff;
+  }
+  .pd__related-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+  .pd__related-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .pd__related-head h2 {
+    font-size: 26px;
+    font-weight: 800;
+  }
+  .pd__related-head a {
+    color: #32e0c4;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .pd__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  @media (max-width: 760px) {
+    .pd__body-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .pd__hero-inner {
+      padding: 32px 20px 48px;
+    }
+    .pd__related-inner {
+      padding: 40px 20px 48px;
+    }
+  }
+</style>

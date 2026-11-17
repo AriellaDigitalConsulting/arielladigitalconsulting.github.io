@@ -1,7 +1,8 @@
 ---
 // One extension on the Products page: a "featured" white card or a "row" card in the results grid.
-// Extensions with a URL link to it; the rest are focusable cards that show "Page coming soon..." on hover or focus.
+// Every card links to the product's single URL: its existing page, or a generated /products/<slug>/ page.
 import type { Category, Extension } from '../data/extensions';
+import { productHref } from '../lib/products';
 
 interface Props {
   ext: Extension;
@@ -13,6 +14,7 @@ interface Props {
 const { ext, cats, variant = 'row', filterable = false } = Astro.props;
 
 const primary = cats[ext.c[0]];
+const href = productHref(ext);
 const initials = ext.n
   .split(/\s+/)
   .filter((w) => /^[A-Za-z0-9]/.test(w))
@@ -20,11 +22,6 @@ const initials = ext.n
   .map((w) => w[0])
   .join('')
   .toUpperCase();
-const external = !!ext.href?.startsWith('http');
-const Tag = ext.href ? 'a' : 'div';
-const linkAttrs = ext.href
-  ? { href: ext.href, target: external ? '_blank' : undefined, rel: external ? 'noopener' : undefined }
-  : { tabindex: 0 };
 const filterAttrs = filterable
   ? {
       'data-cats': ext.c.join(' '),
@@ -35,14 +32,14 @@ const filterAttrs = filterable
 const tile = `background:${primary.chip};color:${primary.ink}`;
 ---
 
-<Tag class:list={[variant === 'featured' ? 'fc' : 'xc', { 'is-soon': !ext.href }]} {...linkAttrs} {...filterAttrs}>
+<a class:list={[variant === 'featured' ? 'fc' : 'xc']} href={href} {...filterAttrs}>
   {
     variant === 'featured' ? (
       <>
         <span class="fc__tile" aria-hidden="true" style={tile}>{initials}</span>
         <span class="fc__name">{ext.n}{ext.isNew && <span class="fc__new">NEW</span>}</span>
         <span class="fc__desc">{ext.d}</span>
-        {ext.href && <span class="fc__cta">Learn more <span aria-hidden="true">→</span></span>}
+        <span class="fc__cta">Learn more <span aria-hidden="true">→</span></span>
       </>
     ) : (
       <>
@@ -59,13 +56,12 @@ const tile = `background:${primary.chip};color:${primary.ink}`;
               <span class="xc__tag"><span aria-hidden="true" style={`background:${cats[id].chip}`} />{cats[id].label}</span>
             ))}
           </span>
-          {ext.href && <span class="xc__cta">Learn more <span aria-hidden="true">→</span></span>}
+          <span class="xc__cta">Learn more <span aria-hidden="true">→</span></span>
         </span>
       </>
     )
   }
-  {!ext.href && <span class="soon" role="tooltip">Page coming soon...</span>}
-</Tag>
+</a>
 
 <style>
   .fc {
@@ -224,36 +220,5 @@ const tile = `background:${primary.chip};color:${primary.ink}`;
 
   .xc[hidden] {
     display: none;
-  }
-
-  /* No page yet: a "Page coming soon..." pill floats above the card on hover/focus. */
-  .is-soon {
-    cursor: default;
-  }
-  .soon {
-    position: absolute;
-    z-index: 2;
-    bottom: calc(100% - 10px);
-    left: 50%;
-    white-space: nowrap;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: #ffd458;
-    color: #05006c;
-    font-size: 12px;
-    font-weight: 700;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transform: translate(-50%, 4px);
-    transition: opacity 0.15s ease, transform 0.15s ease;
-    pointer-events: none;
-  }
-  .is-soon:hover .soon,
-  .is-soon:focus-visible .soon {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-  .xc.is-soon:hover {
-    border-color: rgba(255, 212, 88, 0.5);
   }
 </style>
