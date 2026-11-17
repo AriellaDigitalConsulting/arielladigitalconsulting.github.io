@@ -2,6 +2,11 @@
 // Site search, using the same service and web component as docs.adc.dev. No `collection` attribute, so results
 // cover every indexed source: adc.dev pages, the ADC docs and the LumApps docs. The site has no dark theme, so the
 // bar is pinned to light instead of following the visitor's system preference.
+import { posts } from '../lib/news';
+
+// Search groups chunks by page, and a page's best-scoring chunk is not always the one carrying its title. The
+// component then falls back to a title made from the URL, which turns long news slugs into gibberish, so name them.
+const titles = Object.fromEntries(posts.map((post) => [`/news/${post.slug}`, post.title]));
 ---
 
 <div class="ms">
@@ -9,11 +14,15 @@
     placeholder="Search adc.dev + docs"
     label="Search adc.dev and the docs"
     theme="light"
+    data-titles={JSON.stringify(titles)}
   ></adc-search>
 </div>
 
 <script>
   import '@arielladigitalconsulting/adc-ask';
+
+  const search = document.querySelector('adc-search');
+  if (search) search.titles = JSON.parse(search.dataset.titles || '{}');
 
   // The proxy runs on Cloud Run and scales to zero. Any request starts an instance, even one that answers 404, so
   // ping the service root on load, on focus and every minute while the page is visible to keep the first search fast.
