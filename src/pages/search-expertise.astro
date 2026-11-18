@@ -1,0 +1,422 @@
+---
+// Search Expertise: intro and stats, what we help with (alternating photo rows), the four-step method, the services list, CTA band.
+// Styled to match the About page.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const stats = [
+  { big: 'Coveo partner', small: 'for enterprise search on LumApps', bg: '#362dff', big_c: '#fff', small_c: '#e4e3ff' },
+  { big: 'Inside view', small: 'our Technical Director was LumApps’ search product owner', bg: '#ddf8f2' },
+  { big: 'Since 2017', small: 'in the LumApps ecosystem', bg: '#fff4d6' },
+];
+
+const help = [
+  {
+    tag: 'Strategy',
+    title: 'Defining your search use cases',
+    photo: '/images/9af69c0b624a.webp',
+    alt: 'A workshop in progress',
+    text: 'We know enterprise search engines and the digital workplace use cases they serve. That lets us work with you to define, refine and deliver a search experience that gives each user the right results.',
+  },
+  {
+    tag: 'Implementation',
+    title: 'Delivering a customized search experience',
+    photo: '/images/9fe7bbcee04d.webp',
+    alt: 'An employee searching from home',
+    text: 'There are many ways to implement your search use cases. We keep implementation effort low and impact high, so your employees find the right information faster.',
+  },
+  {
+    tag: 'Integration',
+    title: 'Connecting search to your employee experience platform',
+    photo: '/images/04df2934a2f9.webp',
+    alt: '',
+    text: 'We advise on, and build, the best way to connect your enterprise search engine to your digital workplace, so results show up where your people already work.',
+  },
+];
+
+const steps = [
+  { name: 'Define', sub: 'Identify your search use cases', icon: '/images/5dadece0126f.webp', text: 'A series of working sessions to discover the results you need, assess the gaps in your current search, and define the ideal future state.' },
+  { name: 'Develop', sub: 'Implement the search parameters', icon: '/images/cbc9cc5edd18.webp', text: 'We build the integration over several sprints, working through the key user stories and use cases for your search.' },
+  { name: 'Deploy', sub: 'Quality assurance & beta testing', icon: '/images/5dddf904cc11.webp', text: 'We test in a sandbox on your side to confirm search behaves as expected and catch any issues before delivery.' },
+  { name: 'Deliver', sub: 'Bring it all together', icon: '/images/0e02e521e919.webp', text: 'Once search is integrated and tested in the sandbox, we roll it out to your live environment.' },
+];
+
+const services = [
+  'Integrate your existing Coveo Headless search application into LumApps',
+  'Configure the native LumApps Coveo integration for the best user experience',
+  'Build and configure Coveo search extensions to complete LumApps results',
+  'Guide you through our Headless framework, with result templates and the building blocks for your own Headless search application',
+  'Assess feasibility and build a connector for any custom data source',
+];
+---
+
+<Base title="LumApps Enterprise Search Expertise | ADC" description="ADC is a Coveo partner and LumApps search specialist. We help enterprises define, build and connect the right employee search experience.">
+  <div class="sx">
+    <section class="intro wrapx">
+      <span class="eyebrow">Enterprise search</span>
+      <h1>Expand enterprise <span class="hl">search</span> with ADC.</h1>
+      <p class="lede">As a proud Coveo partner, our search engineering team helps you plan and build the ideal employee search experience. Here’s how we help customers succeed on their own enterprise search journeys.</p>
+      <div class="stats">
+        {
+          stats.map((s) => (
+            <div class="stat" style={`background:${s.bg}`}>
+              <div class="stat__big" style={s.big_c && `color:${s.big_c}`}>{s.big}</div>
+              <div class="stat__small" style={s.small_c && `color:${s.small_c}`}>{s.small}</div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="help wrapx" aria-labelledby="help-h">
+      <span class="eyebrow">How we help</span>
+      <h2 id="help-h">From first use case to search people trust.</h2>
+      {
+        help.map((h, i) => (
+          <article class:list={['row', { 'row--flip': i % 2 === 1 }]}>
+            <img class="row__photo" src={h.photo} alt={h.alt} loading={i ? 'lazy' : 'eager'} />
+            <div class="row__body">
+              <span class="role">{h.tag}</span>
+              <h3>{h.title}</h3>
+              <p>{h.text}</p>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="mband" aria-labelledby="method-h">
+      <div class="wrapx mband__inner">
+        <div class="mband__head">
+          <div>
+            <span class="eyebrow">Our approach</span>
+            <h2 id="method-h">Our enterprise search <span class="hl">implementation</span> method</h2>
+          </div>
+          <p>Four phases take you from discovery to a live search experience, with testing in your own sandbox before anything reaches employees.</p>
+        </div>
+        <ol class="steps">
+          {
+            steps.map((s, i) => (
+              <li class="step">
+                <img src={s.icon} alt="" width="238" height="190" loading="lazy" />
+                <span class="step__num">0{i + 1}</span>
+                <strong>{s.name}</strong>
+                <span class="step__sub">{s.sub}</span>
+                <p>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="svc wrapx" aria-labelledby="svc-h">
+      <div class="svc__head">
+        <span class="eyebrow">Services summary</span>
+        <h2 id="svc-h">Our enterprise search services</h2>
+      </div>
+      <ul class="svc__list">
+        {
+          services.map((s) => (
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B7A5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10" /></svg>
+              <span>{s}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+  <CtaBand title="Ready to improve your search?" body="Book a free consultation, and we’ll help you find the right enterprise search approach for your LumApps platform." />
+</Base>
+
+<style>
+  .sx {
+    font-family: 'open sans', 'Open Sans', system-ui, sans-serif;
+    color: #4a4866;
+    line-height: 1.5;
+  }
+  .sx * {
+    box-sizing: border-box;
+  }
+  .sx h1,
+  .sx h2,
+  .sx h3 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    color: #05006c;
+    margin: 0;
+  }
+  .sx p {
+    margin: 0;
+  }
+  .wrapx {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .eyebrow {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #362dff;
+  }
+  .hl {
+    color: #362dff;
+  }
+
+  /* Intro */
+  .intro {
+    padding-top: 96px;
+    padding-bottom: 24px;
+  }
+  .intro h1 {
+    margin-top: 18px;
+    max-width: 760px;
+    font-size: clamp(40px, 5vw, 62px);
+    line-height: 1.04;
+    letter-spacing: -1px;
+  }
+  .lede {
+    margin-top: 22px !important;
+    max-width: 680px;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .stats {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .stat {
+    border-radius: 22px;
+    padding: 28px 28px 36px;
+    min-height: 168px;
+  }
+  .stat__big {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 1.1;
+    color: #05006c;
+  }
+  .stat__small {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* How we help: alternating photo rows, as with the About team */
+  .help {
+    padding-top: 72px;
+    padding-bottom: 88px;
+  }
+  .help > h2,
+  .svc h2 {
+    margin-top: 14px;
+    max-width: 640px;
+    font-size: clamp(34px, 4vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+  }
+  .row {
+    margin-top: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    align-items: center;
+  }
+  .row--flip {
+    flex-direction: row-reverse;
+  }
+  .row__photo {
+    flex: 1 1 420px;
+    max-width: 520px;
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 22px;
+    background: #f5f5ff;
+  }
+  .row__body {
+    flex: 1 1 460px;
+    min-width: 0;
+  }
+  .role {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #0b7a5c;
+  }
+  .row h3 {
+    margin-top: 12px;
+    font-size: 34px;
+    line-height: 1.15;
+  }
+  .row p {
+    margin-top: 16px;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* Method band, as with the About certifications */
+  .mband {
+    background: #f7f7fc;
+    border-top: 1px solid #ecebfb;
+    border-bottom: 1px solid #ecebfb;
+  }
+  .mband__inner {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .mband__head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .mband__head > div {
+    max-width: 620px;
+  }
+  .mband h2 {
+    margin-top: 14px;
+    font-size: clamp(32px, 3.8vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+  }
+  .mband__head p {
+    max-width: 440px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .steps {
+    margin: 48px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .step {
+    padding: 28px 26px 30px;
+    border-radius: 22px;
+    background: #fff;
+    border: 1px solid #ecebfb;
+    display: flex;
+    flex-direction: column;
+  }
+  .step img {
+    width: 120px;
+    height: auto;
+    align-self: center;
+    margin-bottom: 18px;
+  }
+  .step__num {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    color: #362dff;
+  }
+  .step strong {
+    margin-top: 6px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: #05006c;
+  }
+  .step__sub {
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0b7a5c;
+  }
+  .step p {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* Services list, as with the About certification pills */
+  .svc {
+    padding-top: 88px;
+    padding-bottom: 8px;
+  }
+  .svc__list {
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .svc__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 22px;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid #ecebfb;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.55;
+    color: #05006c;
+  }
+  .svc__list svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  @media (max-width: 860px) {
+    .row,
+    .row--flip {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 24px;
+    }
+    .row__photo {
+      flex: none;
+      max-width: none;
+      height: 300px;
+    }
+    .row__body {
+      flex: none;
+    }
+  }
+  @media (max-width: 600px) {
+    .wrapx {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .intro {
+      padding-top: 64px;
+    }
+    .help {
+      padding-top: 56px;
+      padding-bottom: 64px;
+    }
+    .mband__inner {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+    .svc {
+      padding-top: 64px;
+    }
+    .svc__list {
+      grid-template-columns: 1fr;
+    }
+    .row__photo {
+      height: 240px;
+    }
+    .row h3 {
+      font-size: 28px;
+    }
+  }
+</style>

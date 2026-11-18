@@ -127,23 +127,15 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
         </div>
 
         <div class="hero__visual">
-          <a class="mock mock--press" href="/news/adc-expands-for-2027-adds-lumapps-veterans-mike-biersma-and-colin-ryan">
+          <a class="mock mock--press" href="/news/replay-adc-live-presents-knowledge-engagement-with-lumapps-play-a-glass-guru-story">
             <div class="mock__head">
-              <span class="mock__badge mock__badge--new">Press release</span>
-              <span class="press__date">Nov 5, 2026</span>
+              <span class="mock__badge mock__badge--new">ADC Live! replay</span>
+              <span class="press__date">Nov 18, 2026</span>
             </div>
-            <div class="press__people">
-              <figure class="press__person">
-                <img src="/images/about-mike-biersma.webp" alt="" width="160" height="160" />
-                <figcaption class="press__name press__name--teal"><b>Mike Biersma</b>Customer Experience</figcaption>
-              </figure>
-              <figure class="press__person">
-                <img src="/images/about-colin-ryan.webp" alt="" width="160" height="160" />
-                <figcaption class="press__name press__name--yellow"><b>Colin Ryan</b>Workforce Technology</figcaption>
-              </figure>
-            </div>
-            <span class="press__title">ADC expands for 2027</span>
-            <span class="press__more">Learn more <span aria-hidden="true">→</span></span>
+            <figure class="press__cover">
+              <img src="/images/adc-live-lumapps-play-glass-guru.webp" alt="" width="1280" height="720" />            </figure>
+            <span class="press__title">LumApps Play: A Glass Guru Story</span>
+            <span class="press__more">Watch the replay <span aria-hidden="true">→</span></span>
           </a>
           <div class="hero__stack ext">
             <div class="ext__label">
@@ -606,42 +598,17 @@ const shield = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
     font-weight: 600;
     color: var(--muted);
   }
-  .press__people {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .press__person {
+  .press__cover {
     margin: 0;
     border-radius: 14px;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
   }
-  .press__person img {
+  .press__cover img {
     display: block;
     width: 100%;
-    aspect-ratio: 1;
+    height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
-    object-position: 50% 20%;
-  }
-  .press__name {
-    padding: 8px 10px 10px;
-    font-size: 11px;
-    line-height: 1.3;
-    color: var(--navy);
-    flex: 1;
-  }
-  .press__name b {
-    display: block;
-    font-family: var(--f-display);
-    font-size: 13px;
-  }
-  .press__name--teal {
-    background: var(--teal);
-  }
-  .press__name--yellow {
-    background: var(--yellow);
   }
   .press__title {
     font-family: var(--f-display);

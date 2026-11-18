@@ -1,11 +1,11 @@
 ---
 // "ADC Live!" invite band on the homepage: the ticket card with the ADC Bot peeking over it.
-// Update the event details below for each month's webinar.
+// Update the event details below for each month's webinar. After it airs, point the band at the replay.
 const event = {
   title: 'LumApps Play, with a guest from The Glass Guru',
   date: 'Wed, Nov 18',
-  time: '11:30 AM ET',
-  registerUrl: 'https://www.linkedin.com/events/7517990236740747265/',
+  length: '26 min',
+  replayUrl: '/news/replay-adc-live-presents-knowledge-engagement-with-lumapps-play-a-glass-guru-story',
 };
 
 const replays = [
@@ -26,7 +26,7 @@ const replays = [
         </div>
       </div>
       <div class="live__hands hands" aria-hidden="true"><span></span><span></span></div>
-      <div class="live__bubble bubble" aria-hidden="true">Psst… seats are free.</div>
+      <div class="live__bubble bubble" aria-hidden="true">Psst… the replay is up.</div>
       <span class="live__bang bang" aria-hidden="true">!</span>
 
       <div class="live__ticket">
@@ -35,22 +35,22 @@ const replays = [
           <div class="live__disc" aria-hidden="true">
             <svg class="spin" width="168" height="168" viewBox="0 0 168 168">
               <defs><path id="liveRing" d="M84,84 m-66,0 a66,66 0 1,1 132,0 a66,66 0 1,1 -132,0"></path></defs>
-              <text font-family="Archivo, sans-serif" font-weight="800" font-size="15" letter-spacing="3.2" fill="#fff"><textPath href="#liveRing">ADC LIVE! • FREE • MONTHLY • ON AIR • </textPath></text>
+              <text font-family="Archivo, sans-serif" font-weight="800" font-size="15" letter-spacing="3.2" fill="#fff"><textPath href="#liveRing">ADC LIVE! • FREE • MONTHLY • REPLAY • </textPath></text>
             </svg>
             <span class="live__play"><svg width="28" height="28" viewBox="0 0 24 24" fill="#05006C"><path d="M7 4l13 8-13 8z"></path></svg></span>
           </div>
           <div class="live__copy">
-            <span class="live__kicker"><span class="pulse" aria-hidden="true"></span>You're invited · ADC Live!</span>
+            <span class="live__kicker"><span class="pulse" aria-hidden="true"></span>Now on replay · ADC Live!</span>
             <h2 id="live-title">{event.title}</h2>
-            <p>Our free monthly webinar for LumApps teams. Live demos, real answers, and the release highlights that matter to your intranet.</p>
+            <p>Missed it live? Watch Sean Young, Director of Technology at The Glass Guru, show how his team uses LumApps Play to share video with franchisees across the country.</p>
           </div>
         </div>
         <div class="live__stub">
           <span class="live__free wiggle">FREE</span>
-          <div class="live__field"><span>Date</span><strong>{event.date}</strong></div>
-          <div class="live__field"><span>Time</span><strong>{event.time}</strong></div>
-          <a class="live__cta glow" href={event.registerUrl}>
-            Save my seat
+          <div class="live__field"><span>Aired</span><strong>{event.date}</strong></div>
+          <div class="live__field"><span>Length</span><strong>{event.length}</strong></div>
+          <a class="live__cta glow" href={event.replayUrl}>
+            Watch the replay
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
           </a>
         </div>
@@ -261,7 +261,7 @@ const replays = [
   }
   .live__stub {
     position: relative;
-    flex: 1 1 260px;
+    flex: 1 1 290px;
     min-width: 0;
     padding: 40px 36px;
     border-left: 3px dashed rgba(255, 255, 255, 0.35);
