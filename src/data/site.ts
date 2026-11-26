@@ -11,6 +11,7 @@ export const nav: NavItem[] = [
       { href: '/implementations', label: 'Implementations' },
       { href: '/integrations', label: 'Custom Integrations' },
       { href: '/change-management', label: 'Change Management' },
+      { href: '/ai-readiness-audit', label: 'AI Readiness Audit' },
       { href: '/employee-brand-design', label: 'Employee Brand Design' },
       { href: '/sme-support', label: 'SME Support' },
       { href: '/analytics', label: 'Analytics' },
