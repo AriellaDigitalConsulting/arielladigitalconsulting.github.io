@@ -48,7 +48,7 @@ const others = posts.filter((p) => p.slug !== post.slug);
 const related = [...others.filter((p) => p.category === post.category), ...others.filter((p) => p.category !== post.category)].slice(0, 3);
 ---
 
-<Base title={`${post.title} | ADC`} description={post.excerpt}>
+<Base title={`${post.title} | ADC`} description={post.excerpt} image={imageFile(hero)}>
   <div class="ar">
     <section class="ar__head">
       <nav class="ar__crumbs" aria-label="Breadcrumb">

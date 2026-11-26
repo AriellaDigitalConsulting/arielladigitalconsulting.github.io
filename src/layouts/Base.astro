@@ -8,9 +8,12 @@ import { isProductPage } from '../data/extensions';
 interface Props {
   title: string;
   description?: string;
+  /** Share image for LinkedIn, Slack and other link previews: a site path such as /images/foo.webp. */
+  image?: string;
 }
-const { title, description = 'Boutique LumApps consulting — integrations, implementations, analytics and UI/UX design.' } = Astro.props;
+const { title, description = 'Boutique LumApps consulting — integrations, implementations, analytics and UI/UX design.', image } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const shareImage = image ? new URL(image, Astro.site) : undefined;
 ---
 
 <!doctype html>
@@ -27,7 +30,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Ariella Digital Consulting" />
+    {shareImage && <meta property="og:image" content={shareImage} />}
     <meta name="twitter:card" content="summary_large_image" />
+    {shareImage && <meta name="twitter:image" content={shareImage} />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet" />
