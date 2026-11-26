@@ -1253,5 +1253,10 @@
   "file": "/images/adc-live-lumapps-play-glass-guru.webp",
   "w": 1280,
   "h": 720
+ },
+ "ai-readiness-audit-hero.webp": {
+  "file": "/images/ai-readiness-audit-hero.webp",
+  "w": 2000,
+  "h": 1050
  }
 }

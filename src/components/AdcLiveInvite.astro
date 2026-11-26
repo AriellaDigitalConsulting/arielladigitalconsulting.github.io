@@ -2,16 +2,16 @@
 // "ADC Live!" invite band on the homepage: the ticket card with the ADC Bot peeking over it.
 // Update the event details below for each month's webinar. After it airs, point the band at the replay.
 const event = {
-  title: 'LumApps Play, with a guest from The Glass Guru',
-  date: 'Wed, Nov 18',
-  length: '26 min',
-  replayUrl: '/news/replay-adc-live-presents-knowledge-engagement-with-lumapps-play-a-glass-guru-story',
+  title: 'Your Intranet AI Is Confidently Wrong',
+  date: 'Wed, Dec 16',
+  time: '11:30 AM EST',
+  joinUrl: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7531729807454441473/',
 };
 
 const replays = [
+  { label: 'LumApps Play: A Glass Guru Story', href: '/news/replay-adc-live-presents-knowledge-engagement-with-lumapps-play-a-glass-guru-story' },
   { label: 'LumApps Agents, Agents Space & MCP', href: '/news/replay-adc-live-presents-lumapps-agents-agents-space-mcp' },
   { label: 'Becoming a Beekeeper Developer', href: '/news/adc-live-presents-the-lumapps-beekeeper-value-and-a-beekeeper-deep-dive' },
-  { label: 'Release Notes Backstage', href: '/news/adc-live-presents-release-notes-backstage' },
 ];
 ---
 
@@ -26,7 +26,7 @@ const replays = [
         </div>
       </div>
       <div class="live__hands hands" aria-hidden="true"><span></span><span></span></div>
-      <div class="live__bubble bubble" aria-hidden="true">Psst… the replay is up.</div>
+      <div class="live__bubble bubble" aria-hidden="true">Psst… you’re invited.</div>
       <span class="live__bang bang" aria-hidden="true">!</span>
 
       <div class="live__ticket">
@@ -35,22 +35,22 @@ const replays = [
           <div class="live__disc" aria-hidden="true">
             <svg class="spin" width="168" height="168" viewBox="0 0 168 168">
               <defs><path id="liveRing" d="M84,84 m-66,0 a66,66 0 1,1 132,0 a66,66 0 1,1 -132,0"></path></defs>
-              <text font-family="Archivo, sans-serif" font-weight="800" font-size="15" letter-spacing="3.2" fill="#fff"><textPath href="#liveRing">ADC LIVE! • FREE • MONTHLY • REPLAY • </textPath></text>
+              <text font-family="Archivo, sans-serif" font-weight="800" font-size="15" letter-spacing="3.2" fill="#fff"><textPath href="#liveRing">ADC LIVE! • FREE • MONTHLY • DEBATE • </textPath></text>
             </svg>
             <span class="live__play"><svg width="28" height="28" viewBox="0 0 24 24" fill="#05006C"><path d="M7 4l13 8-13 8z"></path></svg></span>
           </div>
           <div class="live__copy">
-            <span class="live__kicker"><span class="pulse" aria-hidden="true"></span>Now on replay · ADC Live!</span>
+            <span class="live__kicker"><span class="pulse" aria-hidden="true"></span>Live debate · ADC Live!</span>
             <h2 id="live-title">{event.title}</h2>
-            <p>Missed it live? Watch Sean Young, Director of Technology at The Glass Guru, show how his team uses LumApps Play to share video with franchisees across the country.</p>
+            <p>LumApps AI Readiness Check #1: 5 fixes before you switch it on. Misha, Ivo, Mike and Colin debate live why your AI gives the wrong answer, and what to check before you roll it out to everyone.</p>
           </div>
         </div>
         <div class="live__stub">
           <span class="live__free wiggle">FREE</span>
-          <div class="live__field"><span>Aired</span><strong>{event.date}</strong></div>
-          <div class="live__field"><span>Length</span><strong>{event.length}</strong></div>
-          <a class="live__cta glow" href={event.replayUrl}>
-            Watch the replay
+          <div class="live__field"><span>Date</span><strong>{event.date}</strong></div>
+          <div class="live__field"><span>Time</span><strong>{event.time}</strong></div>
+          <a class="live__cta glow" href={event.joinUrl}>
+            Join on LinkedIn
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
           </a>
         </div>
